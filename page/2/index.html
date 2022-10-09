@@ -214,6 +214,290 @@
             
 
   
+    <article id="post-projecet/文档" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2022/10/08/projecet/%E6%96%87%E6%A1%A3/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-projecet/总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="高访问量的解决方案"><a href="#高访问量的解决方案" class="headerlink" title="高访问量的解决方案"></a>高访问量的解决方案</h1><h1 id="核心表的设计-哪些时候使用到了数据库-与前端的交互-有进行过压测吗"><a href="#核心表的设计-哪些时候使用到了数据库-与前端的交互-有进行过压测吗" class="headerlink" title="核心表的设计?哪些时候使用到了数据库,与前端的交互,有进行过压测吗?"></a>核心表的设计?哪些时候使用到了数据库,与前端的交互,有进行过压测吗?</h1><h1 id="单点登陆的实现-谈谈对Oauth2-0的理解"><a href="#单点登陆的实现-谈谈对Oauth2-0的理解" class="headerlink" title="单点登陆的实现?谈谈对Oauth2.0的理解"></a>单点登陆的实现?谈谈对Oauth2.0的理解</h1><h1 id="秒杀模块的实现-具体的问题解决"><a href="#秒杀模块的实现-具体的问题解决" class="headerlink" title="秒杀模块的实现?具体的问题解决?"></a>秒杀模块的实现?具体的问题解决?</h1><h1 id="分布式事务的使用-原理了解吗"><a href="#分布式事务的使用-原理了解吗" class="headerlink" title="分布式事务的使用?原理了解吗?"></a>分布式事务的使用?原理了解吗?</h1><h1 id="购物车与订单模块的实现-遇到的问题-对常见问题的解决"><a href="#购物车与订单模块的实现-遇到的问题-对常见问题的解决" class="headerlink" title="购物车与订单模块的实现?遇到的问题?对常见问题的解决"></a>购物车与订单模块的实现?遇到的问题?对常见问题的解决</h1><h1 id="有没有遇到什么问题"><a href="#有没有遇到什么问题" class="headerlink" title="有没有遇到什么问题?"></a>有没有遇到什么问题?</h1>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-projecet/商品详情页" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="5-畅购商品详情页"><a href="#5-畅购商品详情页" class="headerlink" title="5.畅购商品详情页"></a>5.畅购商品详情页</h2><h3 id="5-1-需求分析"><a href="#5-1-需求分析" class="headerlink" title="5.1 需求分析"></a>5.1 需求分析</h3><p>当系统审核完成商品，需要将商品详情页进行展示，那么采用静态页面生成的方式生成，并部署到高性能的web服务器中进行访问是比较合适的。所以，开发流程如下图所示：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1566736163765.png" alt="1566736163765"></p>
+<p>执行步骤解释：</p>
+<ul>
+<li>系统管理员（商家运维人员）修改或者审核商品的时候，会触发canal监控数据</li>
+<li>canal微服务获取修改数据后，调用静态页微服务的方法进行生成静态页 </li>
+<li>静态页微服务只负责使用thymeleaf的模板技术生成静态页</li>
+</ul>
+<h3 id="5-2-商品静态化微服务创建"><a href="#5-2-商品静态化微服务创建" class="headerlink" title="5.2 商品静态化微服务创建"></a>5.2 商品静态化微服务创建</h3><h4 id="5-2-1-需求分析"><a href="#5-2-1-需求分析" class="headerlink" title="5.2.1 需求分析"></a>5.2.1 需求分析</h4><p>该微服务只用于生成商品静态页，不做其他事情。</p>
+<h4 id="5-2-2-搭建项目"><a href="#5-2-2-搭建项目" class="headerlink" title="5.2.2 搭建项目"></a>5.2.2 搭建项目</h4><p>（1）在changgou-web下创建一个名称为changgou-web-item的模块,如图：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561856105210.png" alt="1561856105210"></p>
+<p>（2）changgou-web-item中添加起步依赖，如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>changgou-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.changgou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>changgou-web-item<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--api 模块--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.changgou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>changgou-service-goods-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>（3）修改application.yml的配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">18085</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://127.0.0.1:7001/eureka</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">prefer-ip-address:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">hystrix:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">thymeleaf:</span></span><br><span class="line">    <span class="attr">cache:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">item</span></span><br><span class="line">  <span class="attr">main:</span></span><br><span class="line">    <span class="attr">allow-bean-definition-overriding:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#rabbitmq:</span></span><br><span class="line">  <span class="comment">#  host: 192.168.25.138</span></span><br><span class="line"><span class="comment"># 生成静态页的位置</span></span><br><span class="line"><span class="attr">pagepath:</span> <span class="string">D:/project/workspace_changgou/changgou/changgou-parent/changgou-web/changgou-web-item/src/main/resources/templates/items</span></span><br></pre></td></tr></table></figure>
+
+<p>（4）创建系统启动类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@EnableFeignClients(basePackages = &quot;com.changgou.goods.feign&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ItemApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(ItemApplication.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-3-生成静态页"><a href="#5-3-生成静态页" class="headerlink" title="5.3 生成静态页"></a>5.3 生成静态页</h3><h4 id="5-3-1-需求分析"><a href="#5-3-1-需求分析" class="headerlink" title="5.3.1 需求分析"></a>5.3.1 需求分析</h4><p>页面发送请求，传递要生成的静态页的的商品的SpuID.后台controller 接收请求，调用thyemleaf的原生API生成商品静态页。</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561856657363.png" alt="1561856657363"></p>
+<p>上图是要生成的商品详情页，从图片上可以看出需要查询SPU的3个分类作为面包屑显示，同时还需要查询SKU和SPU信息。</p>
+<h4 id="5-3-2-Feign创建"><a href="#5-3-2-Feign创建" class="headerlink" title="5.3.2 Feign创建"></a>5.3.2 Feign创建</h4><p>一会儿需要查询SPU和SKU以及Category，所以我们需要先创建Feign，修改changgou-service-goods-api,添加CategoryFeign，并在CategoryFeign中添加根据ID查询分类数据，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取分类的对象信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;Category&gt; <span class="title function_">findById</span><span class="params">(<span class="meta">@PathVariable(name = &quot;id&quot;)</span> Integer id)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在changgou-service-goods-api,添加SkuFeign,并添加根据SpuID查询Sku集合，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据条件搜索</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> sku</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(value = &quot;/search&quot; )</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;List&lt;Sku&gt;&gt; <span class="title function_">findList</span><span class="params">(<span class="meta">@RequestBody(required = false)</span> Sku sku)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在changgou-service-goods-api,添加SpuFeign,并添加根据SpuID查询Spu信息，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 根据SpuID查询Spu信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;Spu&gt; <span class="title function_">findById</span><span class="params">(<span class="meta">@PathVariable(name = &quot;id&quot;)</span> Long id)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="5-3-3-静态页生成代码"><a href="#5-3-3-静态页生成代码" class="headerlink" title="5.3.3 静态页生成代码"></a>5.3.3 静态页生成代码</h4><p>(1)创建Controller</p>
+<p>在changgou-web-item中创建com.changgou.item.controller.PageController用于接收请求，测试生成静态页</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PageController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> PageService pageService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成静态页面</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/createHtml/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">createHtml</span><span class="params">(<span class="meta">@PathVariable(name=&quot;id&quot;)</span> Long id)</span>&#123;</span><br><span class="line">        pageService.createPageHtml(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Result</span>(<span class="literal">true</span>, StatusCode.OK,<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>(2)创建service</p>
+<p>接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">PageService</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据商品的ID 生成静态页</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> spuId</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">createPageHtml</span><span class="params">(Long spuId)</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>实现类：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561857221099.png" alt="1561857221099"></p>
+<p>上图代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PageServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">PageService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SpuFeign spuFeign;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CategoryFeign categoryFeign;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SkuFeign skuFeign;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TemplateEngine templateEngine;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//生成静态文件路径</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;pagepath&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String pagepath;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构建数据模型</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> spuId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String,Object&gt; <span class="title function_">buildDataModel</span><span class="params">(Long spuId)</span>&#123;</span><br><span class="line">        <span class="comment">//构建数据模型</span></span><br><span class="line">        Map&lt;String,Object&gt; dataMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//获取spu 和SKU列表</span></span><br><span class="line">        Result&lt;Spu&gt; result = spuFeign.findById(spuId);</span><br><span class="line">        <span class="type">Spu</span> <span class="variable">spu</span> <span class="operator">=</span> result.getData();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取分类信息</span></span><br><span class="line">        dataMap.put(<span class="string">&quot;category1&quot;</span>,categoryFeign.findById(spu.getCategory1Id()).getData());</span><br><span class="line">        dataMap.put(<span class="string">&quot;category2&quot;</span>,categoryFeign.findById(spu.getCategory2Id()).getData());</span><br><span class="line">        dataMap.put(<span class="string">&quot;category3&quot;</span>,categoryFeign.findById(spu.getCategory3Id()).getData());</span><br><span class="line">        <span class="keyword">if</span>(spu.getImages()!=<span class="literal">null</span>) &#123;</span><br><span class="line">            dataMap.put(<span class="string">&quot;imageList&quot;</span>, spu.getImages().split(<span class="string">&quot;,&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        dataMap.put(<span class="string">&quot;specificationList&quot;</span>,JSON.parseObject(spu.getSpecItems(),Map.class));</span><br><span class="line">        dataMap.put(<span class="string">&quot;spu&quot;</span>,spu);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//根据spuId查询Sku集合</span></span><br><span class="line">        <span class="type">Sku</span> <span class="variable">skuCondition</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Sku</span>();</span><br><span class="line">        skuCondition.setSpuId(spu.getId());</span><br><span class="line">        Result&lt;List&lt;Sku&gt;&gt; resultSku = skuFeign.findList(skuCondition);</span><br><span class="line">        dataMap.put(<span class="string">&quot;skuList&quot;</span>,resultSku.getData());</span><br><span class="line">        <span class="keyword">return</span> dataMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">     * 生成静态页</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> spuId</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">createPageHtml</span><span class="params">(Long spuId)</span> &#123;</span><br><span class="line">        <span class="comment">// 1.上下文</span></span><br><span class="line">        <span class="type">Context</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">        Map&lt;String, Object&gt; dataModel = buildDataModel(spuId);</span><br><span class="line">        context.setVariables(dataModel);</span><br><span class="line">        <span class="comment">// 2.准备文件</span></span><br><span class="line">        <span class="type">File</span> <span class="variable">dir</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(pagepath);</span><br><span class="line">        <span class="keyword">if</span> (!dir.exists()) &#123;</span><br><span class="line">            dir.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">File</span> <span class="variable">dest</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(dir, spuId + <span class="string">&quot;.html&quot;</span>);</span><br><span class="line">        <span class="comment">// 3.生成页面</span></span><br><span class="line">        <span class="keyword">try</span> (<span class="type">PrintWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintWriter</span>(dest, <span class="string">&quot;UTF-8&quot;</span>)) &#123;</span><br><span class="line">            templateEngine.process(<span class="string">&quot;item&quot;</span>, context, writer);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="5-2-4-模板填充"><a href="#5-2-4-模板填充" class="headerlink" title="5.2.4 模板填充"></a>5.2.4 模板填充</h4><p>(1)面包屑数据</p>
+<p>修改item.html，填充三个分类数据作为面包屑，代码如下：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561858073684.png" alt="1561858073684"></p>
+<p>(2)商品图片</p>
+<p>修改item.html，将商品图片信息输出，在真实工作中需要做空判断，代码如下：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561858651061.png" alt="1561858651061"></p>
+<p>(3)规格输出</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561859448044.png" alt="1561859448044"></p>
+<p>(4)默认SKU显示</p>
+<p>静态页生成后，需要显示默认的Sku，我们这里默认显示第1个Sku即可，这里可以结合着Vue一起实现。可以先定义一个集合，再定义一个spec和sku，用来存储当前选中的Sku信息和Sku的规格，代码如下：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561858986838.png" alt="1561858986838"></p>
+<p>页面显示默认的Sku信息</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561859241651.png" alt="1561859241651"></p>
+<p>(5)记录选中的Sku</p>
+<p>在当前Spu的所有Sku中spec值是唯一的，我们可以根据spec来判断用户选中的是哪个Sku，我们可以在Vue中添加代码来实现，代码如下：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561860041421.png" alt="1561860041421"></p>
+<p>添加规格点击事件</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561860156033.png" alt="1561860156033"></p>
+<p>(6)样式切换</p>
+<p>点击不同规格后，实现样式选中，我们可以根据每个规格判断该规格是否在当前选中的Sku规格中，如果在，则返回true添加selected样式，否则返回false不添加selected样式。</p>
+<p>Vue添加代码：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561860749790.png" alt="1561860749790"></p>
+<p>页面添加样式绑定，代码如下：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561860653870.png" alt="1561860653870"></p>
+<h4 id="5-2-5-静态资源过滤"><a href="#5-2-5-静态资源过滤" class="headerlink" title="5.2.5 静态资源过滤"></a>5.2.5 静态资源过滤</h4><p>生成的静态页我们可以先放到changgou-web-item工程中，后面项目实战的时候可以挪出来放到Nginx指定发布目录。一会儿我们将生成的静态页放到resources&#x2F;templates&#x2F;items目录下,所以请求该目录下的静态页需要直接到该目录查找即可。</p>
+<p>我们创建一个EnableMvcConfig类，开启静态资源过滤，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EnableMvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">     * 静态资源放行</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> registry</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> &#123;</span><br><span class="line">        registry.addResourceHandler(<span class="string">&quot;/items/**&quot;</span>).addResourceLocations(<span class="string">&quot;classpath:/templates/items/&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="5-4-6-启动测试"><a href="#5-4-6-启动测试" class="headerlink" title="5.4.6 启动测试"></a>5.4.6 启动测试</h4><p>启动eurekea服务端</p>
+<p>启动商品微服务</p>
+<p>启动静态化微服务 changgou-web-item</p>
+<p>将静态资源导入到changgou-web-item中，如下图：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561861540056.png" alt="1561861540056"></p>
+<p>生成静态页地址 <code>http://localhost:18085/page/createHtml/1087918019151269888</code></p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561862007448.png" alt="1561862007448"></p>
+<p>静态页生成后访问地址 <code>http://localhost:18085/items/1087918019151269888.html</code></p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561862084834.png" alt="1561862084834"></p>
+<h2 id="6-canal监听生成静态页"><a href="#6-canal监听生成静态页" class="headerlink" title="6 canal监听生成静态页"></a>6 canal监听生成静态页</h2><p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1566736163765.png" alt="1566736163765"></p>
+<p> 监听到数据的变化,直接调用feign 生成静态页即可.</p>
+<h3 id="6-1-需求分析"><a href="#6-1-需求分析" class="headerlink" title="6.1 需求分析"></a>6.1 需求分析</h3><p>当商品微服务审核商品之后，应当发送消息，这里采用了Canal监控数据变化，数据变化后，调用feign实现生成静态页</p>
+<h3 id="6-2-Feign创建"><a href="#6-2-Feign创建" class="headerlink" title="6.2 Feign创建"></a>6.2 Feign创建</h3><p>在changgou-service-api中创建changgou-web-item-api，该工程中主要创建changgou-web-item的对外依赖抽取信息。</p>
+<p>(1)Feign创建</p>
+<p>在changgou-web-item-api中创建com.changgou.item.feign.PageFeign,代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(name=&quot;item&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">PageFeign</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">     * 根据SpuID生成静态页</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/createHtml/&#123;id&#125;&quot;)</span></span><br><span class="line">    Result <span class="title function_">createHtml</span><span class="params">(<span class="meta">@PathVariable(name=&quot;id&quot;)</span> Long id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>(2)pom.xml依赖</p>
+<p>修改changgou-service-canal工程的pom.xml，引入如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--静态页API 服务--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.changgou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>changgou-web-item-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>(3)修改changgou-service-canal工程中的启动类</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1566737648843.png" alt="1566737648843"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@EnableCanalClient</span> <span class="comment">// 启用canal</span></span><br><span class="line"><span class="meta">@EnableFeignClients(basePackages = &#123;&quot;com.changgou.content.feign&quot;,&quot;com.changgou.item.feign&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CanalApplication</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(CanalApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="6-3-canal监听数据变化"><a href="#6-3-canal监听数据变化" class="headerlink" title="6.3 canal监听数据变化"></a>6.3 canal监听数据变化</h3><p>监听类中,监听商品数据库的tb_spu的数据变化,当数据变化的时候生成静态页或者删除静态页</p>
+<p>在原来的监听类中添加如下代码即可,</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> PageFeign pageFeign;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ListenPoint(destination = &quot;example&quot;,</span></span><br><span class="line"><span class="meta">        schema = &quot;changgou_goods&quot;,</span></span><br><span class="line"><span class="meta">        table = &#123;&quot;tb_spu&quot;&#125;,</span></span><br><span class="line"><span class="meta">        eventType = &#123;CanalEntry.EventType.UPDATE, CanalEntry.EventType.INSERT, CanalEntry.EventType.DELETE&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onEventCustomSpu</span><span class="params">(CanalEntry.EventType eventType, CanalEntry.RowData rowData)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断操作类型</span></span><br><span class="line">    <span class="keyword">if</span> (eventType == CanalEntry.EventType.DELETE) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">spuId</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        List&lt;CanalEntry.Column&gt; beforeColumnsList = rowData.getBeforeColumnsList();</span><br><span class="line">        <span class="keyword">for</span> (CanalEntry.Column column : beforeColumnsList) &#123;</span><br><span class="line">            <span class="keyword">if</span> (column.getName().equals(<span class="string">&quot;id&quot;</span>)) &#123;</span><br><span class="line">                spuId = column.getValue();<span class="comment">//spuid</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//todo 删除静态页</span></span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//新增 或者 更新</span></span><br><span class="line">        List&lt;CanalEntry.Column&gt; afterColumnsList = rowData.getAfterColumnsList();</span><br><span class="line">        <span class="type">String</span> <span class="variable">spuId</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (CanalEntry.Column column : afterColumnsList) &#123;</span><br><span class="line">            <span class="keyword">if</span> (column.getName().equals(<span class="string">&quot;id&quot;</span>)) &#123;</span><br><span class="line">                spuId = column.getValue();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//更新 生成静态页</span></span><br><span class="line">        pageFeign.createHtml(Long.valueOf(spuId));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-projecet/商品搜索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1347,297 +1631,6 @@
 
 
   
-    <article id="post-nginx/限流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="5-2-nginx的限流"><a href="#5-2-nginx的限流" class="headerlink" title="5.2 nginx的限流"></a>5.2 nginx的限流</h3><p>nginx提供两种限流的方式：</p>
-<ul>
-<li><p>一是控制速率</p>
-</li>
-<li><p>二是控制并发连接数</p>
-</li>
-</ul>
-<h4 id="5-2-1-控制速率"><a href="#5-2-1-控制速率" class="headerlink" title="5.2.1 控制速率"></a>5.2.1 控制速率</h4><p>控制速率的方式之一就是采用漏桶算法。</p>
-<p>(1)漏桶算法实现控制速率限流</p>
-<p>漏桶(Leaky Bucket)算法思路很简单,水(请求)先进入到漏桶里,漏桶以一定的速度出水(接口有响应速率),当水流入速度过大会直接溢出(访问频率超过接口响应速率),然后就拒绝请求,可以看出漏桶算法能强行限制数据的传输速率.示意图如下:</p>
-<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560774438337.png" alt="1560774438337"></p>
-<p>(2)nginx的配置</p>
-<p>配置示意图如下：</p>
-<blockquote>
-<p>超出则返回503  我当前无法响应你</p>
-</blockquote>
-<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560775302161.png" alt="1560775302161"></p>
-<p>binary_remote_addr 是一种key，表示基于 remote_addr(客户端IP) 来做限流，binary_ 的目的是压缩内存占用量。<br>zone：定义共享内存区来存储访问信息， contentRateLimit:10m 表示一个大小为10M，名字为contentRateLimit的内存区域。1M能存储16000 IP地址的访问信息，10M可以存储16W IP地址访问信息。<br>rate 用于设置最大访问速率，rate&#x3D;10r&#x2F;s 表示每秒最多处理10个请求。Nginx 实际上以毫秒为粒度来跟踪请求信息，因此 10r&#x2F;s 实际上是限制：每100毫秒处理一个请求。这意味着，自上一个请求处理完后，若后续100毫秒内又有请求到达，将拒绝处理该请求.我们这里设置成2 方便测试。</p>
-<p>修改&#x2F;usr&#x2F;local&#x2F;openresty&#x2F;nginx&#x2F;conf&#x2F;nginx.conf:</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">user</span>  root root;</span><br><span class="line"><span class="attribute">worker_processes</span>  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#cache</span></span><br><span class="line">    <span class="attribute">lua_shared_dict</span> dis_cache <span class="number">128m</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#限流设置</span></span><br><span class="line">    <span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=contentRateLimit:<span class="number">10m</span> rate=2r/s;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /update_content &#123;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/update_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /read_content &#123;</span><br><span class="line">            <span class="comment">#使用限流配置</span></span><br><span class="line">            <span class="attribute">limit_req</span> zone=contentRateLimit;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/read_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>测试：</p>
-<p>重新加载配置文件</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cd</span> <span class="string">/usr/local/openresty/nginx/sbin</span></span><br><span class="line"></span><br><span class="line"><span class="attr">./nginx</span> <span class="string">-s reload</span></span><br></pre></td></tr></table></figure>
-
-<p>访问页面：<code>http://192.168.211.132/read_content?id=1</code> ,连续刷新会直接报错。</p>
-<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560775527156.png" alt="1560775527156"></p>
-<p>(3)处理突发流量</p>
-<p>上面例子限制 2r&#x2F;s，如果有时正常流量突然增大，超出的请求将被拒绝，无法处理突发流量，可以结合 <strong>burst</strong> 参数使用来解决该问题。</p>
-<p>例如，如下配置表示：</p>
-<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560775792418.png" alt="1560775792418"></p>
-<p>上图代码如下：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  localhost;</span><br><span class="line">    <span class="section">location</span> /update_content &#123;</span><br><span class="line">        <span class="attribute">content_by_lua_file</span> /root/lua/update_content.lua;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="section">location</span> /read_content &#123;</span><br><span class="line">        <span class="attribute">limit_req</span> zone=contentRateLimit burst=<span class="number">4</span>;</span><br><span class="line">        <span class="attribute">content_by_lua_file</span> /root/lua/read_content.lua;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>burst 译为突发、爆发，表示在超过设定的处理速率后能额外处理的请求数,当 rate&#x3D;10r&#x2F;s 时，将1s拆成10份，即每100ms可处理1个请求。</p>
-<p>此处，**burst&#x3D;4 **，若同时有4个请求到达，Nginx 会处理第一个请求，剩余3个请求将放入队列，然后每隔500ms从队列中获取一个请求进行处理。若请求数大于4，将拒绝处理多余的请求，直接返回503.</p>
-<p>不过，单独使用 burst 参数并不实用。假设 burst&#x3D;50 ，rate依然为10r&#x2F;s，排队中的50个请求虽然每100ms会处理一个，但第50个请求却需要等待 50 * 100ms即 5s，这么长的处理时间自然难以接受。</p>
-<p>因此，burst 往往结合 nodelay 一起使用。</p>
-<p>例如：如下配置：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  localhost;</span><br><span class="line">    <span class="section">location</span> /update_content &#123;</span><br><span class="line">        <span class="attribute">content_by_lua_file</span> /root/lua/update_content.lua;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="section">location</span> /read_content &#123;</span><br><span class="line">        <span class="attribute">limit_req</span> zone=contentRateLimit burst=<span class="number">4</span> nodelay;</span><br><span class="line">        <span class="attribute">content_by_lua_file</span> /root/lua/read_content.lua;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>limit_req zone&#x3D;one burst&#x3D;5 nodelay;<br>第一个参数：zone&#x3D;contentRateLimit 设置使用哪个配置区域来做限制，与上面limit_req_zone 里的name对应。</p>
-<p>第二个参数：burst&#x3D;5，重点说明一下这个配置，burst爆发的意思，这个配置的意思是设置一个大小为5的缓冲区当有大量请求(爆发)过来时，超过了访问频次限制的请求可以先放到这个缓冲区内。</p>
-<p>第三个参数：nodelay，如果设置，超过访问频次而且缓冲区也满了的时候就会直接返回503，如果没有设置，则所有请求会等待排队。<br>实例二 burst缓存处理</p>
-<p>我们看到，我们短时间内发送了大量请求，Nginx按照毫秒级精度统计，超出限制的请求直接拒绝。这在实际场景中未免过于苛刻，真实网络环境中请求到来不是匀速的，很可能有请求“突发”的情况，也就是“一股子一股子”的。Nginx考虑到了这种情况，可以通过burst关键字开启对突发请求的缓存处理，而不是直接拒绝。</p>
-<p>来看我们的配置：</p>
-<p>limit_req_zone $binary_remote_addr zone&#x3D;mylimit:10m rate&#x3D;2r&#x2F;s;server {    location &#x2F; {        limit_req zone&#x3D;mylimit burst&#x3D;4;    }}<br>我们加入了burst&#x3D;4，意思是每个key(此处是每个IP)最多允许4个突发请求的到来。如果单个IP在10ms内发送6个请求，结果会怎样呢？</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/5286e40b28f4073d9bff096af4cadce9.png" alt="5286e40b28f4073d9bff096af4cadce9.png"></p>
-<p>相比实例一成功数增加了4个，这个我们设置的burst数目是一致的。具体处理流程是：1个请求被立即处理，4个请求被放到burst队列里，另外一个请求被拒绝。通过burst参数，我们使得Nginx限流具备了缓存处理突发流量的能力。</p>
-<p>但是请注意：burst的作用是让多余的请求可以先放到队列里，慢慢处理。如果不加nodelay参数，队列里的请求不会立即处理，而是按照rate设置的速度，以毫秒级精确的速度慢慢处理。</p>
-<p>实例三 nodelay降低排队时间</p>
-<p>实例二中我们看到，通过设置burst参数，我们可以允许Nginx缓存处理一定程度的突发，多余的请求可以先放到队列里，慢慢处理，这起到了平滑流量的作用。但是如果队列设置的比较大，请求排队的时间就会比较长，用户角度看来就是RT变长了，这对用户很不友好。</p>
-<p>有什么解决办法呢？nodelay参数允许请求在排队的时候就立即被处理，也就是说只要请求能够进入burst队列，就会立即被后台worker处理，请注意，这意味着burst设置了nodelay时，系统瞬间的QPS可能会超过rate设置的阈值。nodelay参数要跟burst一起使用才有作用。</p>
-<p>延续实例二的配置，我们加入nodelay选项：</p>
-<p>limit_req_zone $binary_remote_addr zone&#x3D;mylimit:10m rate&#x3D;2r&#x2F;s;server {    location &#x2F; {        limit_req zone&#x3D;mylimit burst&#x3D;4 nodelay;    }}<br>单个IP 10ms内并发发送6个请求，结果如下：</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/7b779b3f65e8e123eeaad29e0c2398be.png" alt="7b779b3f65e8e123eeaad29e0c2398be.png"></p>
-<p>跟实例二相比，请求成功率没变化，但是总体耗时变短了。这怎么解释呢？实例二中，有4个请求被放到burst队列当中，工作进程每隔500ms(rate&#x3D;2r&#x2F;s)取一个请求进行处理，最后一个请求要排队2s才会被处理；实例三中，请求放入队列跟实例二是一样的，但不同的是，队列中的请求同时具有了被处理的资格，所以实例三中的5个请求可以说是同时开始被处理的，花费时间自然变短了。</p>
-<p>但是请注意，虽然设置burst和nodelay能够降低突发请求的处理时间，但是长期来看并不会提高吞吐量的上限，长期吞吐量的上限是由rate决定的，因为nodelay只能保证burst的请求被立即处理，但Nginx会限制队列元素释放的速度，就像是限制了令牌桶中令牌产生的速度。</p>
-<p>看到这里你可能会问，加入了nodelay参数之后的限速算法，到底算是哪一个“桶”，是漏桶算法还是令牌桶算法？当然还算是漏桶算法。考虑一种情况，令牌桶算法的token为耗尽时会怎么做呢？由于它有一个请求队列，所以会把接下来的请求缓存下来，缓存多少受限于队列大小。但此时缓存这些请求还有意义吗？如果server已经过载，缓存队列越来越长，RT越来越高，即使过了很久请求被处理了，对用户来说也没什么价值了。所以当token不够用时，最明智的做法就是直接拒绝用户的请求，这就成了漏桶算法</p>
-<p>令牌桶算法:</p>
-<h4 id="2-5-2-令牌桶算法"><a href="#2-5-2-令牌桶算法" class="headerlink" title="2.5.2 令牌桶算法"></a>2.5.2 令牌桶算法</h4><p>令牌桶算法是比较常见的限流算法之一，大概描述如下：<br>1）所有的请求在处理之前都需要拿到一个可用的令牌才会被处理；<br>2）根据限流大小，设置按照一定的速率往桶里添加令牌；<br>3）桶设置最大的放置令牌限制，当桶满时、新添加的令牌就被丢弃或者拒绝；<br>4）请求达到后首先要获取令牌桶中的令牌，拿着令牌才可以进行其他的业务逻辑，处理完业务逻辑之后，将令牌直接删除；<br>5）令牌桶有最低限额，当桶中的令牌达到最低限额的时候，请求处理完之后将不会删除令牌，以此保证足够的限流</p>
-<p>如下图：</p>
-<p><img src="D:/git-demo/畅购-讲师源码md课件/day08gateway和jwt/讲义/images/1557910299016.png" alt="1557910299016"></p>
-<p>这个算法的实现，有很多技术，Guaua是其中之一，redis客户端也有其实现。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">routes:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">changgou_goods_route</span></span><br><span class="line">            <span class="attr">uri:</span> <span class="string">lb://goods</span></span><br><span class="line">            <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/api/brand**</span></span><br><span class="line">            <span class="attr">filters:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">StripPrefix=1</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">RequestRateLimiter</span> <span class="comment">#请求数限流 名字不能随便写 ，使用默认的facatory</span></span><br><span class="line">              <span class="attr">args:</span></span><br><span class="line">                <span class="attr">key-resolver:</span> <span class="string">&quot;#&#123;@ipKeyResolver&#125;&quot;</span></span><br><span class="line">                <span class="attr">redis-rate-limiter.replenishRate:</span> <span class="number">1</span></span><br><span class="line">                <span class="attr">redis-rate-limiter.burstCapacity:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><code>redis-rate-limiter.replenishRate</code>是您希望允许用户每秒执行多少请求，而不会丢弃任何请求。这是令牌桶填充的速率</p>
-<p><code>redis-rate-limiter.burstCapacity</code>是指令牌桶的容量，允许在一秒钟内完成的最大请求数,将此值设置为零将阻止所有请求。</p>
-<blockquote>
-<p>超过也许会返回429错误码 too many request</p>
-</blockquote>
-<p>如上表示：</p>
-<p>平均每秒允许不超过2个请求，突发不超过4个请求，并且处理突发4个请求的时候，没有延迟，等到完成之后，按照正常的速率处理。</p>
-<p>如上两种配置结合就达到了速率稳定，但突然流量也能正常处理的效果。完整配置代码如下：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">user</span>  root root;</span><br><span class="line"><span class="attribute">worker_processes</span>  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#cache</span></span><br><span class="line">    <span class="attribute">lua_shared_dict</span> dis_cache <span class="number">128m</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#限流设置</span></span><br><span class="line">    <span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=contentRateLimit:<span class="number">10m</span> rate=2r/s;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /update_content &#123;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/update_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /read_content &#123;</span><br><span class="line">            <span class="attribute">limit_req</span> zone=contentRateLimit burst=<span class="number">4</span> nodelay;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/read_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>测试：如下图 在1秒钟之内可以刷新4次，正常处理。</p>
-<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560776119165.png" alt="1560776119165"></p>
-<p>但是超过之后，连续刷新5次，抛出异常。</p>
-<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560776155042.png" alt="1560776155042"></p>
-<h4 id="5-2-2-控制并发量（连接数）"><a href="#5-2-2-控制并发量（连接数）" class="headerlink" title="5.2.2 控制并发量（连接数）"></a>5.2.2 控制并发量（连接数）</h4><p>ngx_http_limit_conn_module  提供了限制连接数的能力。主要是利用limit_conn_zone和limit_conn两个指令。</p>
-<p>利用连接数限制 某一个用户的ip连接的数量来控制流量。</p>
-<p>注意：并非所有连接都被计算在内 只有当服务器正在处理请求并且已经读取了整个请求头时，才会计算有效连接。此处忽略测试。</p>
-<p>配置语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax:	limit_conn zone number;</span><br><span class="line">Default: —;</span><br><span class="line">Context: http, server, location;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>(1)配置限制固定连接数</p>
-<p>如下，配置如下： </p>
-<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560778439935.png" alt="1560778439935"></p>
-<p>limit_conn_zone $binary_remote_addr zone&#x3D;addr:10m;  表示限制根据用户的IP地址来显示，设置存储地址为的内存大小10M</p>
-<p>limit_conn addr 2;   表示 同一个地址只允许连接2次。</p>
-<p>上图配置如下：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#cache</span></span><br><span class="line">    <span class="attribute">lua_shared_dict</span> dis_cache <span class="number">128m</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#限流设置</span></span><br><span class="line">    <span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=contentRateLimit:<span class="number">10m</span> rate=2r/s;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#根据IP地址来限制，存储内存大小10M</span></span><br><span class="line">    <span class="attribute">limit_conn_zone</span> <span class="variable">$binary_remote_addr</span> zone=addr:<span class="number">1m</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line">        <span class="comment">#所有以brand开始的请求，访问本地changgou-service-goods微服务</span></span><br><span class="line">        <span class="section">location</span> /brand &#123;</span><br><span class="line">            <span class="attribute">limit_conn</span> addr <span class="number">2</span>;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://192.168.211.1:18081;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /update_content &#123;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/update_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /read_content &#123;</span><br><span class="line">            <span class="attribute">limit_req</span> zone=contentRateLimit burst=<span class="number">4</span> nodelay;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/read_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>表示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">limit_conn_zone $binary_remote_addr zone=addr:10m;  表示限制根据用户的IP地址来显示，设置存储地址为的内存大小10M</span><br><span class="line"></span><br><span class="line">limit_conn addr 2;   表示 同一个地址只允许连接2次。</span><br></pre></td></tr></table></figure>
-
-<p>测试：</p>
-<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220808212928227.png" alt="image-20220808212928227"></p>
-<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220808213032548.png" alt="image-20220808213032548"></p>
-<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220808213048148.png" alt="image-20220808213048148"></p>
-<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220808213149360.png" alt="image-20220808213149360"></p>
-<p>此时开3个线程，测试的时候会发生异常，开2个就不会有异常</p>
-<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560779033144.png" alt="1560779033144"></p>
-<p>(2)限制每个客户端IP与服务器的连接数，同时限制与虚拟服务器的连接总数。(了解)</p>
-<p>如下配置： </p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">limit_conn_zone</span> <span class="variable">$binary_remote_addr</span> zone=perip:<span class="number">10m</span>;</span><br><span class="line"><span class="attribute">limit_conn_zone</span> <span class="variable">$server_name</span> zone=perserver:<span class="number">10m</span>; </span><br><span class="line"><span class="section">server</span> &#123;  </span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  localhost;</span><br><span class="line">    <span class="attribute">charset</span> utf-<span class="number">8</span>;</span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">limit_conn</span> perip <span class="number">10</span>;<span class="comment">#单个客户端ip与服务器的连接数．</span></span><br><span class="line">        <span class="attribute">limit_conn</span> perserver <span class="number">100</span>; ＃限制与服务器的总连接数</span><br><span class="line">        <span class="attribute">root</span>   html;</span><br><span class="line">        <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2022/10/08/nginx/%E9%99%90%E6%B5%81/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-nginx/重要知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h1><p>流程:</p>
-<p>proxy_pass http:&#x2F;&#x2F;</p>
-<h1 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h1><p>server</p>
-<p>location</p>
-<p>root</p>
-<p>alias</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2022/10/08/nginx/%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-nginx/基础使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>网页输入ip 默认访问80端口,openresty自动返回&#x2F;usr&#x2F;local&#x2F;openresty&#x2F;nginx&#x2F;html下的index.html</p>
-<p><img src="/..%5Cimage%5Cnginxindex.jpg"></p>
-<p>默认配置初步讲解</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">user  root;</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">工作进程 根据cpu核数 如果分配给一个核启动多个进程反而效率低</span></span><br><span class="line">worker_processes  1;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    #一个工作进程对应多少连接</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    #引入其他文件 mime里是其他请求头 文件类型</span><br><span class="line">    include       mime.types;</span><br><span class="line">    #mime不包含则 启动该默认类型 字节流</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    #数据零拷贝</span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    #keepalive_timeout  0;</span><br><span class="line">    # 反向代理细讲</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    #gzip  on;</span><br><span class="line">    </span><br><span class="line">    #一个 config可以配置多个主机,一个server就是一个主机</span><br><span class="line">    #虚拟主机 vhost</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost; # 域名/可解析的主机名 </span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line">        </span><br><span class="line">        # uri 描述资源 在域名之后的</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">        # redirect server error pages to the static page /50x.html</span><br><span class="line">        #</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>配置&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;nginx.service，通过systemctl启动：</li>
-</ol>
-<p>我这里使用的是openresty</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=openresty - high performance web server</span><br><span class="line">After=network.target remote-fs.target nss-lookup.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/openresty/bin/openresty -c /usr/local/openresty/nginx/conf/nginx.conf</span><br><span class="line">ExecReload=/usr/local/openresty/bin/openresty -s reload</span><br><span class="line">ExecStop=/usr/local/openresty/bin/openresty -s stop</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>2.使配置生效</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-
-
-<p>多vhost测试</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       88;</span><br><span class="line">        server_name  localhost; # 域名/可解析的主机名</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line">        </span><br><span class="line">        # uri 描述资源 在域名之后的</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /www/www;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">        # redirect server error pages to the static page /50x.html</span><br><span class="line">        #</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       89;</span><br><span class="line">        server_name  localhost; # 域名/可解析的主机名</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line">        </span><br><span class="line">        # uri 描述资源 在域名之后的</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /www/www2;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">        # redirect server error pages to the static page /50x.html</span><br><span class="line">        #</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2022/10/08/nginx/%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1775,11 +1768,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
             
             <div class="clearfix"></div>

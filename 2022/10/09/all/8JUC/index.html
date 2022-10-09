@@ -6,16 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>ggq</title>
+  <title>JUC | ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="多线程一创建Thread类（子类）的对象1 定义Thread类的子类123456789101112131415161718Public class MyThread extends Thread&amp;#123;@Overridepublic void run()&amp;#123;	System.out.println(&quot;重写Thread父类中的run（）&quot;);&amp;#125;public c">
+  <meta name="description" content="。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ggq">
-<meta property="og:url" content="http://example.com/2022/10/08/all/8JUC/index.html">
+<meta property="og:title" content="JUC">
+<meta property="og:url" content="http://example.com/2022/10/09/all/8JUC/index.html">
 <meta property="og:site_name" content="ggq">
-<meta property="og:description" content="多线程一创建Thread类（子类）的对象1 定义Thread类的子类123456789101112131415161718Public class MyThread extends Thread&amp;#123;@Overridepublic void run()&amp;#123;	System.out.println(&quot;重写Thread父类中的run（）&quot;);&amp;#125;public c">
+<meta property="og:description" content="。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://upyunimg.imlql.cn/youthlql@1.0.8/Java_concurrency/Source_code/First_stage/0001.png">
 <meta property="og:image" content="https://upyunimg.imlql.cn/youthlql@1.0.8/Java_concurrency/Source_code/First_stage/0002.png">
@@ -48,9 +48,10 @@
 <meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220802001433244.png">
 <meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220922112957488.png">
 <meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220922113059252.png">
-<meta property="article:published_time" content="2022-10-08T15:41:09.657Z">
-<meta property="article:modified_time" content="2022-09-29T02:08:58.938Z">
+<meta property="article:published_time" content="2022-10-09T03:36:23.000Z">
+<meta property="article:modified_time" content="2022-10-09T05:26:38.014Z">
 <meta property="article:author" content="ggq">
+<meta property="article:tag" content="多线程">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://upyunimg.imlql.cn/youthlql@1.0.8/Java_concurrency/Source_code/First_stage/0001.png">
   
@@ -246,6 +247,54 @@
             <article id="post-all/8JUC" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+  
+  
+    <h1 class="article-title" itemprop="name">
+      JUC
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2022/10/09/all/8JUC/" class="archive-article-date">
+        <time datetime="2022-10-09T03:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-09</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">24.8k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">98分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="多线程一"><a href="#多线程一" class="headerlink" title="多线程一"></a>多线程一</h1><h2 id="创建Thread类（子类）的对象"><a href="#创建Thread类（子类）的对象" class="headerlink" title="创建Thread类（子类）的对象"></a>创建Thread类（子类）的对象</h2><h3 id="1-定义Thread类的子类"><a href="#1-定义Thread类的子类" class="headerlink" title="1 定义Thread类的子类"></a>1 定义Thread类的子类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Public <span class="keyword">class</span> <span class="title class_">MyThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;重写Thread父类中的run（）&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;JVM启动main线程，main线程执行main方法&quot;</span>);</span><br><span class="line">		<span class="type">MyThread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread</span>();</span><br><span class="line">		thread.start();</span><br><span class="line">		<span class="comment">//启动线程的实质是请求将JVM运行相应的线程，这个线程具体在什么时候运行由（Scheduler）线程调度器来决定</span></span><br><span class="line">		<span class="comment">//start（）方法调用结束不意味着子线程开始运行</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//新开启的线程会执行run（）方法</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1045,7 +1094,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://example.com/2022/10/08/all/8JUC/" title="" target="_blank">http://example.com/2022/10/08/all/8JUC/</a>
+          <a href="http://example.com/2022/10/09/all/8JUC/" title="JUC" target="_blank">http://example.com/2022/10/09/all/8JUC/</a>
         </li>
         
         <li>
@@ -1062,7 +1111,29 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/多线程//" class="article-tag-list-link color4">多线程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
 
@@ -1112,7 +1183,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/all/8JUC/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/09/all/8JUC/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -1127,17 +1198,17 @@
 
 <nav id="article-nav">
   
-    <a href="/2022/10/08/all/9MicroService/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/10/09/all/4spring/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          Spring
         
       </div>
     </a>
   
   
-    <a href="/2022/10/08/all/6mybatis/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/10/08/%E8%AE%A1%E5%88%92/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
@@ -1304,11 +1375,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
             
             <div class="clearfix"></div>
