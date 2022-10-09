@@ -280,11 +280,6 @@
                 <div class="reward-box">
                   
                   
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/weixin.png">
-                    <span class="reward-type">微信</span>
-                  </div>
-                  
                 </div>
               </span>
             </span>
@@ -397,6 +392,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -475,7 +483,7 @@
   var titleTime;
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
-      document.title = "意义不明" + originTitle;
+      document.title = "完善中" + originTitle;
       clearTimeout(titleTime);
     } else {
       document.title = "意义不明" + originTitle;
@@ -537,6 +545,30 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mysql实践</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -588,7 +620,7 @@
           
             <li class="search-li">
               <a href="/gouguoqiang.github.io" target="_blank" 
-                class="search-title" title="记录工作和学习过程中的笔记：Java、前端开发、Hexo博客、聚合支付、Linux笔记、ElasticSearch、ELK日志分析">
+                class="search-title" >
                 
                   <i class="icon-link icon"></i>
                 
@@ -597,7 +629,7 @@
             </li>
           
             <li class="search-li">
-              <a href="https://github.com/gouguoqiang" target="_blank" 
+              <a href="/null" target="_blank" 
                 class="search-title" >
                 
                   <i class="icon-link icon"></i>
@@ -645,7 +677,7 @@
     	<section class="tools-section tools-section-me" q-show="aboutme">
         
           
-  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>Java后端开发、聚合支付、<br>公众号开发、开源爱好者、Linux<br><br>联系QQ:915377549<br><br>很惭愧<br><br>只做了一点微小的工作<br>谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="aboutme">一个路过的吃着煎饼果子的程序员</div>
   	  	
     	</section>
     
