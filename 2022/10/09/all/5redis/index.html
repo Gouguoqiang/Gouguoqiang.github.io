@@ -5,7 +5,7 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://example.com">
+  <link rel="dns-prefetch" href="https://gouguoqiang.github.io">
   <title>redis | ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,7 +13,7 @@
   <meta name="description" content="redis日常基础使用 一些配置 与说明   (守护进程)daemonize yes 启动:  123456#可能需要进入redis目录redis-server &#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis.confredis-cliauth (可以不写用户)密码keys*  关闭 1redis-cli shutdown    使用RedisDesktopManager连接远程服务器redis 修">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis">
-<meta property="og:url" content="http://example.com/2022/10/09/all/5redis/index.html">
+<meta property="og:url" content="https://gouguoqiang.github.io/2022/10/09/all/5redis/index.html">
 <meta property="og:site_name" content="ggq">
 <meta property="og:description" content="redis日常基础使用 一些配置 与说明   (守护进程)daemonize yes 启动:  123456#可能需要进入redis目录redis-server &#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis.confredis-cliauth (可以不写用户)密码keys*  关闭 1redis-cli shutdown    使用RedisDesktopManager连接远程服务器redis 修">
 <meta property="og:locale" content="zh_CN">
@@ -21,96 +21,96 @@
 <meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220730193623030.png">
 <meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220803225348512.png">
 <meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220803225413220.png">
-<meta property="og:image" content="http://example.com/image/99E6354B-3BE3-4FD3-8011-EE713D865BE6.png">
-<meta property="og:image" content="http://example.com/image/75DA0CFD-A589-4E86-BC98-85942A31D884.png">
-<meta property="og:image" content="http://example.com/image/DB0DEE9F-34A6-4889-8D4F-434B8C6BDAF8.png">
-<meta property="og:image" content="http://example.com/image/833A0328-D959-4EF8-B897-CD3EDFB1D236.png">
-<meta property="og:image" content="http://example.com/image/1.png">
-<meta property="og:image" content="http://example.com/image/2-1663909573981.png">
-<meta property="og:image" content="http://example.com/image/3.png">
-<meta property="og:image" content="http://example.com/image/4-1663909591661.png">
-<meta property="og:image" content="http://example.com/image/lru.png">
-<meta property="og:image" content="http://example.com/image/6.png">
-<meta property="og:image" content="http://example.com/image/7.png">
-<meta property="og:image" content="http://example.com/image/8.png">
-<meta property="og:image" content="http://example.com/image/9.png">
-<meta property="og:image" content="http://example.com/image/10.png">
-<meta property="og:image" content="http://example.com/image/11.png">
-<meta property="og:image" content="http://example.com/image/12.png">
-<meta property="og:image" content="http://example.com/image/13.png">
-<meta property="og:image" content="http://example.com/image/14.png">
-<meta property="og:image" content="http://example.com/image/15.png">
-<meta property="og:image" content="http://example.com/image/16.png">
-<meta property="og:image" content="http://example.com/image/17.png">
-<meta property="og:image" content="http://example.com/image/18.png">
-<meta property="og:image" content="http://example.com/image/19.png">
-<meta property="og:image" content="http://example.com/image/20.png">
-<meta property="og:image" content="http://example.com/image/21.png">
-<meta property="og:image" content="http://example.com/image/22.png">
-<meta property="og:image" content="http://example.com/image/23.png">
-<meta property="og:image" content="http://example.com/image/24.png">
-<meta property="og:image" content="http://example.com/image/25.png">
-<meta property="og:image" content="http://example.com/image/26.png">
-<meta property="og:image" content="http://example.com/image/27.png">
-<meta property="og:image" content="http://example.com/image/28.png">
-<meta property="og:image" content="http://example.com/image/29.png">
-<meta property="og:image" content="http://example.com/image/74AC6492-9FD2-40C7-B534-CF44D126C49A.png">
-<meta property="og:image" content="http://example.com/image/386472E6-67F3-46B2-A713-7872A2C5FCD1.png">
-<meta property="og:image" content="http://example.com/image/565F1E03-01B7-4C67-8E39-991DE5824A07.png">
-<meta property="og:image" content="http://example.com/image/0C61E513-B999-4121-9BB6-0F00E79841A0.png">
-<meta property="og:image" content="http://example.com/image/image-20220924104616500.png">
-<meta property="og:image" content="http://example.com/image/A1B9DBB4-AC20-4F2A-BD92-B9DEE979A71D.png">
-<meta property="og:image" content="http://example.com/image/image-20220830082938513.png">
-<meta property="og:image" content="http://example.com/image/image-20220830083148998.png">
-<meta property="og:image" content="http://example.com/image/image-20220830083356106.png">
-<meta property="og:image" content="http://example.com/image/image-20220830091619828.png">
-<meta property="og:image" content="http://example.com/image/image-20220830091820158.png">
-<meta property="og:image" content="http://example.com/image/EB49F5C1-B37B-4FDC-9DA7-AB4DCA56415D.png">
-<meta property="og:image" content="http://example.com/image/1BB8DD45-B847-4AE7-8AC4-0E9FD8300423.png">
-<meta property="og:image" content="http://example.com/image/EDAAEC35-A8BE-4C86-B377-B3EA8942FE19-1663990886033.png">
-<meta property="og:image" content="http://example.com/image/FA1BFE29-23FC-4464-B86F-F1424A6BAE5E.png">
-<meta property="og:image" content="http://example.com/image/8D233473-B933-4927-AE25-D1EAE5C8BD1C.png">
-<meta property="og:image" content="http://example.com/image/8B511DCE-0900-4B1A-AA2E-2F9C58DE2474.png">
-<meta property="og:image" content="http://example.com/image/01FA4358-0BAA-4217-ABCB-37E62D279136.png">
-<meta property="og:image" content="http://example.com/image/image-20220830083721256.png">
-<meta property="og:image" content="http://example.com/image/image-20220830083929582.png">
-<meta property="og:image" content="http://example.com/image/image-20220830090728586.png">
-<meta property="og:image" content="http://example.com/image/image-20220830091507400.png">
-<meta property="og:image" content="http://example.com/image/ADAEABC8-FD48-4ED4-A9E0-DA96DBECC388.png">
-<meta property="og:image" content="http://example.com/image/81F47EF7-1EA4-499B-88FD-D349B6FD14A9-1663993362952.png">
-<meta property="og:image" content="http://example.com/image/38BF99E8-A930-409E-841A-25C06B1E4ACD.png">
-<meta property="og:image" content="http://example.com/image/8BC52DCB-C3A9-44B8-9320-A26F4B178145-1664008064781.png">
-<meta property="og:image" content="http://example.com/image/29538578-15BB-42D8-94D4-2252774918DF.png">
-<meta property="og:image" content="http://example.com/image/C2FA349E-1B90-4ABC-BA12-7FBA1D362973.png">
-<meta property="og:image" content="http://example.com/image/5686B735-DBE9-4946-98C5-82ED3A01DE8B.png">
-<meta property="og:image" content="http://example.com/image/68B47FDA-7FE1-4792-ABA8-424E7EF7DA48.png">
-<meta property="og:image" content="http://example.com/image/41B9E54E-4A98-4D8E-BEFF-A6CA7F756832.png">
-<meta property="og:image" content="http://example.com/image/87F8506C-6682-4F9F-9AC3-D5039E276E04.png">
-<meta property="og:image" content="http://example.com/image/24C4738B-48B8-4F0D-B11F-7486658730E0.png">
-<meta property="og:image" content="http://example.com/image/73D0CD12-255D-4C62-A4DF-A07F5F5A3EEC.png">
-<meta property="og:image" content="http://example.com/image/CD37E2D6-B6BA-4292-98E5-10BCDF5B3A83.png">
-<meta property="og:image" content="http://example.com/image/D56ECB2A-26EC-4482-96C9-30D4173027F2.png">
-<meta property="og:image" content="http://example.com/image/54456950-0EE2-4D53-9BBB-E3756FD3D4FC.png">
-<meta property="og:image" content="http://example.com/image/CC16B97A-F516-4D80-B024-4622C6F78CBC.png">
-<meta property="og:image" content="http://example.com/image/898D6BF5-9E89-409E-8FE3-058C337F0BE2.png">
-<meta property="og:image" content="http://example.com/image/D744FD08-30F9-4C03-92B7-119F4267D039.png">
-<meta property="og:image" content="http://example.com/image/2310B211-7916-43B5-A554-A4DC2F2D7372.png">
-<meta property="og:image" content="http://example.com/image/5357375F-894A-48C2-964E-1B81D1F205C1.png">
-<meta property="og:image" content="http://example.com/image/0F80D612-146A-4231-B12E-F867A7408CB0.png">
-<meta property="og:image" content="http://example.com/image/1CC0597D-31A6-4931-B64D-DB109564A0DF.png">
-<meta property="og:image" content="http://example.com/image/CE887967-28C8-4BCE-A29A-11ABF3A30B57.png">
-<meta property="og:image" content="http://example.com/image/121F2016-B5F7-48E4-857E-84014570CFE0.png">
-<meta property="og:image" content="http://example.com/image/1EA9E751-2D08-4C60-9B98-40345B45C7DC.png">
-<meta property="og:image" content="http://example.com/image/A9DE3718-6EB2-4D07-9610-DA526D6A11BF.png">
-<meta property="og:image" content="http://example.com/image/C031FAC2-0A7A-4DE2-B4B3-A9488A4F7482.png">
-<meta property="og:image" content="http://example.com/image/D6DD22E1-22BF-41F7-93D0-247F5A141669.png">
-<meta property="og:image" content="http://example.com/image/3A3591F0-DD6E-44DF-AC4D-DF6D791B5772.png">
-<meta property="og:image" content="http://example.com/image/5605B184-C635-4DE6-BC18-BE48030B0601.png">
-<meta property="og:image" content="http://example.com/image/9AEAC489-53C4-48B1-AAB8-49E8CD9C0D93.png">
-<meta property="og:image" content="http://example.com/image/1DEE5D6C-17D6-4F3C-A1D2-A936797E5694.png">
-<meta property="og:image" content="http://example.com/image/6CC74F9C-701F-487B-ACC4-ECF644D7B0C6.png">
-<meta property="og:image" content="http://example.com/image/61D6022A-9F18-4E20-B002-4F4695E51634.png">
-<meta property="og:image" content="http://example.com/image/A7EFEACF-3536-41C1-B11B-10B887038E3E.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/99E6354B-3BE3-4FD3-8011-EE713D865BE6.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/75DA0CFD-A589-4E86-BC98-85942A31D884.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/DB0DEE9F-34A6-4889-8D4F-434B8C6BDAF8.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/833A0328-D959-4EF8-B897-CD3EDFB1D236.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/1.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/2-1663909573981.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/3.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/4-1663909591661.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/lru.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/6.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/7.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/8.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/9.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/10.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/11.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/12.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/13.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/14.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/15.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/16.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/17.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/18.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/19.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/20.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/21.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/22.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/23.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/24.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/25.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/26.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/27.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/28.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/29.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/74AC6492-9FD2-40C7-B534-CF44D126C49A.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/386472E6-67F3-46B2-A713-7872A2C5FCD1.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/565F1E03-01B7-4C67-8E39-991DE5824A07.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/0C61E513-B999-4121-9BB6-0F00E79841A0.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220924104616500.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/A1B9DBB4-AC20-4F2A-BD92-B9DEE979A71D.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220830082938513.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220830083148998.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220830083356106.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220830091619828.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220830091820158.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/EB49F5C1-B37B-4FDC-9DA7-AB4DCA56415D.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/1BB8DD45-B847-4AE7-8AC4-0E9FD8300423.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/EDAAEC35-A8BE-4C86-B377-B3EA8942FE19-1663990886033.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/FA1BFE29-23FC-4464-B86F-F1424A6BAE5E.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/8D233473-B933-4927-AE25-D1EAE5C8BD1C.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/8B511DCE-0900-4B1A-AA2E-2F9C58DE2474.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/01FA4358-0BAA-4217-ABCB-37E62D279136.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220830083721256.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220830083929582.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220830090728586.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220830091507400.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/ADAEABC8-FD48-4ED4-A9E0-DA96DBECC388.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/81F47EF7-1EA4-499B-88FD-D349B6FD14A9-1663993362952.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/38BF99E8-A930-409E-841A-25C06B1E4ACD.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/8BC52DCB-C3A9-44B8-9320-A26F4B178145-1664008064781.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/29538578-15BB-42D8-94D4-2252774918DF.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/C2FA349E-1B90-4ABC-BA12-7FBA1D362973.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/5686B735-DBE9-4946-98C5-82ED3A01DE8B.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/68B47FDA-7FE1-4792-ABA8-424E7EF7DA48.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/41B9E54E-4A98-4D8E-BEFF-A6CA7F756832.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/87F8506C-6682-4F9F-9AC3-D5039E276E04.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/24C4738B-48B8-4F0D-B11F-7486658730E0.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/73D0CD12-255D-4C62-A4DF-A07F5F5A3EEC.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/CD37E2D6-B6BA-4292-98E5-10BCDF5B3A83.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/D56ECB2A-26EC-4482-96C9-30D4173027F2.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/54456950-0EE2-4D53-9BBB-E3756FD3D4FC.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/CC16B97A-F516-4D80-B024-4622C6F78CBC.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/898D6BF5-9E89-409E-8FE3-058C337F0BE2.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/D744FD08-30F9-4C03-92B7-119F4267D039.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/2310B211-7916-43B5-A554-A4DC2F2D7372.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/5357375F-894A-48C2-964E-1B81D1F205C1.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/0F80D612-146A-4231-B12E-F867A7408CB0.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/1CC0597D-31A6-4931-B64D-DB109564A0DF.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/CE887967-28C8-4BCE-A29A-11ABF3A30B57.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/121F2016-B5F7-48E4-857E-84014570CFE0.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/1EA9E751-2D08-4C60-9B98-40345B45C7DC.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/A9DE3718-6EB2-4D07-9610-DA526D6A11BF.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/C031FAC2-0A7A-4DE2-B4B3-A9488A4F7482.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/D6DD22E1-22BF-41F7-93D0-247F5A141669.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/3A3591F0-DD6E-44DF-AC4D-DF6D791B5772.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/5605B184-C635-4DE6-BC18-BE48030B0601.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/9AEAC489-53C4-48B1-AAB8-49E8CD9C0D93.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/1DEE5D6C-17D6-4F3C-A1D2-A936797E5694.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/6CC74F9C-701F-487B-ACC4-ECF644D7B0C6.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/61D6022A-9F18-4E20-B002-4F4695E51634.png">
+<meta property="og:image" content="https://gouguoqiang.github.io/image/A7EFEACF-3536-41C1-B11B-10B887038E3E.png">
 <meta property="article:published_time" content="2022-10-09T03:36:23.000Z">
 <meta property="article:modified_time" content="2022-10-09T13:56:59.482Z">
 <meta property="article:author" content="ggq">
@@ -1834,7 +1834,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://example.com/2022/10/09/all/5redis/" title="redis" target="_blank">http://example.com/2022/10/09/all/5redis/</a>
+          <a href="https://gouguoqiang.github.io/2022/10/09/all/5redis/" title="redis" target="_blank">https://gouguoqiang.github.io/2022/10/09/all/5redis/</a>
         </li>
         
         <li>
@@ -1923,7 +1923,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/09/all/5redis/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://gouguoqiang.github.io/2022/10/09/all/5redis/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -1939,8 +1939,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2022/10/09/all/7JVM/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JVM</div>
+    <a href="/2022/10/09/all/4spring/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -1996,7 +1996,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 <a href="http://example.com/" target="_blank">ggq</a>
+    		&copy; 2022 <a href="https://gouguoqiang.github.io/" target="_blank">ggq</a>
     	</div>
       	<div class="footer-right">
 			
@@ -2115,11 +2115,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
