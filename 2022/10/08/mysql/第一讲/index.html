@@ -6,17 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | ggq</title>
+  <title>ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="Explain工具介绍使用EXPLAIN关键字可以模拟优化器执行SQL语句，分析你的查询语句或是结构的性能瓶颈 在 select 语句之前增加 explain 关键字，MySQL 会在查询上设置一个标记，执行查询会返回执行计划的信息，而不是 执行这条SQL 注意：如果 from 中包含子查询，仍会执行该子查询，将结果放入临时表中 Explain分析示例 示例表 123456789101112131">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ggq">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+<meta property="og:url" content="http://example.com/2022/10/08/mysql/%E7%AC%AC%E4%B8%80%E8%AE%B2/index.html">
 <meta property="og:site_name" content="ggq">
+<meta property="og:description" content="Explain工具介绍使用EXPLAIN关键字可以模拟优化器执行SQL语句，分析你的查询语句或是结构的性能瓶颈 在 select 语句之前增加 explain 关键字，MySQL 会在查询上设置一个标记，执行查询会返回执行计划的信息，而不是 执行这条SQL 注意：如果 from 中包含子查询，仍会执行该子查询，将结果放入临时表中 Explain分析示例 示例表 123456789101112131">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/image/image-20220926132103157.png">
+<meta property="og:image" content="http://example.com/image/image-20220926132339904.png">
+<meta property="og:image" content="http://example.com/image/image-20220926133715839.png">
+<meta property="article:published_time" content="2022-10-08T15:41:10.314Z">
+<meta property="article:modified_time" content="2022-10-05T01:16:09.694Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/image/image-20220926132103157.png">
   
     <link rel="alternative" href="/atom.xml" title="ggq" type="application/atom+xml">
   
@@ -207,266 +215,462 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mysql/第一讲" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+  <div class="article-entry" itemprop="articleBody">
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/%E8%AE%A1%E5%88%92/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
+    <h2 id="Explain工具介绍"><a href="#Explain工具介绍" class="headerlink" title="Explain工具介绍"></a>Explain工具介绍</h2><p>使用EXPLAIN关键字可以模拟优化器执行SQL语句，分析你的查询语句或是结构的性能瓶颈</p>
+<p>在 select 语句之前增加 explain 关键字，MySQL 会在查询上设置一个标记，执行查询会返回执行计划的信息，而不是</p>
+<p>执行这条SQL</p>
+<p>注意：如果 from 中包含子查询，仍会执行该子查询，将结果放入临时表中</p>
+<p>Explain分析示例</p>
+<p>示例表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> ggq_tulin;</span><br><span class="line">USE ggq_tulin;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> `actor`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `actor` (</span><br><span class="line">`id` <span class="type">INT</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">`name` <span class="type">VARCHAR</span>(<span class="number">45</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">`update_time` DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line"><span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>INNODB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> DATABASE ggq_tulin;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `actor` (`id`, `name`, `update_time`) <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;2017-12-22 15:27:18&#x27;</span>),</span><br><span class="line"> (<span class="number">2</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;2017-12-22 15:27:18&#x27;</span>), (<span class="number">3</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;2017-12-22 15:27:18&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> actor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> `film`;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `film` (</span><br><span class="line">`id` <span class="type">INT</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">`name` <span class="type">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line"><span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line">KEY `idx_name` (`name`)</span><br><span class="line">) ENGINE<span class="operator">=</span>INNODB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> DATABASES;</span><br><span class="line">USE ggq_tuling;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `film` (`id`, `name`) <span class="keyword">VALUES</span> (<span class="number">3</span>,<span class="string">&#x27;film0&#x27;</span>),(<span class="number">1</span>,<span class="string">&#x27;film1&#x27;</span>),(<span class="number">2</span>,<span class="string">&#x27;film2&#x27;</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> film;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> `film_actor`;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `film_actor` (</span><br><span class="line">`id` <span class="type">INT</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">`film_id` <span class="type">INT</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">`actor_id` <span class="type">INT</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">`remark` <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line"><span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line">KEY `idx_film_actor_id` (`film_id`,`actor_id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>INNODB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `film_actor` (`id`, `film_id`, `actor_id`) <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>),(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>),(<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 
-        </div>
-    	 
 
-        <div class="article-info info-on-right">
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><img src="/../image/image-20220926132103157.png" alt="image-20220926132103157"></p>
+</blockquote>
+<p>在查询中的每个表会输出一行，如果有两个表通过 join 连接查询，那么会输出两行</p>
+<p>explain 两个变种</p>
+<p>1紧随其后通过 show warnings 命令可</p>
+<p>以得到优化后的查询语句，从而看出优化器优化了什么。额外还有 filtered 列，是一个半分比的值，rows *</p>
+<p>filtered&#x2F;100 可以<strong>估算</strong>出将要和 explain 中前一个表进行连接的行数（前一个表指 explain 中的id值比当前表id值小的</p>
+<p>表）。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">explain  <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> film <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> warnings;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> <img src="/../image/image-20220926132339904.png" alt="image-20220926132339904"></p>
+</blockquote>
+<h2 id="explain中的列"><a href="#explain中的列" class="headerlink" title="explain中的列"></a>explain中的列</h2><p>接下来我们将展示 explain 中每个列的信息。</p>
+<h3 id="1-id列"><a href="#1-id列" class="headerlink" title="\1. id列"></a>\1. id列</h3><p>不一定唯一</p>
+<p>id列的编号是 select 的序列号，有几个 select 就有几个id，并且id的顺序是按 select 出现的顺序增长的。</p>
+<p><strong>id列越大执行优先级越高</strong>，id相同则从上往下执行，id为NULL最后执行。</p>
+<h3 id="2-select-type列"><a href="#2-select-type列" class="headerlink" title="\2. select_type列"></a>\2. select_type列</h3><p>select_type 表示对应行是简单还是复杂的查询。</p>
+<p>1）simple：简单查询。查询不包含子查询和union</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> film <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2）primary：复杂查询中<strong>最外层的 select</strong></p>
+<p>3）subquery：包含在 <strong>select</strong> 中的子查询（不在 from 子句中）</p>
+<p>4）derived：包含在 <strong>from</strong> 子句中的子查询。MySQL会将结果存放在一个临时表(原来没有的表)中，也称为派生(衍生)表（derived的英文含</p>
+<p>义）</p>
+<p>用这个例子来了解 primary、subquery 和 derived 类型</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> <span class="keyword">set</span> session optimizer_switch<span class="operator">=</span><span class="string">&#x27;derived_merge=off&#x27;</span>; #关闭mysql5<span class="number">.7</span>新特性对衍生表的合并优化</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> (<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">from</span> actor <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>) <span class="keyword">from</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> film <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>) der;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> <span class="keyword">set</span> session optimizer_switch<span class="operator">=</span><span class="string">&#x27;derived_merge=on&#x27;</span>; #还原默认配置</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../image/image-20220926133715839.png" alt="image-20220926133715839"></p>
+<p>5）union：在 union 中的第二个和随后的 select</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">all</span> <span class="keyword">select</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-table列"><a href="#3-table列" class="headerlink" title="\3. table列"></a>\3. table列</h3><p>这一列表示 <strong>explain 的一行正在访问哪个表</strong>。</p>
+<p><strong>当 from 子句中有子查询时，table列是 <derivenN> 格式，表示当前查询依赖 id&#x3D;N 的查询，于是先执行 id&#x3D;N 的查</strong></p>
+<p><strong>询。</strong></p>
+<p><strong>当有 union 时，UNION RESULT 的 table 列的值为&lt;union1,2&gt;，1和2表示参与 union 的 select 行id。</strong></p>
+<h3 id="4-type列"><a href="#4-type列" class="headerlink" title="\4. type列"></a>\4. type列</h3><p>这一列表示关联类型或访问类型，即MySQL决定如何查找表中的行，<strong>查找数据行记录的大概范围</strong>。</p>
+<p>效率依次从最优到最差分别为：<strong>system &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; ALL</strong></p>
+<p>一般来说，得保证查询达到range级别，最好达到ref</p>
+<p>很少: NULL：mysql能够在优化阶段分解查询语句，在执行阶段用不着再访问表或索引。例如：在索引列中选取最小值，可</p>
+<p>以单独查找索引来完成，不需要在执行时访问表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="built_in">min</span>(id) <span class="keyword">from</span> film;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>const, system：mysql能对查询的某部分进行优化并将其转化成一个<strong>常量</strong>（可以看show warnings 的结果）。用于</p>
+<p>primary key 或 unique key 的所有列与常数比较时，所以表最多有一个匹配行，读取1次，速度比较快。system是</p>
+<p>const的特例，表里只有<strong>一条元组匹配时为system</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain extended <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> (<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> film <span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>) tmp;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> <span class="keyword">show</span> warnings;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>eq_ref：<strong>primary key 或 unique key 索引的所有部分被连接使用&#x2F;唯一索引</strong> ，最多只会返回<strong>一条符合条件</strong>的记录。这可能是在</p>
+<p>const 之外最好的联接类型了，简单的 select 查询不会出现这种 type。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> film_actor <span class="keyword">left</span> <span class="keyword">join</span> film <span class="keyword">on</span> film_actor.film_id <span class="operator">=</span> film.id;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>ref：相比 eq_ref，不使用唯一索引，而是使用<strong>普通索引</strong>或者<strong>唯一性索引的部分前缀</strong>，索引要和某个值相比较，可能会</p>
+<p>找到<strong>多个符合条件</strong>的行。</p>
+<p>\1. 简单 select 查询，name是普通索引（非唯一索引）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> film <span class="keyword">where</span> name <span class="operator">=</span> <span class="string">&#x27;film1&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.关联表查询，idx_film_actor_id是film_id和actor_id的联合索引，这里使用到了film_actor的左边前缀film_id部分。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> film_id <span class="keyword">from</span> film <span class="keyword">left</span> <span class="keyword">join</span> film_actor <span class="keyword">on</span> film.id <span class="operator">=</span> film_actor.fi</span><br></pre></td></tr></table></figure>
+
+
+
+<p>lm_id;</p>
+<p>range：范围扫描通常出现在 in(), between ,&gt; ,&lt;, &gt;&#x3D; 等操作中。使用一个索引来检索给定范围的行。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">where</span> id <span class="operator">&gt;</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>index：扫描全索引就能拿到结果，一般是扫描某个二级索引，这种扫描不会从索引树根节点开始快速查找，而是直接</p>
+<p>对二级索引的叶子节点遍历和扫描，速度还是比较慢的，这种查询一般为使用覆盖索引，二级索引一般比较小，所以这</p>
+<p>种通常比ALL快一些。</p>
+<p>1 mysql&gt; explain select * from film;</p>
+<p>ALL：即全表扫描，扫描你的聚簇索引的所有叶子节点。通常情况下这需要增加索引来进行优化了。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-possible-keys列"><a href="#5-possible-keys列" class="headerlink" title="\5. possible_keys列"></a>\5. possible_keys列</h3><p>这一列显示查询可能使用哪些索引来查找。</p>
+<p>explain 时可能出现 possible_keys 有列，而 key 显示 NULL 的情况，这种情况是因为表中数据不多，mysql认为索引</p>
+<p>对此查询帮助不大，选择了全表查询。</p>
+<p>如果该列是NULL，则没有相关的索引。在这种情况下，可以通过检查 where 子句看是否可以创造一个适当的索引来提</p>
+<p>高查询性能，然后用 explain 查看效果。</p>
+<h3 id="6-key列"><a href="#6-key列" class="headerlink" title="\6. key列"></a>\6. key列</h3><p>这一列显示mysql实际采用哪个索引来优化对该表的访问。</p>
+<p>如果没有使用索引，则该列是 NULL。如果想强制mysql使用或忽视possible_keys列中的索引，在查询中使用 force</p>
+<p>index、ignore index。</p>
+<h3 id="7-key-len列"><a href="#7-key-len列" class="headerlink" title="\7. key_len列"></a>\7. key_len列</h3><p>这一列显示了mysql在索引里使用的字节数，通过这个值可以算出具体使用了索引中的哪些列。</p>
+<p>举例来说，film_actor的联合索引 idx_film_actor_id 由 film_id 和 actor_id 两个int列组成，并且每个int是4字节。通</p>
+<p>过结果中的key_len&#x3D;4可推断出查询使用了第一个列：film_id列来执行索引查找。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> film_actor <span class="keyword">where</span> film_id <span class="operator">=</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>key_len计算规则如下：</p>
+<p>字符串，char(n)和varchar(n)，5.0.3以后版本中，n均代表字符数，而不是字节数，如果是utf-8，一个数字</p>
+<p>或字母占1个字节，一个汉字占3个字节</p>
+<p>char(n)：如果存汉字长度就是 3n 字节</p>
+<p>varchar(n)：如果存汉字则长度是 3n + 2 字节，加的2字节用来存储字符串长度，因为</p>
+<p>varchar是变长字符串</p>
+<p>数值类型</p>
+<p>tinyint：1字节</p>
+<p>smallint：2字节</p>
+<p>int：4字节</p>
+<p>bigint：8字节</p>
+<p>时间类型</p>
+<p>date：3字节</p>
+<p>timestamp：4字节</p>
+<p>datetime：8字节</p>
+<p>如果字段允许为 NULL，需要1字节记录是否为 NULL</p>
+<p>索引最大长度是768字节，当字符串过长时，mysql会做一个类似左前缀索引的处理，将前半部分的字符提取出来做索</p>
+<p>引。</p>
+<h3 id="8-ref列"><a href="#8-ref列" class="headerlink" title="\8. ref列"></a>\8. ref列</h3><p>这一列显示了在key列记录的索引中，表查找值所用到的列或常量，常见的有：const（常量），字段名（例：film.id）</p>
+<h3 id="9-rows列"><a href="#9-rows列" class="headerlink" title="\9. rows列"></a>\9. rows列</h3><p>这一列是mysql估计要读取并检测的行数，注意这个不是结果集里的行数。</p>
+<h3 id="10-Extra列"><a href="#10-Extra列" class="headerlink" title="\10. Extra列"></a>\10. Extra列</h3><p>这一列展示的是额外信息。常见的重要值如下：</p>
+<p>1）Using index：使用覆盖索引</p>
+<p>覆盖索引定义：mysql执行计划explain结果里的key有使用索引，如果select后面查询的字段都可以从这个索引的树中</p>
+<p>获取，这种情况一般可以说是用到了覆盖索引，extra里一般都有using index；覆盖索引一般针对的是辅助索引，整个</p>
+<p>查询结果只通过辅助索引就能拿到结果，不需要通过辅助索引树找到主键，再通过主键去主键索引树里获取其它字段值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> film_id <span class="keyword">from</span> film_actor <span class="keyword">where</span> film_id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2）Using where：使用 where 语句来处理结果，并且查询的列未被索引覆盖</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">where</span> name <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3）Using index condition：查询的列不完全被索引覆盖，where条件中是一个前导列的范围；</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> film_actor <span class="keyword">where</span> film_id <span class="operator">&gt;</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4）Using temporary：mysql需要创建一张临时表来处理查询。出现这种情况一般是要进行优化的，首先是想到用索</p>
+<p>引来优化。</p>
+<p>\1. actor.name没有索引，此时创建了张临时表来distinct</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="keyword">distinct</span> name <span class="keyword">from</span> actor;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>\2. film.name建立了idx_name索引，此时查询时extra是using index,没有用临时表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="keyword">distinct</span> name <span class="keyword">from</span> film;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>5）Using filesort：将用外部排序而不是索引排序，数据较小时从内存排序，否则需要在磁盘完成排序。这种情况下一</p>
+<p>般也是要考虑使用索引来优化的。</p>
+<p>\1. actor.name未创建索引，会浏览actor整个表，保存排序关键字name和对应的id，然后排序name并检索行记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> actor <span class="keyword">order</span> <span class="keyword">by</span> name;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>\2. film.name建立了idx_name索引,此时查询时extra是using index</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> film <span class="keyword">order</span> <span class="keyword">by</span> name;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>6）Select tables optimized away：使用某些聚合函数（比如 max、min）来访问存在索引的某个字段是</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> mysql<span class="operator">&gt;</span> explain <span class="keyword">select</span> <span class="built_in">min</span>(id) <span class="keyword">from</span> film;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="索引最佳实践"><a href="#索引最佳实践" class="headerlink" title="索引最佳实践"></a>索引最佳实践</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> 示例表：</span><br><span class="line"></span><br><span class="line"><span class="number">2</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `employees` (</span><br><span class="line"></span><br><span class="line"><span class="number">3</span> `id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line"></span><br><span class="line"><span class="number">4</span> `name` <span class="type">varchar</span>(<span class="number">24</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;姓名&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="number">5</span> `age` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;年龄&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="number">6</span> `position` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;职位&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="number">7</span> `hire_time` <span class="type">timestamp</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;入职时间&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="number">8</span> <span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line"></span><br><span class="line"><span class="number">9</span> KEY `idx_name_age_position` (`name`,`age`,`position`) <span class="keyword">USING</span> BTREE</span><br><span class="line"></span><br><span class="line"><span class="number">10</span> ) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">4</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 COMMENT<span class="operator">=</span><span class="string">&#x27;员工记录表&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">11</span></span><br><span class="line"></span><br><span class="line"><span class="number">12</span> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> employees(name,age,position,hire_time) <span class="keyword">VALUES</span>(<span class="string">&#x27;LiLei&#x27;</span>,<span class="number">22</span>,<span class="string">&#x27;manager&#x27;</span>,NOW());</span><br><span class="line"></span><br><span class="line"><span class="number">13</span> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> employees(name,age,position,hire_time) <span class="keyword">VALUES</span>(<span class="string">&#x27;HanMeimei&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="number">23</span>,<span class="string">&#x27;dev&#x27;</span>,NOW());</span><br><span class="line"></span><br><span class="line"><span class="number">14</span> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> employees(name,age,position,hire_time) <span class="keyword">VALUES</span>(<span class="string">&#x27;Lucy&#x27;</span>,<span class="number">23</span>,<span class="string">&#x27;dev&#x27;</span>,NOW());</span><br></pre></td></tr></table></figure>
+
+
+
+<p>1.全值匹配</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name<span class="operator">=</span> <span class="string">&#x27;LiLei&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name<span class="operator">=</span> <span class="string">&#x27;LiLei&#x27;</span> <span class="keyword">AND</span> age <span class="operator">=</span> <span class="number">22</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name<span class="operator">=</span> <span class="string">&#x27;LiLei&#x27;</span> <span class="keyword">AND</span> age <span class="operator">=</span> <span class="number">22</span> <span class="keyword">AND</span> position <span class="operator">=</span><span class="string">&#x27;manager&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.最左前缀法则</p>
+<p>如果索引了多列，要遵守最左前缀法则。指的是查询从索引的最左前列开始并且不跳过索引中的列。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;Bill&#x27;</span> <span class="keyword">and</span> age <span class="operator">=</span> <span class="number">31</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> age <span class="operator">=</span> <span class="number">30</span> <span class="keyword">AND</span> position <span class="operator">=</span> <span class="string">&#x27;dev&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">3</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> position <span class="operator">=</span> <span class="string">&#x27;manager&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>不在索引列上做任何操作（计算、函数、（自动<span class="keyword">or</span>手动）类型转换），会导致索引失效而转向全表扫描</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;LiLei&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> <span class="keyword">left</span>(name,<span class="number">3</span>) <span class="operator">=</span> <span class="string">&#x27;LiLei&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>给hire_time增加一个普通索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `employees` <span class="keyword">ADD</span> INDEX `idx_hire_time` (`hire_time`) <span class="keyword">USING</span> BTREE ;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> employees <span class="keyword">where</span> <span class="type">date</span>(hire_time) <span class="operator">=</span><span class="string">&#x27;2018‐09‐30&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>转化为日期范围查询，有可能会走索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> employees <span class="keyword">where</span> hire_time <span class="operator">&gt;=</span><span class="string">&#x27;2018‐09‐30 00:00:00&#x27;</span> <span class="keyword">and</span> hire_time <span class="operator">&lt;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">=</span><span class="string">&#x27;2018‐09‐30 23:59:59&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>还原最初索引状态</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `employees` <span class="keyword">DROP</span> INDEX `idx_hire_time`;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4.存储引擎不能使用索引中范围条件右边的列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name<span class="operator">=</span> <span class="string">&#x27;LiLei&#x27;</span> <span class="keyword">AND</span> age <span class="operator">=</span> <span class="number">22</span> <span class="keyword">AND</span> position <span class="operator">=</span><span class="string">&#x27;manager&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name<span class="operator">=</span> <span class="string">&#x27;LiLei&#x27;</span> <span class="keyword">AND</span> age <span class="operator">&gt;</span> <span class="number">22</span> <span class="keyword">AND</span> position <span class="operator">=</span><span class="string">&#x27;manager&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>5.尽量使用覆盖索引（只访问索引的查询（索引列包含查询列）），减少 select * 语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> name,age <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name<span class="operator">=</span> <span class="string">&#x27;LiLei&#x27;</span> <span class="keyword">AND</span> age <span class="operator">=</span> <span class="number">23</span> <span class="keyword">AND</span> position</span><br><span class="line"></span><br><span class="line"><span class="operator">=</span><span class="string">&#x27;manager&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name<span class="operator">=</span> <span class="string">&#x27;LiLei&#x27;</span> <span class="keyword">AND</span> age <span class="operator">=</span> <span class="number">23</span> <span class="keyword">AND</span> position <span class="operator">=</span><span class="string">&#x27;manage</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">r&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>6.mysql在使用不等于（！&#x3D;或者&lt;&gt;），not in ，not exists 的时候无法使用索引会导致全表扫描</p>
+<p>&lt; 小于、 &gt; 大于、 &lt;&#x3D;、&gt;&#x3D; 这些，mysql内部优化器会根据检索比例、表大小等多个因素整体评估是否使用索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name <span class="operator">!=</span> <span class="string">&#x27;LiLei&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>7.is null,is not null 一般情况下也无法使用索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name <span class="keyword">is</span> <span class="keyword">null</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>8.like以通配符开头（’$abc…’）mysql索引失效会变成全表扫描操作</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name <span class="keyword">like</span> <span class="string">&#x27;%Lei&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name <span class="keyword">like</span> <span class="string">&#x27;Lei%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>问题：解决like’%字符串%’索引不被使用的方法？</p>
+<p>a）使用覆盖索引，查询字段必须是建立覆盖索引字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> EXPLAIN <span class="keyword">SELECT</span> name,age,position <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> name <span class="keyword">like</span> <span class="string">&#x27;%Lei%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>b）如果不能使用覆盖索引则可能需要借助搜索引擎</p>
+<p>9.字符串不加单引号索引失效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 EXPLAIN SELECT * FROM employees WHERE name = &#x27;1000&#x27;;</span><br><span class="line"></span><br><span class="line">2 EXPLAIN SELECT * FROM employees WHERE name = 1000;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>10.少用or或in，用它查询时，mysql不一定使用索引，mysql内部优化器会根据检索比例、表大小等多个因素整体评</p>
+<p>估是否使用索引，详见范围查询优化</p>
+<p>1 EXPLAIN SELECT * FROM employees WHERE name &#x3D; ‘LiLei’ or name &#x3D; ‘HanMeimei’;</p>
+<p>11.范围查询优化</p>
+<p>给年龄添加单值索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `employees` <span class="keyword">ADD</span> INDEX `idx_age` (`age`) <span class="keyword">USING</span> BTREE ;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> employees <span class="keyword">where</span> age <span class="operator">&gt;=</span><span class="number">1</span> <span class="keyword">and</span> age <span class="operator">&lt;=</span><span class="number">2000</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>没走索引原因：mysql内部优化器会根据检索比例、表大小等多个因素整体评估是否使用索引。比如这个例子，可能是</p>
+<p>由于单次数据量查询过大导致优化器最终选择不走索引</p>
+<p>优化方法：可以将大的范围拆分成多个小范围</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> employees <span class="keyword">where</span> age <span class="operator">&gt;=</span><span class="number">1</span> <span class="keyword">and</span> age <span class="operator">&lt;=</span><span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span> explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> employees <span class="keyword">where</span> age <span class="operator">&gt;=</span><span class="number">1001</span> <span class="keyword">and</span> age <span class="operator">&lt;=</span><span class="number">2000</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>还原最初索引状态</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `employees` <span class="keyword">DROP</span> INDEX `idx_age`;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>索引使用总结：</p>
+<p>like KK%相当于&#x3D;常量，%KK和%KK% 相当于范围</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> ‐‐ mysql5<span class="number">.7</span>关闭ONLY_FULL_GROUP_BY报错</span><br><span class="line"></span><br><span class="line"><span class="number">2</span> <span class="keyword">select</span> version(), @<span class="variable">@sql</span>_mode;<span class="keyword">SET</span> sql_mode<span class="operator">=</span>(<span class="keyword">SELECT</span> REPLACE(@<span class="variable">@sql</span>_mode,<span class="string">&#x27;ONLY_FULL_GROUP_BY&#x27;</span>,<span class="string">&#x27;&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<p>文档：02-VIP-Explain详解与索引最佳实践</p>
+<p>1 <a target="_blank" rel="noopener" href="http://note.youdao.com/noteshare?id=59d7a574ef9a905e3bb0982bbe33e74d&amp;sub=83A39BAAADD14B8F99E1DCEFFB">http://note.youdao.com/noteshare?id=59d7a574ef9a905e3bb0982bbe33e74d&amp;sub=83A39BAAADD14B8F99E1DCEFFB</a></p>
+<p>7642CA</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ggq
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2022/10/08/mysql/第一讲/" title="" target="_blank">http://example.com/2022/10/08/mysql/第一讲/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/mysql/%E7%AC%AC%E4%B8%80%E8%AE%B2/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.368Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%A7%92%E6%9D%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%20&%20JWT%20&%20Oauth2.0/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.354Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2022/10/08/mysql/%E7%B4%A2%E5%BC%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/10/08/mysql/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="extend next" rel="next" href="/archives/2022/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -507,8 +711,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

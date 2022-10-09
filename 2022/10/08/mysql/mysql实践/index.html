@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>mysql | ggq</title>
+  <title>ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="description" content="创建数据库语法12345678910CREATE DATABASE [IF NOT EXISTS] &lt;数据库名&gt;[[DEFAULT] CHARACTER SET &lt;字符集名&gt;] [[DEFAULT] COLLATE &lt;校对规则名&gt;];说明：（1）[]中的内容是可选的。（2）&lt;数据库名&gt;：要创建数据库的名称。（3）IF NOT EXISTS：只有该数据">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql">
-<meta property="og:url" content="http://example.com/2022/10/08/mysql/index.html">
+<meta property="og:title" content="ggq">
+<meta property="og:url" content="http://example.com/2022/10/08/mysql/mysql%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="ggq">
 <meta property="og:description" content="创建数据库语法12345678910CREATE DATABASE [IF NOT EXISTS] &lt;数据库名&gt;[[DEFAULT] CHARACTER SET &lt;字符集名&gt;] [[DEFAULT] COLLATE &lt;校对规则名&gt;];说明：（1）[]中的内容是可选的。（2）&lt;数据库名&gt;：要创建数据库的名称。（3）IF NOT EXISTS：只有该数据">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-08T10:49:25.000Z">
-<meta property="article:modified_time" content="2022-10-08T10:51:18.146Z">
+<meta property="article:published_time" content="2022-10-08T15:41:10.301Z">
+<meta property="article:modified_time" content="2022-10-07T03:14:45.922Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary">
   
@@ -211,57 +211,9 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-mysql" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-mysql/mysql实践" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-  
-  
-    <h1 class="article-title" itemprop="name">
-      mysql
-    </h1>
-  
-
-
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2022/10/08/mysql/" class="archive-article-date">
-        <time datetime="2022-10-08T10:49:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">16k字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">72分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h1><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span></span><br><span class="line">[[<span class="keyword">DEFAULT</span>] <span class="type">CHARACTER</span> <span class="keyword">SET</span> <span class="operator">&lt;</span>字符集名<span class="operator">&gt;</span>] [[<span class="keyword">DEFAULT</span>] <span class="keyword">COLLATE</span> <span class="operator">&lt;</span>校对规则名<span class="operator">&gt;</span>];</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">（<span class="number">1</span>）[]中的内容是可选的。</span><br><span class="line">（<span class="number">2</span>）<span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span>：要创建数据库的名称。</span><br><span class="line">（<span class="number">3</span>）IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>：只有该数据库不存在时才能执行创建操作，可以避免因为数据库已经存在而引起错误。</span><br><span class="line">（<span class="number">4</span>）[<span class="keyword">DEFAULT</span>] <span class="type">CHARACTER</span> <span class="keyword">SET</span>：指定数据库的默认字符集。字符集是用来定义 MySQL 存储字符串的方式。该选项可以省略，如果省略就采用配置文件中指定的字符集。MySQL 不允许在同一个系统中创建两个相同名称的数据库。</span><br><span class="line">（<span class="number">5</span>）[<span class="keyword">DEFAULT</span>] <span class="keyword">COLLATE</span>：指定字符集的默认校对规则。校对规则用来定义比较字符串的方式，以解决排序和字符分组的问题。该选项可以省略，如果省略就采用配置文件中指定的校对规则。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -435,7 +387,7 @@
 
 <p>举例：</p>
 <p>（1）从 certificate 表删除 phone 为 133 开头的记录</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> certificate;</span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> s_no <span class="operator">|</span> s_name <span class="operator">|</span> phone       <span class="operator">|</span> certificate     <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">1</span> <span class="operator">|</span> Jack   <span class="operator">|</span> <span class="number">13703735566</span> <span class="operator">|</span> 英语四级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">2</span> <span class="operator">|</span> Mark   <span class="operator">|</span> <span class="number">13783735566</span> <span class="operator">|</span> 英语四级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">3</span> <span class="operator">|</span> Rose   <span class="operator">|</span> <span class="number">13783735522</span> <span class="operator">|</span> 英语六级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">4</span> <span class="operator">|</span> John   <span class="operator">|</span> <span class="number">18503735214</span> <span class="operator">|</span> 计算机二级      <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">5</span> <span class="operator">|</span> Jerry  <span class="operator">|</span> <span class="number">13303735266</span> <span class="operator">|</span> 英语四级        <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="number">5</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">delete</span> <span class="keyword">from</span> certificate <span class="keyword">where</span> phone <span class="keyword">like</span> <span class="string">&#x27;133%&#x27;</span>;</span><br><span class="line">Query OK, <span class="number">1</span> <span class="type">row</span> affected (<span class="number">0.02</span> sec)</span><br><span class="line"></span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> certificate;</span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> s_no <span class="operator">|</span> s_name <span class="operator">|</span> phone       <span class="operator">|</span> certificate     <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">1</span> <span class="operator">|</span> Jack   <span class="operator">|</span> <span class="number">13703735566</span> <span class="operator">|</span> 英语四级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">2</span> <span class="operator">|</span> Mark   <span class="operator">|</span> <span class="number">13783735566</span> <span class="operator">|</span> 英语四级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">3</span> <span class="operator">|</span> Rose   <span class="operator">|</span> <span class="number">13783735522</span> <span class="operator">|</span> 英语六级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">4</span> <span class="operator">|</span> John   <span class="operator">|</span> <span class="number">18503735214</span> <span class="operator">|</span> 计算机二级      <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="number">4</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> certificate;</span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> s_no <span class="operator">|</span> s_name <span class="operator">|</span> phone       <span class="operator">|</span> certificate     <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">1</span> <span class="operator">|</span> Jack   <span class="operator">|</span> <span class="number">13703735566</span> <span class="operator">|</span> 英语四级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">2</span> <span class="operator">|</span> Mark   <span class="operator">|</span> <span class="number">13783735566</span> <span class="operator">|</span> 英语四级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">3</span> <span class="operator">|</span> Rose   <span class="operator">|</span> <span class="number">13783735522</span> <span class="operator">|</span> 英语六级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">4</span> <span class="operator">|</span> John   <span class="operator">|</span> <span class="number">18503735214</span> <span class="operator">|</span> 计算机二级      <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">5</span> <span class="operator">|</span> Jerry  <span class="operator">|</span> <span class="number">13303735266</span> <span class="operator">|</span> 英语四级        <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="number">5</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">delete</span> <span class="keyword">from</span> certificate <span class="keyword">where</span> phone <span class="keyword">like</span> <span class="string">&#x27;133%&#x27;</span>;</span><br><span class="line">Query OK, <span class="number">1</span> <span class="type">row</span> affected (<span class="number">0.02</span> sec)</span><br><span class="line"></span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> certificate;</span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span> s_no <span class="operator">|</span> s_name <span class="operator">|</span> phone       <span class="operator">|</span> certificate     <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">1</span> <span class="operator">|</span> Jack   <span class="operator">|</span> <span class="number">13703735566</span> <span class="operator">|</span> 英语四级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">2</span> <span class="operator">|</span> Mark   <span class="operator">|</span> <span class="number">13783735566</span> <span class="operator">|</span> 英语四级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">3</span> <span class="operator">|</span> Rose   <span class="operator">|</span> <span class="number">13783735522</span> <span class="operator">|</span> 英语六级        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">4</span> <span class="operator">|</span> John   <span class="operator">|</span> <span class="number">18503735214</span> <span class="operator">|</span> 计算机二级      <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------+--------+-------------+-----------------+</span></span><br><span class="line"><span class="number">4</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -583,7 +535,7 @@
 
 
 <h2 id="五、默认值"><a href="#五、默认值" class="headerlink" title="五、默认值"></a>五、默认值</h2><p>可通过关键字 DEFAULT 为某个字段设置默认值。如果为某个字段设置了默认值，当在数据表中插入一条新记录时，如果没有为某个字段赋值，则自动为这个字段插入默认值。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名 (</span><br><span class="line">    <span class="operator">&lt;</span>字段名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> <span class="keyword">DEFAULT</span> <span class="operator">&lt;</span>默认值<span class="operator">&gt;</span>,</span><br><span class="line">    ....</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名 (</span><br><span class="line">    <span class="operator">&lt;</span>字段名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> <span class="keyword">DEFAULT</span> <span class="operator">&lt;</span>默认值<span class="operator">&gt;</span>,</span><br><span class="line">    ....</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -720,7 +672,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://example.com/2022/10/08/mysql/" title="mysql" target="_blank">http://example.com/2022/10/08/mysql/</a>
+          <a href="http://example.com/2022/10/08/mysql/mysql实践/" title="" target="_blank">http://example.com/2022/10/08/mysql/mysql实践/</a>
         </li>
         
         <li>
@@ -787,7 +739,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/mysql/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/mysql/mysql%E5%AE%9E%E8%B7%B5/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -802,7 +754,7 @@
 
 <nav id="article-nav">
   
-    <a href="/2022/10/08/all/0suibi/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/10/08/mysql/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -812,8 +764,8 @@
     </a>
   
   
-    <a href="/2022/10/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2022/10/08/Java/%E9%9B%86%E5%90%88%E9%9D%A2%E7%BB%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
   

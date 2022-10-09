@@ -6,17 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | ggq</title>
+  <title>ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="3 下单3.1 业务分析点击结算页的时候，会立即创建订单数据，创建订单数据会将数据存入到2张表中，分别是订单表和订单明细表，此处还需要修改商品对应的库存数量。  订单表结构如下： 123456789101112131415161718192021222324252627282930313233CREATE TABLE &#96;tb_order&#96; (  &#96;id&#96; varchar(50) COLLATE u">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ggq">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+<meta property="og:url" content="http://example.com/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/index.html">
 <meta property="og:site_name" content="ggq">
+<meta property="og:description" content="3 下单3.1 业务分析点击结算页的时候，会立即创建订单数据，创建订单数据会将数据存入到2张表中，分别是订单表和订单明细表，此处还需要修改商品对应的库存数量。  订单表结构如下： 123456789101112131415161718192021222324252627282930313233CREATE TABLE &#96;tb_order&#96; (  &#96;id&#96; varchar(50) COLLATE u">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day11%E8%AE%A2%E5%8D%95%E5%8F%8A%E6%94%AF%E4%BB%98/%E8%AE%B2%E4%B9%89/images/1558302715038.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day11%E8%AE%A2%E5%8D%95%E5%8F%8A%E6%94%AF%E4%BB%98/%E8%AE%B2%E4%B9%89/images/1558305399244.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day11%E8%AE%A2%E5%8D%95%E5%8F%8A%E6%94%AF%E4%BB%98/%E8%AE%B2%E4%B9%89/images/1562934989293.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day11%E8%AE%A2%E5%8D%95%E5%8F%8A%E6%94%AF%E4%BB%98/%E8%AE%B2%E4%B9%89/images/1558490059984.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day11%E8%AE%A2%E5%8D%95%E5%8F%8A%E6%94%AF%E4%BB%98/%E8%AE%B2%E4%B9%89/images/1549706445665.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day11%E8%AE%A2%E5%8D%95%E5%8F%8A%E6%94%AF%E4%BB%98/%E8%AE%B2%E4%B9%89/images/1558448158371.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day11%E8%AE%A2%E5%8D%95%E5%8F%8A%E6%94%AF%E4%BB%98/%E8%AE%B2%E4%B9%89/images/1558448510488.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day12%E7%BB%AD/%E8%AE%B2%E4%B9%89/images/1558476664135.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day12%E7%BB%AD/%E8%AE%B2%E4%B9%89/images/1558476701485.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day12%E7%BB%AD/%E8%AE%B2%E4%B9%89/images/1558490059984.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day12%E7%BB%AD/%E8%AE%B2%E4%B9%89/images/1566106841171.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day12%E7%BB%AD/%E8%AE%B2%E4%B9%89/images/1566107006010.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day12%E7%BB%AD/%E8%AE%B2%E4%B9%89/images/1558490059984.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day12%E7%BB%AD/%E8%AE%B2%E4%B9%89/images/1558578639907.png">
+<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day12%E7%BB%AD/%E8%AE%B2%E4%B9%89/images/1558578894925.png">
+<meta property="article:published_time" content="2022-10-08T15:41:10.368Z">
+<meta property="article:modified_time" content="2022-08-14T03:48:26.720Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/Desktop/%E5%B0%9A%E7%A1%85%E8%B0%B7SSM%E7%AC%94%E8%AE%B0/%E7%95%85%E8%B4%AD%E5%95%86%E5%9F%8E/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6%E7%AD%89www.cx1314.cn/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day11%E8%AE%A2%E5%8D%95%E5%8F%8A%E6%94%AF%E4%BB%98/%E8%AE%B2%E4%B9%89/images/1558302715038.png">
   
     <link rel="alternative" href="/atom.xml" title="ggq" type="application/atom+xml">
   
@@ -207,266 +227,535 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-projecet/订单模块" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+  <div class="article-entry" itemprop="articleBody">
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/%E8%AE%A1%E5%88%92/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
+    <h2 id="3-下单"><a href="#3-下单" class="headerlink" title="3 下单"></a>3 下单</h2><h3 id="3-1-业务分析"><a href="#3-1-业务分析" class="headerlink" title="3.1 业务分析"></a>3.1 业务分析</h3><p>点击结算页的时候，会立即创建订单数据，创建订单数据会将数据存入到2张表中，分别是订单表和订单明细表，此处还需要修改商品对应的库存数量。</p>
+<p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day11订单及支付/讲义/images/1558302715038.png" alt="1558302715038"></p>
+<p>订单表结构如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `tb_order` (</span><br><span class="line">  `id` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;订单id&#x27;</span>,</span><br><span class="line">  `total_num` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;数量合计&#x27;</span>,</span><br><span class="line">  `total_money` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;金额合计&#x27;</span>,</span><br><span class="line">  `pre_money` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;优惠金额&#x27;</span>,</span><br><span class="line">  `post_fee` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;邮费&#x27;</span>,</span><br><span class="line">  `pay_money` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;实付金额&#x27;</span>,</span><br><span class="line">  `pay_type` <span class="type">varchar</span>(<span class="number">1</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;支付类型，1、在线支付、0 货到付款&#x27;</span>,</span><br><span class="line">  `create_time` datetime <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;订单创建时间&#x27;</span>,</span><br><span class="line">  `update_time` datetime <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;订单更新时间&#x27;</span>,</span><br><span class="line">  `pay_time` datetime <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;付款时间&#x27;</span>,</span><br><span class="line">  `consign_time` datetime <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;发货时间&#x27;</span>,</span><br><span class="line">  `end_time` datetime <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;交易完成时间&#x27;</span>,</span><br><span class="line">  `close_time` datetime <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;交易关闭时间&#x27;</span>,</span><br><span class="line">  `shipping_name` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;物流名称&#x27;</span>,</span><br><span class="line">  `shipping_code` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;物流单号&#x27;</span>,</span><br><span class="line">  `username` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户名称&#x27;</span>,</span><br><span class="line">  `buyer_message` <span class="type">varchar</span>(<span class="number">1000</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;买家留言&#x27;</span>,</span><br><span class="line">  `buyer_rate` <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;是否评价&#x27;</span>,</span><br><span class="line">  `receiver_contact` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;收货人&#x27;</span>,</span><br><span class="line">  `receiver_mobile` <span class="type">varchar</span>(<span class="number">12</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;收货人手机&#x27;</span>,</span><br><span class="line">  `receiver_address` <span class="type">varchar</span>(<span class="number">200</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;收货人地址&#x27;</span>,</span><br><span class="line">  `source_type` <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;订单来源：1:web，2：app，3：微信公众号，4：微信小程序  5 H5手机页面&#x27;</span>,</span><br><span class="line">  `transaction_id` <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;交易流水号&#x27;</span>,</span><br><span class="line">  `order_status` <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;订单状态,0:未完成,1:已完成，2：已退货&#x27;</span>,</span><br><span class="line">  `pay_status` <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;支付状态,0:未支付，1：已支付，2：支付失败&#x27;</span>,</span><br><span class="line">  `consign_status` <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;发货状态,0:未发货，1：已发货，2：已收货&#x27;</span>,</span><br><span class="line">  `is_delete` <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;是否删除&#x27;</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line">  KEY `create_time` (`create_time`),</span><br><span class="line">  KEY `status` (`order_status`),</span><br><span class="line">  KEY `payment_type` (`pay_type`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 <span class="keyword">COLLATE</span><span class="operator">=</span>utf8_bin;</span><br></pre></td></tr></table></figure>
 
-        </div>
-    	 
+<p>订单明细表结构如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `tb_order_item` (</span><br><span class="line">  `id` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;ID&#x27;</span>,</span><br><span class="line">  `category_id1` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;1级分类&#x27;</span>,</span><br><span class="line">  `category_id2` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;2级分类&#x27;</span>,</span><br><span class="line">  `category_id3` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;3级分类&#x27;</span>,</span><br><span class="line">  `spu_id` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;SPU_ID&#x27;</span>,</span><br><span class="line">  `sku_id` <span class="type">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;SKU_ID&#x27;</span>,</span><br><span class="line">  `order_id` <span class="type">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;订单ID&#x27;</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">200</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;商品名称&#x27;</span>,</span><br><span class="line">  `price` <span class="type">int</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;单价&#x27;</span>,</span><br><span class="line">  `num` <span class="type">int</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;数量&#x27;</span>,</span><br><span class="line">  `money` <span class="type">int</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;总金额&#x27;</span>,</span><br><span class="line">  `pay_money` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;实付金额&#x27;</span>,</span><br><span class="line">  `image` <span class="type">varchar</span>(<span class="number">200</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;图片地址&#x27;</span>,</span><br><span class="line">  `weight` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;重量&#x27;</span>,</span><br><span class="line">  `post_fee` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;运费&#x27;</span>,</span><br><span class="line">  `is_return` <span class="type">char</span>(<span class="number">1</span>) <span class="keyword">COLLATE</span> utf8_bin <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;是否退货,0:未退货，1：已退货&#x27;</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line">  KEY `item_id` (`sku_id`),</span><br><span class="line">  KEY `order_id` (`order_id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 <span class="keyword">COLLATE</span><span class="operator">=</span>utf8_bin;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
+
+
+<h3 id="3-2-下单实现"><a href="#3-2-下单实现" class="headerlink" title="3.2 下单实现"></a>3.2 下单实现</h3><p>下单的时候，先添加订单往tb_order表中增加数据，再添加订单明细，往tb_order_item表中增加数据.</p>
+<h3 id="3-3-库存变更"><a href="#3-3-库存变更" class="headerlink" title="3.3 库存变更"></a>3.3 库存变更</h3><h4 id="3-3-1-业务分析"><a href="#3-3-1-业务分析" class="headerlink" title="3.3.1 业务分析"></a>3.3.1 业务分析</h4><p>上面操作只实现了下单操作，但对应的库存还没跟着一起减少，我们在下单之后，应该调用商品微服务，将下单的商品库存减少，销量增加。每次订单微服务只需要将用户名传到商品微服务，商品微服务通过用户名到Redis中查询对应的购物车数据，然后执行库存减少，库存减少需要控制当前商品库存&gt;&#x3D;销售数量。</p>
+<p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day11订单及支付/讲义/images/1558305399244.png" alt="1558305399244"></p>
+<p>如何控制库存数量&gt;&#x3D;销售数量呢？其实可以通过SQL语句实现，每次减少数量的时候，加个条件判断。</p>
+<p><code>where num&gt;=#&#123;num&#125;</code>即可。</p>
+<h4 id="3-3-3-调用库存递减"><a href="#3-3-3-调用库存递减" class="headerlink" title="3.3.3  调用库存递减"></a>3.3.3  调用库存递减</h4><p>修改changgou-service-order微服务的com.changgou.order.service.impl.OrderServiceImpl类的add方法，增加库存递减的调用。</p>
+<p>先注入SkuFeign</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> SkuFeign skuFeign;</span><br></pre></td></tr></table></figure>
+
+<p>再调用库存递减方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//库存减库存</span></span><br><span class="line">skuFeign.decrCount(order.getUsername());</span><br></pre></td></tr></table></figure>
+
+
+
+<p>完整代码如下：</p>
+<p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day11订单及支付/讲义/images/1562934989293.png" alt="1562934989293"></p>
+<h3 id="3-4-增加积分"><a href="#3-4-增加积分" class="headerlink" title="3.4 增加积分"></a>3.4 增加积分</h3><p>比如每次下单完成之后，给用户增加10个积分，支付完成后赠送优惠券，优惠券可用于支付时再次抵扣。我们先完成增加积分功能。如下表：points表示用户积分</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `tb_user` (</span><br><span class="line">  `username` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;用户名&#x27;</span>,</span><br><span class="line">  `password` <span class="type">varchar</span>(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;密码，加密存储&#x27;</span>,</span><br><span class="line">  `phone` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;注册手机号&#x27;</span>,</span><br><span class="line">  `email` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;注册邮箱&#x27;</span>,</span><br><span class="line">  `created` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">  `updated` datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;修改时间&#x27;</span>,</span><br><span class="line">  `source_type` <span class="type">varchar</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;会员来源：1:PC，2：H5，3：Android，4：IOS&#x27;</span>,</span><br><span class="line">  `nick_name` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;昵称&#x27;</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;真实姓名&#x27;</span>,</span><br><span class="line">  `status` <span class="type">varchar</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;使用状态（1正常 0非正常）&#x27;</span>,</span><br><span class="line">  `head_pic` <span class="type">varchar</span>(<span class="number">150</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;头像地址&#x27;</span>,</span><br><span class="line">  `qq` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;QQ号码&#x27;</span>,</span><br><span class="line">  `is_mobile_check` <span class="type">varchar</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;手机是否验证 （0否  1是）&#x27;</span>,</span><br><span class="line">  `is_email_check` <span class="type">varchar</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;邮箱是否检测（0否  1是）&#x27;</span>,</span><br><span class="line">  `sex` <span class="type">varchar</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;性别，1男，0女&#x27;</span>,</span><br><span class="line">  `user_level` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;会员等级&#x27;</span>,</span><br><span class="line">  `points` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;积分&#x27;</span>,</span><br><span class="line">  `experience_value` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;经验值&#x27;</span>,</span><br><span class="line">  `birthday` datetime <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;出生年月日&#x27;</span>,</span><br><span class="line">  `last_login_time` datetime <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;最后登录时间&#x27;</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`username`),</span><br><span class="line">  <span class="keyword">UNIQUE</span> KEY `username` (`username`) <span class="keyword">USING</span> BTREE</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 COMMENT<span class="operator">=</span><span class="string">&#x27;用户表&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-支付流程分析"><a href="#4-支付流程分析" class="headerlink" title="4 支付流程分析"></a>4 支付流程分析</h2><h3 id="4-1-订单支付分析"><a href="#4-1-订单支付分析" class="headerlink" title="4.1 订单支付分析"></a>4.1 订单支付分析</h3><p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day11订单及支付/讲义/images/1558490059984.png" alt="1558490059984"></p>
+<p>如上图，步骤分析如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.用户下单之后，订单数据会存入到MySQL中，同时会将订单对应的支付日志存入到Redis，以队列的方式存储。</span></span><br><span class="line"><span class="attr">2.用户下单后，进入支付页面，支付页面调用支付系统，从微信支付获取二维码数据，并在页面生成支付二维码。</span></span><br><span class="line"><span class="attr">3.用户扫码支付后，微信支付服务器会通调用前预留的回调地址，并携带支付状态信息。</span></span><br><span class="line"><span class="attr">4.支付系统接到支付状态信息后，将支付状态信息发送给RabbitMQ</span></span><br><span class="line"><span class="attr">5.订单系统监听RabbitMQ中的消息获取支付状态，并根据支付状态修改订单状态</span></span><br><span class="line"><span class="attr">6.为了防止网络问题导致notifyurl没有接到对应数据，定时任务定时获取Redis中队列数据去微信支付接口查询状态，并定时更新对应状态。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-2-二维码创建-了解"><a href="#4-2-二维码创建-了解" class="headerlink" title="4.2 二维码创建(了解)"></a>4.2 二维码创建(了解)</h3><p>今天主要讲微信支付，后面为了看到效果，我们简单说下利用qrious制作二维码插件。</p>
+<p>qrious是一款基于HTML5 Canvas的纯JS二维码生成插件。通过qrious.js可以快速生成各种二维码，你可以控制二维码的尺寸颜色，还可以将生成的二维码进行Base64编码。</p>
+<p>qrious.js二维码插件的可用配置参数如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>background</td>
+<td>String</td>
+<td>“white”</td>
+<td>二维码的背景颜色。</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>String</td>
+<td>“black”</td>
+<td>二维码的前景颜色。</td>
+</tr>
+<tr>
+<td>level</td>
+<td>String</td>
+<td>“L”</td>
+<td>二维码的误差校正级别(L, M, Q, H)。</td>
+</tr>
+<tr>
+<td>mime</td>
+<td>String</td>
+<td>“image&#x2F;png”</td>
+<td>二维码输出为图片时的MIME类型。</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Number</td>
+<td>100</td>
+<td>二维码的尺寸，单位像素。</td>
+</tr>
+<tr>
+<td>value</td>
+<td>String</td>
+<td>“”</td>
+<td>需要编码为二维码的值</td>
+</tr>
+</tbody></table>
+<p>下面的代码即可生成一张二维码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>二维码入门小demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">&quot;qrious&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;qrious.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"> <span class="keyword">var</span> qr = <span class="keyword">new</span> <span class="title class_">QRious</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">	    <span class="attr">element</span>:<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;qrious&#x27;</span>),</span></span><br><span class="line"><span class="language-javascript">	    <span class="attr">size</span>:<span class="number">250</span>, 	   </span></span><br><span class="line"><span class="language-javascript">     	<span class="attr">level</span>:<span class="string">&#x27;H&#x27;</span>,	   </span></span><br><span class="line"><span class="language-javascript">     	<span class="attr">value</span>:<span class="string">&#x27;http://www.itheima.com&#x27;</span></span></span><br><span class="line"><span class="language-javascript">	&#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>运行效果：</p>
+<p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day11订单及支付/讲义/images/1549706445665.png" alt="1549706445665"></p>
+<p>大家掏出手机，扫一下看看是否会看到黑马的官网呢？</p>
+<h2 id="5-微信扫码支付简介"><a href="#5-微信扫码支付简介" class="headerlink" title="5 微信扫码支付简介"></a>5 微信扫码支付简介</h2><h3 id="5-1微信扫码支付申请"><a href="#5-1微信扫码支付申请" class="headerlink" title="5.1微信扫码支付申请"></a>5.1微信扫码支付申请</h3><p>微信扫码支付是商户系统按微信支付协议生成支付二维码，用户再用微信“扫一扫”完成支付的模式。该模式适用于PC网站支付、实体店单品或订单支付、媒体广告支付等场景。</p>
+<p>申请步骤：（了解）</p>
+<p><strong>第一步：注册公众号（类型须为：服务号）</strong></p>
+<p>请根据营业执照类型选择以下主体注册：<a target="_blank" rel="noopener" href="http://kf.qq.com/faq/120911VrYVrA151009JB3i2Q.html">个体工商户</a>| <a target="_blank" rel="noopener" href="http://kf.qq.com/faq/120911VrYVrA151013MfYvYV.html">企业&#x2F;公司</a>| <a target="_blank" rel="noopener" href="http://kf.qq.com/faq/161220eaAJjE161220IJn6zU.html">政府</a>| <a target="_blank" rel="noopener" href="http://kf.qq.com/faq/161220IFBJFv161220YnqAbQ.html">媒体</a>| <a target="_blank" rel="noopener" href="http://kf.qq.com/faq/120911VrYVrA151013nYFZ7Z.html">其他类型</a>。</p>
+<p><strong>第二步：认证公众号</strong></p>
+<p>公众号认证后才可申请微信支付，认证费：300元&#x2F;次。</p>
+<p><strong>第三步：提交资料申请微信支付</strong></p>
+<p>登录公众平台，点击左侧菜单【微信支付】，开始填写资料等待审核，审核时间为1-5个工作日内。</p>
+<p><strong>第四步：开户成功，登录商户平台进行验证</strong></p>
+<p>资料审核通过后，请登录联系人邮箱查收商户号和密码，并登录商户平台填写财付通备付金打的小额资金数额，完成账户验证。</p>
+<p><strong>第五步：在线签署协议</strong></p>
+<p>本协议为线上电子协议，签署后方可进行交易及资金结算，签署完立即生效。</p>
+<p>本课程已经提供好“传智播客”的微信支付账号，学员无需申请。</p>
+<h3 id="5-2-开发文档"><a href="#5-2-开发文档" class="headerlink" title="5.2 开发文档"></a>5.2 开发文档</h3><p>微信支付接口调用的整体思路：</p>
+<p>按API要求组装参数，以XML方式发送（POST）给微信支付接口（URL）,微信支付接口也是以XML方式给予响应。程序根据返回的结果（其中包括支付URL）生成二维码或判断订单状态。</p>
+<p>在线微信支付开发文档：</p>
+<p><a target="_blank" rel="noopener" href="https://pay.weixin.qq.com/wiki/doc/api/index.html">https://pay.weixin.qq.com/wiki/doc/api/index.html</a></p>
+<p>如果你不能联网，请查阅讲义配套资源 （资源\配套软件\微信扫码支付\开发文档）</p>
+<p>我们在本章课程中会用到”统一下单”和”查询订单”两组API  </p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.</span> <span class="string">appid：微信公众账号或开放平台APP的唯一标识</span></span><br><span class="line"><span class="attr">2.</span> <span class="string">mch_id：商户号  (配置文件中的partner)</span></span><br><span class="line"><span class="attr">3.</span> <span class="string">partnerkey：商户密钥</span></span><br><span class="line"><span class="attr">4.</span> <span class="string">sign:数字签名, 根据微信官方提供的密钥和一套算法生成的一个加密信息, 就是为了保证交易的安全性</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-3-微信支付模式介绍"><a href="#5-3-微信支付模式介绍" class="headerlink" title="5.3 微信支付模式介绍"></a>5.3 微信支付模式介绍</h3><h4 id="5-3-1-模式一"><a href="#5-3-1-模式一" class="headerlink" title="5.3.1 模式一"></a>5.3.1 模式一</h4><p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day11订单及支付/讲义/images/1558448158371.png" alt="1558448158371"></p>
+<p>业务流程说明：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.商户后台系统根据微信支付规定格式生成二维码（规则见下文），展示给用户扫码。</span></span><br><span class="line"><span class="attr">2.用户打开微信“扫一扫”扫描二维码，微信客户端将扫码内容发送到微信支付系统。</span></span><br><span class="line"><span class="attr">3.微信支付系统收到客户端请求，发起对商户后台系统支付回调URL的调用。调用请求将带productid和用户的openid等参数，并要求商户系统返回交数据包,详细请见&quot;本节3.1回调数据输入参数&quot;</span></span><br><span class="line"><span class="attr">4.商户后台系统收到微信支付系统的回调请求，根据productid生成商户系统的订单。</span></span><br><span class="line"><span class="attr">5.商户系统调用微信支付【统一下单API】请求下单，获取交易会话标识（prepay_id）</span></span><br><span class="line"><span class="attr">6.微信支付系统根据商户系统的请求生成预支付交易，并返回交易会话标识（prepay_id）。</span></span><br><span class="line"><span class="attr">7.商户后台系统得到交易会话标识prepay_id（2小时内有效）。</span></span><br><span class="line"><span class="attr">8.商户后台系统将prepay_id返回给微信支付系统。返回数据见&quot;本节3.2回调数据输出参数&quot;</span></span><br><span class="line"><span class="attr">9.微信支付系统根据交易会话标识，发起用户端授权支付流程。</span></span><br><span class="line"><span class="attr">10.用户在微信客户端输入密码，确认支付后，微信客户端提交支付授权。</span></span><br><span class="line"><span class="attr">11.微信支付系统验证后扣款，完成支付交易。</span></span><br><span class="line"><span class="attr">12.微信支付系统完成支付交易后给微信客户端返回交易结果，并将交易结果通过短信、微信消息提示用户。微信客户端展示支付交易结果页面。</span></span><br><span class="line"><span class="attr">13.微信支付系统通过发送异步消息通知商户后台系统支付结果。商户后台系统需回复接收情况，通知微信后台系统不再发送该单的支付通知。</span></span><br><span class="line"><span class="attr">14.未收到支付通知的情况，商户后台系统调用【查询订单API】。</span></span><br><span class="line"><span class="attr">15.商户确认订单已支付后给用户发货。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-3-2-模式二"><a href="#5-3-2-模式二" class="headerlink" title="5.3.2 模式二"></a>5.3.2 模式二</h4><p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day11订单及支付/讲义/images/1558448510488.png" alt="1558448510488"></p>
+<p>业务流程说明：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.商户后台系统根据用户选购的商品生成订单。</span></span><br><span class="line"><span class="attr">2.用户确认支付后调用微信支付【统一下单API】生成预支付交易；</span></span><br><span class="line"><span class="attr">3.微信支付系统收到请求后生成预支付交易单，并返回交易会话的二维码链接code_url。</span></span><br><span class="line"><span class="attr">4.商户后台系统根据返回的code_url生成二维码。</span></span><br><span class="line"><span class="attr">5.用户打开微信“扫一扫”扫描二维码，微信客户端将扫码内容发送到微信支付系统。</span></span><br><span class="line"><span class="attr">6.微信支付系统收到客户端请求，验证链接有效性后发起用户支付，要求用户授权。</span></span><br><span class="line"><span class="attr">7.用户在微信客户端输入密码，确认支付后，微信客户端提交授权。</span></span><br><span class="line"><span class="attr">8.微信支付系统根据用户授权完成支付交易。</span></span><br><span class="line"><span class="attr">9.微信支付系统完成支付交易后给微信客户端返回交易结果，并将交易结果通过短信、微信消息提示用户。微信客户端展示支付交易结果页面。</span></span><br><span class="line"><span class="attr">10.微信支付系统通过发送异步消息通知商户后台系统支付结果。商户后台系统需回复接收情况，通知微信后台系统不再发送该单的支付通知。</span></span><br><span class="line"><span class="attr">11.未收到支付通知的情况，商户后台系统调用【查询订单API】。</span></span><br><span class="line"><span class="attr">12.商户确认订单已支付后给用户发货。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-检测支付状态"><a href="#3-检测支付状态" class="headerlink" title="3 检测支付状态"></a>3 检测支付状态</h2><h3 id="3-1-需求分析"><a href="#3-1-需求分析" class="headerlink" title="3.1 需求分析"></a>3.1 需求分析</h3><p>当用户支付成功后跳转到成功页面</p>
+<p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day12续/讲义/images/1558476664135.png" alt="1558476664135"></p>
+<p>当返回异常时跳转到错误页面</p>
+<p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day12续/讲义/images/1558476701485.png" alt="1558476701485"></p>
+<h3 id="3-2-实现思路"><a href="#3-2-实现思路" class="headerlink" title="3.2 实现思路"></a>3.2 实现思路</h3><p>我们通过HttpClient工具类实现对远程支付接口的调用。</p>
+<p>接口链接：<a target="_blank" rel="noopener" href="https://api.mch.weixin.qq.com/pay/orderquery">https://api.mch.weixin.qq.com/pay/orderquery</a></p>
+<p>具体参数参见“查询订单”API, 我们在controller方法中轮询调用查询订单（间隔3秒），当返回状态为success时，我们会在controller方法返回结果。前端代码收到结果后跳转到成功页面。</p>
+<h2 id="4-订单状态操作准备工作"><a href="#4-订单状态操作准备工作" class="headerlink" title="4 订单状态操作准备工作"></a>4 订单状态操作准备工作</h2><h3 id="4-1-需求分析"><a href="#4-1-需求分析" class="headerlink" title="4.1 需求分析"></a>4.1 需求分析</h3><p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day12续/讲义/images/1558490059984.png" alt="1558490059984"></p>
+<p>我们现在系统还有个问题需要解决：支付后订单状态没有改变</p>
+<p>流程回顾：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.用户下单之后，订单数据会存入到MySQL中，同时会将订单对应的支付日志存入到Redis，以List+Hash的方式存储。</span></span><br><span class="line"><span class="attr">2.用户下单后，进入支付页面，支付页面调用支付系统，从微信支付获取二维码数据，并在页面生成支付二维码。</span></span><br><span class="line"><span class="attr">3.用户扫码支付后，微信支付服务器会通调用前预留的回调地址，并携带支付状态信息。</span></span><br><span class="line"><span class="attr">4.支付系统接到支付状态信息后，将支付状态信息发送给RabbitMQ</span></span><br><span class="line"><span class="attr">5.订单系统监听RabbitMQ中的消息获取支付状态，并根据支付状态修改订单状态</span></span><br><span class="line"><span class="attr">6.为了防止网络问题导致notifyurl没有接到对应数据，定时任务定时获取Redis中队列数据去微信支付接口查询状态，并定时更新对应状态。</span></span><br></pre></td></tr></table></figure>
+
+<p>需要做的工作：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.创建订单时，同时将订单信息放到Redis中，以List和Hash各存一份</span></span><br><span class="line"><span class="attr">2.实现回调地址接收支付状态信息</span></span><br><span class="line"><span class="attr">3.将订单支付状态信息发送给RabbitMQ</span></span><br><span class="line"><span class="attr">4.订单系统中监听支付状态信息，如果是支付成功，修改订单状态，如果是支付失败，删除订单(或者改成支付失败)</span></span><br><span class="line"><span class="attr">5.防止网络异常无法接收到回调地址的支付信息，定时任务从Redis</span> <span class="string">List中读取数据判断是否支付，如果支付了，修改订单状态，如果未支付，将支付信息放入队列，下次再检测，如果支付失败删除订单(或者改成支付失败)。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-2-Redis存储订单信息"><a href="#4-2-Redis存储订单信息" class="headerlink" title="4.2 Redis存储订单信息"></a>4.2 Redis存储订单信息</h3><p>每次添加订单后，会根据订单检查用户是否是否支付成功，我们不建议每次都操作数据库，每次操作数据库会增加数据库的负载，我们可以选择将用户的订单信息存入一份到Redis中，提升读取速度。</p>
+<p>修改<code>changgou-service-order</code>微服务的<code>com.changgou.order.service.impl.OrderServiceImpl</code>类中的<code>add</code>方法，如果是线上支付，将用户订单数据存入到Redis中,由于每次创建二维码，需要用到订单编号 ，所以也需要将添加的订单信息返回。</p>
+<p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day12续/讲义/images/1566106841171.png" alt="1566106841171"></p>
+<p>上图代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 增加Order</span></span><br><span class="line"><span class="comment"> * 金额校验:后台校验</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> order</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Order <span class="title function_">add</span><span class="params">(Order order)</span>&#123;</span><br><span class="line">    <span class="comment">//...略</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//修改库存</span></span><br><span class="line">    skuFeign.decrCount(order.getUsername());</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加用户积分</span></span><br><span class="line">    userFeign.addPoints(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//线上支付，记录订单</span></span><br><span class="line">    <span class="keyword">if</span>(order.getPayType().equalsIgnoreCase(<span class="string">&quot;1&quot;</span>))&#123;</span><br><span class="line">        <span class="comment">//将支付记录存入到Reids namespace  key  value</span></span><br><span class="line">        redisTemplate.boundHashOps(<span class="string">&quot;Order&quot;</span>).put(order.getId(),order);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除购物车信息</span></span><br><span class="line">    <span class="comment">//redisTemplate.delete(&quot;Cart_&quot; + order.getUsername());</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> order;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>修改<code>com.changgou.order.controller.OrderController</code>的add方法，将订单对象返回，因为页面需要获取订单的金额和订单号用于创建二维码，代码如下：</p>
+<p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day12续/讲义/images/1566107006010.png" alt="1566107006010"></p>
+<h3 id="4-3-修改订单状态"><a href="#4-3-修改订单状态" class="headerlink" title="4.3 修改订单状态"></a>4.3 修改订单状态</h3><p>订单支付成功后，需要修改订单状态并持久化到数据库，修改订单的同时，需要将Redis中的订单删除，所以修改订单状态需要将订单日志也传过来，实现代码如下：</p>
+<p>修改com.changgou.order.service.OrderService，添加修改订单状态方法，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 根据订单ID修改订单状态</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> transactionid 交易流水号</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> orderId</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">updateStatus</span><span class="params">(String orderId,String transactionid)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>修改com.changgou.order.service.impl.OrderServiceImpl，添加修改订单状态实现方法，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 订单修改</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> orderId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> transactionid  微信支付的交易流水号</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateStatus</span><span class="params">(String orderId,String transactionid)</span> &#123;</span><br><span class="line">    <span class="comment">//1.修改订单</span></span><br><span class="line">    <span class="type">Order</span> <span class="variable">order</span> <span class="operator">=</span> orderMapper.selectByPrimaryKey(orderId);</span><br><span class="line">    order.setUpdateTime(<span class="keyword">new</span> <span class="title class_">Date</span>());    <span class="comment">//时间也可以从微信接口返回过来，这里为了方便，我们就直接使用当前时间了</span></span><br><span class="line">    order.setPayTime(order.getUpdateTime());    <span class="comment">//不允许这么写</span></span><br><span class="line">    order.setTransactionId(transactionid);  <span class="comment">//交易流水号</span></span><br><span class="line">    order.setPayStatus(<span class="string">&quot;1&quot;</span>);    <span class="comment">//已支付</span></span><br><span class="line">    orderMapper.updateByPrimaryKeySelective(order);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.删除Redis中的订单记录</span></span><br><span class="line">    redisTemplate.boundHashOps(<span class="string">&quot;Order&quot;</span>).delete(orderId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="4-4-删除订单"><a href="#4-4-删除订单" class="headerlink" title="4.4 删除订单"></a>4.4 删除订单</h3><p>如果用户订单支付失败了，或者支付超时了，我们需要删除用户订单，删除订单的同时需要回滚库存，这里回滚库存我们就不实现了，作为同学们的作业。实现如下：</p>
+<p>修改<code>changgou-service-order</code>的com.changgou.order.service.OrderService，添加删除订单方法，我们只需要将订单id传入进来即可实现，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 删除订单操作</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">deleteOrder</span><span class="params">(String id)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>修改<code>changgou-service-order</code>的com.changgou.order.service.impl.OrderServiceImpl，添加删除订单实现方法，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 订单的删除操作</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteOrder</span><span class="params">(String id)</span> &#123;</span><br><span class="line">    <span class="comment">//改状态</span></span><br><span class="line">    <span class="type">Order</span> <span class="variable">order</span> <span class="operator">=</span> (Order) redisTemplate.boundHashOps(<span class="string">&quot;Order&quot;</span>).get(id);</span><br><span class="line">    order.setUpdateTime(<span class="keyword">new</span> <span class="title class_">Date</span>());</span><br><span class="line">    order.setPayStatus(<span class="string">&quot;2&quot;</span>);    <span class="comment">//支付失败</span></span><br><span class="line">    orderMapper.updateByPrimaryKeySelective(order);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除缓存</span></span><br><span class="line">    redisTemplate.boundHashOps(<span class="string">&quot;Order&quot;</span>).delete(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-支付信息回调"><a href="#5-支付信息回调" class="headerlink" title="5 支付信息回调"></a>5 支付信息回调</h2><h3 id="5-1-接口分析"><a href="#5-1-接口分析" class="headerlink" title="5.1 接口分析"></a>5.1 接口分析</h3><p>每次实现支付之后，微信支付都会将用户支付结果返回到指定路径，而指定路径是指创建二维码的时候填写的<code>notifyurl</code>参数,响应的数据以及相关文档参考一下地址：<code>https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_7&amp;index=8</code></p>
+<h4 id="5-1-1-返回参数分析"><a href="#5-1-1-返回参数分析" class="headerlink" title="5.1.1 返回参数分析"></a>5.1.1 返回参数分析</h4><p>通知参数如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字段名</th>
+<th align="left">变量名</th>
+<th align="left">必填</th>
+<th align="left">类型</th>
+<th align="left">示例值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">返回状态码</td>
+<td align="left">return_code</td>
+<td align="left">是</td>
+<td align="left">String(16)</td>
+<td align="left">SUCCESS</td>
+<td align="left">SUCCESS</td>
+</tr>
+<tr>
+<td align="left">返回信息</td>
+<td align="left">return_msg</td>
+<td align="left">是</td>
+<td align="left">String(128)</td>
+<td align="left">OK</td>
+<td align="left">OK</td>
+</tr>
+</tbody></table>
+<p>以下字段在return_code为SUCCESS的时候有返回</p>
+<table>
+<thead>
+<tr>
+<th align="left">字段名</th>
+<th align="left">变量名</th>
+<th align="left">必填</th>
+<th align="left">类型</th>
+<th align="left">示例值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">公众账号ID</td>
+<td align="left">appid</td>
+<td align="left">是</td>
+<td align="left">String(32)</td>
+<td align="left">wx8888888888888888</td>
+<td align="left">微信分配的公众账号ID（企业号corpid即为此appId）</td>
+</tr>
+<tr>
+<td align="left">业务结果</td>
+<td align="left">result_code</td>
+<td align="left">是</td>
+<td align="left">String(16)</td>
+<td align="left">SUCCESS</td>
+<td align="left">SUCCESS&#x2F;FAIL</td>
+</tr>
+<tr>
+<td align="left">商户订单号</td>
+<td align="left">out_trade_no</td>
+<td align="left">是</td>
+<td align="left">String(32)</td>
+<td align="left">1212321211201407033568112322</td>
+<td align="left">商户系统内部订单号</td>
+</tr>
+<tr>
+<td align="left">微信支付订单号</td>
+<td align="left">transaction_id</td>
+<td align="left">是</td>
+<td align="left">String(32)</td>
+<td align="left">1217752501201407033233368018</td>
+<td align="left">微信支付订单号</td>
+</tr>
+</tbody></table>
+<h4 id="5-1-2-响应分析"><a href="#5-1-2-响应分析" class="headerlink" title="5.1.2 响应分析"></a>5.1.2 响应分析</h4><p>回调地址接收到数据后，需要响应信息给微信服务器，告知已经收到数据，不然微信服务器会再次发送4次请求推送支付信息。</p>
+<table>
+<thead>
+<tr>
+<th align="left">字段名</th>
+<th align="left">变量名</th>
+<th align="left">必填</th>
+<th align="left">类型</th>
+<th align="left">示例值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">返回状态码</td>
+<td align="left">return_code</td>
+<td align="left">是</td>
+<td align="left">String(16)</td>
+<td align="left">SUCCESS</td>
+<td align="left">请按示例值填写</td>
+</tr>
+<tr>
+<td align="left">返回信息</td>
+<td align="left">return_msg</td>
+<td align="left">是</td>
+<td align="left">String(128)</td>
+<td align="left">OK</td>
+<td align="left">请按示例值填写</td>
+</tr>
+</tbody></table>
+<p>举例如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">return_code</span>&gt;</span>&lt;![CDATA[SUCCESS]]&gt;<span class="tag">&lt;/<span class="name">return_code</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">return_msg</span>&gt;</span>&lt;![CDATA[OK]]&gt;<span class="tag">&lt;/<span class="name">return_msg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-2-回调接收数据实现"><a href="#5-2-回调接收数据实现" class="headerlink" title="5.2 回调接收数据实现"></a>5.2 回调接收数据实现</h3><p>修改<code>changgou-service-pay</code>微服务的com.changgou.pay.controller.WeixinPayController,添加回调方法，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 支付回调</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/notify/url&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">notifyUrl</span><span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">    InputStream inStream;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//读取支付回调数据</span></span><br><span class="line">        inStream = request.getInputStream();</span><br><span class="line">        <span class="type">ByteArrayOutputStream</span> <span class="variable">outSteam</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();</span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> ((len = inStream.read(buffer)) != -<span class="number">1</span>) &#123;</span><br><span class="line">            outSteam.write(buffer, <span class="number">0</span>, len);</span><br><span class="line">        &#125;</span><br><span class="line">        outSteam.close();</span><br><span class="line">        inStream.close();</span><br><span class="line">        <span class="comment">// 将支付回调数据转换成xml字符串</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(outSteam.toByteArray(), <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">        <span class="comment">//将xml字符串转换成Map结构</span></span><br><span class="line">        Map&lt;String, String&gt; map = WXPayUtil.xmlToMap(result);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//响应数据设置</span></span><br><span class="line">        <span class="type">Map</span> <span class="variable">respMap</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">        respMap.put(<span class="string">&quot;return_code&quot;</span>,<span class="string">&quot;SUCCESS&quot;</span>);</span><br><span class="line">        respMap.put(<span class="string">&quot;return_msg&quot;</span>,<span class="string">&quot;OK&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> WXPayUtil.mapToXml(respMap);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        <span class="comment">//记录错误日志</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="6-MQ处理支付回调状态"><a href="#6-MQ处理支付回调状态" class="headerlink" title="6 MQ处理支付回调状态"></a>6 MQ处理支付回调状态</h2><h3 id="6-1-业务分析"><a href="#6-1-业务分析" class="headerlink" title="6.1 业务分析"></a>6.1 业务分析</h3><p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day12续/讲义/images/1558490059984.png" alt="1558490059984"></p>
+<p>支付系统是独立于其他系统的服务，不做相关业务逻辑操作，只做支付处理，所以回调地址接收微信服务返回的支付状态后，立即将消息发送给RabbitMQ，订单系统再监听支付状态数据，根据状态数据做出修改订单状态或者删除订单操作。</p>
+<h3 id="6-2-发送支付状态"><a href="#6-2-发送支付状态" class="headerlink" title="6.2 发送支付状态"></a>6.2 发送支付状态</h3><p>(1)集成RabbitMQ</p>
+<p>修改支付微服务，集成RabbitMQ，添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--加入ampq--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>这里我们建议在后台手动创建队列，并绑定队列。如果使用程序创建队列，可以按照如下方式实现。</p>
+<p>修改application.yml，配置支付队列和交换机信息，代码如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#位置支付交换机和队列</span></span><br><span class="line"><span class="attr">mq</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">pay</span>:<span class="string"></span></span><br><span class="line">    <span class="attr">exchange</span>:<span class="string"></span></span><br><span class="line">      <span class="attr">order</span>: <span class="string">exchange.order</span></span><br><span class="line">    <span class="attr">queue</span>:<span class="string"></span></span><br><span class="line">      <span class="attr">order</span>: <span class="string">queue.order</span></span><br><span class="line">    <span class="attr">routing</span>:<span class="string"></span></span><br><span class="line">      <span class="attr">key</span>: <span class="string">queue.order</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>创建队列以及交换机并让队列和交换机绑定，修改com.changgou.WeixinPayApplication,添加如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 创建DirectExchange交换机</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> DirectExchange <span class="title function_">basicExchange</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DirectExchange</span>(env.getProperty(<span class="string">&quot;mq.pay.exchange.order&quot;</span>), <span class="literal">true</span>,<span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 创建队列</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Bean(name = &quot;queueOrder&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Queue <span class="title function_">queueOrder</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Queue</span>(env.getProperty(<span class="string">&quot;mq.pay.queue.order&quot;</span>), <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/****</span></span><br><span class="line"><span class="comment"> * 队列绑定到交换机上</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> Binding <span class="title function_">basicBinding</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> BindingBuilder.bind(queueOrder()).to(basicExchange()).with(env.getProperty(<span class="string">&quot;mq.pay.routing.key&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="6-2-2-发送MQ消息"><a href="#6-2-2-发送MQ消息" class="headerlink" title="6.2.2 发送MQ消息"></a>6.2.2 发送MQ消息</h4><p>修改回调方法，在接到支付信息后，立即将支付信息发送给RabbitMQ，代码如下：</p>
+<p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day12续/讲义/images/1558578639907.png" alt="1558578639907"></p>
+<p>上图代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;$&#123;mq.pay.exchange.order&#125;&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String exchange;</span><br><span class="line"><span class="meta">@Value(&quot;$&#123;mq.pay.queue.order&#125;&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String queue;</span><br><span class="line"><span class="meta">@Value(&quot;$&#123;mq.pay.routing.key&#125;&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String routing;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> WeixinPayService weixinPayService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> RabbitTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 支付回调</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/notify/url&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">notifyUrl</span><span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">    InputStream inStream;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//读取支付回调数据</span></span><br><span class="line">        inStream = request.getInputStream();</span><br><span class="line">        <span class="type">ByteArrayOutputStream</span> <span class="variable">outSteam</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();</span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> ((len = inStream.read(buffer)) != -<span class="number">1</span>) &#123;</span><br><span class="line">            outSteam.write(buffer, <span class="number">0</span>, len);</span><br><span class="line">        &#125;</span><br><span class="line">        outSteam.close();</span><br><span class="line">        inStream.close();</span><br><span class="line">        <span class="comment">// 将支付回调数据转换成xml字符串</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(outSteam.toByteArray(), <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">        <span class="comment">//将xml字符串转换成Map结构</span></span><br><span class="line">        Map&lt;String, String&gt; map = WXPayUtil.xmlToMap(result);</span><br><span class="line">        <span class="comment">//将消息发送给RabbitMQ</span></span><br><span class="line">        rabbitTemplate.convertAndSend(exchange,routing, JSON.toJSONString(map));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//响应数据设置</span></span><br><span class="line">        <span class="type">Map</span> <span class="variable">respMap</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">        respMap.put(<span class="string">&quot;return_code&quot;</span>,<span class="string">&quot;SUCCESS&quot;</span>);</span><br><span class="line">        respMap.put(<span class="string">&quot;return_msg&quot;</span>,<span class="string">&quot;OK&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> WXPayUtil.mapToXml(respMap);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        <span class="comment">//记录错误日志</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-3-监听MQ消息处理订单"><a href="#6-3-监听MQ消息处理订单" class="headerlink" title="6.3 监听MQ消息处理订单"></a>6.3 监听MQ消息处理订单</h3><p>在订单微服务中，我们需要监听MQ支付状态消息，并实现订单数据操作。</p>
+<h4 id="6-3-1-集成RabbitMQ"><a href="#6-3-1-集成RabbitMQ" class="headerlink" title="6.3.1 集成RabbitMQ"></a>6.3.1 集成RabbitMQ</h4><p>在订单微服务中，先集成RabbitMQ，再监听队列消息。</p>
+<p>在pom.xml中引入如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--加入ampq--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在application.yml中配置rabbitmq配置，代码如下：</p>
+<p><img src="C:/Users/再难也会过/Desktop/尚硅谷SSM笔记/畅购商城/畅购-讲师源码md课件等www.cx1314.cn/畅购-讲师源码md课件/day12续/讲义/images/1558578894925.png" alt="1558578894925"></p>
+<p>在application.yml中配置队列名字，代码如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#位置支付交换机和队列</span></span><br><span class="line"><span class="attr">mq</span>:<span class="string"></span></span><br><span class="line">  <span class="attr">pay</span>:<span class="string"></span></span><br><span class="line">    <span class="attr">queue</span>:<span class="string"></span></span><br><span class="line">      <span class="attr">order</span>: <span class="string">queue.order</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="6-3-2-监听消息修改订单"><a href="#6-3-2-监听消息修改订单" class="headerlink" title="6.3.2 监听消息修改订单"></a>6.3.2 监听消息修改订单</h4><p>在订单微服务于中创建com.changgou.order.consumer.OrderPayMessageListener，并在该类中consumeMessage方法，用于监听消息，并根据支付状态处理订单，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@RabbitListener(queues = &#123;&quot;$&#123;mq.pay.queue.order&#125;&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OrderPayMessageListener</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> OrderService orderService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">     * 接收消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RabbitHandler</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">consumeMessage</span><span class="params">(String msg)</span>&#123;</span><br><span class="line">        <span class="comment">//将数据转成Map</span></span><br><span class="line">        Map&lt;String,String&gt; result = JSON.parseObject(msg,Map.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//return_code=SUCCESS</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">return_code</span> <span class="operator">=</span> result.get(<span class="string">&quot;return_code&quot;</span>);</span><br><span class="line">        <span class="comment">//业务结果</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result_code</span> <span class="operator">=</span> result.get(<span class="string">&quot;result_code&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//业务结果 result_code=SUCCESS/FAIL，修改订单状态</span></span><br><span class="line">        <span class="keyword">if</span>(return_code.equalsIgnoreCase(<span class="string">&quot;success&quot;</span>) )&#123;</span><br><span class="line">            <span class="comment">//获取订单号</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">outtradeno</span> <span class="operator">=</span> result.get(<span class="string">&quot;out_trade_no&quot;</span>);</span><br><span class="line">            <span class="comment">//业务结果</span></span><br><span class="line">            <span class="keyword">if</span>(result_code.equalsIgnoreCase(<span class="string">&quot;success&quot;</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span>(outtradeno!=<span class="literal">null</span>)&#123;</span><br><span class="line">                    <span class="comment">//修改订单状态  out_trade_no</span></span><br><span class="line">                    orderService.updateStatus(outtradeno,result.get(<span class="string">&quot;transaction_id&quot;</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//订单删除</span></span><br><span class="line">                orderService.deleteOrder(outtradeno);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-定时处理订单状态-学员完成"><a href="#7-定时处理订单状态-学员完成" class="headerlink" title="7 定时处理订单状态(学员完成)"></a>7 定时处理订单状态(学员完成)</h2><h3 id="7-1-业务分析"><a href="#7-1-业务分析" class="headerlink" title="7.1 业务分析"></a>7.1 业务分析</h3><p>在现实场景中，可能会出现这么种情况，就是用户支付后，有可能畅购服务网络不通或者服务器挂了，此时会导致回调地址无法接收到用户支付状态，这时候我们需要取微信服务器查询。所以我们之前订单信息的ID存入到了Redis队列，主要用于解决这种网络不可达造成支付状态无法回调获取的问题。</p>
+<p>实现思路如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.每次下单，都将订单存入到Reids</span> <span class="string">List队列中</span></span><br><span class="line"><span class="attr">2.定时每5秒检查一次Redis</span> <span class="string">队列中是否有数据，如果有，则再去查询微信服务器支付状态</span></span><br><span class="line"><span class="attr">3.如果已支付，则修改订单状态</span></span><br><span class="line"><span class="attr">4.如果没有支付，是等待支付，则再将订单存入到Redis队列中，等会再次检查</span></span><br><span class="line"><span class="attr">5.如果是支付失败，直接删除订单信息并修改订单状态</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>流程回顾：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.用户下单之后，订单数据会存入到MySQL中，同时会将订单对应的支付日志存入到Redis，以List+Hash的方式存储。</span></span><br><span class="line"><span class="attr">2.用户下单后，进入支付页面，支付页面调用支付系统，从微信支付获取二维码数据，并在页面生成支付二维码。</span></span><br><span class="line"><span class="attr">3.用户扫码支付后，微信支付服务器会通调用前预留的回调地址，并携带支付状态信息。</span></span><br><span class="line"><span class="attr">4.支付系统接到支付状态信息后，将支付状态信息发送给RabbitMQ</span></span><br><span class="line"><span class="attr">5.订单系统监听RabbitMQ中的消息获取支付状态，并根据支付状态修改订单状态</span></span><br><span class="line"><span class="attr">6.为了防止网络问题导致notifyurl没有接到对应数据，定时任务定时获取Redis中队列数据去微信支付接口查询状态，并定时更新对应状态。</span></span><br></pre></td></tr></table></figure>
+
+<p>需要做的工作：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1.创建订单时，同时将订单信息放到Redis中，以List和Hash各存一份</span></span><br><span class="line"><span class="attr">2.实现回调地址接收支付状态信息</span></span><br><span class="line"><span class="attr">3.将订单支付状态信息发送给RabbitMQ</span></span><br><span class="line"><span class="attr">4.订单系统中监听支付状态信息，如果是支付成功，修改订单状态，如果是支付失败，删除订单(或者改成支付失败)</span></span><br><span class="line"><span class="attr">5.防止网络异常无法接收到回调地址的支付信息，定时任务从Redis</span> <span class="string">List中读取数据判断是否支付，如果支付了，修改订单状态，如果未支付，将支付信息放入队列，下次再检测，如果支付失败删除订单(或者改成支付失败)。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="订单表结构"><a href="#订单表结构" class="headerlink" title="订单表结构"></a>订单表结构</h2><h2 id="下单流程及库存变更-增加积分功能"><a href="#下单流程及库存变更-增加积分功能" class="headerlink" title="下单流程及库存变更,增加积分功能"></a>下单流程及库存变更,增加积分功能</h2><h2 id="支付流程"><a href="#支付流程" class="headerlink" title="支付流程"></a>支付流程</h2><h3 id="微信扫码支付"><a href="#微信扫码支付" class="headerlink" title="微信扫码支付"></a>微信扫码支付</h3><h3 id="支付信息回调"><a href="#支付信息回调" class="headerlink" title="支付信息回调"></a>支付信息回调</h3><p>支付系统是独立于其他系统的服务，不做相关业务逻辑操作，只做支付处理，所以回调地址接收微信服务返回的支付状态后，立即将消息发送给RabbitMQ，订单系统再监听支付状态数据，根据状态数据做出修改订单状态或者删除订单操作。</p>
+<h4 id="MQ处理"><a href="#MQ处理" class="headerlink" title="MQ处理"></a>MQ处理</h4><h4 id="定时处理"><a href="#定时处理" class="headerlink" title="定时处理"></a>定时处理</h4>
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ggq
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2022/10/08/projecet/订单模块/" title="" target="_blank">http://example.com/2022/10/08/projecet/订单模块/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.368Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%A7%92%E6%9D%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%20&%20JWT%20&%20Oauth2.0/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.354Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/10/08/projecet/%E7%A7%92%E6%9D%80%E6%A8%A1%E5%9D%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="extend next" rel="next" href="/archives/2022/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -507,8 +796,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

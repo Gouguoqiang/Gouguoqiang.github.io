@@ -6,17 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | ggq</title>
+  <title>ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="索引什么是索引？索引是一种数据结构，是数据库管理系统中一个排序的数据结构，以协助快速查询数据库表中数据。索引的实现通常使用B+树或hash表。 更通俗的说，索引就相当于目录。为了方便查找书中的内容，通过对内容建立索引形成目录。 索引有哪些优缺点？索引的优点  可以大大加快数据的检索速度，这也是创建索引的最主要的原因。 通过使用索引，可以在查询的过程中，使用优化器，提高系统的性能。  索引的缺点">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ggq">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+<meta property="og:url" content="http://example.com/2022/10/08/mysql/%E7%B4%A2%E5%BC%95/index.html">
 <meta property="og:site_name" content="ggq">
+<meta property="og:description" content="索引什么是索引？索引是一种数据结构，是数据库管理系统中一个排序的数据结构，以协助快速查询数据库表中数据。索引的实现通常使用B+树或hash表。 更通俗的说，索引就相当于目录。为了方便查找书中的内容，通过对内容建立索引形成目录。 索引有哪些优缺点？索引的优点  可以大大加快数据的检索速度，这也是创建索引的最主要的原因。 通过使用索引，可以在查询的过程中，使用优化器，提高系统的性能。  索引的缺点">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmkmwZEW0CHPKiaicfj0QMyG18ib18jOFrOp9YBiaqOt38p7iadpzl5eRcD7UFWnD1VtooZZ2SG7aYCt5GfA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmkmwZEW0CHPKiaicfj0QMyG18ib2nAmUq8icA9rKtDSVoDyYiaEhXeGfmgNjiciaahstz4gxfAZXVCPaC2zCg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmkmwZEW0CHPKiaicfj0QMyG18ibic1ToFqwthIpTJbTa21gMEcGTqk5JQclQumIEjJV35EJLyfM9365Rbg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmkmwZEW0CHPKiaicfj0QMyG18ibyagvhrcABTcVOHoYbMDbMVRuxAjgJibq1SVDVfOA0gX1w7q7KBWmQ1Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="article:published_time" content="2022-10-08T15:41:10.317Z">
+<meta property="article:modified_time" content="2022-08-11T14:00:09.665Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmkmwZEW0CHPKiaicfj0QMyG18ib18jOFrOp9YBiaqOt38p7iadpzl5eRcD7UFWnD1VtooZZ2SG7aYCt5GfA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
   
     <link rel="alternative" href="/atom.xml" title="ggq" type="application/atom+xml">
   
@@ -207,266 +216,342 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mysql/索引" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+  <div class="article-entry" itemprop="articleBody">
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/%E8%AE%A1%E5%88%92/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
+    <h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h3><p>索引是一种数据结构，是数据库管理系统中一个排序的数据结构，以协助快速查询数据库表中数据。索引的实现通常使用B+树或hash表。</p>
+<p>更通俗的说，索引就相当于目录。为了方便查找书中的内容，通过对内容建立索引形成目录。</p>
+<h3 id="索引有哪些优缺点？"><a href="#索引有哪些优缺点？" class="headerlink" title="索引有哪些优缺点？"></a>索引有哪些优缺点？</h3><p>索引的优点</p>
+<ul>
+<li>可以大大加快数据的检索速度，这也是创建索引的最主要的原因。</li>
+<li>通过使用索引，可以在查询的过程中，使用优化器，提高系统的性能。</li>
+</ul>
+<p>索引的缺点</p>
+<ul>
+<li>时间方面：创建索引和维护索引要耗费时间，具体地，当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，会降低增&#x2F;删&#x2F;改的执行效率；</li>
+<li>空间方面：索引需要占物理空间。</li>
+</ul>
+<h3 id="索引有哪几种类型？"><a href="#索引有哪几种类型？" class="headerlink" title="@$索引有哪几种类型？"></a>@$索引有哪几种类型？</h3><p><strong>主键索引</strong>：数据列不允许重复，不允许为NULL，一个表只能有一个主键。</p>
+<p><strong>唯一索引</strong>：数据列不允许重复，允许为NULL值，一个表允许多个列创建唯一索引。</p>
+<ul>
+<li>可以通过 <code>ALTER TABLE table_name ADD UNIQUE (column);</code> 创建唯一索引</li>
+<li>可以通过 <code>ALTER TABLE table_name ADD UNIQUE (column1,column2);</code> 创建唯一组合索引</li>
+</ul>
+<p><strong>普通索引</strong>：基本的索引类型，没有唯一性的限制，允许为NULL值，一个表允许多个列创建普通索引。</p>
+<ul>
+<li>可以通过<code>ALTER TABLE table_name ADD INDEX index_name (column);</code>创建普通索引</li>
+<li>可以通过<code>ALTER TABLE table_name ADD INDEX index_name(column1, column2, column3);</code>创建组合索引</li>
+</ul>
+<p><strong>全文索引</strong>：是目前搜索引擎使用的一种关键技术，MyISAM存储引擎才有全文索引。</p>
+<ul>
+<li>可以通过<code>ALTER TABLE table_name ADD FULLTEXT (column);</code>创建全文索引</li>
+</ul>
+<h3 id="索引的数据结构（B-树，Hash）"><a href="#索引的数据结构（B-树，Hash）" class="headerlink" title="@$索引的数据结构（B+树，Hash）"></a>@$索引的数据结构（B+树，Hash）</h3><p>在MySQL中使用较多的索引有<strong>Hash索引</strong>，<strong>B+树索引</strong>等，索引的数据结构和具体存储引擎的实现有关，而我们经常使用的InnoDB存储引擎，默认索引实现为：B+树索引。对于哈希索引来说，底层的数据结构就是哈希表，因此在绝大多数需求为单条记录等值查询的时候，可以选择哈希索引，查询性能最快；其余大部分场景，建议选择B+树索引。</p>
+<p>1）B+树索引</p>
+<p>MySQL通过存储引擎存取数据，基本上90%的人用的就是InnoDB了，按照实现方式分，InnoDB的索引类型目前只有两种：BTREE（B树）索引和HASH索引。B树索引是MySQL数据库中使用最频繁的索引类型，基本所有存储引擎都支持BTree索引。通常我们说的索引不出意外指的就是（B树）索引（实际是用B+树实现的，因为在查看表索引时，mysql一律打印BTREE，所以简称为B树索引）</p>
+<p>B+树数据结构</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmkmwZEW0CHPKiaicfj0QMyG18ib18jOFrOp9YBiaqOt38p7iadpzl5eRcD7UFWnD1VtooZZ2SG7aYCt5GfA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>众所周知，一颗传统的M阶B+树需要满足以下几个要求：</p>
+<ul>
+<li><strong>从根节点到叶节点的所有路径都具有相同的长度</strong></li>
+<li><strong>所有数据信息都存储在叶子节点，非叶子节点仅作为叶节点的索引存在</strong></li>
+<li><strong>叶子节点通过指针连在一起</strong></li>
+<li>根节点至少拥有两个子树</li>
+<li>每个树节点最多拥有M个子树</li>
+<li>每个树节点(除了根节点)拥有至少M&#x2F;2个子树</li>
+</ul>
+<p>B+树是为了磁盘及其他存储辅助设备而设计的一种平衡查找树(不是二叉树)，在B+树中，所有记录的节点按大小顺序存放在同一层的叶节点中，各叶子节点用指针进行连接，而B+树索引本质上就是B+树在数据库中的实现，与纯粹的B+树数据结构还是有点区别。</p>
+<p>B+树与B+树索引的区别如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B+树</th>
+<th>B+树索引</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>存储位置</td>
+<td>内存</td>
+<td>磁盘</td>
+</tr>
+<tr>
+<td>扇出率</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>并发控制</td>
+<td>可以不考虑</td>
+<td>需考虑</td>
+</tr>
+<tr>
+<td>分裂方向</td>
+<td>不需要考虑</td>
+<td>向左、向右</td>
+</tr>
+</tbody></table>
+<p>B+树的一些特性：</p>
+<p>1、B+树中的B不是代表的二叉（Binary） ，而是代表平衡（Balance），因为B+树是从最早的平衡二叉树演化而来，但是B+树不是一个二叉树。</p>
+<p>2、B+树是为磁盘或其他直接存取辅助设备设计的一种平衡查找树，在B+树中，所有的记录节点都是按照键值大小顺序存在同一层的叶子节点，由叶子节点指针进行相连。</p>
+<p>3、B+树在数据库中的特点就是高扇出，因此在数据库中B+树的高度一般都在2<del>4层，这也就是说查找一个键值记录时，最多只需要2到4次IO，当前的机械硬盘每秒至少可以有100次IO，2</del>4次IO意味着查询时间只需要0.02~0.04秒。</p>
+<p>4、B+树索引并不能找到一个给定键值的具体行，B+树索引能找到的只是被查找的键值所在行的页，然后数据库把页读到内存，再内存中进行查找，最后找到要查找的数据。</p>
+<p>5、数据库中B+树索引可以分为，聚簇索引和非聚簇索引，但是不管是聚簇索引还是非聚簇索引，其内部都是B+树实现的，即高度是平衡的，叶子节点存放着所有的数据，聚簇索引和非聚簇索引不同的是，叶子节点是否存储的是一整行信息。每张表只能有一个聚簇索引。</p>
+<p>6、B+树的每个数据页（叶子节点）是通过一个双向链表进行链接，数据页上的数据的顺序是按照主键顺序存储的。</p>
+<p>2）哈希索引</p>
+<p>简要说下，类似于数据结构中简单实现的HASH表（散列表）一样，当我们在MySQL中用哈希索引时，主要就是通过Hash算法（常见的Hash算法有直接定址法、平方取中法、折叠法、除数取余法、随机数法），将数据库字段数据转换成定长的Hash值，与这条数据的行指针一并存入Hash表的对应位置；如果发生Hash碰撞（两个不同关键字的Hash值相同），则在对应Hash键下以链表形式存储。当然这只是简略模拟图。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmkmwZEW0CHPKiaicfj0QMyG18ib2nAmUq8icA9rKtDSVoDyYiaEhXeGfmgNjiciaahstz4gxfAZXVCPaC2zCg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="数据库为什么使用B-树而不是B树"><a href="#数据库为什么使用B-树而不是B树" class="headerlink" title="数据库为什么使用B+树而不是B树"></a>数据库为什么使用B+树而不是B树</h3><ul>
+<li><strong>B+树的叶子节点存储了所有的数据，非叶子节点中存储的是比较关键字。而B树所有的节点都会存储数据</strong>。B+树的叶子节点之间存在一个指针连接，B树不存在指针连接。B+树这种设计结构能带来什么好处呢？B+树所有的数据都存储在叶子节点，那么顺着叶子节点从左往右即可完成对数据的遍历，极大了简化了排序操作。这也是mysql设计索引是采用B+树的原因，不仅仅能方便查找，而且有助于排序，在mysql的索引中叶子节点之间数双向链表可正反遍历，更加灵活；</li>
+<li><strong>B树只适合随机检索，而B+树同时支持随机检索和顺序检索</strong>；</li>
+<li><strong>B+树空间利用率更高，可减少I&#x2F;O次数，磁盘读写代价更低</strong>。一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I&#x2F;O消耗。B+树的内部结点并没有指向关键字具体信息的指针，只是作为索引使用，其内部结点比B树小，盘块能容纳的结点中关键字数量更多，一次性读入内存中可以查找的关键字也就越多，相对的，IO读写次数也就降低了。而IO读写次数是影响索引检索效率的最大因素；</li>
+<li><strong>B+树的查询效率更加稳定</strong>。B树搜索有可能会在非叶子结点结束，越靠近根节点的记录查找时间越短，只要找到关键字即可确定记录的存在，其性能等价于在关键字全集内做一次二分查找。而在B+树中，顺序检索比较明显，随机检索时，任何关键字的查找都必须走一条从根节点到叶节点的路，所有关键字的查找路径长度相同，导致每一个关键字的查询效率相当。</li>
+<li><strong>B-树在提高了磁盘IO性能的同时并没有解决元素遍历的效率低下的问题。B+树的叶子节点使用指针顺序连接在一起，只要遍历叶子节点就可以实现整棵树的遍历</strong>。而且在数据库中基于范围的查询是非常频繁的，而B树不支持这样的操作。</li>
+<li><strong>增删文件（节点）时，效率更高</strong>。因为B+树的叶子节点包含所有关键字，并以有序的链表结构存储，这样可很好提高增删效率。</li>
+</ul>
+<h3 id="索引算法有哪些？"><a href="#索引算法有哪些？" class="headerlink" title="索引算法有哪些？"></a>索引算法有哪些？</h3><p>索引算法有 BTree算法和Hash算法</p>
+<p><strong>BTree算法</strong></p>
+<p>BTree是最常用的mysql数据库索引算法，也是mysql默认的算法。因为它不仅可以被用在&#x3D;,&gt;,&gt;&#x3D;,&lt;,&lt;&#x3D;和between这些比较操作符上，而且还可以用于like操作符，只要它的查询条件是一个不以通配符开头的常量， 例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 只要它的查询条件是一个不以通配符开头的常量</span><br><span class="line">select * from user where name like &#x27;jack%&#x27;;</span><br><span class="line">-- 如果一通配符开头，或者没有使用常量，则不会使用索引，例如：</span><br><span class="line">select * from user where name like &#x27;%jack&#x27;;</span><br></pre></td></tr></table></figure>
 
-        </div>
-    	 
+<p><strong>Hash算法</strong></p>
+<p>Hash算法只能用于对等比较，例如&#x3D;,&lt;&#x3D;&gt;（相当于&#x3D;）操作符。由于是一次定位数据，不像BTree索引需要从根节点到枝节点，最后才能访问到叶子节点这样多次IO访问，所以检索效率远高于BTree索引。</p>
+<h3 id="创建索引的原则？索引设计的原则？"><a href="#创建索引的原则？索引设计的原则？" class="headerlink" title="@$创建索引的原则？索引设计的原则？"></a>@$创建索引的原则？索引设计的原则？</h3><p>索引虽好，但也不是无限制的使用，最好符合以下几个原则</p>
+<ol>
+<li>为常作为查询条件的字段建立索引，where子句中的列，或者连接子句中指定的列</li>
+<li>为经常需要排序、分组操作的字段建立索引</li>
+<li>更新频繁字段不适合创建索引</li>
+<li>不能有效区分数据的列不适合做索引列(如性别，男女未知，最多也就三种，区分度实在太低)</li>
+<li>对于定义为text、image和bit的数据类型的列不要建立索引</li>
+<li>最左前缀原则，就是最左边的优先。指的是联合索引中，优先走最左边列的索引。对于多个字段的联合索引，如 index(a,b,c) 联合索引，则相当于创建了 a 单列索引，(a,b)联合索引，和(a,b,c)联合索引（但并不是建立了多个索引树）。mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a &#x3D; 1 and b &#x3D; 2 and c &gt; 3 and d &#x3D; 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。使用短索引，如果对长字符串列进行索引，应该指定一个前缀长度，这样能够节省大量索引空间</li>
+<li>非空字段：应该指定列为NOT NULL，除非你想存储NULL。在mysql中，含有空值的列很难进行查询优化，因为它们使得索引、索引的统计信息以及比较运算更加复杂。你应该用0、一个特殊的值或者一个空串代替空值</li>
+<li>不要过度索引。索引需要额外的磁盘空间，并降低写操作的性能。在修改表内容的时候，索引会进行更新甚至重构，索引列越多，这个时间就会越长</li>
+</ol>
+<h3 id="什么情况使用了索引，查询还是慢"><a href="#什么情况使用了索引，查询还是慢" class="headerlink" title="什么情况使用了索引，查询还是慢"></a>什么情况使用了索引，查询还是慢</h3><ul>
+<li>索引全表扫描</li>
+<li>索引过滤性不好</li>
+<li>频繁回表的开销</li>
+</ul>
+<h3 id="MySQL使用自增主键的好处"><a href="#MySQL使用自增主键的好处" class="headerlink" title="MySQL使用自增主键的好处"></a>MySQL使用自增主键的好处</h3><ol>
+<li>自增主键按顺序存放，增删数据速度快，对于检索非常有利；</li>
+<li>数字型，占用空间小，易排序；</li>
+<li>使用整形才可以使用AUTO_INCREAMENT，不用担心主键重复问题。</li>
+</ol>
+<h3 id="什么是聚簇索引？何时使用聚簇索引与非聚簇索引"><a href="#什么是聚簇索引？何时使用聚簇索引与非聚簇索引" class="headerlink" title="@$什么是聚簇索引？何时使用聚簇索引与非聚簇索引"></a>@$什么是聚簇索引？何时使用聚簇索引与非聚簇索引</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmkmwZEW0CHPKiaicfj0QMyG18ibic1ToFqwthIpTJbTa21gMEcGTqk5JQclQumIEjJV35EJLyfM9365Rbg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<ul>
+<li>聚簇索引：将数据与索引放到了一块，索引结构的叶子节点存储了行数据，找到索引也就找到了数据</li>
+<li>非聚簇索引：将数据与索引分开存储，索引结构的叶子节点存储的是行数据的地址</li>
+</ul>
+<p>聚簇索引的优点</p>
+<ul>
+<li>数据访问更快。聚族索引将索引和数据保存在同一个B+树中，因此从聚族索引中获取数据通常比非聚族索引中查找更快。</li>
+<li>当你需要取出一定范围内的数据时，用聚簇索引也比用非聚簇索引好。</li>
+<li>使用覆盖索引扫描的查询可以直接使用节点中的主键值。</li>
+</ul>
+<p>聚簇索引的缺点</p>
+<ul>
+<li>插入速度严重依赖于插入顺序，按照主键的顺序插入是最快的方式，否则将会出现页分裂，严重影响性能。因此，对于InnoDB表，我们一般都会定义一个自增的ID列作为主键。</li>
+<li>更新主键的代价很高，因为将会导致被更新的行移动。因此，对于InnoDB表，我们一般定义主键为不可更新。</li>
+<li>通过辅助索引访问需要两次索引查找，第一次找到主键值，第二次根据主键值找到行数据。</li>
+</ul>
+<p><strong>几个概念</strong></p>
+<ul>
+<li>对于普通索引，如 name 字段，则需要根据 name 字段的索引树（非聚簇索引）找到叶子节点对应的主键，然后再通过主键去主键索引树查询一遍，才可以得到要找的记录，这就叫<strong>回表查询</strong>。先定位主键值，再定位行记录，它的性能较扫描一遍索引树的效率更低</li>
+<li>InnoDB的行锁是建立在索引的基础之上的，行锁锁的是索引，不是数据，所以提高并发写的能力要在查询字段添加索引</li>
+<li>主索引和辅助索引：主索引就是主键索引，辅助索引就是根据业务需要，自己设置的普通的非主键的索引。这个在Myisam里面区别不大，但是在Innodb的时候差别很大</li>
+<li>聚簇索引：Innodb的主索引采用的是聚簇索引，一个表只能有1个聚簇索引，因为表数据存储的物理位置是唯一的。聚簇索引的value存的就是真实的数据，不是数据的地址。主索引树里面包含了真实的数据。key是主键值，value值就是data，key值按照B+树的规则分散排布的叶子节点。</li>
+<li>非聚簇索引：Myisam的主索引和辅助索引都采用的是非聚簇索引，索引和表数据是分离的，索引的value值存储的是行数据的地址。</li>
+<li>Innodb的索引：主索引采用聚簇索引，叶子节点的value值，直接存储的真实的数据。辅助索引是非聚簇索引，value值指向主索引的位置。所以在Innodb中，根据辅助索引查询值需要遍历2次B+树，同时主键的长度越短越好，越短辅助索引的value值就越小。Innodb中根据主键进行范围查询，会特别快。</li>
+<li>Myisam的索引：主索引和辅助索引都是非聚簇索引</li>
+<li>B+树：不管是什么索引，在mysql中的数据结构都是B+树的结构，可以充分利用数据块，来减少IO查询的次数，提升查询的效率。一个数据块data里面，存储了很多个相邻key的value值，所有的非叶子节点都不存储数据，都是指针。</li>
+<li>mysql采用B+树的优点：IO读取次数少（每次都是页读取），范围查找更快捷（相邻页之间有指针）</li>
+</ul>
+<h3 id="联合索引是什么？组合索引是什么？"><a href="#联合索引是什么？组合索引是什么？" class="headerlink" title="联合索引是什么？组合索引是什么？"></a>联合索引是什么？组合索引是什么？</h3><p>MySQL可以使用多个字段组合建立一个索引，叫做联合索引。在联合索引中，如果想要命中索引，需要按照建立索引时的字段顺序挨个使用，否则无法命中索引。</p>
+<h3 id="联合索引数据结构和实现原理，使用联合索引是怎么进行查询的"><a href="#联合索引数据结构和实现原理，使用联合索引是怎么进行查询的" class="headerlink" title="@$联合索引数据结构和实现原理，使用联合索引是怎么进行查询的"></a>@$联合索引数据结构和实现原理，使用联合索引是怎么进行查询的</h3><p>假设，我们对(a,b)字段建立索引，那么入下图所示</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmkmwZEW0CHPKiaicfj0QMyG18ibyagvhrcABTcVOHoYbMDbMVRuxAjgJibq1SVDVfOA0gX1w7q7KBWmQ1Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>如上图所示他们是按照a来进行排序，在a相等的情况下，才按b来排序。</p>
+<p>因此，我们可以看到a是有序的1，1，2，2，3，3。而b是一种全局无序，局部相对有序状态！什么意思呢？</p>
+<p>从全局来看，b的值为1，2，1，4，1，2，是无序的，因此直接执行<code>b = 2</code>这种查询条件没有办法利用索引。</p>
+<p>从局部来看，当a的值确定的时候，b是有序的。例如a &#x3D; 1时，b值为1，2是有序的状态。当a&#x3D;2时候，b的值为1,4也是有序状态。因此，你执行<code>a = 1 and b = 2</code>是a,b字段能用到索引的。而你执行<code>a &gt; 1 and b = 2</code>时，a字段能用到索引，b字段用不到索引。因为a的值此时是一个范围，不是固定的，在这个范围内b值不是有序的，因此b字段用不上索引。</p>
+<p>综上所示，最左匹配原则，在遇到范围查询的时候，就会停止匹配。</p>
+<h3 id="什么是最左前缀原则？什么是最左匹配原则？为什么需要注意联合索引中的顺序？"><a href="#什么是最左前缀原则？什么是最左匹配原则？为什么需要注意联合索引中的顺序？" class="headerlink" title="@$什么是最左前缀原则？什么是最左匹配原则？为什么需要注意联合索引中的顺序？"></a>@$什么是最左前缀原则？什么是最左匹配原则？为什么需要注意联合索引中的顺序？</h3><ul>
+<li>最左前缀原则，就是最左边的优先。指的是联合索引中，优先走最左边列的索引。对于多个字段的联合索引，如 index(a,b,c) 联合索引，则相当于创建了 a 单列索引，(a,b)联合索引，和(a,b,c)联合索引（但并不是建立了多个索引树）。mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a &#x3D; 1 and b &#x3D; 2 and c &gt; 3 and d &#x3D; 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</li>
+<li>&#x3D;和in可以乱序，比如a &#x3D; 1 and b &#x3D; 2 and c &#x3D; 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。</li>
+<li>如果建立的索引顺序是 (a,b) 那么直接采用 where b &#x3D; 5 这种查询条件是无法利用到索引的，这一条最能体现最左匹配的特性。</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h2><p>mysql的一种数据结构,innodb用B+树实现,通俗的说为了提高查询效率的一种目录</p>
+<h2 id="索引优缺点"><a href="#索引优缺点" class="headerlink" title="索引优缺点"></a>索引优缺点</h2><p>B+树索引存在磁盘上</p>
+<p>优点:极大提高速度</p>
 
-        <div class="article-info info-on-right">
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ggq
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2022/10/08/mysql/索引/" title="" target="_blank">http://example.com/2022/10/08/mysql/索引/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/mysql/%E7%B4%A2%E5%BC%95/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.368Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%A7%92%E6%9D%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%20&%20JWT%20&%20Oauth2.0/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.354Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2022/10/08/nginx/%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/10/08/mysql/%E7%AC%AC%E4%B8%80%E8%AE%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="extend next" rel="next" href="/archives/2022/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -507,8 +592,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

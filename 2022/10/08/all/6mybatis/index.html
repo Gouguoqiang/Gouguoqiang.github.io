@@ -6,17 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | ggq</title>
+  <title>ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="前类中查找一个方法快捷键: Ctrl + F12  常用注解1、@TableIdMyBatis-Plus在实现增删改查时，会默认将id作为主键列，并在插入数据时，默认基于雪花算法的策略生成id，这个雪花算法在这里就不明讲了。 当使用@TableId(value &#x3D; “id”)语句时，若实体类和表中表示主键的不是id，而是其他字段，例如代码中的uid，MyBatis-Plus会自动识别ui">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ggq">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+<meta property="og:url" content="http://example.com/2022/10/08/all/6mybatis/index.html">
 <meta property="og:site_name" content="ggq">
+<meta property="og:description" content="前类中查找一个方法快捷键: Ctrl + F12  常用注解1、@TableIdMyBatis-Plus在实现增删改查时，会默认将id作为主键列，并在插入数据时，默认基于雪花算法的策略生成id，这个雪花算法在这里就不明讲了。 当使用@TableId(value &#x3D; “id”)语句时，若实体类和表中表示主键的不是id，而是其他字段，例如代码中的uid，MyBatis-Plus会自动识别ui">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-26a9b1ab691d21d4737f98f781100f7a_720w.jpg">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-860b50571bf1edf8ef154776e5e56199_720w.jpg">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220816161925216.png">
+<meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220816162408277.png">
+<meta property="article:published_time" content="2022-10-08T15:41:09.651Z">
+<meta property="article:modified_time" content="2022-10-08T15:13:04.672Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/80/v2-26a9b1ab691d21d4737f98f781100f7a_720w.jpg">
   
     <link rel="alternative" href="/atom.xml" title="ggq" type="application/atom+xml">
   
@@ -207,266 +218,1160 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-all/6mybatis" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+  <div class="article-entry" itemprop="articleBody">
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/%E8%AE%A1%E5%88%92/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
+    <p>前类中查找一个方法快捷键: Ctrl + F12 </p>
+<h1 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h1><h3 id="1、-TableId"><a href="#1、-TableId" class="headerlink" title="1、@TableId"></a>1、@TableId</h3><p>MyBatis-Plus在实现增删改查时，会默认将id作为主键列，并在插入数据时，默认基于雪花算法的策略生成id，这个雪花算法在这里就不明讲了。</p>
+<p>当使用@TableId(value &#x3D; “id”)语句时，若实体类和表中表示主键的不是id，而是其他字段，例如代码中的uid，MyBatis-Plus会自动识别uid为主键列，否则就会报这样的错误：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-26a9b1ab691d21d4737f98f781100f7a_720w.jpg" alt="img"></p>
+<p>当使用@TableId(value &#x3D; “id”,type &#x3D; IdType.AUTO)语句时，代表着使用数据库的自增策略，注意，该类型请确保数据库设置了id自增，否则无效！</p>
+<p>当然呢，@TableId的功能，也可以写在application.yml配置文件中，配置如下：</p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mybatis-plus:</span><br><span class="line">  global-config:</span><br><span class="line">    banner: false</span><br><span class="line">    db-config:</span><br><span class="line">      # 配置MyBatis-Plus操作表的默认前缀</span><br><span class="line">      table-prefix: &quot;t_&quot;</span><br><span class="line">      # 配置MyBatis-Plus的主键策略</span><br><span class="line">      id-type: auto</span><br><span class="line">  # 配置MyBatis日志</span><br><span class="line">  configuration:</span><br><span class="line">    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl</span><br></pre></td></tr></table></figure>
 
-        </div>
-    	 
+<h3 id="2、-TableField"><a href="#2、-TableField" class="headerlink" title="2、@TableField"></a>2、@TableField</h3><p>MyBatis-Plus在执行SQL语句时，要保证实体类中的属性名和表中的字段名一致，否则就会报错，语句@TableField(value &#x3D; “is_deleted”)代表着让数据库表中is_deleted与实体类中isDeleted字段名一样。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>若实体类中的属性使用的是驼峰命名风格，而表中的字段使用的是下划线命名风格<br>例如实体类属性userName，表中字段user_name，此时MyBatis-Plus会自动将下划线命名风格转化为驼峰命名风格</li>
+<li>若实体类中的属性和表中的字段不满足上述条件，例如实体类属性name，表中字段username，此时需要在实体类属性上使用@TableField(“username”)设置属性所对应的字段名</li>
+</ul>
+<h3 id="3、-TableLogic"><a href="#3、-TableLogic" class="headerlink" title="3、@TableLogic"></a>3、@TableLogic</h3><p><strong>在讲这个注解之前，我们先认识一下逻辑删除。</strong></p>
+<ul>
+<li>物理删除：真实删除，将对应数据从数据库中删除，之后查询不到此条被删除的数据</li>
+<li>逻辑删除：假删除，将对应数据中代表是否被删除字段的状态修改为“被删除状态”，之后在数据库中仍旧能看到此条数据记录</li>
+<li>使用场景：可以进行数据恢复</li>
+</ul>
+<p><img src="https://pic2.zhimg.com/80/v2-860b50571bf1edf8ef154776e5e56199_720w.jpg" alt="img"></p>
+<p>在我的数据库表中，is_delete为1时，代表着逻辑上的删除，is_delete为0时，表示没有删除</p>
+<p>注解@TableLogic的使用，就代表着该类中的属性是逻辑删除的属性</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>在测试逻辑删除的时候，真正执行的是修改UPDATE t_user SET is_deleted&#x3D;1 WHERE id&#x3D;? AND is_deleted&#x3D;0</li>
+<li>测试查询功能，被逻辑删除的数据默认不会被查询SELECT id,username AS name,age,email,is_deleted FROM t_user WHERE is_deleted&#x3D;0</li>
+</ul>
+<p>在学习mybatis-plus分页插件的时候，我们需要配置拦截器，看代码：</p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class MybatisPlusConfig &#123;</span><br><span class="line">    @Bean</span><br><span class="line">    public MybatisPlusInterceptor mybatisPlusInterceptor() &#123;</span><br><span class="line">        MybatisPlusInterceptor interceptor = </span><br><span class="line">                new MybatisPlusInterceptor();</span><br><span class="line"> </span><br><span class="line">        interceptor.addInnerInterceptor</span><br><span class="line">                (new PaginationInnerInterceptor(DbType.MYSQL));</span><br><span class="line">        return interceptor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
+
+
+<h3 id="4、-Version"><a href="#4、-Version" class="headerlink" title="4、@Version"></a>4、@Version</h3><p>在我们学习乐观锁的时候，肯定见过如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">@TableName(&quot;t_product&quot;)</span><br><span class="line">public class Product &#123;</span><br><span class="line">    private Long id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer price;</span><br><span class="line">    @Version</span><br><span class="line">    private Integer version;</span><br><span class="line">&#125;</span><br><span class="line">@Configuration</span><br><span class="line">public class MybatisPlusConfig &#123;</span><br><span class="line">    @Bean</span><br><span class="line">    public MybatisPlusInterceptor mybatisPlusInterceptor() &#123;</span><br><span class="line">        MybatisPlusInterceptor interceptor =</span><br><span class="line">                new MybatisPlusInterceptor();</span><br><span class="line">        //分页插件</span><br><span class="line">        interceptor.addInnerInterceptor</span><br><span class="line">                (new PaginationInnerInterceptor(DbType.MYSQL));</span><br><span class="line">        //乐观锁插件</span><br><span class="line">        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());</span><br><span class="line">        return interceptor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而这个注解@Version就是实现乐观锁的重要注解，当要更新数据库中的数据时，例如价格，version 就会加 1，如果where语句中的version版本不对，则更新失败。</p>
+<h1 id="CRUD-接口"><a href="#CRUD-接口" class="headerlink" title="CRUD 接口"></a>CRUD 接口</h1><h2 id="Service-CRUD-接口"><a href="#Service-CRUD-接口" class="headerlink" title="#Service CRUD 接口"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#service-crud-%E6%8E%A5%E5%8F%A3">#</a>Service CRUD 接口</h2><p>说明:</p>
+<ul>
+<li>通用 Service CRUD 封装<a target="_blank" rel="noopener" href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/service/IService.java">IService (opens new window)</a>接口，进一步封装 CRUD 采用 <code>get 查询单行</code> <code>remove 删除</code> <code>list 查询集合</code> <code>page 分页</code> 前缀命名方式区分 <code>Mapper</code> 层避免混淆，</li>
+<li>泛型 <code>T</code> 为任意实体对象</li>
+<li>建议如果存在自定义通用 Service 方法的可能，请创建自己的 <code>IBaseService</code> 继承 <code>Mybatis-Plus</code> 提供的基类</li>
+<li>对象 <code>Wrapper</code> 为 <a target="_blank" rel="noopener" href="https://baomidou.com/01.%E6%8C%87%E5%8D%97/02.%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD/wrapper.html">条件构造器</a></li>
+</ul>
+<h3 id="Save"><a href="#Save" class="headerlink" title="#Save"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#save">#</a>Save</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入一条记录（选择字段，策略插入）</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">save</span><span class="params">(T entity)</span>;</span><br><span class="line"><span class="comment">// 插入（批量）</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">saveBatch</span><span class="params">(Collection&lt;T&gt; entityList)</span>;</span><br><span class="line"><span class="comment">// 插入（批量）</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">saveBatch</span><span class="params">(Collection&lt;T&gt; entityList, <span class="type">int</span> batchSize)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="参数说明"><a href="#参数说明" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">T</td>
+<td align="center">entity</td>
+<td align="center">实体对象</td>
+</tr>
+<tr>
+<td align="center">Collection<T></td>
+<td align="center">entityList</td>
+<td align="center">实体对象集合</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">batchSize</td>
+<td align="center">插入批次数量</td>
+</tr>
+</tbody></table>
+<h3 id="SaveOrUpdate"><a href="#SaveOrUpdate" class="headerlink" title="#SaveOrUpdate"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#saveorupdate">#</a>SaveOrUpdate</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// TableId 注解存在更新记录，否插入一条记录</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">saveOrUpdate</span><span class="params">(T entity)</span>;</span><br><span class="line"><span class="comment">// 根据updateWrapper尝试更新，否继续执行saveOrUpdate(T)方法</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">saveOrUpdate</span><span class="params">(T entity, Wrapper&lt;T&gt; updateWrapper)</span>;</span><br><span class="line"><span class="comment">// 批量修改插入</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">saveOrUpdateBatch</span><span class="params">(Collection&lt;T&gt; entityList)</span>;</span><br><span class="line"><span class="comment">// 批量修改插入</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">saveOrUpdateBatch</span><span class="params">(Collection&lt;T&gt; entityList, <span class="type">int</span> batchSize)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</p>
+<h4 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-2">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">T</td>
+<td align="center">entity</td>
+<td align="center">实体对象</td>
+</tr>
+<tr>
+<td align="center">Wrapper<T></td>
+<td align="center">updateWrapper</td>
+<td align="center">实体对象封装操作类 UpdateWrapper</td>
+</tr>
+<tr>
+<td align="center">Collection<T></td>
+<td align="center">entityList</td>
+<td align="center">实体对象集合</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">batchSize</td>
+<td align="center">插入批次数量</td>
+</tr>
+</tbody></table>
+<h3 id="Remove"><a href="#Remove" class="headerlink" title="#Remove"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#remove">#</a>Remove</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据 entity 条件，删除记录</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">remove</span><span class="params">(Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 根据 ID 删除</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">removeById</span><span class="params">(Serializable id)</span>;</span><br><span class="line"><span class="comment">// 根据 columnMap 条件，删除记录</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">removeByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span>;</span><br><span class="line"><span class="comment">// 删除（根据ID 批量删除）</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">removeByIds</span><span class="params">(Collection&lt;? extends Serializable&gt; idList)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</p>
+<h4 id="参数说明-2"><a href="#参数说明-2" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-3">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Wrapper<T></td>
+<td align="center">queryWrapper</td>
+<td align="center">实体包装类 QueryWrapper</td>
+</tr>
+<tr>
+<td align="center">Serializable</td>
+<td align="center">id</td>
+<td align="center">主键 ID</td>
+</tr>
+<tr>
+<td align="center">Map&lt;String, Object&gt;</td>
+<td align="center">columnMap</td>
+<td align="center">表字段 map 对象</td>
+</tr>
+<tr>
+<td align="center">Collection&lt;? extends Serializable&gt;</td>
+<td align="center">idList</td>
+<td align="center">主键 ID 列表</td>
+</tr>
+</tbody></table>
+<h3 id="Update"><a href="#Update" class="headerlink" title="#Update"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#update">#</a>Update</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据 UpdateWrapper 条件，更新记录 需要设置sqlset</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">update</span><span class="params">(Wrapper&lt;T&gt; updateWrapper)</span>;</span><br><span class="line"><span class="comment">// 根据 whereWrapper 条件，更新记录</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">update</span><span class="params">(T updateEntity, Wrapper&lt;T&gt; whereWrapper)</span>;</span><br><span class="line"><span class="comment">// 根据 ID 选择修改</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">updateById</span><span class="params">(T entity)</span>;</span><br><span class="line"><span class="comment">// 根据ID 批量更新</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">updateBatchById</span><span class="params">(Collection&lt;T&gt; entityList)</span>;</span><br><span class="line"><span class="comment">// 根据ID 批量更新</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">updateBatchById</span><span class="params">(Collection&lt;T&gt; entityList, <span class="type">int</span> batchSize)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</p>
+<h4 id="参数说明-3"><a href="#参数说明-3" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-4">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Wrapper<T></td>
+<td align="center">updateWrapper</td>
+<td align="center">实体对象封装操作类 UpdateWrapper</td>
+</tr>
+<tr>
+<td align="center">T</td>
+<td align="center">entity</td>
+<td align="center">实体对象</td>
+</tr>
+<tr>
+<td align="center">Collection<T></td>
+<td align="center">entityList</td>
+<td align="center">实体对象集合</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">batchSize</td>
+<td align="center">更新批次数量</td>
+</tr>
+</tbody></table>
+<h3 id="Get"><a href="#Get" class="headerlink" title="#Get"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#get">#</a>Get</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据 ID 查询</span></span><br><span class="line">T <span class="title function_">getById</span><span class="params">(Serializable id)</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper，查询一条记录。结果集，如果是多个会抛出异常，随机取一条加上限制条件 wrapper.last(&quot;LIMIT 1&quot;)</span></span><br><span class="line">T <span class="title function_">getOne</span><span class="params">(Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper，查询一条记录</span></span><br><span class="line">T <span class="title function_">getOne</span><span class="params">(Wrapper&lt;T&gt; queryWrapper, <span class="type">boolean</span> throwEx)</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper，查询一条记录</span></span><br><span class="line">Map&lt;String, Object&gt; <span class="title function_">getMap</span><span class="params">(Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper，查询一条记录</span></span><br><span class="line">&lt;V&gt; V <span class="title function_">getObj</span><span class="params">(Wrapper&lt;T&gt; queryWrapper, Function&lt;? <span class="built_in">super</span> Object, V&gt; mapper)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</p>
+<h4 id="参数说明-4"><a href="#参数说明-4" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-5">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Serializable</td>
+<td align="center">id</td>
+<td align="center">主键 ID</td>
+</tr>
+<tr>
+<td align="center">Wrapper<T></td>
+<td align="center">queryWrapper</td>
+<td align="center">实体对象封装操作类 QueryWrapper</td>
+</tr>
+<tr>
+<td align="center">boolean</td>
+<td align="center">throwEx</td>
+<td align="center">有多个 result 是否抛出异常</td>
+</tr>
+<tr>
+<td align="center">T</td>
+<td align="center">entity</td>
+<td align="center">实体对象</td>
+</tr>
+<tr>
+<td align="center">Function&lt;? super Object, V&gt;</td>
+<td align="center">mapper</td>
+<td align="center">转换函数</td>
+</tr>
+</tbody></table>
+<h3 id="List"><a href="#List" class="headerlink" title="#List"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#list">#</a>List</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询所有</span></span><br><span class="line">List&lt;T&gt; <span class="title function_">list</span><span class="params">()</span>;</span><br><span class="line"><span class="comment">// 查询列表</span></span><br><span class="line">List&lt;T&gt; <span class="title function_">list</span><span class="params">(Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 查询（根据ID 批量查询）</span></span><br><span class="line">Collection&lt;T&gt; <span class="title function_">listByIds</span><span class="params">(Collection&lt;? extends Serializable&gt; idList)</span>;</span><br><span class="line"><span class="comment">// 查询（根据 columnMap 条件）</span></span><br><span class="line">Collection&lt;T&gt; <span class="title function_">listByMap</span><span class="params">(Map&lt;String, Object&gt; columnMap)</span>;</span><br><span class="line"><span class="comment">// 查询所有列表</span></span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">listMaps</span><span class="params">()</span>;</span><br><span class="line"><span class="comment">// 查询列表</span></span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">listMaps</span><span class="params">(Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 查询全部记录</span></span><br><span class="line">List&lt;Object&gt; <span class="title function_">listObjs</span><span class="params">()</span>;</span><br><span class="line"><span class="comment">// 查询全部记录</span></span><br><span class="line">&lt;V&gt; List&lt;V&gt; <span class="title function_">listObjs</span><span class="params">(Function&lt;? <span class="built_in">super</span> Object, V&gt; mapper)</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper 条件，查询全部记录</span></span><br><span class="line">List&lt;Object&gt; <span class="title function_">listObjs</span><span class="params">(Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper 条件，查询全部记录</span></span><br><span class="line">&lt;V&gt; List&lt;V&gt; <span class="title function_">listObjs</span><span class="params">(Wrapper&lt;T&gt; queryWrapper, Function&lt;? <span class="built_in">super</span> Object, V&gt; mapper)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20</p>
+<h4 id="参数说明-5"><a href="#参数说明-5" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-6">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Wrapper<T></td>
+<td align="center">queryWrapper</td>
+<td align="center">实体对象封装操作类 QueryWrapper</td>
+</tr>
+<tr>
+<td align="center">Collection&lt;? extends Serializable&gt;</td>
+<td align="center">idList</td>
+<td align="center">主键 ID 列表</td>
+</tr>
+<tr>
+<td align="center">Map&lt;String, Object&gt;</td>
+<td align="center">columnMap</td>
+<td align="center">表字段 map 对象</td>
+</tr>
+<tr>
+<td align="center">Function&lt;? super Object, V&gt;</td>
+<td align="center">mapper</td>
+<td align="center">转换函数</td>
+</tr>
+</tbody></table>
+<h3 id="Page"><a href="#Page" class="headerlink" title="#Page"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#page">#</a>Page</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无条件分页查询</span></span><br><span class="line">IPage&lt;T&gt; <span class="title function_">page</span><span class="params">(IPage&lt;T&gt; page)</span>;</span><br><span class="line"><span class="comment">// 条件分页查询</span></span><br><span class="line">IPage&lt;T&gt; <span class="title function_">page</span><span class="params">(IPage&lt;T&gt; page, Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 无条件分页查询</span></span><br><span class="line">IPage&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">pageMaps</span><span class="params">(IPage&lt;T&gt; page)</span>;</span><br><span class="line"><span class="comment">// 条件分页查询</span></span><br><span class="line">IPage&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">pageMaps</span><span class="params">(IPage&lt;T&gt; page, Wrapper&lt;T&gt; queryWrapper)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</p>
+<h4 id="参数说明-6"><a href="#参数说明-6" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-7">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">IPage<T></td>
+<td align="center">page</td>
+<td align="center">翻页对象</td>
+</tr>
+<tr>
+<td align="center">Wrapper<T></td>
+<td align="center">queryWrapper</td>
+<td align="center">实体对象封装操作类 QueryWrapper</td>
+</tr>
+</tbody></table>
+<h3 id="Count"><a href="#Count" class="headerlink" title="#Count"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#count">#</a>Count</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询总记录数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">count</span><span class="params">()</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper 条件，查询总记录数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">count</span><span class="params">(Wrapper&lt;T&gt; queryWrapper)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4</p>
+<h4 id="参数说明-7"><a href="#参数说明-7" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-8">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Wrapper<T></td>
+<td align="center">queryWrapper</td>
+<td align="center">实体对象封装操作类 QueryWrapper</td>
+</tr>
+</tbody></table>
+<h3 id="Chain"><a href="#Chain" class="headerlink" title="#Chain"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#chain">#</a>Chain</h3><h4 id="query"><a href="#query" class="headerlink" title="#query"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#query">#</a>query</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 链式查询 普通</span></span><br><span class="line">QueryChainWrapper&lt;T&gt; <span class="title function_">query</span><span class="params">()</span>;</span><br><span class="line"><span class="comment">// 链式查询 lambda 式。注意：不支持 Kotlin</span></span><br><span class="line">LambdaQueryChainWrapper&lt;T&gt; <span class="title function_">lambdaQuery</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例：</span></span><br><span class="line">query().eq(<span class="string">&quot;column&quot;</span>, value).one();</span><br><span class="line">lambdaQuery().eq(Entity::getId, value).list();</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</p>
+<h4 id="update"><a href="#update" class="headerlink" title="#update"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#update-2">#</a>update</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 链式更改 普通</span></span><br><span class="line">UpdateChainWrapper&lt;T&gt; <span class="title function_">update</span><span class="params">()</span>;</span><br><span class="line"><span class="comment">// 链式更改 lambda 式。注意：不支持 Kotlin</span></span><br><span class="line">LambdaUpdateChainWrapper&lt;T&gt; <span class="title function_">lambdaUpdate</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例：</span></span><br><span class="line">update().eq(<span class="string">&quot;column&quot;</span>, value).remove();</span><br><span class="line">lambdaUpdate().eq(Entity::getId, value).update(entity);</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</p>
+<h2 id="Mapper-CRUD-接口"><a href="#Mapper-CRUD-接口" class="headerlink" title="#Mapper CRUD 接口"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#mapper-crud-%E6%8E%A5%E5%8F%A3">#</a>Mapper CRUD 接口</h2><p>说明:</p>
+<ul>
+<li>通用 CRUD 封装<a target="_blank" rel="noopener" href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-core/src/main/java/com/baomidou/mybatisplus/core/mapper/BaseMapper.java">BaseMapper (opens new window)</a>接口，为 <code>Mybatis-Plus</code> 启动时自动解析实体表关系映射转换为 <code>Mybatis</code> 内部对象注入容器</li>
+<li>泛型 <code>T</code> 为任意实体对象</li>
+<li>参数 <code>Serializable</code> 为任意类型主键 <code>Mybatis-Plus</code> 不推荐使用复合主键约定每一张表都有自己的唯一 <code>id</code> 主键</li>
+<li>对象 <code>Wrapper</code> 为 <a target="_blank" rel="noopener" href="https://baomidou.com/01.%E6%8C%87%E5%8D%97/02.%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD/wrapper.html">条件构造器</a></li>
+</ul>
+<h3 id="Insert"><a href="#Insert" class="headerlink" title="#Insert"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#insert">#</a>Insert</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入一条记录</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">insert</span><span class="params">(T entity)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<h4 id="参数说明-8"><a href="#参数说明-8" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-9">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">T</td>
+<td align="center">entity</td>
+<td align="center">实体对象</td>
+</tr>
+</tbody></table>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="#Delete"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#delete">#</a>Delete</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据 entity 条件，删除记录</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">delete</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; wrapper)</span>;</span><br><span class="line"><span class="comment">// 删除（根据ID 批量删除）</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">deleteBatchIds</span><span class="params">(<span class="meta">@Param(Constants.COLLECTION)</span> Collection&lt;? extends Serializable&gt; idList)</span>;</span><br><span class="line"><span class="comment">// 根据 ID 删除</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">deleteById</span><span class="params">(Serializable id)</span>;</span><br><span class="line"><span class="comment">// 根据 columnMap 条件，删除记录</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">deleteByMap</span><span class="params">(<span class="meta">@Param(Constants.COLUMN_MAP)</span> Map&lt;String, Object&gt; columnMap)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</p>
+<h4 id="参数说明-9"><a href="#参数说明-9" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-10">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Wrapper<T></td>
+<td align="center">wrapper</td>
+<td align="center">实体对象封装操作类（可以为 null）</td>
+</tr>
+<tr>
+<td align="center">Collection&lt;? extends Serializable&gt;</td>
+<td align="center">idList</td>
+<td align="center">主键 ID 列表(不能为 null 以及 empty)</td>
+</tr>
+<tr>
+<td align="center">Serializable</td>
+<td align="center">id</td>
+<td align="center">主键 ID</td>
+</tr>
+<tr>
+<td align="center">Map&lt;String, Object&gt;</td>
+<td align="center">columnMap</td>
+<td align="center">表字段 map 对象</td>
+</tr>
+</tbody></table>
+<h3 id="Update-1"><a href="#Update-1" class="headerlink" title="#Update"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#update-3">#</a>Update</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据 whereWrapper 条件，更新记录</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">update</span><span class="params">(<span class="meta">@Param(Constants.ENTITY)</span> T updateEntity, <span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; whereWrapper)</span>;</span><br><span class="line"><span class="comment">// 根据 ID 修改</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">updateById</span><span class="params">(<span class="meta">@Param(Constants.ENTITY)</span> T entity)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4</p>
+<h4 id="参数说明-10"><a href="#参数说明-10" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-11">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">T</td>
+<td align="center">entity</td>
+<td align="center">实体对象 (set 条件值,可为 null)</td>
+</tr>
+<tr>
+<td align="center">Wrapper<T></td>
+<td align="center">updateWrapper</td>
+<td align="center">实体对象封装操作类（可以为 null,里面的 entity 用于生成 where 语句）</td>
+</tr>
+</tbody></table>
+<h3 id="Select"><a href="#Select" class="headerlink" title="#Select"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#select">#</a>Select</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据 ID 查询</span></span><br><span class="line">T <span class="title function_">selectById</span><span class="params">(Serializable id)</span>;</span><br><span class="line"><span class="comment">// 根据 entity 条件，查询一条记录</span></span><br><span class="line">T <span class="title function_">selectOne</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询（根据ID 批量查询）</span></span><br><span class="line">List&lt;T&gt; <span class="title function_">selectBatchIds</span><span class="params">(<span class="meta">@Param(Constants.COLLECTION)</span> Collection&lt;? extends Serializable&gt; idList)</span>;</span><br><span class="line"><span class="comment">// 根据 entity 条件，查询全部记录</span></span><br><span class="line">List&lt;T&gt; <span class="title function_">selectList</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 查询（根据 columnMap 条件）</span></span><br><span class="line">List&lt;T&gt; <span class="title function_">selectByMap</span><span class="params">(<span class="meta">@Param(Constants.COLUMN_MAP)</span> Map&lt;String, Object&gt; columnMap)</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper 条件，查询全部记录</span></span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">selectMaps</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper 条件，查询全部记录。注意： 只返回第一个字段的值</span></span><br><span class="line">List&lt;Object&gt; <span class="title function_">selectObjs</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据 entity 条件，查询全部记录（并翻页）</span></span><br><span class="line">IPage&lt;T&gt; <span class="title function_">selectPage</span><span class="params">(IPage&lt;T&gt; page, <span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper 条件，查询全部记录（并翻页）</span></span><br><span class="line">IPage&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">selectMapsPage</span><span class="params">(IPage&lt;T&gt; page, <span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line"><span class="comment">// 根据 Wrapper 条件，查询总记录数</span></span><br><span class="line">Integer <span class="title function_">selectCount</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22</p>
+<h4 id="参数说明-11"><a href="#参数说明-11" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-12">#</a>参数说明</h4><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Serializable</td>
+<td align="center">id</td>
+<td align="center">主键 ID</td>
+</tr>
+<tr>
+<td align="center">Wrapper<T></td>
+<td align="center">queryWrapper</td>
+<td align="center">实体对象封装操作类（可以为 null）</td>
+</tr>
+<tr>
+<td align="center">Collection&lt;? extends Serializable&gt;</td>
+<td align="center">idList</td>
+<td align="center">主键 ID 列表(不能为 null 以及 empty)</td>
+</tr>
+<tr>
+<td align="center">Map&lt;String, Object&gt;</td>
+<td align="center">columnMap</td>
+<td align="center">表字段 map 对象</td>
+</tr>
+<tr>
+<td align="center">IPage<T></td>
+<td align="center">page</td>
+<td align="center">分页查询条件（可以为 RowBounds.DEFAULT）</td>
+</tr>
+</tbody></table>
+<h2 id="mapper-层-选装件"><a href="#mapper-层-选装件" class="headerlink" title="#mapper 层 选装件"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#mapper-%E5%B1%82-%E9%80%89%E8%A3%85%E4%BB%B6">#</a>mapper 层 选装件</h2><p>说明:</p>
+<p>选装件位于 <code>com.baomidou.mybatisplus.extension.injector.methods</code> 包下 需要配合<a target="_blank" rel="noopener" href="https://baomidou.com/pages/42ea4a/">Sql 注入器</a>使用,<a target="_blank" rel="noopener" href="https://gitee.com/baomidou/mybatis-plus-samples/tree/master/mybatis-plus-sample-sql-injector">案例(opens new window)</a><br>使用详细见<a target="_blank" rel="noopener" href="https://gitee.com/baomidou/mybatis-plus/tree/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/injector/methods">源码注释(opens new window)</a></p>
+<h3 id="AlwaysUpdateSomeColumnById-opens-new-window"><a href="#AlwaysUpdateSomeColumnById-opens-new-window" class="headerlink" title="#AlwaysUpdateSomeColumnById(opens new window)"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#alwaysupdatesomecolumnbyid">#</a><a target="_blank" rel="noopener" href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/injector/methods/AlwaysUpdateSomeColumnById.java">AlwaysUpdateSomeColumnById(opens new window)</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">alwaysUpdateSomeColumnById</span><span class="params">(T entity)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1</p>
+<h3 id="insertBatchSomeColumn-opens-new-window"><a href="#insertBatchSomeColumn-opens-new-window" class="headerlink" title="#insertBatchSomeColumn(opens new window)"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#insertbatchsomecolumn">#</a><a target="_blank" rel="noopener" href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/injector/methods/InsertBatchSomeColumn.java">insertBatchSomeColumn(opens new window)</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">insertBatchSomeColumn</span><span class="params">(List&lt;T&gt; entityList)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1</p>
+<h3 id="logicDeleteByIdWithFill-opens-new-window"><a href="#logicDeleteByIdWithFill-opens-new-window" class="headerlink" title="#logicDeleteByIdWithFill(opens new window)"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#logicdeletebyidwithfill">#</a><a target="_blank" rel="noopener" href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/injector/methods/LogicDeleteByIdWithFill.java">logicDeleteByIdWithFill(opens new window)</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">logicDeleteByIdWithFill</span><span class="params">(T entity)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1</p>
+<h2 id="ActiveRecord-模式"><a href="#ActiveRecord-模式" class="headerlink" title="#ActiveRecord 模式"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#activerecord-%E6%A8%A1%E5%BC%8F">#</a>ActiveRecord 模式</h2><p>说明:</p>
+<ul>
+<li>实体类只需继承 Model 类即可进行强大的 CRUD 操作</li>
+<li>需要项目中已注入对应实体的BaseMapper</li>
+</ul>
+<h3 id="操作步骤："><a href="#操作步骤：" class="headerlink" title="#操作步骤："></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4">#</a>操作步骤：</h3><ul>
+<li>继承 <a target="_blank" rel="noopener" href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/activerecord/Model.java">Model(opens new window)</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">extends</span> <span class="title class_">Model</span>&lt;User&gt;&#123;</span><br><span class="line">    <span class="comment">// fields...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3</p>
+<ul>
+<li>调用<code>CRUD</code>方法(演示部分api，仅供参考)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">user.insert();</span><br><span class="line">user.selectAll();</span><br><span class="line">user.updateById();</span><br><span class="line">user.deleteById();</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6</p>
+<h2 id="SimpleQuery-工具类"><a href="#SimpleQuery-工具类" class="headerlink" title="#SimpleQuery 工具类"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#simplequery-%E5%B7%A5%E5%85%B7%E7%B1%BB">#</a>SimpleQuery 工具类</h2><p>说明:</p>
+<ul>
+<li>对<code>selectList</code>查询后的结果用<code>Stream</code>流进行了一些封装，使其可以返回一些指定结果，简洁了api的调用</li>
+<li>需要项目中已注入对应实体的BaseMapper</li>
+<li>使用方式见: <a target="_blank" rel="noopener" href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus/src/test/java/com/baomidou/mybatisplus/test/toolkit/SimpleQueryTest.java">测试用例(opens new window)</a></li>
+<li>对于下方参数<code>peeks</code>，其类型为<code>Consumer...</code>，可一直往后叠加操作例如：<code>List&lt;Long&gt; ids = SimpleQuery.list(Wrappers.lambdaQuery(), Entity::getId, System.out::println, user -&gt; userNames.add(user.getName()));</code></li>
+</ul>
+<h3 id="keyMap"><a href="#keyMap" class="headerlink" title="#keyMap"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#keymap">#</a>keyMap</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询表内记录，封装返回为Map&lt;属性,实体&gt;</span></span><br><span class="line">Map&lt;A, E&gt; <span class="title function_">keyMap</span><span class="params">(LambdaQueryWrapper&lt;E&gt; wrapper, SFunction&lt;E, A&gt; sFunction, Consumer&lt;E&gt;... peeks)</span>;</span><br><span class="line"><span class="comment">// 查询表内记录，封装返回为Map&lt;属性,实体&gt;，考虑了并行流的情况</span></span><br><span class="line">Map&lt;A, E&gt; <span class="title function_">keyMap</span><span class="params">(LambdaQueryWrapper&lt;E&gt; wrapper, SFunction&lt;E, A&gt; sFunction, <span class="type">boolean</span> isParallel, Consumer&lt;E&gt;... peeks)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4</p>
+<h5 id="参数说明-12"><a href="#参数说明-12" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-13">#</a>参数说明</h5><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">E</td>
+<td align="center">entity</td>
+<td align="center">实体对象</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">attribute</td>
+<td align="center">实体属性类型,也是map中key的类型</td>
+</tr>
+<tr>
+<td align="center">LambdaQueryWrapper<E></td>
+<td align="center">wrapper</td>
+<td align="center">支持lambda的条件构造器</td>
+</tr>
+<tr>
+<td align="center">SFunction&lt;E, A&gt;</td>
+<td align="center">sFunction</td>
+<td align="center">实体中属性的getter,用于封装后map中作为key的条件</td>
+</tr>
+<tr>
+<td align="center">boolean</td>
+<td align="center">isParallel</td>
+<td align="center">为true时底层使用并行流执行</td>
+</tr>
+<tr>
+<td align="center">Consumer<E>…</td>
+<td align="center">peeks</td>
+<td align="center">可叠加的后续操作</td>
+</tr>
+</tbody></table>
+<h3 id="map"><a href="#map" class="headerlink" title="#map"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#map">#</a>map</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询表内记录，封装返回为Map&lt;属性,属性&gt;</span></span><br><span class="line">Map&lt;A, P&gt; <span class="title function_">map</span><span class="params">(LambdaQueryWrapper&lt;E&gt; wrapper, SFunction&lt;E, A&gt; keyFunc, SFunction&lt;E, P&gt; valueFunc, Consumer&lt;E&gt;... peeks)</span>;</span><br><span class="line"><span class="comment">// 查询表内记录，封装返回为Map&lt;属性,属性&gt;，考虑了并行流的情况</span></span><br><span class="line">Map&lt;A, P&gt; <span class="title function_">map</span><span class="params">(LambdaQueryWrapper&lt;E&gt; wrapper, SFunction&lt;E, A&gt; keyFunc, SFunction&lt;E, P&gt; valueFunc, <span class="type">boolean</span> isParallel, Consumer&lt;E&gt;... peeks)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4</p>
+<h5 id="参数说明-13"><a href="#参数说明-13" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-14">#</a>参数说明</h5><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">E</td>
+<td align="center">entity</td>
+<td align="center">实体对象</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">attribute</td>
+<td align="center">实体属性类型,也是map中key的类型</td>
+</tr>
+<tr>
+<td align="center">P</td>
+<td align="center">attribute</td>
+<td align="center">实体属性类型,也是map中value的类型</td>
+</tr>
+<tr>
+<td align="center">LambdaQueryWrapper<E></td>
+<td align="center">wrapper</td>
+<td align="center">支持lambda的条件构造器</td>
+</tr>
+<tr>
+<td align="center">SFunction&lt;E, A&gt;</td>
+<td align="center">keyFunc</td>
+<td align="center">封装后map中作为key的条件</td>
+</tr>
+<tr>
+<td align="center">SFunction&lt;E, P&gt;</td>
+<td align="center">valueFunc</td>
+<td align="center">封装后map中作为value的条件</td>
+</tr>
+<tr>
+<td align="center">boolean</td>
+<td align="center">isParallel</td>
+<td align="center">为true时底层使用并行流执行</td>
+</tr>
+<tr>
+<td align="center">Consumer<E>…</td>
+<td align="center">peeks</td>
+<td align="center">可叠加的后续操作</td>
+</tr>
+</tbody></table>
+<h3 id="group"><a href="#group" class="headerlink" title="#group"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#group">#</a>group</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询表内记录，封装返回为Map&lt;属性,List&lt;实体&gt;&gt;</span></span><br><span class="line">Map&lt;K, List&lt;T&gt;&gt; <span class="title function_">group</span><span class="params">(LambdaQueryWrapper&lt;T&gt; wrapper, SFunction&lt;T, A&gt; sFunction, Consumer&lt;T&gt;... peeks)</span>;</span><br><span class="line"><span class="comment">// 查询表内记录，封装返回为Map&lt;属性,List&lt;实体&gt;&gt;，考虑了并行流的情况</span></span><br><span class="line">Map&lt;K, List&lt;T&gt;&gt; <span class="title function_">group</span><span class="params">(LambdaQueryWrapper&lt;T&gt; wrapper, SFunction&lt;T, K&gt; sFunction, <span class="type">boolean</span> isParallel, Consumer&lt;T&gt;... peeks)</span>;</span><br><span class="line"><span class="comment">// 查询表内记录，封装返回为Map&lt;属性,分组后对集合进行的下游收集器&gt;</span></span><br><span class="line">M <span class="title function_">group</span><span class="params">(LambdaQueryWrapper&lt;T&gt; wrapper, SFunction&lt;T, K&gt; sFunction, Collector&lt;? <span class="built_in">super</span> T, A, D&gt; downstream, Consumer&lt;T&gt;... peeks)</span>;</span><br><span class="line"><span class="comment">// 查询表内记录，封装返回为Map&lt;属性,分组后对集合进行的下游收集器&gt;，考虑了并行流的情况</span></span><br><span class="line">M <span class="title function_">group</span><span class="params">(LambdaQueryWrapper&lt;T&gt; wrapper, SFunction&lt;T, K&gt; sFunction, Collector&lt;? <span class="built_in">super</span> T, A, D&gt; downstream, <span class="type">boolean</span> isParallel, Consumer&lt;T&gt;... peeks)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</p>
+<h5 id="参数说明-14"><a href="#参数说明-14" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-15">#</a>参数说明</h5><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">T</td>
+<td align="center">entity</td>
+<td align="center">实体对象</td>
+</tr>
+<tr>
+<td align="center">K</td>
+<td align="center">attribute</td>
+<td align="center">实体属性类型,也是map中key的类型</td>
+</tr>
+<tr>
+<td align="center">D</td>
+<td align="center">-</td>
+<td align="center">下游收集器返回类型,也是map中value的类型</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">-</td>
+<td align="center">下游操作中间类型</td>
+</tr>
+<tr>
+<td align="center">M</td>
+<td align="center">-</td>
+<td align="center">最终结束返回的Map&lt;K, D&gt;</td>
+</tr>
+<tr>
+<td align="center">LambdaQueryWrapper<E></td>
+<td align="center">wrapper</td>
+<td align="center">支持lambda的条件构造器</td>
+</tr>
+<tr>
+<td align="center">SFunction&lt;E, A&gt;</td>
+<td align="center">sFunction</td>
+<td align="center">分组依据，封装后map中作为key的条件</td>
+</tr>
+<tr>
+<td align="center">Collector&lt;T, A, D&gt;</td>
+<td align="center">downstream</td>
+<td align="center">下游收集器</td>
+</tr>
+<tr>
+<td align="center">boolean</td>
+<td align="center">isParallel</td>
+<td align="center">为true时底层使用并行流执行</td>
+</tr>
+<tr>
+<td align="center">Consumer<T>…</td>
+<td align="center">peeks</td>
+<td align="center">可叠加的后续操作</td>
+</tr>
+</tbody></table>
+<h3 id="list"><a href="#list" class="headerlink" title="#list"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#list-2">#</a>list</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询表内记录，封装返回为List&lt;属性&gt;</span></span><br><span class="line">List&lt;A&gt; <span class="title function_">list</span><span class="params">(LambdaQueryWrapper&lt;E&gt; wrapper, SFunction&lt;E, A&gt; sFunction, Consumer&lt;E&gt;... peeks)</span>;</span><br><span class="line"><span class="comment">// 查询表内记录，封装返回为List&lt;属性&gt;，考虑了并行流的情况</span></span><br><span class="line">List&lt;A&gt; <span class="title function_">list</span><span class="params">(LambdaQueryWrapper&lt;E&gt; wrapper, SFunction&lt;E, A&gt; sFunction, <span class="type">boolean</span> isParallel, Consumer&lt;E&gt;... peeks)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3<br>4</p>
+<h5 id="参数说明-15"><a href="#参数说明-15" class="headerlink" title="#参数说明"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/49cc81/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-16">#</a>参数说明</h5><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参数名</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">E</td>
+<td align="center">entity</td>
+<td align="center">实体对象</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">attribute</td>
+<td align="center">实体属性类型,也是list中元素的类型</td>
+</tr>
+<tr>
+<td align="center">LambdaQueryWrapper<E></td>
+<td align="center">wrapper</td>
+<td align="center">支持lambda的条件构造器</td>
+</tr>
+<tr>
+<td align="center">SFunction&lt;E, A&gt;</td>
+<td align="center">sFunction</td>
+<td align="center">封装后list中的元素</td>
+</tr>
+<tr>
+<td align="center">boolean</td>
+<td align="center">isParallel</td>
+<td align="center">为true时底层使用并行流执行</td>
+</tr>
+<tr>
+<td align="center">Consumer<E>…</td>
+<td align="center">peeks</td>
+<td align="center">可叠加的后续操作</td>
+</tr>
+</tbody></table>
+<h1 id="条件构造器"><a href="#条件构造器" class="headerlink" title="条件构造器"></a>条件构造器</h1><p>说明:</p>
+<ul>
+<li>以下出现的第一个入参<code>boolean condition</code>表示该条件<strong>是否</strong>加入最后生成的sql中，例如：query.like(StringUtils.isNotBlank(name), Entity::getName, name) .eq(age!&#x3D;null &amp;&amp; age &gt;&#x3D; 0, Entity::getAge, age)</li>
+<li>以下代码块内的多个方法均为从上往下补全个别<code>boolean</code>类型的入参,默认为<code>true</code></li>
+<li>以下出现的泛型<code>Param</code>均为<code>Wrapper</code>的子类实例(均具有<code>AbstractWrapper</code>的所有方法)</li>
+<li>以下方法在入参中出现的<code>R</code>为泛型,在普通wrapper中是<code>String</code>,在LambdaWrapper中是<strong>函数</strong>(例:<code>Entity::getId</code>,<code>Entity</code>为实体类,<code>getId</code>为字段<code>id</code>的<strong>getMethod</strong>)</li>
+<li>以下方法入参中的<code>R column</code>均表示数据库字段,当<code>R</code>具体类型为<code>String</code>时则为数据库字段名(<strong>字段名是数据库关键字的自己用转义符包裹!</strong>)!而不是实体类数据字段名!!!,另当<code>R</code>具体类型为<code>SFunction</code>时项目runtime不支持eclipse自家的编译器!!!</li>
+<li>以下举例均为使用普通wrapper,入参为<code>Map</code>和<code>List</code>的均以<code>json</code>形式表现!</li>
+<li>使用中如果入参的<code>Map</code>或者<code>List</code>为<strong>空</strong>,则不会加入最后生成的sql中!!!</li>
+<li>有任何疑问就点开源码看,看不懂<strong>函数</strong>的<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/613a6118e2e0">点击我学习新知识(opens new window)</a></li>
+</ul>
+<p>警告:</p>
+<p>不支持以及不赞成在 RPC 调用中把 Wrapper 进行传输</p>
+<ol>
+<li>wrapper 很重</li>
+<li>传输 wrapper 可以类比为你的 controller 用 map 接收值(开发一时爽,维护火葬场)</li>
+<li>正确的 RPC 调用姿势是写一个 DTO 进行传输,被调用方再根据 DTO 执行相应的操作</li>
+<li>我们拒绝接受任何关于 RPC 传输 Wrapper 报错相关的 issue 甚至 pr</li>
+</ol>
+<h2 id="AbstractWrapper"><a href="#AbstractWrapper" class="headerlink" title="#AbstractWrapper"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#abstractwrapper">#</a>AbstractWrapper</h2><p>说明:</p>
+<p>QueryWrapper(LambdaQueryWrapper) 和 UpdateWrapper(LambdaUpdateWrapper) 的父类<br>用于生成 sql 的 where 条件, entity 属性也用于生成 sql 的 where 条件<br>注意: entity 生成的 where 条件与 使用各个 api 生成的 where 条件<strong>没有任何关联行为</strong></p>
+<h3 id="allEq"><a href="#allEq" class="headerlink" title="#allEq"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#alleq">#</a>allEq</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">allEq(Map&lt;R, V&gt; params)</span><br><span class="line">allEq(Map&lt;R, V&gt; params, <span class="type">boolean</span> null2IsNull)</span><br><span class="line">allEq(<span class="type">boolean</span> condition, Map&lt;R, V&gt; params, <span class="type">boolean</span> null2IsNull)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3</p>
+<ul>
+<li><p>全部</p>
+<p>eq</p>
+<p>(或个别</p>
+<p>isNull</p>
+<p>)</p>
+<p>个别参数说明:</p>
+<p><code>params</code> : <code>key</code>为数据库字段名,<code>value</code>为字段值<br><code>null2IsNull</code> : 为<code>true</code>则在<code>map</code>的<code>value</code>为<code>null</code>时调用 <a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#isnull">isNull</a> 方法,为<code>false</code>时则忽略<code>value</code>为<code>null</code>的</p>
+</li>
+<li><p>例1: <code>allEq(&#123;id:1,name:&quot;老王&quot;,age:null&#125;)</code>—&gt;<code>id = 1 and name = &#39;老王&#39; and age is null</code></p>
+</li>
+<li><p>例2: <code>allEq(&#123;id:1,name:&quot;老王&quot;,age:null&#125;, false)</code>—&gt;<code>id = 1 and name = &#39;老王&#39;</code></p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">allEq(BiPredicate&lt;R, V&gt; filter, Map&lt;R, V&gt; params)</span><br><span class="line">allEq(BiPredicate&lt;R, V&gt; filter, Map&lt;R, V&gt; params, <span class="type">boolean</span> null2IsNull)</span><br><span class="line">allEq(<span class="type">boolean</span> condition, BiPredicate&lt;R, V&gt; filter, Map&lt;R, V&gt; params, <span class="type">boolean</span> null2IsNull) </span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3</p>
+<p>个别参数说明:</p>
+<p><code>filter</code> : 过滤函数,是否允许字段传入比对条件中<br><code>params</code> 与 <code>null2IsNull</code> : 同上</p>
+<ul>
+<li>例1: <code>allEq((k,v) -&gt; k.indexOf(&quot;a&quot;) &gt;= 0, &#123;id:1,name:&quot;老王&quot;,age:null&#125;)</code>—&gt;<code>name = &#39;老王&#39; and age is null</code></li>
+<li>例2: <code>allEq((k,v) -&gt; k.indexOf(&quot;a&quot;) &gt;= 0, &#123;id:1,name:&quot;老王&quot;,age:null&#125;, false)</code>—&gt;<code>name = &#39;老王&#39;</code></li>
+</ul>
+<h3 id="eq"><a href="#eq" class="headerlink" title="#eq"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#eq">#</a>eq</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eq(R column, Object val)</span><br><span class="line">eq(<span class="type">boolean</span> condition, R column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>等于 &#x3D;</li>
+<li>例: <code>eq(&quot;name&quot;, &quot;老王&quot;)</code>—&gt;<code>name = &#39;老王&#39;</code></li>
+</ul>
+<h3 id="ne"><a href="#ne" class="headerlink" title="#ne"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#ne">#</a>ne</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ne(R column, Object val)</span><br><span class="line">ne(<span class="type">boolean</span> condition, R column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>不等于 &lt;&gt;</li>
+<li>例: <code>ne(&quot;name&quot;, &quot;老王&quot;)</code>—&gt;<code>name &lt;&gt; &#39;老王&#39;</code></li>
+</ul>
+<h3 id="gt"><a href="#gt" class="headerlink" title="#gt"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#gt">#</a>gt</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gt(R column, Object val)</span><br><span class="line">gt(<span class="type">boolean</span> condition, R column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>大于 &gt;</li>
+<li>例: <code>gt(&quot;age&quot;, 18)</code>—&gt;<code>age &gt; 18</code></li>
+</ul>
+<h3 id="ge"><a href="#ge" class="headerlink" title="#ge"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#ge">#</a>ge</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ge(R column, Object val)</span><br><span class="line">ge(<span class="type">boolean</span> condition, R column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>大于等于 &gt;&#x3D;</li>
+<li>例: <code>ge(&quot;age&quot;, 18)</code>—&gt;<code>age &gt;= 18</code></li>
+</ul>
+<h3 id="lt"><a href="#lt" class="headerlink" title="#lt"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#lt">#</a>lt</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lt(R column, Object val)</span><br><span class="line">lt(<span class="type">boolean</span> condition, R column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>小于 &lt;</li>
+<li>例: <code>lt(&quot;age&quot;, 18)</code>—&gt;<code>age &lt; 18</code></li>
+</ul>
+<h3 id="le"><a href="#le" class="headerlink" title="#le"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#le">#</a>le</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">le(R column, Object val)</span><br><span class="line">le(<span class="type">boolean</span> condition, R column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>小于等于 &lt;&#x3D;</li>
+<li>例: <code>le(&quot;age&quot;, 18)</code>—&gt;<code>age &lt;= 18</code></li>
+</ul>
+<h3 id="between"><a href="#between" class="headerlink" title="#between"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#between">#</a>between</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">between(R column, Object val1, Object val2)</span><br><span class="line">between(<span class="type">boolean</span> condition, R column, Object val1, Object val2)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>BETWEEN 值1 AND 值2</li>
+<li>例: <code>between(&quot;age&quot;, 18, 30)</code>—&gt;<code>age between 18 and 30</code></li>
+</ul>
+<h3 id="notBetween"><a href="#notBetween" class="headerlink" title="#notBetween"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#notbetween">#</a>notBetween</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">notBetween(R column, Object val1, Object val2)</span><br><span class="line">notBetween(<span class="type">boolean</span> condition, R column, Object val1, Object val2)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>NOT BETWEEN 值1 AND 值2</li>
+<li>例: <code>notBetween(&quot;age&quot;, 18, 30)</code>—&gt;<code>age not between 18 and 30</code></li>
+</ul>
+<h3 id="like"><a href="#like" class="headerlink" title="#like"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#like">#</a>like</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">like(R column, Object val)</span><br><span class="line">like(<span class="type">boolean</span> condition, R column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>LIKE ‘%值%’</li>
+<li>例: <code>like(&quot;name&quot;, &quot;王&quot;)</code>—&gt;<code>name like &#39;%王%&#39;</code></li>
+</ul>
+<h3 id="notLike"><a href="#notLike" class="headerlink" title="#notLike"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#notlike">#</a>notLike</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">notLike(R column, Object val)</span><br><span class="line">notLike(<span class="type">boolean</span> condition, R column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>NOT LIKE ‘%值%’</li>
+<li>例: <code>notLike(&quot;name&quot;, &quot;王&quot;)</code>—&gt;<code>name not like &#39;%王%&#39;</code></li>
+</ul>
+<h3 id="likeLeft"><a href="#likeLeft" class="headerlink" title="#likeLeft"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#likeleft">#</a>likeLeft</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">likeLeft(R column, Object val)</span><br><span class="line">likeLeft(<span class="type">boolean</span> condition, R column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>LIKE ‘%值’</li>
+<li>例: <code>likeLeft(&quot;name&quot;, &quot;王&quot;)</code>—&gt;<code>name like &#39;%王&#39;</code></li>
+</ul>
+<h3 id="likeRight"><a href="#likeRight" class="headerlink" title="#likeRight"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#likeright">#</a>likeRight</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">likeRight(R column, Object val)</span><br><span class="line">likeRight(<span class="type">boolean</span> condition, R column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>LIKE ‘值%’</li>
+<li>例: <code>likeRight(&quot;name&quot;, &quot;王&quot;)</code>—&gt;<code>name like &#39;王%&#39;</code></li>
+</ul>
+<h3 id="isNull"><a href="#isNull" class="headerlink" title="#isNull"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#isnull">#</a>isNull</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">isNull(R column)</span><br><span class="line">isNull(<span class="type">boolean</span> condition, R column)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>字段 IS NULL</li>
+<li>例: <code>isNull(&quot;name&quot;)</code>—&gt;<code>name is null</code></li>
+</ul>
+<h3 id="isNotNull"><a href="#isNotNull" class="headerlink" title="#isNotNull"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#isnotnull">#</a>isNotNull</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">isNotNull(R column)</span><br><span class="line">isNotNull(<span class="type">boolean</span> condition, R column)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>字段 IS NOT NULL</li>
+<li>例: <code>isNotNull(&quot;name&quot;)</code>—&gt;<code>name is not null</code></li>
+</ul>
+<h3 id="in"><a href="#in" class="headerlink" title="#in"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#in">#</a>in</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">in(R column, Collection&lt;?&gt; value)</span><br><span class="line">in(<span class="type">boolean</span> condition, R column, Collection&lt;?&gt; value)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>字段 IN (value.get(0), value.get(1), …)</li>
+<li>例: <code>in(&quot;age&quot;,&#123;1,2,3&#125;)</code>—&gt;<code>age in (1,2,3)</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">in(R column, Object... values)</span><br><span class="line">in(<span class="type">boolean</span> condition, R column, Object... values)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>字段 IN (v0, v1, …)</li>
+<li>例: <code>in(&quot;age&quot;, 1, 2, 3)</code>—&gt;<code>age in (1,2,3)</code></li>
+</ul>
+<h3 id="notIn"><a href="#notIn" class="headerlink" title="#notIn"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#notin">#</a>notIn</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">notIn(R column, Collection&lt;?&gt; value)</span><br><span class="line">notIn(<span class="type">boolean</span> condition, R column, Collection&lt;?&gt; value)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>字段 NOT IN (value.get(0), value.get(1), …)</li>
+<li>例: <code>notIn(&quot;age&quot;,&#123;1,2,3&#125;)</code>—&gt;<code>age not in (1,2,3)</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">notIn(R column, Object... values)</span><br><span class="line">notIn(<span class="type">boolean</span> condition, R column, Object... values)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>字段 NOT IN (v0, v1, …)</li>
+<li>例: <code>notIn(&quot;age&quot;, 1, 2, 3)</code>—&gt;<code>age not in (1,2,3)</code></li>
+</ul>
+<h3 id="inSql"><a href="#inSql" class="headerlink" title="#inSql"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#insql">#</a>inSql</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inSql(R column, String inValue)</span><br><span class="line">inSql(<span class="type">boolean</span> condition, R column, String inValue)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>字段 IN ( sql语句 )</li>
+<li>例: <code>inSql(&quot;age&quot;, &quot;1,2,3,4,5,6&quot;)</code>—&gt;<code>age in (1,2,3,4,5,6)</code></li>
+<li>例: <code>inSql(&quot;id&quot;, &quot;select id from table where id &lt; 3&quot;)</code>—&gt;<code>id in (select id from table where id &lt; 3)</code></li>
+</ul>
+<h3 id="notInSql"><a href="#notInSql" class="headerlink" title="#notInSql"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#notinsql">#</a>notInSql</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">notInSql(R column, String inValue)</span><br><span class="line">notInSql(<span class="type">boolean</span> condition, R column, String inValue)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>字段 NOT IN ( sql语句 )</li>
+<li>例: <code>notInSql(&quot;age&quot;, &quot;1,2,3,4,5,6&quot;)</code>—&gt;<code>age not in (1,2,3,4,5,6)</code></li>
+<li>例: <code>notInSql(&quot;id&quot;, &quot;select id from table where id &lt; 3&quot;)</code>—&gt;<code>id not in (select id from table where id &lt; 3)</code></li>
+</ul>
+<h3 id="groupBy"><a href="#groupBy" class="headerlink" title="#groupBy"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#groupby">#</a>groupBy</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupBy(R... columns)</span><br><span class="line">groupBy(<span class="type">boolean</span> condition, R... columns)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>分组：GROUP BY 字段, …</li>
+<li>例: <code>groupBy(&quot;id&quot;, &quot;name&quot;)</code>—&gt;<code>group by id,name</code></li>
+</ul>
+<h3 id="orderByAsc"><a href="#orderByAsc" class="headerlink" title="#orderByAsc"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#orderbyasc">#</a>orderByAsc</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">orderByAsc(R... columns)</span><br><span class="line">orderByAsc(<span class="type">boolean</span> condition, R... columns)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>排序：ORDER BY 字段, … ASC</li>
+<li>例: <code>orderByAsc(&quot;id&quot;, &quot;name&quot;)</code>—&gt;<code>order by id ASC,name ASC</code></li>
+</ul>
+<h3 id="orderByDesc"><a href="#orderByDesc" class="headerlink" title="#orderByDesc"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#orderbydesc">#</a>orderByDesc</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">orderByDesc(R... columns)</span><br><span class="line">orderByDesc(<span class="type">boolean</span> condition, R... columns)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>排序：ORDER BY 字段, … DESC</li>
+<li>例: <code>orderByDesc(&quot;id&quot;, &quot;name&quot;)</code>—&gt;<code>order by id DESC,name DESC</code></li>
+</ul>
+<h3 id="orderBy"><a href="#orderBy" class="headerlink" title="#orderBy"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#orderby">#</a>orderBy</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">orderBy(<span class="type">boolean</span> condition, <span class="type">boolean</span> isAsc, R... columns)</span><br></pre></td></tr></table></figure>
+
+<p>1</p>
+<ul>
+<li>排序：ORDER BY 字段, …</li>
+<li>例: <code>orderBy(true, true, &quot;id&quot;, &quot;name&quot;)</code>—&gt;<code>order by id ASC,name ASC</code></li>
+</ul>
+<h3 id="having"><a href="#having" class="headerlink" title="#having"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#having">#</a>having</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">having(String sqlHaving, Object... params)</span><br><span class="line">having(<span class="type">boolean</span> condition, String sqlHaving, Object... params)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>HAVING ( sql语句 )</li>
+<li>例: <code>having(&quot;sum(age) &gt; 10&quot;)</code>—&gt;<code>having sum(age) &gt; 10</code></li>
+<li>例: <code>having(&quot;sum(age) &gt; &#123;0&#125;&quot;, 11)</code>—&gt;<code>having sum(age) &gt; 11</code></li>
+</ul>
+<h3 id="func"><a href="#func" class="headerlink" title="#func"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#func">#</a>func</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func(Consumer&lt;Children&gt; consumer)</span><br><span class="line">func(<span class="type">boolean</span> condition, Consumer&lt;Children&gt; consumer)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>func 方法(主要方便在出现if…else下调用不同方法能不断链)</li>
+<li>例: <code>func(i -&gt; if(true) &#123;i.eq(&quot;id&quot;, 1)&#125; else &#123;i.ne(&quot;id&quot;, 1)&#125;)</code></li>
+</ul>
+<h3 id="or"><a href="#or" class="headerlink" title="#or"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#or">#</a>or</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">or()</span><br><span class="line">or(<span class="type">boolean</span> condition)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li><p>拼接 OR</p>
+<p>注意事项:</p>
+<p>主动调用<code>or</code>表示紧接着下一个<strong>方法</strong>不是用<code>and</code>连接!(不调用<code>or</code>则默认为使用<code>and</code>连接)</p>
+</li>
+<li><p>例: <code>eq(&quot;id&quot;,1).or().eq(&quot;name&quot;,&quot;老王&quot;)</code>—&gt;<code>id = 1 or name = &#39;老王&#39;</code></p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">or(Consumer&lt;Param&gt; consumer)</span><br><span class="line">or(<span class="type">boolean</span> condition, Consumer&lt;Param&gt; consumer)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>OR 嵌套</li>
+<li>例: <code>or(i -&gt; i.eq(&quot;name&quot;, &quot;李白&quot;).ne(&quot;status&quot;, &quot;活着&quot;))</code>—&gt;<code>or (name = &#39;李白&#39; and status &lt;&gt; &#39;活着&#39;)</code></li>
+</ul>
+<h3 id="and"><a href="#and" class="headerlink" title="#and"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#and">#</a>and</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">and(Consumer&lt;Param&gt; consumer)</span><br><span class="line">and(<span class="type">boolean</span> condition, Consumer&lt;Param&gt; consumer)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>AND 嵌套</li>
+<li>例: <code>and(i -&gt; i.eq(&quot;name&quot;, &quot;李白&quot;).ne(&quot;status&quot;, &quot;活着&quot;))</code>—&gt;<code>and (name = &#39;李白&#39; and status &lt;&gt; &#39;活着&#39;)</code></li>
+</ul>
+<h3 id="nested"><a href="#nested" class="headerlink" title="#nested"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#nested">#</a>nested</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nested(Consumer&lt;Param&gt; consumer)</span><br><span class="line">nested(<span class="type">boolean</span> condition, Consumer&lt;Param&gt; consumer)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>正常嵌套 不带 AND 或者 OR</li>
+<li>例: <code>nested(i -&gt; i.eq(&quot;name&quot;, &quot;李白&quot;).ne(&quot;status&quot;, &quot;活着&quot;))</code>—&gt;<code>(name = &#39;李白&#39; and status &lt;&gt; &#39;活着&#39;)</code></li>
+</ul>
+<h3 id="apply"><a href="#apply" class="headerlink" title="#apply"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#apply">#</a>apply</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apply(String applySql, Object... params)</span><br><span class="line">apply(<span class="type">boolean</span> condition, String applySql, Object... params)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li><p>拼接 sql</p>
+<p>注意事项:</p>
+<p>该方法可用于数据库<strong>函数</strong> 动态入参的<code>params</code>对应前面<code>applySql</code>内部的<code>&#123;index&#125;</code>部分.这样是不会有sql注入风险的,反之会有!</p>
+</li>
+<li><p>例: <code>apply(&quot;id = 1&quot;)</code>—&gt;<code>id = 1</code></p>
+</li>
+<li><p>例: <code>apply(&quot;date_format(dateColumn,&#39;%Y-%m-%d&#39;) = &#39;2008-08-08&#39;&quot;)</code>—&gt;<code>date_format(dateColumn,&#39;%Y-%m-%d&#39;) = &#39;2008-08-08&#39;&quot;)</code></p>
+</li>
+<li><p>例: <code>apply(&quot;date_format(dateColumn,&#39;%Y-%m-%d&#39;) = &#123;0&#125;&quot;, &quot;2008-08-08&quot;)</code>—&gt;<code>date_format(dateColumn,&#39;%Y-%m-%d&#39;) = &#39;2008-08-08&#39;&quot;)</code></p>
+</li>
+</ul>
+<h3 id="last"><a href="#last" class="headerlink" title="#last"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#last">#</a>last</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">last(String lastSql)</span><br><span class="line">last(<span class="type">boolean</span> condition, String lastSql)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li><p>无视优化规则直接拼接到 sql 的最后</p>
+<p>注意事项:</p>
+<p>只能调用一次,多次调用以最后一次为准 有sql注入的风险,请谨慎使用</p>
+</li>
+<li><p>例: <code>last(&quot;limit 1&quot;)</code></p>
+</li>
+</ul>
+<h3 id="exists"><a href="#exists" class="headerlink" title="#exists"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#exists">#</a>exists</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exists(String existsSql)</span><br><span class="line">exists(<span class="type">boolean</span> condition, String existsSql)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>拼接 EXISTS ( sql语句 )</li>
+<li>例: <code>exists(&quot;select id from table where age = 1&quot;)</code>—&gt;<code>exists (select id from table where age = 1)</code></li>
+</ul>
+<h3 id="notExists"><a href="#notExists" class="headerlink" title="#notExists"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#notexists">#</a>notExists</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">notExists(String notExistsSql)</span><br><span class="line">notExists(<span class="type">boolean</span> condition, String notExistsSql)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>拼接 NOT EXISTS ( sql语句 )</li>
+<li>例: <code>notExists(&quot;select id from table where age = 1&quot;)</code>—&gt;<code>not exists (select id from table where age = 1)</code></li>
+</ul>
+<h2 id="QueryWrapper"><a href="#QueryWrapper" class="headerlink" title="#QueryWrapper"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#querywrapper">#</a>QueryWrapper</h2><p>说明:</p>
+<p>继承自 AbstractWrapper ,自身的内部属性 entity 也用于生成 where 条件<br>及 LambdaQueryWrapper, 可以通过 new QueryWrapper().lambda() 方法获取</p>
+<h3 id="select"><a href="#select" class="headerlink" title="#select"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#select">#</a>select</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select(String... sqlSelect)</span><br><span class="line">select(Predicate&lt;TableFieldInfo&gt; predicate)</span><br><span class="line">select(Class&lt;T&gt; entityClass, Predicate&lt;TableFieldInfo&gt; predicate)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2<br>3</p>
+<ul>
+<li><p>设置查询字段</p>
+<p>说明:</p>
+<p>以上方法分为两类.<br>第二类方法为:过滤查询字段(主键除外),入参不包含 class 的调用前需要<code>wrapper</code>内的<code>entity</code>属性有值! 这两类方法重复调用以最后一次为准</p>
+</li>
+<li><p>例: <code>select(&quot;id&quot;, &quot;name&quot;, &quot;age&quot;)</code></p>
+</li>
+<li><p>例: <code>select(i -&gt; i.getProperty().startsWith(&quot;test&quot;))</code></p>
+</li>
+</ul>
+<h2 id="UpdateWrapper"><a href="#UpdateWrapper" class="headerlink" title="#UpdateWrapper"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#updatewrapper">#</a>UpdateWrapper</h2><p>说明:</p>
+<p>继承自 <code>AbstractWrapper</code> ,自身的内部属性 <code>entity</code> 也用于生成 where 条件<br>及 <code>LambdaUpdateWrapper</code>, 可以通过 <code>new UpdateWrapper().lambda()</code> 方法获取!</p>
+<h3 id="set"><a href="#set" class="headerlink" title="#set"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#set">#</a>set</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set(String column, Object val)</span><br><span class="line">set(<span class="type">boolean</span> condition, String column, Object val)</span><br></pre></td></tr></table></figure>
+
+<p>1<br>2</p>
+<ul>
+<li>SQL SET 字段</li>
+<li>例: <code>set(&quot;name&quot;, &quot;老李头&quot;)</code></li>
+<li>例: <code>set(&quot;name&quot;, &quot;&quot;)</code>—&gt;数据库字段值变为<strong>空字符串</strong></li>
+<li>例: <code>set(&quot;name&quot;, null)</code>—&gt;数据库字段值变为<code>null</code></li>
+</ul>
+<h3 id="setSql"><a href="#setSql" class="headerlink" title="#setSql"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#setsql">#</a>setSql</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setSql(String sql)</span><br></pre></td></tr></table></figure>
+
+<p>1</p>
+<ul>
+<li>设置 SET 部分 SQL</li>
+<li>例: <code>setSql(&quot;name = &#39;老李头&#39;&quot;)</code></li>
+</ul>
+<h3 id="lambda"><a href="#lambda" class="headerlink" title="#lambda"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#lambda">#</a>lambda</h3><ul>
+<li>获取 <code>LambdaWrapper</code><br>在<code>QueryWrapper</code>中是获取<code>LambdaQueryWrapper</code><br>在<code>UpdateWrapper</code>中是获取<code>LambdaUpdateWrapper</code></li>
+</ul>
+<h2 id="使用-Wrapper-自定义SQL"><a href="#使用-Wrapper-自定义SQL" class="headerlink" title="#使用 Wrapper 自定义SQL"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#%E4%BD%BF%E7%94%A8-wrapper-%E8%87%AA%E5%AE%9A%E4%B9%89sql">#</a>使用 Wrapper 自定义SQL</h2><p>注意事项:</p>
+<p>需要<code>mybatis-plus</code>版本 &gt;&#x3D; <code>3.0.7</code> param 参数名要么叫<code>ew</code>,要么加上注解<code>@Param(Constants.WRAPPER)</code> 使用<code>$&#123;ew.customSqlSegment&#125;</code> 不支持 <code>Wrapper</code> 内的entity生成where语句</p>
+<h3 id="kotlin持久化对象定义最佳实践"><a href="#kotlin持久化对象定义最佳实践" class="headerlink" title="#kotlin持久化对象定义最佳实践"></a><a target="_blank" rel="noopener" href="https://baomidou.com/pages/10c804/#kotlin%E6%8C%81%E4%B9%85%E5%8C%96%E5%AF%B9%E8%B1%A1%E5%AE%9A%E4%B9%89%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5">#</a>kotlin持久化对象定义最佳实践</h3><h1 id="Mybatis-缓存机制"><a href="#Mybatis-缓存机制" class="headerlink" title="Mybatis 缓存机制"></a>Mybatis 缓存机制</h1><p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220816161925216.png" alt="image-20220816161925216"></p>
+<p>将mybatis的接口调用通过与数据库建立SQLsession(内含Executor里有localcache)转化为SQL语句</p>
+<p>一级缓存,针对一个事务里的查询,每个事务简历一个SQLsession</p>
+<p>如果查询ID相同(xml中的表示SQL语句的ID相同)并且预编译的SQL相同,查询的参数相同,则会从localcache中找到这个缓存,因为是根据这三个生成的hash作为key,结果作为value存储,</p>
+<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220816162408277.png" alt="image-20220816162408277"></p>
+<p>二级缓存,caching Executor作为装饰器门面</p>
+<p>Mapper的xml中会有namespace级的缓存,难以支持服务器集群</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ggq
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2022/10/08/all/6mybatis/" title="" target="_blank">http://example.com/2022/10/08/all/6mybatis/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/all/6mybatis/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.368Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%A7%92%E6%9D%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%20&%20JWT%20&%20Oauth2.0/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.354Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2022/10/08/all/7JVM/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/10/08/all/5redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="extend next" rel="next" href="/archives/2022/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -507,8 +1412,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

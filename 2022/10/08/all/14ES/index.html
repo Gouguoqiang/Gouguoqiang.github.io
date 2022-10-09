@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | ggq</title>
+  <title>ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="1-今日内容 初识 ElasticSearch  安装 ElasticSearch  ElasticSearch 核心概念  操作 ElasticSearch  ElasticSearch JavaAPI   2-初识ElasticSearch2.1-基于数据库查询的问题![1580888245982](D:&#x2F;BaiduNetdiskDownload&#x2F;黑马微服务&#x2F;6">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ggq">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+<meta property="og:url" content="http://example.com/2022/10/08/all/14ES/index.html">
 <meta property="og:site_name" content="ggq">
+<meta property="og:description" content="1-今日内容 初识 ElasticSearch  安装 ElasticSearch  ElasticSearch 核心概念  操作 ElasticSearch  ElasticSearch JavaAPI   2-初识ElasticSearch2.1-基于数据库查询的问题![1580888245982](D:&#x2F;BaiduNetdiskDownload&#x2F;黑马微服务&#x2F;6">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-08T15:41:09.629Z">
+<meta property="article:modified_time" content="2022-09-05T14:00:21.265Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary">
   
@@ -207,266 +211,445 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-all/14ES" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+  <div class="article-entry" itemprop="articleBody">
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/%E8%AE%A1%E5%88%92/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
+    <ol>
+<li><h2 id="1-今日内容"><a href="#1-今日内容" class="headerlink" title="1-今日内容"></a><strong>1-今日内容</strong></h2><ol>
+<li><p>初识 ElasticSearch</p>
+</li>
+<li><p>安装 ElasticSearch</p>
+</li>
+<li><p>ElasticSearch 核心概念</p>
+</li>
+<li><p>操作 ElasticSearch</p>
+</li>
+<li><p>ElasticSearch JavaAPI</p>
+</li>
+</ol>
+<h2 id="2-初识ElasticSearch"><a href="#2-初识ElasticSearch" class="headerlink" title="2-初识ElasticSearch"></a><strong>2-初识ElasticSearch</strong></h2><h3 id="2-1-基于数据库查询的问题"><a href="#2-1-基于数据库查询的问题" class="headerlink" title="2.1-基于数据库查询的问题"></a>2.1-基于数据库查询的问题</h3><p>![1580888245982](D:&#x2F;BaiduNetdiskDownload&#x2F;黑马微服务&#x2F;6.第六章 搜索引擎-ElasticSearch-V10.0&#x2F;ElasticSearch-1&#x2F;img&#x2F;1580888245982.png)</p>
+<h3 id="2-2-倒排索引"><a href="#2-2-倒排索引" class="headerlink" title="2.2-倒排索引"></a><strong>2.2-倒排索引</strong></h3><p><strong>倒排索引</strong>：将文档进行分词，形成词条和id的对应关系即为反向索引。</p>
+<p> 以唐诗为例，所处包含“前”的诗句</p>
+<p>正向索引：由《静夜思》–&gt;窗前明月光—&gt;“前”字</p>
+<p>反向索引：“前”字–&gt;窗前明月光–&gt;《静夜思》</p>
+<p>反向索引的实现就是对诗句进行分词，分成单个的词，由词推据，即为反向索引</p>
+<p>“床前明月光”–&gt; 分词</p>
+<p>将一段文本按照一定的规则，拆分为不同的词条（term）</p>
+<p>![1580887683510](D:&#x2F;BaiduNetdiskDownload&#x2F;黑马微服务&#x2F;6.第六章 搜索引擎-ElasticSearch-V10.0&#x2F;ElasticSearch-1&#x2F;img&#x2F;1580887683510.png) </p>
+<p>![1580887667417](D:&#x2F;BaiduNetdiskDownload&#x2F;黑马微服务&#x2F;6.第六章 搜索引擎-ElasticSearch-V10.0&#x2F;ElasticSearch-1&#x2F;img&#x2F;1580887667417.png)</p>
+<h3 id="2-3-ES存储和查询的原理"><a href="#2-3-ES存储和查询的原理" class="headerlink" title="2.3-ES存储和查询的原理"></a><strong>2.3-ES存储和查询的原理</strong></h3><p><strong>index（索引）</strong>：相当于mysql的库</p>
+<p><strong>映射</strong>：相当于mysql 的表结构</p>
+<p>**document(文档)**：相当于mysql的表中的数据</p>
+<p> <strong>数据库查询存在的问题：</strong></p>
+<ol>
+<li>性能低：使用模糊查询，左边有通配符，不会走索引，会全表扫描，性能低</li>
+<li>功能弱：如果以”华为手机“作为条件，查询不出来数据</li>
+</ol>
+<p>Es使用倒排索引，对title 进行分词</p>
+<p>![1581143412491](D:&#x2F;BaiduNetdiskDownload&#x2F;黑马微服务&#x2F;6.第六章 搜索引擎-ElasticSearch-V10.0&#x2F;ElasticSearch-1&#x2F;img&#x2F;1581143412491.png)</p>
+<ol>
+<li><p>使用“手机”作为关键字查询</p>
+<p>生成的倒排索引中，词条会排序，形成一颗树形结构，提升词条的查询速度</p>
+<blockquote>
+<p>待学习</p>
+</blockquote>
+</li>
+<li><p>使用“华为手机”作为关键字查询</p>
+<p>华为：1,3</p>
+<p>手机：1,2,3</p>
+<p>![1581143489911](D:&#x2F;BaiduNetdiskDownload&#x2F;黑马微服务&#x2F;6.第六章 搜索引擎-ElasticSearch-V10.0&#x2F;ElasticSearch-1&#x2F;img&#x2F;1581143489911.png)</p>
+</li>
+</ol>
+<h3 id="2-4-ES概念详解"><a href="#2-4-ES概念详解" class="headerlink" title="2.4-ES概念详解"></a><strong>2.4-ES概念详解</strong></h3><p>•ElasticSearch是一个基于Lucene的搜索服务器</p>
+<p>![1580887955947](D:&#x2F;BaiduNetdiskDownload&#x2F;黑马微服务&#x2F;6.第六章 搜索引擎-ElasticSearch-V10.0&#x2F;ElasticSearch-1&#x2F;img&#x2F;1580887955947.png)</p>
+<p>•是一个分布式、高扩展、高实时的搜索与数据分析引擎</p>
+<p>•基于RESTful web接口</p>
+<p>•Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎</p>
+<p>•官网：<a target="_blank" rel="noopener" href="https://www.elastic.co/">https://www.elastic.co/</a></p>
+<p>应用场景</p>
+<p>•搜索：海量数据的查询</p>
+<p>•日志数据分析</p>
+<p>•实时数据分析</p>
+<h2 id="3-安装ElasticSearch"><a href="#3-安装ElasticSearch" class="headerlink" title="3-安装ElasticSearch"></a><strong>3-安装ElasticSearch</strong></h2><h3 id="3-1-ES安装"><a href="#3-1-ES安装" class="headerlink" title="3.1-ES安装"></a>3.1-ES安装</h3><p> 参见ElasticSearch-ES安装.md</p>
+<p> 查看elastic是否启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep elastic</span><br></pre></td></tr></table></figure>
 
-        </div>
-    	 
 
-        <div class="article-info info-on-right">
+
+<h3 id="3-2-ES辅助工具安装"><a href="#3-2-ES辅助工具安装" class="headerlink" title="3.2-ES辅助工具安装"></a><strong>3.2-ES辅助工具安装</strong></h3><p> 参见ElasticSearch-ES安装.md</p>
+<p>后台启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ../bin/kibana &amp;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-ElasticSearch核心概念"><a href="#4-ElasticSearch核心概念" class="headerlink" title="4-ElasticSearch核心概念"></a><strong>4-ElasticSearch核心概念</strong></h2><p><strong>索引（index）</strong></p>
+<p>ElasticSearch存储数据的地方，可以理解成关系型数据库中的数据库概念。</p>
+<p><strong>映射（mapping）</strong></p>
+<p>mapping定义了每个字段的类型、字段所使用的分词器等。相当于关系型数据库中的表结构。</p>
+<p><strong>文档（document）</strong></p>
+<p>   Elasticsearch中的最小数据单元，常以json格式显示。一个document相当于关系型数据库中的一行数据。</p>
+<p><strong>倒排索引</strong></p>
+<p>   一个倒排索引由文档中所有不重复词的列表构成，对于其中每个词，对应一个包含它的文档id列表。</p>
+<p><strong>类型（type）</strong></p>
+<p>   一种type就像一类表。如用户表、角色表等。在Elasticsearch7.X默认type为_doc</p>
+<pre><code> \- ES 5.x中一个index可以有多种type。
+
+  \- ES 6.x中一个index只能有一种type。
+
+  \- ES 7.x以后，将逐步移除type这个概念，现在的操作已经不再使用，默认_doc
+</code></pre>
+<h2 id="5-脚本操作ES"><a href="#5-脚本操作ES" class="headerlink" title="5-脚本操作ES"></a><strong>5-脚本操作ES</strong></h2><h3 id="5-1-RESTful风格介绍"><a href="#5-1-RESTful风格介绍" class="headerlink" title="5.1-RESTful风格介绍"></a>5.1-RESTful风格介绍</h3><p> 1.ST（Representational State Transfer），表述性状态转移，是一组架构约束条件和原则。满足这些约束条件和原则的应用程序或设计就是RESTful。就是一种定义接口的规范。</p>
+<p>2.基于HTTP。</p>
+<p>3.使用XML格式定义或JSON格式定义。</p>
+<p>4.每一个URI代表1种资源。</p>
+<p>5.客户端使用GET、POST、PUT、DELETE 4个表示操作方式的动词对服务端资源进行操作：</p>
+<p>GET：用来获取资源</p>
+<p>POST：用来新建资源（也可以用于更新资源）</p>
+<p>PUT：用来更新资源</p>
+<p>DELETE：用来删除资源</p>
+<p>![1580888675397](D:&#x2F;BaiduNetdiskDownload&#x2F;黑马微服务&#x2F;6.第六章 搜索引擎-ElasticSearch-V10.0&#x2F;ElasticSearch-1&#x2F;img&#x2F;1580888675397.png)</p>
+</li>
+</ol>
+<p>​    </p>
+<h3 id="5-2-操作索引"><a href="#5-2-操作索引" class="headerlink" title="5.2-操作索引"></a><strong>5.2-操作索引</strong></h3><p>​    </p>
+<p>   <strong>PUT</strong></p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://ip:端口/索引名称</span><br></pre></td></tr></table></figure>
+
+<p>   查询</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET http://ip:端口/索引名称  # 查询单个索引信息</span><br><span class="line">GET http://ip:端口/索引名称1,索引名称2...  # 查询多个索引信息</span><br><span class="line">GET http://ip:端口/_all  # 查询所有索引信息</span><br></pre></td></tr></table></figure>
+
+<p>   •删除索引</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE http://ip:端口/索引名称</span><br></pre></td></tr></table></figure>
+
+<p>   •关闭、打开索引</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POST http://ip:端口/索引名称/_close  </span><br><span class="line">POST http://ip:端口/索引名称/_open </span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-ES数据类型"><a href="#5-3-ES数据类型" class="headerlink" title="5.3-ES数据类型"></a><strong>5.3-ES数据类型</strong></h3><p>​    </p>
+<pre><code>  1. **简单数据类型**
+</code></pre>
+<ul>
+<li>字符串</li>
+</ul>
+<p>   聚合：相当于mysql 中的sum（求和）</p>
+   <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text：会分词，不支持聚合</span><br><span class="line"></span><br><span class="line">keyword：不会分词，将全部内容作为一个词条，支持聚合</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>数值</p>
+</li>
+<li><p>布尔：boolean</p>
+</li>
+<li><p>二进制：binary</p>
+</li>
+<li><p>范围类型</p>
+</li>
+</ul>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">integer_range, float_range, long_range, double_range, date_range </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>日期:date</p>
+<ol start="2">
+<li><strong>复杂数据类型</strong></li>
+</ol>
+</li>
+</ul>
+<p>   •数组：[ ]  Nested: <code>nested</code> (for arrays of JSON objects 数组类型的JSON对象)  </p>
+<p>   •对象：{ } Object: object(for single JSON objects 单个JSON对象)</p>
+<h3 id="5-4-操作映射"><a href="#5-4-操作映射" class="headerlink" title="5.4-操作映射"></a><strong>5.4-操作映射</strong></h3><p>​    </p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">PUT person</span><br><span class="line"></span><br><span class="line">GET person</span><br><span class="line">#添加映射</span><br><span class="line">PUT /person/_mapping</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;properties&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;text&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;integer&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<pre><code>#创建索引并添加映射
+</code></pre>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"> #创建索引并添加映射</span><br><span class="line"> PUT /person1</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;mappings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;properties&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;text&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;integer&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">GET person1/_mapping</span><br></pre></td></tr></table></figure>
+
+<p>   添加字段</p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#添加字段</span><br><span class="line">PUT /person1/_mapping</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;properties&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;text&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;integer&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-5-操作文档"><a href="#5-5-操作文档" class="headerlink" title="5.5-操作文档"></a><strong>5.5-操作文档</strong></h3><p>​    </p>
+<p>   •添加文档，指定id</p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">POST /person1/_doc/<span class="number">2</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span><span class="number">18</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span><span class="string">&quot;北京&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">GET /person1/_doc/<span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>•添加文档，不指定id
+</code></pre>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#添加文档，不指定id</span><br><span class="line">POST /person1/_doc/</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span><span class="number">18</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span><span class="string">&quot;北京&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">#查询所有文档</span><br><span class="line">GET /person1/_search</span><br></pre></td></tr></table></figure>
+
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#删除指定id文档</span><br><span class="line">DELETE /person1/_doc/<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-分词器"><a href="#6-分词器" class="headerlink" title="6-分词器"></a>6-分词器</h2><h3 id="6-1分词器-介绍"><a href="#6-1分词器-介绍" class="headerlink" title="6.1分词器-介绍"></a>6.1分词器-介绍</h3><pre><code>•IKAnalyzer是一个开源的，基于java语言开发的轻量级的中文分词工具包
+</code></pre>
+<p>   •是一个基于Maven构建的项目</p>
+<p>   •具有60万字&#x2F;秒的高速处理能力</p>
+<p>   •支持用户词典扩展定义</p>
+<p>   •下载地址：<a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-ik/archive/v7.4.0.zip">https://github.com/medcl/elasticsearch-analysis-ik/archive/v7.4.0.zip</a> </p>
+<p>   安装包在资料文件夹中提供</p>
+<h3 id="6-2-ik分词器安装"><a href="#6-2-ik分词器安装" class="headerlink" title="6.2-ik分词器安装"></a><strong>6.2-ik分词器安装</strong></h3><p>   参见 ik分词器安装.md</p>
+<pre><code>执行如下命令时如果出现  打包失败（501码）将maven镜像换成阿里云的
+</code></pre>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn package</span><br></pre></td></tr></table></figure>
+
+<pre><code>/opt/apache-maven-3.1.1/conf/setting.xml
+</code></pre>
+   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3-ik分词器使用"><a href="#6-3-ik分词器使用" class="headerlink" title="6.3-ik分词器使用"></a><strong>6.3-ik分词器使用</strong></h3><p>   IK分词器有两种分词模式：ik_max_word和ik_smart模式。</p>
+<p>   1、<strong>ik_max_word</strong></p>
+<p>   会将文本做最细粒度的拆分，比如会将“乒乓球明年总冠军”拆分为“乒乓球、乒乓、球、明年、总冠军、冠军。</p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#方式一ik_max_word</span><br><span class="line">GET /_analyze</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;analyzer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ik_max_word&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;乒乓球明年总冠军&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>   ik_max_word分词器执行如下：</p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;tokens&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;token&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;乒乓球&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;start_offset&quot;</span> <span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;end_offset&quot;</span> <span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;CN_WORD&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;position&quot;</span> <span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;token&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;乒乓&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;start_offset&quot;</span> <span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;end_offset&quot;</span> <span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;CN_WORD&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;position&quot;</span> <span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;token&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;球&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;start_offset&quot;</span> <span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;end_offset&quot;</span> <span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;CN_CHAR&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;position&quot;</span> <span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;token&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;明年&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;start_offset&quot;</span> <span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;end_offset&quot;</span> <span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;CN_WORD&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;position&quot;</span> <span class="punctuation">:</span> <span class="number">3</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;token&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;总冠军&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;start_offset&quot;</span> <span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;end_offset&quot;</span> <span class="punctuation">:</span> <span class="number">8</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;CN_WORD&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;position&quot;</span> <span class="punctuation">:</span> <span class="number">4</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;token&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;冠军&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;start_offset&quot;</span> <span class="punctuation">:</span> <span class="number">6</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;end_offset&quot;</span> <span class="punctuation">:</span> <span class="number">8</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;CN_WORD&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;position&quot;</span> <span class="punctuation">:</span> <span class="number">5</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>   2、<strong>ik_smart</strong><br>   会做最粗粒度的拆分，比如会将“乒乓球明年总冠军”拆分为乒乓球、明年、总冠军。</p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#方式二ik_smart</span><br><span class="line">GET /_analyze</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;analyzer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ik_smart&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;乒乓球明年总冠军&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>   ik_smart分词器执行如下：</p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;tokens&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;token&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;乒乓球&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;start_offset&quot;</span> <span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;end_offset&quot;</span> <span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;CN_WORD&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;position&quot;</span> <span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;token&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;明年&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;start_offset&quot;</span> <span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;end_offset&quot;</span> <span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;CN_WORD&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;position&quot;</span> <span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;token&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;总冠军&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;start_offset&quot;</span> <span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;end_offset&quot;</span> <span class="punctuation">:</span> <span class="number">8</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;CN_WORD&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;position&quot;</span> <span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>   由此可见  使用ik_smart可以将文本”text”: “乒乓球明年总冠军”分成了【乒乓球】【明年】【总冠军】</p>
+<p>   这样看的话，这样的分词效果达到了我们的要求。</p>
+<p>​    </p>
+<h3 id="6-4使用IK分词器-查询文档"><a href="#6-4使用IK分词器-查询文档" class="headerlink" title="6.4使用IK分词器-查询文档"></a><strong>6.4使用IK分词器-查询文档</strong></h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><pre><code>•词条查询：term
+</code></pre>
+<p>   ​			词条查询不会分析查询条件，只有当词条和查询字符串完全匹配时才匹配搜索</p>
+<p>   •全文查询：match</p>
+<p>   ​           全文查询会分析查询条件，先将查询条件进行分词，然后查询，求并集</p>
+<p>   1.创建索引，添加映射，并指定分词器为ik分词器</p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">PUT person2</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;mappings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;properties&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;keyword&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;text&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;analyzer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ik_max_word&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>   2.添加文档</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">POST /person2/_doc/1</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;:&quot;张三&quot;,</span><br><span class="line">  &quot;age&quot;:18,</span><br><span class="line">  &quot;address&quot;:&quot;北京海淀区&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">POST /person2/_doc/2</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;:&quot;李四&quot;,</span><br><span class="line">  &quot;age&quot;:18,</span><br><span class="line">  &quot;address&quot;:&quot;北京朝阳区&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">POST /person2/_doc/3</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;:&quot;王五&quot;,</span><br><span class="line">  &quot;age&quot;:18,</span><br><span class="line">  &quot;address&quot;:&quot;北京昌平区&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>   3.查询映射</p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET person2</span><br></pre></td></tr></table></figure>
+
+<p>   ![1580879388109](D:&#x2F;BaiduNetdiskDownload&#x2F;黑马微服务&#x2F;6.第六章 搜索引擎-ElasticSearch-V10.0&#x2F;ElasticSearch-1&#x2F;img&#x2F;1580879388109.png)</p>
+<p>   4.查看分词效果</p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET _analyze</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;analyzer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ik_max_word&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;北京海淀&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>   5.词条查询：term</p>
+<p>   查询person2中匹配到”北京”两字的词条</p>
+   <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">GET /person2/_search</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;term&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;北京&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>   6.全文查询：match</p>
+<p>   ​           全文查询会分析查询条件，先将查询条件进行分词，然后查询，求并集</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /person2/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match&quot;: &#123;</span><br><span class="line">      &quot;address&quot;:&quot;北京昌平&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-ElasticSearch-JavaApi"><a href="#7-ElasticSearch-JavaApi" class="headerlink" title="7-ElasticSearch JavaApi-"></a><strong>7-ElasticSearch JavaApi-</strong></h2><p>​    </p>
+<h3 id="7-1SpringBoot整合ES"><a href="#7-1SpringBoot整合ES" class="headerlink" title="7.1SpringBoot整合ES"></a>7.1SpringBoot整合ES</h3><pre><code>①搭建SpringBoot工程
+</code></pre>
+<p>   ②引入ElasticSearch相关坐标</p>
+   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--引入es的坐标--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch-rest-high-level-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>7.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch-rest-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>7.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>7.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>   ③测试</p>
+<p>   ElasticSearchConfig</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix=&quot;elasticsearch&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ElasticSearchConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String host;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> port;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getHost</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> host;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setHost</span><span class="params">(String host)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.host = host;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getPort</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> port;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPort</span><span class="params">(<span class="type">int</span> port)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.port = port;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RestHighLevelClient <span class="title function_">client</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RestHighLevelClient</span>(RestClient.builder(</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">HttpHost</span>(host,port,<span class="string">&quot;http&quot;</span>)</span><br><span class="line">        ));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   ElasticsearchDay01ApplicationTests</p>
+<p>   注意：使用@Autowired注入RestHighLevelClient 如果报红线，则是因为配置类所在的包和测试类所在的包，包名不一致造成的</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ElasticsearchDay01ApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    RestHighLevelClient client;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 测试</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(client);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-创建索引"><a href="#7-2-创建索引" class="headerlink" title="7.2-创建索引"></a><strong>7.2-创建索引</strong></h3><p>   1.添加索引</p>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加索引</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addIndex</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">       <span class="comment">//1.使用client获取操作索引对象</span></span><br><span class="line">        <span class="type">IndicesClient</span> <span class="variable">indices</span> <span class="operator">=</span> client.indices();</span><br><span class="line">        <span class="comment">//2.具体操作获取返回值</span></span><br><span class="line">        <span class="comment">//2.1 设置索引名称</span></span><br><span class="line">        CreateIndexRequest createIndexRequest=<span class="keyword">new</span> <span class="title class_">CreateIndexRequest</span>(<span class="string">&quot;itheima&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">CreateIndexResponse</span> <span class="variable">createIndexResponse</span> <span class="operator">=</span> indices.create(createIndexRequest, RequestOptions.DEFAULT);</span><br><span class="line">        <span class="comment">//3.根据返回值判断结果</span></span><br><span class="line">        System.out.println(createIndexResponse.isAcknowledged());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>   2.添加索引，并添加映射</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 添加索引，并添加映射</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addIndexAndMapping</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">      <span class="comment">//1.使用client获取操作索引对象</span></span><br><span class="line">       <span class="type">IndicesClient</span> <span class="variable">indices</span> <span class="operator">=</span> client.indices();</span><br><span class="line">       <span class="comment">//2.具体操作获取返回值</span></span><br><span class="line">       <span class="comment">//2.具体操作，获取返回值</span></span><br><span class="line">       <span class="type">CreateIndexRequest</span> <span class="variable">createIndexRequest</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CreateIndexRequest</span>(<span class="string">&quot;itcast&quot;</span>);</span><br><span class="line">       <span class="comment">//2.1 设置mappings</span></span><br><span class="line">       <span class="type">String</span> <span class="variable">mapping</span> <span class="operator">=</span> <span class="string">&quot;&#123;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;      \&quot;properties\&quot; : &#123;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;        \&quot;address\&quot; : &#123;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;          \&quot;type\&quot; : \&quot;text\&quot;,\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;          \&quot;analyzer\&quot; : \&quot;ik_max_word\&quot;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;        &#125;,\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;        \&quot;age\&quot; : &#123;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;          \&quot;type\&quot; : \&quot;long\&quot;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;        &#125;,\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;        \&quot;name\&quot; : &#123;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;          \&quot;type\&quot; : \&quot;keyword\&quot;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;        &#125;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;      &#125;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;    &#125;&quot;</span>;</span><br><span class="line">       createIndexRequest.mapping(mapping,XContentType.JSON);</span><br><span class="line">   </span><br><span class="line">       <span class="type">CreateIndexResponse</span> <span class="variable">createIndexResponse</span> <span class="operator">=</span> indices.create(createIndexRequest, RequestOptions.DEFAULT);</span><br><span class="line">       <span class="comment">//3.根据返回值判断结果</span></span><br><span class="line">       System.out.println(createIndexResponse.isAcknowledged());</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<h3 id="7-3-查询、删除、判断索引"><a href="#7-3-查询、删除、判断索引" class="headerlink" title="7.3-查询、删除、判断索引"></a><strong>7.3-查询、删除、判断索引</strong></h3><p>   查询索引</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">      </span><br><span class="line">   </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询索引</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">queryIndex</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">IndicesClient</span> <span class="variable">indices</span> <span class="operator">=</span> client.indices();</span><br><span class="line">   </span><br><span class="line">    GetIndexRequest getRequest=<span class="keyword">new</span> <span class="title class_">GetIndexRequest</span>(<span class="string">&quot;itcast&quot;</span>);</span><br><span class="line">    <span class="type">GetIndexResponse</span> <span class="variable">response</span> <span class="operator">=</span> indices.get(getRequest, RequestOptions.DEFAULT);</span><br><span class="line">    Map&lt;String, MappingMetaData&gt; mappings = response.getMappings();</span><br><span class="line">    <span class="comment">//iter 提示foreach</span></span><br><span class="line">    <span class="keyword">for</span> (String key : mappings.keySet()) &#123;</span><br><span class="line">        System.out.println(key+<span class="string">&quot;===&quot;</span>+mappings.get(key).getSourceAsMap());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">      </span><br><span class="line">      </span><br></pre></td></tr></table></figure>
+
+<p>   删除索引</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 删除索引</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteIndex</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">IndicesClient</span> <span class="variable">indices</span> <span class="operator">=</span> client.indices();</span><br><span class="line">       DeleteIndexRequest deleteRequest=<span class="keyword">new</span> <span class="title class_">DeleteIndexRequest</span>(<span class="string">&quot;itheima&quot;</span>);</span><br><span class="line">       <span class="type">AcknowledgedResponse</span> <span class="variable">delete</span> <span class="operator">=</span> indices.delete(deleteRequest, RequestOptions.DEFAULT);</span><br><span class="line">       System.out.println(delete.isAcknowledged());</span><br><span class="line">   </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>   索引是否存在</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 索引是否存在</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">existIndex</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">       <span class="type">IndicesClient</span> <span class="variable">indices</span> <span class="operator">=</span> client.indices();</span><br><span class="line">   </span><br><span class="line">       GetIndexRequest getIndexRequest=<span class="keyword">new</span> <span class="title class_">GetIndexRequest</span>(<span class="string">&quot;itheima&quot;</span>);</span><br><span class="line">       <span class="type">boolean</span> <span class="variable">exists</span> <span class="operator">=</span> indices.exists(getIndexRequest, RequestOptions.DEFAULT);</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">       System.out.println(exists);</span><br><span class="line">   </span><br><span class="line">   &#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+
+<h3 id="7-4-添加文档"><a href="#7-4-添加文档" class="headerlink" title="7.4-添加文档"></a><strong>7.4-添加文档</strong></h3><p>   1.添加文档,使用map作为数据</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addDoc1</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">       Map&lt;String, Object&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">       map.put(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">       map.put(<span class="string">&quot;age&quot;</span>,<span class="string">&quot;18&quot;</span>);</span><br><span class="line">       map.put(<span class="string">&quot;address&quot;</span>,<span class="string">&quot;北京二环&quot;</span>);</span><br><span class="line">       IndexRequest request=<span class="keyword">new</span> <span class="title class_">IndexRequest</span>(<span class="string">&quot;itcast&quot;</span>).id(<span class="string">&quot;1&quot;</span>).source(map);</span><br><span class="line">       <span class="type">IndexResponse</span> <span class="variable">response</span> <span class="operator">=</span> client.index(request, RequestOptions.DEFAULT);</span><br><span class="line">       System.out.println(response.getId());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>2.添加文档,使用对象作为数据
+</code></pre>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addDoc2</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    Person person=<span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">    person.setId(<span class="string">&quot;2&quot;</span>);</span><br><span class="line">    person.setName(<span class="string">&quot;李四&quot;</span>);</span><br><span class="line">    person.setAge(<span class="number">20</span>);</span><br><span class="line">    person.setAddress(<span class="string">&quot;北京三环&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> JSON.toJSONString(person);</span><br><span class="line">    IndexRequest request=<span class="keyword">new</span> <span class="title class_">IndexRequest</span>(<span class="string">&quot;itcast&quot;</span>).id(person.getId()).source(data,XContentType.JSON);</span><br><span class="line">    <span class="type">IndexResponse</span> <span class="variable">response</span> <span class="operator">=</span> client.index(request, RequestOptions.DEFAULT);</span><br><span class="line">    System.out.println(response.getId());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<h3 id="7-5-修改、查询、删除文档"><a href="#7-5-修改、查询、删除文档" class="headerlink" title="7.5-修改、查询、删除文档"></a><strong>7.5-修改、查询、删除文档</strong></h3><p>   1.修改文档：添加文档时，如果id存在则修改，id不存在则添加</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改文档：添加文档时，如果id存在则修改，id不存在则添加</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">UpdateDoc</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    Person person=<span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">    person.setId(<span class="string">&quot;2&quot;</span>);</span><br><span class="line">    person.setName(<span class="string">&quot;李四&quot;</span>);</span><br><span class="line">    person.setAge(<span class="number">20</span>);</span><br><span class="line">    person.setAddress(<span class="string">&quot;北京三环车王&quot;</span>);</span><br><span class="line">   </span><br><span class="line">    <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> JSON.toJSONString(person);</span><br><span class="line">   </span><br><span class="line">    IndexRequest request=<span class="keyword">new</span> <span class="title class_">IndexRequest</span>(<span class="string">&quot;itcast&quot;</span>).id(person.getId()).source(data,XContentType.JSON);</span><br><span class="line">    <span class="type">IndexResponse</span> <span class="variable">response</span> <span class="operator">=</span> client.index(request, RequestOptions.DEFAULT);</span><br><span class="line">    System.out.println(response.getId());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   2.根据id查询文档</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据id查询文档</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getDoc</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">//设置查询的索引、文档</span></span><br><span class="line">    GetRequest indexRequest=<span class="keyword">new</span> <span class="title class_">GetRequest</span>(<span class="string">&quot;itcast&quot;</span>,<span class="string">&quot;2&quot;</span>);</span><br><span class="line">   </span><br><span class="line">    <span class="type">GetResponse</span> <span class="variable">response</span> <span class="operator">=</span> client.get(indexRequest, RequestOptions.DEFAULT);</span><br><span class="line">    System.out.println(response.getSourceAsString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   3.根据id删除文档</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据id删除文档</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">delDoc</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置要删除的索引、文档</span></span><br><span class="line">        DeleteRequest deleteRequest=<span class="keyword">new</span> <span class="title class_">DeleteRequest</span>(<span class="string">&quot;itcast&quot;</span>,<span class="string">&quot;1&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">DeleteResponse</span> <span class="variable">response</span> <span class="operator">=</span> client.delete(deleteRequest, RequestOptions.DEFAULT);</span><br><span class="line">        System.out.println(response.getId());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ggq
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2022/10/08/all/14ES/" title="" target="_blank">http://example.com/2022/10/08/all/14ES/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/all/14ES/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.368Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%A7%92%E6%9D%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%20&%20JWT%20&%20Oauth2.0/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.354Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2022/10/08/all/15os/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/10/08/all/13MQ/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="extend next" rel="next" href="/archives/2022/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -507,8 +690,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

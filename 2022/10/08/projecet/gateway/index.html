@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | ggq</title>
+  <title>ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="概述 谓词 &#x3D;&#x3D; 过滤条件  该项目提供了一个库，用于在 Spring WebFlux 之上构建 API 网关。Spring Cloud Gateway 旨在提供一种简单而有效的方式来路由到 API，并为它们提供横切关注点，例如：安全性、监控&#x2F;指标和弹性。 特征Spring Cloud Gateway 特点：  基于 Spring Framework 5、Projec">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ggq">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+<meta property="og:url" content="http://example.com/2022/10/08/projecet/gateway/index.html">
 <meta property="og:site_name" content="ggq">
+<meta property="og:description" content="概述 谓词 &#x3D;&#x3D; 过滤条件  该项目提供了一个库，用于在 Spring WebFlux 之上构建 API 网关。Spring Cloud Gateway 旨在提供一种简单而有效的方式来路由到 API，并为它们提供横切关注点，例如：安全性、监控&#x2F;指标和弹性。 特征Spring Cloud Gateway 特点：  基于 Spring Framework 5、Projec">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/images/spring_cloud_gateway_diagram.png">
+<meta property="article:published_time" content="2022-10-08T15:41:10.336Z">
+<meta property="article:modified_time" content="2022-08-12T14:04:55.921Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/images/spring_cloud_gateway_diagram.png">
   
     <link rel="alternative" href="/atom.xml" title="ggq" type="application/atom+xml">
   
@@ -207,266 +213,297 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-projecet/gateway" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+  <div class="article-entry" itemprop="articleBody">
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/%E8%AE%A1%E5%88%92/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
+    <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
+<p>谓词 &#x3D;&#x3D; 过滤条件</p>
+</blockquote>
+<p>该项目提供了一个库，用于在 Spring WebFlux 之上构建 API 网关。Spring Cloud Gateway 旨在提供一种简单而有效的方式来路由到 API，并为它们提供横切关注点，例如：安全性、监控&#x2F;指标和弹性。</p>
+<h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><p>Spring Cloud Gateway 特点：</p>
+<ul>
+<li>基于 Spring Framework 5、Project Reactor 和 Spring Boot 2.0 构建</li>
+<li>能够匹配任何请求属性的路由。</li>
+<li>谓词和过滤器特定于路由。</li>
+<li>断路器集成。</li>
+<li>Spring Cloud Discovery客户端集成</li>
+<li>易于编写谓词和过滤器</li>
+<li>请求速率限制</li>
+<li>路径重写</li>
+</ul>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">public class DemogatewayApplication &#123;</span><br><span class="line">	@Bean</span><br><span class="line">	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) &#123;</span><br><span class="line">		return builder.routes()</span><br><span class="line">			.route(&quot;path_route&quot;, r -&gt; r.path(&quot;/get&quot;)</span><br><span class="line">				.uri(&quot;http://httpbin.org&quot;))</span><br><span class="line">			.route(&quot;host_route&quot;, r -&gt; r.host(&quot;*.myhost.org&quot;)</span><br><span class="line">				.uri(&quot;http://httpbin.org&quot;))</span><br><span class="line">			.route(&quot;rewrite_route&quot;, r -&gt; r.host(&quot;*.rewrite.org&quot;)</span><br><span class="line">				.filters(f -&gt; f.rewritePath(&quot;/foo/(?&lt;segment&gt;.*)&quot;, &quot;/$&#123;segment&#125;&quot;))</span><br><span class="line">				.uri(&quot;http://httpbin.org&quot;))</span><br><span class="line">			.route(&quot;hystrix_route&quot;, r -&gt; r.host(&quot;*.hystrix.org&quot;)</span><br><span class="line">				.filters(f -&gt; f.hystrix(c -&gt; c.setName(&quot;slowcmd&quot;)))</span><br><span class="line">				.uri(&quot;http://httpbin.org&quot;))</span><br><span class="line">			.route(&quot;hystrix_fallback_route&quot;, r -&gt; r.host(&quot;*.hystrixfallback.org&quot;)</span><br><span class="line">				.filters(f -&gt; f.hystrix(c -&gt; c.setName(&quot;slowcmd&quot;).setFallbackUri(&quot;forward:/hystrixfallback&quot;)))</span><br><span class="line">				.uri(&quot;http://httpbin.org&quot;))</span><br><span class="line">			.route(&quot;limit_route&quot;, r -&gt; r</span><br><span class="line">				.host(&quot;*.limited.org&quot;).and().path(&quot;/anything/**&quot;)</span><br><span class="line">				.filters(f -&gt; f.requestRateLimiter(c -&gt; c.setRateLimiter(redisRateLimiter())))</span><br><span class="line">				.uri(&quot;http://httpbin.org&quot;))</span><br><span class="line">			.build();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        </div>
-    	 
+<h1 id="Learn"><a href="#Learn" class="headerlink" title="Learn"></a>Learn</h1><h2 id="3-它是如何工作的"><a href="#3-它是如何工作的" class="headerlink" title="3. 它是如何工作的"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-how-it-works">3. 它是如何工作的</a></h2><p>下图提供了 Spring Cloud Gateway 如何工作的高级概述：</p>
+<p><img src="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/images/spring_cloud_gateway_diagram.png" alt="Spring Cloud 网关示意图"></p>
+<p>客户端向 Spring Cloud Gateway 发出请求。如果网关处理程序映射确定请求与路由匹配，则将其发送到网关 Web 处理程序。此处理程序通过特定于请求的过滤器链运行请求。过滤器用虚线划分的原因是过滤器可以在发送代理请求之前和之后运行逻辑。执行所有“预”过滤器逻辑。然后发出代理请求。发出代理请求后，将运行“发布”过滤器逻辑。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>在没有端口的路由中定义的 URI 分别获得 HTTP 和 HTTPS URI 的默认端口值 80 和 443。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Route</strong>：网关的基本构建块。它由 ID、目标 URI、谓词集合和过滤器集合定义。如果聚合谓词为真，则匹配路由。</li>
+<li><strong>谓词</strong>：这是一个<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html">Java 8 函数谓词</a>。输入类型是<a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.0.x/javadoc-api/org/springframework/web/server/ServerWebExchange.html">Spring Framework<code>ServerWebExchange</code></a>。这使您可以匹配来自 HTTP 请求的任何内容，例如标头或参数。</li>
+<li><strong>过滤器</strong><a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-gateway/tree/main/spring-cloud-gateway-server/src/main/java/org/springframework/cloud/gateway/filter/GatewayFilter.java"><code>GatewayFilter</code></a>：这些是使用特定工厂构建的实例。在这里，您可以在发送下游请求之前或之后修改请求和响应。</li>
+</ul>
+<h2 id="4-配置路由谓词工厂和网关过滤工厂"><a href="#4-配置路由谓词工厂和网关过滤工厂" class="headerlink" title="4. 配置路由谓词工厂和网关过滤工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#configuring-route-predicate-factories-and-gateway-filter-factories">4. 配置路由谓词工厂和网关过滤工厂</a></h2><p>有两种配置谓词和过滤器的方法：快捷方式和完全扩展的参数。下面的大多数示例都使用快捷方式。</p>
+<p>名称和参数名称将<code>code</code>在每个部分的第一句或第二句中列出。参数通常按快捷方式配置所需的顺序列出。</p>
+<h3 id="4-1。快捷方式配置"><a href="#4-1。快捷方式配置" class="headerlink" title="4.1。快捷方式配置"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#shortcut-configuration">4.1。快捷方式配置</a></h3><p>快捷方式配置由过滤器名称识别，后跟等号 ( <code>=</code>)，后跟以逗号 ( <code>,</code>) 分隔的参数值。</p>
+<p>应用程序.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">after_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Cookie=mycookie,mycookievalue</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
+<p>前面的示例<code>Cookie</code>使用两个参数定义了路由谓词工厂，cookie 名称<code>mycookie</code>和要匹配的值<code>mycookievalue</code>。</p>
+<h3 id="4-2-完全扩展的参数"><a href="#4-2-完全扩展的参数" class="headerlink" title="4.2. 完全扩展的参数"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#fully-expanded-arguments">4.2. 完全扩展的参数</a></h3><p>完全扩展的参数看起来更像是带有名称&#x2F;值对的标准 yaml 配置。通常，会有一把<code>name</code>钥匙和一把<code>args</code>钥匙。键是用于配置谓词或过滤器的<code>args</code>键值对映射。</p>
+<p>应用程序.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">after_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cookie</span></span><br><span class="line">          <span class="attr">args:</span></span><br><span class="line">            <span class="attr">name:</span> <span class="string">mycookie</span></span><br><span class="line">            <span class="attr">regexp:</span> <span class="string">mycookievalue</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Cookie</code>这是上面显示的谓词的快捷配置的完整配置。</p>
+<h2 id="5-路由谓词工厂"><a href="#5-路由谓词工厂" class="headerlink" title="5.路由谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories">5.路由谓词工厂</a></h2><p>Spring Cloud Gateway 将路由匹配为 Spring WebFlux<code>HandlerMapping</code>基础架构的一部分。Spring Cloud Gateway 包含许多内置的路由谓词工厂。所有这些谓词都匹配 HTTP 请求的不同属性。您可以将多个路由谓词工厂与逻辑<code>and</code>语句结合起来。</p>
+<h3 id="5-1。After-Route-谓词工厂"><a href="#5-1。After-Route-谓词工厂" class="headerlink" title="5.1。After Route 谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-after-route-predicate-factory">5.1。After Route 谓词工厂</a></h3><p><code>After</code>路由谓词工厂采用一个参数 a （<code>datetime</code>它是一个 java <code>ZonedDateTime</code>）。此谓词匹配在指定日期时间之后发生的请求。以下示例配置了一个 after 路由谓词：</p>
+<p>示例 1.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">after_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">After=2017-01-20T17:42:47.789-07:00[America/Denver]</span></span><br></pre></td></tr></table></figure>
+
+<p>此路线匹配 2017 年 1 月 20 日 17:42 Mountain Time（丹佛）之后提出的任何请求。</p>
+<h3 id="5-3-路线间谓词工厂"><a href="#5-3-路线间谓词工厂" class="headerlink" title="5.3. 路线间谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-between-route-predicate-factory">5.3. 路线间谓词工厂</a></h3><p><code>Between</code>路由谓词工厂有两个参数，它们<code>datetime1</code>是<code>datetime2</code> java<code>ZonedDateTime</code>对象。此谓词匹配发生在 after<code>datetime1</code>和 before的请求<code>datetime2</code>。<code>datetime2</code>参数必须在之后<code>datetime1</code>。以下示例配置了一个 between 路由谓词：</p>
+<p>示例 3.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">between_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Between=2017-01-20T17:42:47.789-07:00[America/Denver],</span> <span class="number">2017-01-21T17:42:47.789-07:00</span>[<span class="string">America/Denver</span>]</span><br></pre></td></tr></table></figure>
+
+<p>此路线匹配 2017 年 1 月 20 日 17:42 山区时间（丹佛）和 2017 年 1 月 21 日 17:42 山区时间（丹佛）之前提出的任何请求。这对于维护窗口可能很有用。</p>
+<h3 id="5-4-Cookie-路由谓词工厂"><a href="#5-4-Cookie-路由谓词工厂" class="headerlink" title="5.4. Cookie 路由谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-cookie-route-predicate-factory">5.4. Cookie 路由谓词工厂</a></h3><p><code>Cookie</code>路由谓词工厂有两个参数，cookie和<code>name</code>a <code>regexp</code>（这是一个 Java 正则表达式）。此谓词匹配具有给定名称且其值与正则表达式匹配的 cookie。以下示例配置 cookie 路由谓词工厂：</p>
+<p>示例 4.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">cookie_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Cookie=chocolate,</span> <span class="string">ch.p</span></span><br></pre></td></tr></table></figure>
+
+<p>此路由匹配具有名为<code>chocolate</code>其值与<code>ch.p</code>正则表达式匹配的 cookie 的请求。</p>
+<h3 id="5-5-标头路由谓词工厂"><a href="#5-5-标头路由谓词工厂" class="headerlink" title="5.5. 标头路由谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-header-route-predicate-factory">5.5. 标头路由谓词工厂</a></h3><p><code>Header</code>路由谓词工厂有两个参数，the和<code>header</code>a <code>regexp</code>（这是一个 Java 正则表达式）。此谓词与具有给定名称且值与正则表达式匹配的标头匹配。以下示例配置了一个标头路由谓词：</p>
+<p>示例 5.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">header_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Header=X-Request-Id,</span> <span class="string">\d+</span></span><br></pre></td></tr></table></figure>
+
+<p>如果请求具有一个名为<code>X-Request-Id</code>其值与<code>\d+</code>正则表达式匹配的标头（即，它具有一个或多个数字的值），则此路由匹配。</p>
+<h3 id="5-6-主机路由谓词工厂"><a href="#5-6-主机路由谓词工厂" class="headerlink" title="5.6. 主机路由谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-host-route-predicate-factory">5.6. 主机路由谓词工厂</a></h3><p>路由谓词工厂采用<code>Host</code>一个参数：主机名列表<code>patterns</code>。该模式是一种 Ant 风格的模式，<code>.</code>以分隔符为分隔符。此谓词匹配<code>Host</code>与模式匹配的标头。以下示例配置主机路由谓词：</p>
+<p>示例 6.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">host_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Host=**.somehost.org,**.anotherhost.org</span></span><br></pre></td></tr></table></figure>
+
+<p>还支持URI 模板变量（例如<code>&#123;sub&#125;.myhost.org</code>）。</p>
+<p>如果请求具有<code>Host</code>值为<code>www.somehost.org</code>or<code>beta.somehost.org</code>或的标头，则此路由匹配<code>www.anotherhost.org</code>。</p>
+<p>此谓词将 URI 模板变量（例如<code>sub</code>，在前面的示例中定义）提取为名称和值的映射，并将其放置在 中，<code>ServerWebExchange.getAttributes()</code>其中的键定义为<code>ServerWebExchangeUtils.URI_TEMPLATE_VARIABLES_ATTRIBUTE</code>。然后这些值可供<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-route-filters"><code>GatewayFilter</code>工厂使用</a></p>
+<h3 id="5-7-方法路由谓词工厂"><a href="#5-7-方法路由谓词工厂" class="headerlink" title="5.7. 方法路由谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-method-route-predicate-factory">5.7. 方法路由谓词工厂</a></h3><p><code>Method</code>Route Predicate Factory 接受一个参数，该<code>methods</code>参数是一个或多个参数：要匹配的 HTTP 方法。以下示例配置方法路由谓词：</p>
+<p>示例 7.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">method_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Method=GET,POST</span></span><br></pre></td></tr></table></figure>
+
+<p><code>GET</code>如果请求方法是 a或 a ，则此路由匹配<code>POST</code>。</p>
+<h3 id="5-8-路径路由谓词工厂"><a href="#5-8-路径路由谓词工厂" class="headerlink" title="5.8. 路径路由谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-path-route-predicate-factory">5.8. 路径路由谓词工厂</a></h3><p><code>Path</code>Route Predicate Factory 有两个参数：一个 Spring 列表<code>PathMatcher</code> <code>patterns</code>和一个名为<code>matchTrailingSlash</code>（默认为）的可选标志<code>true</code>。以下示例配置路径路由谓词：</p>
+<p>示例 8.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">path_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Path=/red/&#123;segment&#125;,/blue/&#123;segment&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果请求路径是，则此路由匹配，例如：<code>/red/1</code>or<code>/red/1/</code>或<code>/red/blue</code>or <code>/blue/green</code>。</p>
+<p>如果<code>matchTrailingSlash</code>设置为<code>false</code>，则请求路径<code>/red/1/</code>将不匹配。</p>
+<p>此谓词将 URI 模板变量（例如<code>segment</code>，在前面的示例中定义）提取为名称和值的映射，并将其放置在 中，<code>ServerWebExchange.getAttributes()</code>其中的键定义为<code>ServerWebExchangeUtils.URI_TEMPLATE_VARIABLES_ATTRIBUTE</code>。然后这些值可供<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-route-filters"><code>GatewayFilter</code>工厂使用</a></p>
+<p>可以使用一种实用方法（称为<code>get</code>）来更轻松地访问这些变量。以下示例显示了如何使用该<code>get</code>方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; uriVariables = ServerWebExchangeUtils.getPathPredicateVariables(exchange);</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">segment</span> <span class="operator">=</span> uriVariables.get(<span class="string">&quot;segment&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-9-查询路由谓词工厂"><a href="#5-9-查询路由谓词工厂" class="headerlink" title="5.9. 查询路由谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-query-route-predicate-factory">5.9. 查询路由谓词工厂</a></h3><p><code>Query</code>路由谓词工厂有两个参数：一个必需的<code>param</code>和一个可选的<code>regexp</code>（它是一个 Java 正则表达式）。以下示例配置查询路由谓词：</p>
+<p>示例 9.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">query_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Query=green</span></span><br></pre></td></tr></table></figure>
+
+<p>如果请求包含<code>green</code>查询参数，则前面的路由匹配。</p>
+<p>应用程序.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">query_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Query=red,</span> <span class="string">gree.</span></span><br></pre></td></tr></table></figure>
+
+<p>如果请求包含<code>red</code>其值与正则<code>gree.</code>表达式匹配的查询参数，则前面的路由匹配，因此<code>green</code>并且<code>greet</code>会匹配。</p>
+<h3 id="5-10。RemoteAddr-路由谓词工厂"><a href="#5-10。RemoteAddr-路由谓词工厂" class="headerlink" title="5.10。RemoteAddr 路由谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-remoteaddr-route-predicate-factory">5.10。RemoteAddr 路由谓词工厂</a></h3><p>路由谓词工厂采用的<code>RemoteAddr</code>列表（最小大小为 1）<code>sources</code>，它们是 CIDR 表示法（IPv4 或 IPv6）字符串，例如<code>192.168.0.1/16</code>（其中<code>192.168.0.1</code>是 IP 地址和<code>16</code>子网掩码）。以下示例配置 RemoteAddr 路由谓词：</p>
+<p>示例 10.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">remoteaddr_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">RemoteAddr=192.168.1.1/24</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-11。权重路线谓词工厂"><a href="#5-11。权重路线谓词工厂" class="headerlink" title="5.11。权重路线谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-weight-route-predicate-factory">5.11。权重路线谓词工厂</a></h3><p><code>Weight</code>路由谓词工厂有两个参数：和<code>group</code>（<code>weight</code>一个 int）。权重是按组计算的。以下示例配置权重路由谓词：</p>
+<p>示例 12.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">weight_high</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://weighthigh.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Weight=group1,</span> <span class="number">8</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">weight_low</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://weightlow.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Weight=group1,</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>该路由会将约 80% 的流量转发到<a target="_blank" rel="noopener" href="https://weighthigh.org/">weighthigh.org</a>，将约 20% 的流量转发到<a target="_blank" rel="noopener" href="https://weighlow.org/">weightlow.org</a></p>
+<h3 id="5-12。XForwarded-远程地址路由谓词工厂"><a href="#5-12。XForwarded-远程地址路由谓词工厂" class="headerlink" title="5.12。XForwarded 远程地址路由谓词工厂"></a><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-xforwarded-remote-addr-route-predicate-factory">5.12。XForwarded 远程地址路由谓词工厂</a></h3><p>路由谓词工厂采用的<code>XForwarded Remote Addr</code>列表（最小大小为 1）<code>sources</code>，它们是 CIDR 表示法（IPv4 或 IPv6）字符串，例如<code>192.168.0.1/16</code>（其中<code>192.168.0.1</code>是 IP 地址和<code>16</code>子网掩码）。</p>
+<p>此路由谓词允许根据<code>X-Forwarded-For</code>HTTP 标头过滤请求。</p>
+<p>这可以与反向代理一起使用，例如负载平衡器或 Web 应用程序防火墙，其中仅当请求来自这些反向代理使用的受信任的 IP 地址列表时才允许请求。</p>
+<p>以下示例配置 XForwardedRemoteAddr 路由谓词：</p>
+<p>示例 13.application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">xforwarded_remoteaddr_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">XForwardedRemoteAddr=192.168.1.1/24</span></span><br></pre></td></tr></table></figure>
+
+<p><code>X-Forwarded-For</code>如果标头包含例如，则此路由匹配<code>192.168.1.10</code>。</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ggq
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2022/10/08/projecet/gateway/" title="" target="_blank">http://example.com/2022/10/08/projecet/gateway/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/projecet/gateway/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.368Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%A7%92%E6%9D%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%20&%20JWT%20&%20Oauth2.0/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.354Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2022/10/08/projecet/mysql%E4%BC%98%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/10/08/projecet/0%E4%B8%9A%E5%8A%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="extend next" rel="next" href="/archives/2022/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -507,8 +544,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

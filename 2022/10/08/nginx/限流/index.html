@@ -6,17 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | ggq</title>
+  <title>ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="5.2 nginx的限流nginx提供两种限流的方式：  一是控制速率  二是控制并发连接数   5.2.1 控制速率控制速率的方式之一就是采用漏桶算法。 (1)漏桶算法实现控制速率限流 漏桶(Leaky Bucket)算法思路很简单,水(请求)先进入到漏桶里,漏桶以一定的速度出水(接口有响应速率),当水流入速度过大会直接溢出(访问频率超过接口响应速率),然后就拒绝请求,可以看出漏桶算法能强行限制">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ggq">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+<meta property="og:url" content="http://example.com/2022/10/08/nginx/%E9%99%90%E6%B5%81/index.html">
 <meta property="og:site_name" content="ggq">
+<meta property="og:description" content="5.2 nginx的限流nginx提供两种限流的方式：  一是控制速率  二是控制并发连接数   5.2.1 控制速率控制速率的方式之一就是采用漏桶算法。 (1)漏桶算法实现控制速率限流 漏桶(Leaky Bucket)算法思路很简单,水(请求)先进入到漏桶里,漏桶以一定的速度出水(接口有响应速率),当水流入速度过大会直接溢出(访问频率超过接口响应速率),然后就拒绝请求,可以看出漏桶算法能强行限制">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day04lua%E3%80%81Canal%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E7%BC%93%E5%AD%98/%E8%AE%B2%E4%B9%89/images/1560774438337.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day04lua%E3%80%81Canal%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E7%BC%93%E5%AD%98/%E8%AE%B2%E4%B9%89/images/1560775302161.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day04lua%E3%80%81Canal%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E7%BC%93%E5%AD%98/%E8%AE%B2%E4%B9%89/images/1560775527156.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day04lua%E3%80%81Canal%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E7%BC%93%E5%AD%98/%E8%AE%B2%E4%B9%89/images/1560775792418.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/5286e40b28f4073d9bff096af4cadce9.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/7b779b3f65e8e123eeaad29e0c2398be.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day08gateway%E5%92%8Cjwt/%E8%AE%B2%E4%B9%89/images/1557910299016.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day04lua%E3%80%81Canal%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E7%BC%93%E5%AD%98/%E8%AE%B2%E4%B9%89/images/1560776119165.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day04lua%E3%80%81Canal%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E7%BC%93%E5%AD%98/%E8%AE%B2%E4%B9%89/images/1560776155042.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day04lua%E3%80%81Canal%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E7%BC%93%E5%AD%98/%E8%AE%B2%E4%B9%89/images/1560778439935.png">
+<meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220808212928227.png">
+<meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220808213032548.png">
+<meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220808213048148.png">
+<meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220808213149360.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day04lua%E3%80%81Canal%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E7%BC%93%E5%AD%98/%E8%AE%B2%E4%B9%89/images/1560779033144.png">
+<meta property="article:published_time" content="2022-10-08T15:41:10.327Z">
+<meta property="article:modified_time" content="2022-08-28T01:30:46.896Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day04lua%E3%80%81Canal%E5%AE%9E%E7%8E%B0%E5%B9%BF%E5%91%8A%E7%BC%93%E5%AD%98/%E8%AE%B2%E4%B9%89/images/1560774438337.png">
   
     <link rel="alternative" href="/atom.xml" title="ggq" type="application/atom+xml">
   
@@ -207,266 +227,295 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-nginx/限流" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+  <div class="article-entry" itemprop="articleBody">
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/%E8%AE%A1%E5%88%92/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
+    <h3 id="5-2-nginx的限流"><a href="#5-2-nginx的限流" class="headerlink" title="5.2 nginx的限流"></a>5.2 nginx的限流</h3><p>nginx提供两种限流的方式：</p>
+<ul>
+<li><p>一是控制速率</p>
+</li>
+<li><p>二是控制并发连接数</p>
+</li>
+</ul>
+<h4 id="5-2-1-控制速率"><a href="#5-2-1-控制速率" class="headerlink" title="5.2.1 控制速率"></a>5.2.1 控制速率</h4><p>控制速率的方式之一就是采用漏桶算法。</p>
+<p>(1)漏桶算法实现控制速率限流</p>
+<p>漏桶(Leaky Bucket)算法思路很简单,水(请求)先进入到漏桶里,漏桶以一定的速度出水(接口有响应速率),当水流入速度过大会直接溢出(访问频率超过接口响应速率),然后就拒绝请求,可以看出漏桶算法能强行限制数据的传输速率.示意图如下:</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560774438337.png" alt="1560774438337"></p>
+<p>(2)nginx的配置</p>
+<p>配置示意图如下：</p>
+<blockquote>
+<p>超出则返回503  我当前无法响应你</p>
+</blockquote>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560775302161.png" alt="1560775302161"></p>
+<p>binary_remote_addr 是一种key，表示基于 remote_addr(客户端IP) 来做限流，binary_ 的目的是压缩内存占用量。<br>zone：定义共享内存区来存储访问信息， contentRateLimit:10m 表示一个大小为10M，名字为contentRateLimit的内存区域。1M能存储16000 IP地址的访问信息，10M可以存储16W IP地址访问信息。<br>rate 用于设置最大访问速率，rate&#x3D;10r&#x2F;s 表示每秒最多处理10个请求。Nginx 实际上以毫秒为粒度来跟踪请求信息，因此 10r&#x2F;s 实际上是限制：每100毫秒处理一个请求。这意味着，自上一个请求处理完后，若后续100毫秒内又有请求到达，将拒绝处理该请求.我们这里设置成2 方便测试。</p>
+<p>修改&#x2F;usr&#x2F;local&#x2F;openresty&#x2F;nginx&#x2F;conf&#x2F;nginx.conf:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">user</span>  root root;</span><br><span class="line"><span class="attribute">worker_processes</span>  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#cache</span></span><br><span class="line">    <span class="attribute">lua_shared_dict</span> dis_cache <span class="number">128m</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#限流设置</span></span><br><span class="line">    <span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=contentRateLimit:<span class="number">10m</span> rate=2r/s;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /update_content &#123;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/update_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /read_content &#123;</span><br><span class="line">            <span class="comment">#使用限流配置</span></span><br><span class="line">            <span class="attribute">limit_req</span> zone=contentRateLimit;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/read_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        </div>
-    	 
 
-        <div class="article-info info-on-right">
+
+<p>测试：</p>
+<p>重新加载配置文件</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cd</span> <span class="string">/usr/local/openresty/nginx/sbin</span></span><br><span class="line"></span><br><span class="line"><span class="attr">./nginx</span> <span class="string">-s reload</span></span><br></pre></td></tr></table></figure>
+
+<p>访问页面：<code>http://192.168.211.132/read_content?id=1</code> ,连续刷新会直接报错。</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560775527156.png" alt="1560775527156"></p>
+<p>(3)处理突发流量</p>
+<p>上面例子限制 2r&#x2F;s，如果有时正常流量突然增大，超出的请求将被拒绝，无法处理突发流量，可以结合 <strong>burst</strong> 参数使用来解决该问题。</p>
+<p>例如，如下配置表示：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560775792418.png" alt="1560775792418"></p>
+<p>上图代码如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  localhost;</span><br><span class="line">    <span class="section">location</span> /update_content &#123;</span><br><span class="line">        <span class="attribute">content_by_lua_file</span> /root/lua/update_content.lua;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="section">location</span> /read_content &#123;</span><br><span class="line">        <span class="attribute">limit_req</span> zone=contentRateLimit burst=<span class="number">4</span>;</span><br><span class="line">        <span class="attribute">content_by_lua_file</span> /root/lua/read_content.lua;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>burst 译为突发、爆发，表示在超过设定的处理速率后能额外处理的请求数,当 rate&#x3D;10r&#x2F;s 时，将1s拆成10份，即每100ms可处理1个请求。</p>
+<p>此处，**burst&#x3D;4 **，若同时有4个请求到达，Nginx 会处理第一个请求，剩余3个请求将放入队列，然后每隔500ms从队列中获取一个请求进行处理。若请求数大于4，将拒绝处理多余的请求，直接返回503.</p>
+<p>不过，单独使用 burst 参数并不实用。假设 burst&#x3D;50 ，rate依然为10r&#x2F;s，排队中的50个请求虽然每100ms会处理一个，但第50个请求却需要等待 50 * 100ms即 5s，这么长的处理时间自然难以接受。</p>
+<p>因此，burst 往往结合 nodelay 一起使用。</p>
+<p>例如：如下配置：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  localhost;</span><br><span class="line">    <span class="section">location</span> /update_content &#123;</span><br><span class="line">        <span class="attribute">content_by_lua_file</span> /root/lua/update_content.lua;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="section">location</span> /read_content &#123;</span><br><span class="line">        <span class="attribute">limit_req</span> zone=contentRateLimit burst=<span class="number">4</span> nodelay;</span><br><span class="line">        <span class="attribute">content_by_lua_file</span> /root/lua/read_content.lua;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>limit_req zone&#x3D;one burst&#x3D;5 nodelay;<br>第一个参数：zone&#x3D;contentRateLimit 设置使用哪个配置区域来做限制，与上面limit_req_zone 里的name对应。</p>
+<p>第二个参数：burst&#x3D;5，重点说明一下这个配置，burst爆发的意思，这个配置的意思是设置一个大小为5的缓冲区当有大量请求(爆发)过来时，超过了访问频次限制的请求可以先放到这个缓冲区内。</p>
+<p>第三个参数：nodelay，如果设置，超过访问频次而且缓冲区也满了的时候就会直接返回503，如果没有设置，则所有请求会等待排队。<br>实例二 burst缓存处理</p>
+<p>我们看到，我们短时间内发送了大量请求，Nginx按照毫秒级精度统计，超出限制的请求直接拒绝。这在实际场景中未免过于苛刻，真实网络环境中请求到来不是匀速的，很可能有请求“突发”的情况，也就是“一股子一股子”的。Nginx考虑到了这种情况，可以通过burst关键字开启对突发请求的缓存处理，而不是直接拒绝。</p>
+<p>来看我们的配置：</p>
+<p>limit_req_zone $binary_remote_addr zone&#x3D;mylimit:10m rate&#x3D;2r&#x2F;s;server {    location &#x2F; {        limit_req zone&#x3D;mylimit burst&#x3D;4;    }}<br>我们加入了burst&#x3D;4，意思是每个key(此处是每个IP)最多允许4个突发请求的到来。如果单个IP在10ms内发送6个请求，结果会怎样呢？</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/5286e40b28f4073d9bff096af4cadce9.png" alt="5286e40b28f4073d9bff096af4cadce9.png"></p>
+<p>相比实例一成功数增加了4个，这个我们设置的burst数目是一致的。具体处理流程是：1个请求被立即处理，4个请求被放到burst队列里，另外一个请求被拒绝。通过burst参数，我们使得Nginx限流具备了缓存处理突发流量的能力。</p>
+<p>但是请注意：burst的作用是让多余的请求可以先放到队列里，慢慢处理。如果不加nodelay参数，队列里的请求不会立即处理，而是按照rate设置的速度，以毫秒级精确的速度慢慢处理。</p>
+<p>实例三 nodelay降低排队时间</p>
+<p>实例二中我们看到，通过设置burst参数，我们可以允许Nginx缓存处理一定程度的突发，多余的请求可以先放到队列里，慢慢处理，这起到了平滑流量的作用。但是如果队列设置的比较大，请求排队的时间就会比较长，用户角度看来就是RT变长了，这对用户很不友好。</p>
+<p>有什么解决办法呢？nodelay参数允许请求在排队的时候就立即被处理，也就是说只要请求能够进入burst队列，就会立即被后台worker处理，请注意，这意味着burst设置了nodelay时，系统瞬间的QPS可能会超过rate设置的阈值。nodelay参数要跟burst一起使用才有作用。</p>
+<p>延续实例二的配置，我们加入nodelay选项：</p>
+<p>limit_req_zone $binary_remote_addr zone&#x3D;mylimit:10m rate&#x3D;2r&#x2F;s;server {    location &#x2F; {        limit_req zone&#x3D;mylimit burst&#x3D;4 nodelay;    }}<br>单个IP 10ms内并发发送6个请求，结果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/7b779b3f65e8e123eeaad29e0c2398be.png" alt="7b779b3f65e8e123eeaad29e0c2398be.png"></p>
+<p>跟实例二相比，请求成功率没变化，但是总体耗时变短了。这怎么解释呢？实例二中，有4个请求被放到burst队列当中，工作进程每隔500ms(rate&#x3D;2r&#x2F;s)取一个请求进行处理，最后一个请求要排队2s才会被处理；实例三中，请求放入队列跟实例二是一样的，但不同的是，队列中的请求同时具有了被处理的资格，所以实例三中的5个请求可以说是同时开始被处理的，花费时间自然变短了。</p>
+<p>但是请注意，虽然设置burst和nodelay能够降低突发请求的处理时间，但是长期来看并不会提高吞吐量的上限，长期吞吐量的上限是由rate决定的，因为nodelay只能保证burst的请求被立即处理，但Nginx会限制队列元素释放的速度，就像是限制了令牌桶中令牌产生的速度。</p>
+<p>看到这里你可能会问，加入了nodelay参数之后的限速算法，到底算是哪一个“桶”，是漏桶算法还是令牌桶算法？当然还算是漏桶算法。考虑一种情况，令牌桶算法的token为耗尽时会怎么做呢？由于它有一个请求队列，所以会把接下来的请求缓存下来，缓存多少受限于队列大小。但此时缓存这些请求还有意义吗？如果server已经过载，缓存队列越来越长，RT越来越高，即使过了很久请求被处理了，对用户来说也没什么价值了。所以当token不够用时，最明智的做法就是直接拒绝用户的请求，这就成了漏桶算法</p>
+<p>令牌桶算法:</p>
+<h4 id="2-5-2-令牌桶算法"><a href="#2-5-2-令牌桶算法" class="headerlink" title="2.5.2 令牌桶算法"></a>2.5.2 令牌桶算法</h4><p>令牌桶算法是比较常见的限流算法之一，大概描述如下：<br>1）所有的请求在处理之前都需要拿到一个可用的令牌才会被处理；<br>2）根据限流大小，设置按照一定的速率往桶里添加令牌；<br>3）桶设置最大的放置令牌限制，当桶满时、新添加的令牌就被丢弃或者拒绝；<br>4）请求达到后首先要获取令牌桶中的令牌，拿着令牌才可以进行其他的业务逻辑，处理完业务逻辑之后，将令牌直接删除；<br>5）令牌桶有最低限额，当桶中的令牌达到最低限额的时候，请求处理完之后将不会删除令牌，以此保证足够的限流</p>
+<p>如下图：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day08gateway和jwt/讲义/images/1557910299016.png" alt="1557910299016"></p>
+<p>这个算法的实现，有很多技术，Guaua是其中之一，redis客户端也有其实现。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">routes:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">changgou_goods_route</span></span><br><span class="line">            <span class="attr">uri:</span> <span class="string">lb://goods</span></span><br><span class="line">            <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/api/brand**</span></span><br><span class="line">            <span class="attr">filters:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">StripPrefix=1</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">RequestRateLimiter</span> <span class="comment">#请求数限流 名字不能随便写 ，使用默认的facatory</span></span><br><span class="line">              <span class="attr">args:</span></span><br><span class="line">                <span class="attr">key-resolver:</span> <span class="string">&quot;#&#123;@ipKeyResolver&#125;&quot;</span></span><br><span class="line">                <span class="attr">redis-rate-limiter.replenishRate:</span> <span class="number">1</span></span><br><span class="line">                <span class="attr">redis-rate-limiter.burstCapacity:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>redis-rate-limiter.replenishRate</code>是您希望允许用户每秒执行多少请求，而不会丢弃任何请求。这是令牌桶填充的速率</p>
+<p><code>redis-rate-limiter.burstCapacity</code>是指令牌桶的容量，允许在一秒钟内完成的最大请求数,将此值设置为零将阻止所有请求。</p>
+<blockquote>
+<p>超过也许会返回429错误码 too many request</p>
+</blockquote>
+<p>如上表示：</p>
+<p>平均每秒允许不超过2个请求，突发不超过4个请求，并且处理突发4个请求的时候，没有延迟，等到完成之后，按照正常的速率处理。</p>
+<p>如上两种配置结合就达到了速率稳定，但突然流量也能正常处理的效果。完整配置代码如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">user</span>  root root;</span><br><span class="line"><span class="attribute">worker_processes</span>  <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#cache</span></span><br><span class="line">    <span class="attribute">lua_shared_dict</span> dis_cache <span class="number">128m</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#限流设置</span></span><br><span class="line">    <span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=contentRateLimit:<span class="number">10m</span> rate=2r/s;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /update_content &#123;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/update_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /read_content &#123;</span><br><span class="line">            <span class="attribute">limit_req</span> zone=contentRateLimit burst=<span class="number">4</span> nodelay;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/read_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>测试：如下图 在1秒钟之内可以刷新4次，正常处理。</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560776119165.png" alt="1560776119165"></p>
+<p>但是超过之后，连续刷新5次，抛出异常。</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560776155042.png" alt="1560776155042"></p>
+<h4 id="5-2-2-控制并发量（连接数）"><a href="#5-2-2-控制并发量（连接数）" class="headerlink" title="5.2.2 控制并发量（连接数）"></a>5.2.2 控制并发量（连接数）</h4><p>ngx_http_limit_conn_module  提供了限制连接数的能力。主要是利用limit_conn_zone和limit_conn两个指令。</p>
+<p>利用连接数限制 某一个用户的ip连接的数量来控制流量。</p>
+<p>注意：并非所有连接都被计算在内 只有当服务器正在处理请求并且已经读取了整个请求头时，才会计算有效连接。此处忽略测试。</p>
+<p>配置语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax:	limit_conn zone number;</span><br><span class="line">Default: —;</span><br><span class="line">Context: http, server, location;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>(1)配置限制固定连接数</p>
+<p>如下，配置如下： </p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560778439935.png" alt="1560778439935"></p>
+<p>limit_conn_zone $binary_remote_addr zone&#x3D;addr:10m;  表示限制根据用户的IP地址来显示，设置存储地址为的内存大小10M</p>
+<p>limit_conn addr 2;   表示 同一个地址只允许连接2次。</p>
+<p>上图配置如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#cache</span></span><br><span class="line">    <span class="attribute">lua_shared_dict</span> dis_cache <span class="number">128m</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#限流设置</span></span><br><span class="line">    <span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=contentRateLimit:<span class="number">10m</span> rate=2r/s;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#根据IP地址来限制，存储内存大小10M</span></span><br><span class="line">    <span class="attribute">limit_conn_zone</span> <span class="variable">$binary_remote_addr</span> zone=addr:<span class="number">1m</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line">        <span class="comment">#所有以brand开始的请求，访问本地changgou-service-goods微服务</span></span><br><span class="line">        <span class="section">location</span> /brand &#123;</span><br><span class="line">            <span class="attribute">limit_conn</span> addr <span class="number">2</span>;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://192.168.211.1:18081;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /update_content &#123;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/update_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="section">location</span> /read_content &#123;</span><br><span class="line">            <span class="attribute">limit_req</span> zone=contentRateLimit burst=<span class="number">4</span> nodelay;</span><br><span class="line">            <span class="attribute">content_by_lua_file</span> /root/lua/read_content.lua;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>表示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">limit_conn_zone $binary_remote_addr zone=addr:10m;  表示限制根据用户的IP地址来显示，设置存储地址为的内存大小10M</span><br><span class="line"></span><br><span class="line">limit_conn addr 2;   表示 同一个地址只允许连接2次。</span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220808212928227.png" alt="image-20220808212928227"></p>
+<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220808213032548.png" alt="image-20220808213032548"></p>
+<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220808213048148.png" alt="image-20220808213048148"></p>
+<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220808213149360.png" alt="image-20220808213149360"></p>
+<p>此时开3个线程，测试的时候会发生异常，开2个就不会有异常</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day04lua、Canal实现广告缓存/讲义/images/1560779033144.png" alt="1560779033144"></p>
+<p>(2)限制每个客户端IP与服务器的连接数，同时限制与虚拟服务器的连接总数。(了解)</p>
+<p>如下配置： </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">limit_conn_zone</span> <span class="variable">$binary_remote_addr</span> zone=perip:<span class="number">10m</span>;</span><br><span class="line"><span class="attribute">limit_conn_zone</span> <span class="variable">$server_name</span> zone=perserver:<span class="number">10m</span>; </span><br><span class="line"><span class="section">server</span> &#123;  </span><br><span class="line">    <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span>  localhost;</span><br><span class="line">    <span class="attribute">charset</span> utf-<span class="number">8</span>;</span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">limit_conn</span> perip <span class="number">10</span>;<span class="comment">#单个客户端ip与服务器的连接数．</span></span><br><span class="line">        <span class="attribute">limit_conn</span> perserver <span class="number">100</span>; ＃限制与服务器的总连接数</span><br><span class="line">        <span class="attribute">root</span>   html;</span><br><span class="line">        <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ggq
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2022/10/08/nginx/限流/" title="" target="_blank">http://example.com/2022/10/08/nginx/限流/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/nginx/%E9%99%90%E6%B5%81/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.368Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%A7%92%E6%9D%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%20&%20JWT%20&%20Oauth2.0/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.354Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2022/10/08/projecet/0%E4%B8%9A%E5%8A%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/10/08/nginx/%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="extend next" rel="next" href="/archives/2022/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -507,8 +556,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

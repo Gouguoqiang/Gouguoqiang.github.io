@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | ggq</title>
+  <title>ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="注解的使用方法并说说原理组件注册 各种组件注册的顺序 todo    @Import()  ​	直接引入类,引入配置类,引入selector 注册bean信息,  @Configuration  @bean 默认类名小写单实例 在容器启动时进行装配 可设置id 和 scope 默认方法名  @Lazy get时进行创建  conditional 各种condition 通过生命周期实现  传一个实">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ggq">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+<meta property="og:url" content="http://example.com/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="ggq">
+<meta property="og:description" content="注解的使用方法并说说原理组件注册 各种组件注册的顺序 todo    @Import()  ​	直接引入类,引入配置类,引入selector 注册bean信息,  @Configuration  @bean 默认类名小写单实例 在容器启动时进行装配 可设置id 和 scope 默认方法名  @Lazy get时进行创建  conditional 各种condition 通过生命周期实现  传一个实">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-08T15:41:10.386Z">
+<meta property="article:modified_time" content="2022-08-15T03:42:33.248Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary">
   
@@ -207,266 +211,262 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Spring/基于注解的总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+  <div class="article-entry" itemprop="articleBody">
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/%E8%AE%A1%E5%88%92/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
+    <h1 id="注解的使用方法并说说原理"><a href="#注解的使用方法并说说原理" class="headerlink" title="注解的使用方法并说说原理"></a>注解的使用方法并说说原理</h1><h2 id="组件注册"><a href="#组件注册" class="headerlink" title="组件注册"></a>组件注册</h2><blockquote>
+<p>各种组件注册的顺序 todo </p>
+</blockquote>
+<ol>
+<li>@Import()</li>
+</ol>
+<p>​	直接引入类,引入配置类,引入selector 注册bean信息,</p>
+<ol start="2">
+<li><p>@Configuration</p>
+<ol>
+<li><p>@bean 默认类名小写单实例 在容器启动时进行装配 可设置id 和 scope 默认方法名</p>
+</li>
+<li><p>@Lazy get时进行创建</p>
+</li>
+<li><p>conditional 各种condition 通过生命周期实现</p>
+<ol>
+<li>传一个实现Condition(在它之下(&lt;? extends Condition&gt;)的子类 </li>
+<li></li>
+</ol>
+</li>
+<li><blockquote>
+<p>内部也是一个组件component</p>
+<p>在该类调用内部方法 不是执行方法而是去容器中找组件</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>@ComponentScan</p>
+<ol>
+<li><p>同时bean 和 component 先组件扫描 再bean 如果允许覆盖 则进行覆盖,如果不允许会报错 spring 默认会覆盖,boot 在新版版默认不能覆盖</p>
+</li>
+<li><p>id 默认类名首字母小写</p>
+</li>
+<li><blockquote>
+<p>属性 exclude等</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>实现FactoryBean 调用方法注册bean</p>
+</li>
+</ol>
+<blockquote>
+<p>FactoryBean需要注册到容器里吗 ? 要执行方法 所以应该要注册到容器里?  用容器get &amp;可以获得 但是 容器里只添加了一个factorybean,定义信息只有一个,推测: 会,但是没有定义信息,</p>
+</blockquote>
+<ol start="5">
+<li><p>实现ImportSelector</p>
+</li>
+<li><p>实现ImportBeanDefinitionRegistrar 具体见部分代码-组件注册注解-自己扩展</p>
+</li>
+</ol>
+<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>实现xxxAware接口</p>
+<p>@Autowire	最好不要用构造器自动注入,会形成循环依赖</p>
+<p>​	先根据类名不唯一再根据id</p>
+<p>@Resource 根据id找不到在使用</p>
+<p>@Inject</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">* 自动装配;</span><br><span class="line">*        Spring利用依赖注入（DI），完成对IOC容器中中各个组件的依赖关系赋值；</span><br><span class="line">* </span><br><span class="line">* <span class="number">1</span>）、<span class="meta">@Autowired</span>：自动注入：</span><br><span class="line">*        <span class="number">1</span>）、默认优先按照类型去容器中找对应的组件:applicationContext.getBean(BookDao.class);找到就赋值</span><br><span class="line">*        <span class="number">2</span>）、如果找到多个相同类型的组件，再将属性的名称作为组件的id去容器中查找</span><br><span class="line">*                       applicationContext.getBean(<span class="string">&quot;bookDao&quot;</span>)</span><br><span class="line">*        <span class="number">3</span>）、<span class="meta">@Qualifier(&quot;bookDao&quot;)</span>：使用<span class="meta">@Qualifier</span>指定需要装配的组件的id，而不是使用属性名</span><br><span class="line">*        <span class="number">4</span>）、自动装配默认一定要将属性赋值好，没有就会报错；</span><br><span class="line">*           可以使用<span class="meta">@Autowired(required=false)</span>;</span><br><span class="line">*        <span class="number">5</span>）、<span class="meta">@Primary</span>：让Spring进行自动装配的时候，默认使用首选的bean；</span><br><span class="line">	用<span class="meta">@Primary</span> 告诉spring 在犹豫的时候优先选择哪一个具体的实现。</span><br><span class="line">*              也可以继续使用<span class="meta">@Qualifier</span>指定需要装配的bean的名字</span><br><span class="line">*        BookService&#123;</span><br><span class="line">*           <span class="meta">@Autowired</span></span><br><span class="line">*           BookDao  bookDao;</span><br><span class="line">*        &#125;</span><br><span class="line">* </span><br><span class="line">* <span class="number">2</span>）、Spring还支持使用<span class="meta">@Resource(JSR250)</span>和<span class="meta">@Inject(JSR330)</span>[java规范的注解]</span><br><span class="line">*        <span class="meta">@Resource</span>:</span><br><span class="line">*           可以和<span class="meta">@Autowired</span>一样实现自动装配功能；默认是按照组件名称进行装配的；</span><br><span class="line">*           没有能支持<span class="meta">@Primary</span>功能没有支持<span class="meta">@Autowired</span>（reqiured=<span class="literal">false</span>）;</span><br><span class="line">*        <span class="meta">@Inject</span>:</span><br><span class="line">*           需要导入javax.inject的包，和Autowired的功能一样。没有required=<span class="literal">false</span>的功能；</span><br><span class="line">*  <span class="meta">@Autowired</span>:Spring定义的； <span class="meta">@Resource</span>、<span class="meta">@Inject</span>都是java规范</span><br><span class="line">*     </span><br><span class="line">* AutowiredAnnotationBeanPostProcessor:解析完成自动装配功能；       </span><br><span class="line">* </span><br><span class="line">* <span class="number">3</span>）、 <span class="meta">@Autowired</span>:构造器，参数，方法，属性；都是从容器中获取参数组件的值</span><br><span class="line">*        <span class="number">1</span>）、[标注在方法位置]：<span class="meta">@Bean</span>+方法参数；参数从容器中获取;默认不写<span class="meta">@Autowired</span>效果是一样的；都能自动装配</span><br><span class="line">*        <span class="number">2</span>）、[标在构造器上]：如果组件只有一个有参构造器，这个有参构造器的<span class="meta">@Autowired</span>可以省略，参数位置的组件还是可以自动从容器中获取</span><br><span class="line">*        <span class="number">3</span>）、放在参数位置：</span><br><span class="line">* </span><br><span class="line">* <span class="number">4</span>）、自定义组件想要使用Spring容器底层的一些组件（ApplicationContext，BeanFactory，xxx）；</span><br><span class="line">*        自定义组件实现xxxAware；在创建对象的时候，会调用接口规定的方法注入相关组件；Aware；</span><br><span class="line">*        把Spring底层一些组件注入到自定义的Bean中；</span><br><span class="line">*        xxxAware：功能使用xxxProcessor；</span><br><span class="line">*           ApplicationContextAware==》ApplicationContextAwareProcessor；</span><br></pre></td></tr></table></figure>
 
-        </div>
-    	 
 
-        <div class="article-info info-on-right">
+
+
+
+<h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">* AOP：【动态代理】</span><br><span class="line"> *        指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式；</span><br><span class="line"> * </span><br><span class="line"> * <span class="number">1</span>、导入aop模块；Spring AOP：(spring-aspects)</span><br><span class="line"> * <span class="number">2</span>、定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常，xxx）</span><br><span class="line"> * <span class="number">3</span>、定义一个日志切面类（LogAspects）：切面类里面的方法需要动态感知MathCalculator.div运行到哪里然后执行；</span><br><span class="line"> *        通知方法：</span><br><span class="line"> *           前置通知(<span class="meta">@Before</span>)：logStart：在目标方法(div)运行之前运行</span><br><span class="line"> *           后置通知(<span class="meta">@After</span>)：logEnd：在目标方法(div)运行结束之后运行（无论方法正常结束还是异常结束）</span><br><span class="line"> *           返回通知(<span class="meta">@AfterReturning</span>)：logReturn：在目标方法(div)正常返回之后运行</span><br><span class="line"> *           异常通知(<span class="meta">@AfterThrowing</span>)：logException：在目标方法(div)出现异常以后运行</span><br><span class="line"> *           环绕通知(<span class="meta">@Around</span>)：动态代理，手动推进目标方法运行（joinPoint.procced()）</span><br><span class="line"> * <span class="number">4</span>、给切面类的目标方法标注何时何地运行（通知注解）；</span><br><span class="line"> * <span class="number">5</span>、将切面类和业务逻辑类（目标方法所在类）都加入到容器中;</span><br><span class="line"> * <span class="number">6</span>、必须告诉Spring哪个类是切面类(给切面类上加一个注解：<span class="meta">@Aspect</span>)</span><br><span class="line"> * [<span class="number">7</span>]、给配置类中加 <span class="meta">@EnableAspectJAutoProxy</span> 【开启基于注解的aop模式】</span><br><span class="line"> *        在Spring中很多的 <span class="meta">@EnableXXX</span>;</span><br><span class="line"> * </span><br><span class="line"> * 三步：</span><br><span class="line"> *     <span class="number">1</span>）、将业务逻辑组件和切面类都加入到容器中；告诉Spring哪个是切面类（<span class="meta">@Aspect</span>）</span><br><span class="line"> *     <span class="number">2</span>）、在切面类上的每一个通知方法上标注通知注解，告诉Spring何时何地运行（切入点表达式）</span><br><span class="line"> *  <span class="number">3</span>）、开启基于注解的aop模式；<span class="meta">@EnableAspectJAutoProxy</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="事件分发"><a href="#事件分发" class="headerlink" title="事件分发"></a>事件分发</h2><blockquote>
+<p>代码todo</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>、ApplicationListener：监听容器中发布的事件。事件驱动模型开发；</span><br><span class="line"> *       <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ApplicationListener</span>&lt;E <span class="keyword">extends</span> <span class="title class_">ApplicationEvent</span>&gt;</span><br><span class="line"> *        监听 ApplicationEvent 及其下面的子事件；</span><br><span class="line"> * </span><br><span class="line"> *      步骤：</span><br><span class="line"> *        <span class="number">1</span>）、写一个监听器（ApplicationListener实现类）来监听某个事件（ApplicationEvent及其子类）</span><br><span class="line"> *           <span class="meta">@EventListener</span>;</span><br><span class="line"> *           原理：使用EventListenerMethodProcessor处理器来解析方法上的<span class="meta">@EventListener</span>；</span><br><span class="line"> * </span><br><span class="line"> *        <span class="number">2</span>）、把监听器加入到容器；</span><br><span class="line"> *        <span class="number">3</span>）、只要容器中有相关事件的发布，我们就能监听到这个事件；</span><br><span class="line"> *              ContextRefreshedEvent：容器刷新完成（所有bean都完全创建）会发布这个事件；</span><br><span class="line"> *              ContextClosedEvent：关闭容器会发布这个事件；</span><br><span class="line"> *        <span class="number">4</span>）、发布一个事件：</span><br><span class="line"> *              applicationContext.publishEvent()；</span><br><span class="line"> *     </span><br><span class="line"> *  原理：</span><br><span class="line"> *     ContextRefreshedEvent、IOCTest_Ext$<span class="number">1</span>[source=我发布的时间]、ContextClosedEvent；</span><br><span class="line"> *  <span class="number">1</span>）、ContextRefreshedEvent事件：</span><br><span class="line"> *     <span class="number">1</span>）、容器创建对象：refresh()；</span><br><span class="line"> *     <span class="number">2</span>）、finishRefresh();容器刷新完成会发布ContextRefreshedEvent事件</span><br><span class="line"> *  <span class="number">2</span>）、自己发布事件；</span><br><span class="line"> *  <span class="number">3</span>）、容器关闭会发布ContextClosedEvent；</span><br><span class="line"> *  </span><br><span class="line"> *  【事件发布流程】：</span><br><span class="line"> *     <span class="number">3</span>）、publishEvent(<span class="keyword">new</span> <span class="title class_">ContextRefreshedEvent</span>(<span class="built_in">this</span>));</span><br><span class="line"> *           <span class="number">1</span>）、获取事件的多播器（派发器）：getApplicationEventMulticaster()</span><br><span class="line"> *           <span class="number">2</span>）、multicastEvent派发事件：</span><br><span class="line"> *           <span class="number">3</span>）、获取到所有的ApplicationListener；</span><br><span class="line"> *              <span class="keyword">for</span> (<span class="keyword">final</span> ApplicationListener&lt;?&gt; listener : getApplicationListeners(event, type)) &#123;</span><br><span class="line"> *              <span class="number">1</span>）、如果有Executor，可以支持使用Executor进行异步派发；</span><br><span class="line"> *                 <span class="type">Executor</span> <span class="variable">executor</span> <span class="operator">=</span> getTaskExecutor();</span><br><span class="line"> *              <span class="number">2</span>）、否则，同步的方式直接执行listener方法；invokeListener(listener, event);</span><br><span class="line"> *               拿到listener回调onApplicationEvent方法；</span><br><span class="line"> *  </span><br><span class="line"> *  【事件多播器（派发器）】</span><br><span class="line"> *     <span class="number">1</span>）、容器创建对象：refresh();</span><br><span class="line"> *     <span class="number">2</span>）、initApplicationEventMulticaster();初始化ApplicationEventMulticaster；</span><br><span class="line"> *        <span class="number">1</span>）、先去容器中找有没有id=“applicationEventMulticaster”的组件；</span><br><span class="line"> *        <span class="number">2</span>）、如果没有<span class="built_in">this</span>.applicationEventMulticaster = <span class="keyword">new</span> <span class="title class_">SimpleApplicationEventMulticaster</span>(beanFactory);</span><br><span class="line"> *           并且加入到容器中，我们就可以在其他组件要派发事件，自动注入这个applicationEventMulticaster；</span><br><span class="line"> *  </span><br><span class="line"> *  【容器中有哪些监听器】</span><br><span class="line"> *     <span class="number">1</span>）、容器创建对象：refresh();</span><br><span class="line"> *     <span class="number">2</span>）、registerListeners();</span><br><span class="line"> *        从容器中拿到所有的监听器，把他们注册到applicationEventMulticaster中；</span><br><span class="line"> *        String[] listenerBeanNames = getBeanNamesForType(ApplicationListener.class, <span class="literal">true</span>, <span class="literal">false</span>);</span><br><span class="line"> *        <span class="comment">//将listener注册到ApplicationEventMulticaster中</span></span><br><span class="line"> *        getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);</span><br><span class="line"> *        </span><br><span class="line"> *   SmartInitializingSingleton 原理：-&gt;afterSingletonsInstantiated();</span><br><span class="line"> *        <span class="number">1</span>）、ioc容器创建对象并refresh()；</span><br><span class="line"> *        <span class="number">2</span>）、finishBeanFactoryInitialization(beanFactory);初始化剩下的单实例bean；</span><br><span class="line"> *           <span class="number">1</span>）、先创建所有的单实例bean；getBean();</span><br><span class="line"> *           <span class="number">2</span>）、获取所有创建好的单实例bean，判断是否是SmartInitializingSingleton类型的；</span><br><span class="line"> *              如果是就调用afterSingletonsInstantiated();</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="扩展功能"><a href="#扩展功能" class="headerlink" title="扩展功能"></a>扩展功能</h2><blockquote>
+<p>各种后置处理器等 todo 声明周期接口等</p>
+</blockquote>
+<h1 id="spring-boot的注解"><a href="#spring-boot的注解" class="headerlink" title="spring boot的注解"></a>spring boot的注解</h1><p>自带包扫描 所在包及其子包</p>
+<p>引入了springboot的自动配置</p>
+<p>一个configuration类</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h3 id="组件注册注解——启动使用"><a href="#组件注册注解——启动使用" class="headerlink" title="组件注册注解——启动使用"></a>组件注册注解——启动使用</h3><h3 id="组件注册注解——自己扩展"><a href="#组件注册注解——自己扩展" class="headerlink" title="组件注册注解——自己扩展"></a>组件注册注解——自己扩展</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ggq.config;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.ggq.controller&quot;)</span></span><br><span class="line"><span class="meta">@Import(&#123;Car.class, Blue.class,BookService.class,MyImportSelector.class,Configuration2.class,MyImportBeanDefinitionRegistrar.class,MyFactoryBean.class&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> Person <span class="title function_">newPerson</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> MyFactoryBean <span class="title function_">myFactoryBean</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MyFactoryBean</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyImportSelector</span> <span class="keyword">implements</span> <span class="title class_">ImportSelector</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    AnnotationMetadata:当前类的注解信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String[] selectImports(AnnotationMetadata importingClassMetadata) &#123;</span><br><span class="line"><span class="comment">//        importingClassMetadata.get</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;com.ggq.beans.Yellow&quot;</span>,<span class="string">&quot;com.ggq.beans.Black&quot;</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyImportBeanDefinitionRegistrar</span> <span class="keyword">implements</span> <span class="title class_">ImportBeanDefinitionRegistrar</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry)</span> &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">blue</span> <span class="operator">=</span> registry.containsBeanDefinition(<span class="string">&quot;blue&quot;</span>);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">red</span> <span class="operator">=</span> registry.containsBeanDefinition(<span class="string">&quot;red&quot;</span>);</span><br><span class="line">        <span class="type">BeanDefinition</span> <span class="variable">rainbow</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RootBeanDefinition</span>(<span class="string">&quot;com.ggq.beans.Rainbow&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(blue &amp;&amp; red)&#123;</span><br><span class="line">            registry.registerBeanDefinition(<span class="string">&quot;rainbow&quot;</span>,rainbow);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata,</span></span><br><span class="line"><span class="params">                                        BeanDefinitionRegistry registry,</span></span><br><span class="line"><span class="params">                                        BeanNameGenerator importBeanNameGenerator)</span> &#123;</span><br><span class="line">        ImportBeanDefinitionRegistrar.<span class="built_in">super</span>.registerBeanDefinitions(importingClassMetadata, registry, importBeanNameGenerator);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyFactoryBean</span> <span class="keyword">implements</span> <span class="title class_">FactoryBean</span>&lt;Color&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Color <span class="title function_">getObject</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Color</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">        <span class="keyword">return</span> Color.class;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSingleton</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ggq
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2022/10/08/Spring/基于注解的总结/" title="" target="_blank">http://example.com/2022/10/08/Spring/基于注解的总结/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.368Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%A7%92%E6%9D%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%20&%20JWT%20&%20Oauth2.0/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.354Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2022/10/08/%E8%AE%A1%E5%88%92/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="extend next" rel="next" href="/archives/2022/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -507,8 +507,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

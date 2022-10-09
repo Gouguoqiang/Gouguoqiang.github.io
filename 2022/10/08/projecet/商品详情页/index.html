@@ -6,17 +6,40 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | ggq</title>
+  <title>ggq</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="5.畅购商品详情页5.1 需求分析当系统审核完成商品，需要将商品详情页进行展示，那么采用静态页面生成的方式生成，并部署到高性能的web服务器中进行访问是比较合适的。所以，开发流程如下图所示：  执行步骤解释：  系统管理员（商家运维人员）修改或者审核商品的时候，会触发canal监控数据 canal微服务获取修改数据后，调用静态页微服务的方法进行生成静态页  静态页微服务只负责使用thymeleaf">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ggq">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+<meta property="og:url" content="http://example.com/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/index.html">
 <meta property="og:site_name" content="ggq">
+<meta property="og:description" content="5.畅购商品详情页5.1 需求分析当系统审核完成商品，需要将商品详情页进行展示，那么采用静态页面生成的方式生成，并部署到高性能的web服务器中进行访问是比较合适的。所以，开发流程如下图所示：  执行步骤解释：  系统管理员（商家运维人员）修改或者审核商品的时候，会触发canal监控数据 canal微服务获取修改数据后，调用静态页微服务的方法进行生成静态页  静态页微服务只负责使用thymeleaf">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1566736163765.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561856105210.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561856657363.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561857221099.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561858073684.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561858651061.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561859448044.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561858986838.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561859241651.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561860041421.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561860156033.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561860749790.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561860653870.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561861540056.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561862007448.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1561862084834.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1566736163765.png">
+<meta property="og:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1566737648843.png">
+<meta property="article:published_time" content="2022-10-08T15:41:10.356Z">
+<meta property="article:modified_time" content="2022-08-14T09:56:54.673Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/git-demo/%E7%95%85%E8%B4%AD-%E8%AE%B2%E5%B8%88%E6%BA%90%E7%A0%81md%E8%AF%BE%E4%BB%B6/day07Thym,Rmq%E5%AE%9E%E7%8E%B0%E9%9D%99%E6%80%81%E9%A1%B5/%E8%AE%B2%E4%B9%89/images/1566736163765.png">
   
     <link rel="alternative" href="/atom.xml" title="ggq" type="application/atom+xml">
   
@@ -207,266 +230,313 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-projecet/商品详情页" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+  <div class="article-entry" itemprop="articleBody">
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/%E8%AE%A1%E5%88%92/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
+    <h2 id="5-畅购商品详情页"><a href="#5-畅购商品详情页" class="headerlink" title="5.畅购商品详情页"></a>5.畅购商品详情页</h2><h3 id="5-1-需求分析"><a href="#5-1-需求分析" class="headerlink" title="5.1 需求分析"></a>5.1 需求分析</h3><p>当系统审核完成商品，需要将商品详情页进行展示，那么采用静态页面生成的方式生成，并部署到高性能的web服务器中进行访问是比较合适的。所以，开发流程如下图所示：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1566736163765.png" alt="1566736163765"></p>
+<p>执行步骤解释：</p>
+<ul>
+<li>系统管理员（商家运维人员）修改或者审核商品的时候，会触发canal监控数据</li>
+<li>canal微服务获取修改数据后，调用静态页微服务的方法进行生成静态页 </li>
+<li>静态页微服务只负责使用thymeleaf的模板技术生成静态页</li>
+</ul>
+<h3 id="5-2-商品静态化微服务创建"><a href="#5-2-商品静态化微服务创建" class="headerlink" title="5.2 商品静态化微服务创建"></a>5.2 商品静态化微服务创建</h3><h4 id="5-2-1-需求分析"><a href="#5-2-1-需求分析" class="headerlink" title="5.2.1 需求分析"></a>5.2.1 需求分析</h4><p>该微服务只用于生成商品静态页，不做其他事情。</p>
+<h4 id="5-2-2-搭建项目"><a href="#5-2-2-搭建项目" class="headerlink" title="5.2.2 搭建项目"></a>5.2.2 搭建项目</h4><p>（1）在changgou-web下创建一个名称为changgou-web-item的模块,如图：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561856105210.png" alt="1561856105210"></p>
+<p>（2）changgou-web-item中添加起步依赖，如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>changgou-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.changgou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>changgou-web-item<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--api 模块--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.changgou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>changgou-service-goods-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-        </div>
-    	 
 
-        <div class="article-info info-on-right">
+
+<p>（3）修改application.yml的配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">18085</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://127.0.0.1:7001/eureka</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">prefer-ip-address:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">hystrix:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">thymeleaf:</span></span><br><span class="line">    <span class="attr">cache:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">item</span></span><br><span class="line">  <span class="attr">main:</span></span><br><span class="line">    <span class="attr">allow-bean-definition-overriding:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#rabbitmq:</span></span><br><span class="line">  <span class="comment">#  host: 192.168.25.138</span></span><br><span class="line"><span class="comment"># 生成静态页的位置</span></span><br><span class="line"><span class="attr">pagepath:</span> <span class="string">D:/project/workspace_changgou/changgou/changgou-parent/changgou-web/changgou-web-item/src/main/resources/templates/items</span></span><br></pre></td></tr></table></figure>
+
+<p>（4）创建系统启动类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@EnableFeignClients(basePackages = &quot;com.changgou.goods.feign&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ItemApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(ItemApplication.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-3-生成静态页"><a href="#5-3-生成静态页" class="headerlink" title="5.3 生成静态页"></a>5.3 生成静态页</h3><h4 id="5-3-1-需求分析"><a href="#5-3-1-需求分析" class="headerlink" title="5.3.1 需求分析"></a>5.3.1 需求分析</h4><p>页面发送请求，传递要生成的静态页的的商品的SpuID.后台controller 接收请求，调用thyemleaf的原生API生成商品静态页。</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561856657363.png" alt="1561856657363"></p>
+<p>上图是要生成的商品详情页，从图片上可以看出需要查询SPU的3个分类作为面包屑显示，同时还需要查询SKU和SPU信息。</p>
+<h4 id="5-3-2-Feign创建"><a href="#5-3-2-Feign创建" class="headerlink" title="5.3.2 Feign创建"></a>5.3.2 Feign创建</h4><p>一会儿需要查询SPU和SKU以及Category，所以我们需要先创建Feign，修改changgou-service-goods-api,添加CategoryFeign，并在CategoryFeign中添加根据ID查询分类数据，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取分类的对象信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;Category&gt; <span class="title function_">findById</span><span class="params">(<span class="meta">@PathVariable(name = &quot;id&quot;)</span> Integer id)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在changgou-service-goods-api,添加SkuFeign,并添加根据SpuID查询Sku集合，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据条件搜索</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> sku</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(value = &quot;/search&quot; )</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;List&lt;Sku&gt;&gt; <span class="title function_">findList</span><span class="params">(<span class="meta">@RequestBody(required = false)</span> Sku sku)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在changgou-service-goods-api,添加SpuFeign,并添加根据SpuID查询Spu信息，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 根据SpuID查询Spu信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;Spu&gt; <span class="title function_">findById</span><span class="params">(<span class="meta">@PathVariable(name = &quot;id&quot;)</span> Long id)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="5-3-3-静态页生成代码"><a href="#5-3-3-静态页生成代码" class="headerlink" title="5.3.3 静态页生成代码"></a>5.3.3 静态页生成代码</h4><p>(1)创建Controller</p>
+<p>在changgou-web-item中创建com.changgou.item.controller.PageController用于接收请求，测试生成静态页</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PageController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> PageService pageService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成静态页面</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/createHtml/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">createHtml</span><span class="params">(<span class="meta">@PathVariable(name=&quot;id&quot;)</span> Long id)</span>&#123;</span><br><span class="line">        pageService.createPageHtml(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Result</span>(<span class="literal">true</span>, StatusCode.OK,<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>(2)创建service</p>
+<p>接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">PageService</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据商品的ID 生成静态页</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> spuId</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">createPageHtml</span><span class="params">(Long spuId)</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>实现类：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561857221099.png" alt="1561857221099"></p>
+<p>上图代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PageServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">PageService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SpuFeign spuFeign;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CategoryFeign categoryFeign;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SkuFeign skuFeign;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TemplateEngine templateEngine;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//生成静态文件路径</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;pagepath&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String pagepath;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构建数据模型</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> spuId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String,Object&gt; <span class="title function_">buildDataModel</span><span class="params">(Long spuId)</span>&#123;</span><br><span class="line">        <span class="comment">//构建数据模型</span></span><br><span class="line">        Map&lt;String,Object&gt; dataMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//获取spu 和SKU列表</span></span><br><span class="line">        Result&lt;Spu&gt; result = spuFeign.findById(spuId);</span><br><span class="line">        <span class="type">Spu</span> <span class="variable">spu</span> <span class="operator">=</span> result.getData();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取分类信息</span></span><br><span class="line">        dataMap.put(<span class="string">&quot;category1&quot;</span>,categoryFeign.findById(spu.getCategory1Id()).getData());</span><br><span class="line">        dataMap.put(<span class="string">&quot;category2&quot;</span>,categoryFeign.findById(spu.getCategory2Id()).getData());</span><br><span class="line">        dataMap.put(<span class="string">&quot;category3&quot;</span>,categoryFeign.findById(spu.getCategory3Id()).getData());</span><br><span class="line">        <span class="keyword">if</span>(spu.getImages()!=<span class="literal">null</span>) &#123;</span><br><span class="line">            dataMap.put(<span class="string">&quot;imageList&quot;</span>, spu.getImages().split(<span class="string">&quot;,&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        dataMap.put(<span class="string">&quot;specificationList&quot;</span>,JSON.parseObject(spu.getSpecItems(),Map.class));</span><br><span class="line">        dataMap.put(<span class="string">&quot;spu&quot;</span>,spu);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//根据spuId查询Sku集合</span></span><br><span class="line">        <span class="type">Sku</span> <span class="variable">skuCondition</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Sku</span>();</span><br><span class="line">        skuCondition.setSpuId(spu.getId());</span><br><span class="line">        Result&lt;List&lt;Sku&gt;&gt; resultSku = skuFeign.findList(skuCondition);</span><br><span class="line">        dataMap.put(<span class="string">&quot;skuList&quot;</span>,resultSku.getData());</span><br><span class="line">        <span class="keyword">return</span> dataMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">     * 生成静态页</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> spuId</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">createPageHtml</span><span class="params">(Long spuId)</span> &#123;</span><br><span class="line">        <span class="comment">// 1.上下文</span></span><br><span class="line">        <span class="type">Context</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">        Map&lt;String, Object&gt; dataModel = buildDataModel(spuId);</span><br><span class="line">        context.setVariables(dataModel);</span><br><span class="line">        <span class="comment">// 2.准备文件</span></span><br><span class="line">        <span class="type">File</span> <span class="variable">dir</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(pagepath);</span><br><span class="line">        <span class="keyword">if</span> (!dir.exists()) &#123;</span><br><span class="line">            dir.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">File</span> <span class="variable">dest</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(dir, spuId + <span class="string">&quot;.html&quot;</span>);</span><br><span class="line">        <span class="comment">// 3.生成页面</span></span><br><span class="line">        <span class="keyword">try</span> (<span class="type">PrintWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintWriter</span>(dest, <span class="string">&quot;UTF-8&quot;</span>)) &#123;</span><br><span class="line">            templateEngine.process(<span class="string">&quot;item&quot;</span>, context, writer);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="5-2-4-模板填充"><a href="#5-2-4-模板填充" class="headerlink" title="5.2.4 模板填充"></a>5.2.4 模板填充</h4><p>(1)面包屑数据</p>
+<p>修改item.html，填充三个分类数据作为面包屑，代码如下：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561858073684.png" alt="1561858073684"></p>
+<p>(2)商品图片</p>
+<p>修改item.html，将商品图片信息输出，在真实工作中需要做空判断，代码如下：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561858651061.png" alt="1561858651061"></p>
+<p>(3)规格输出</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561859448044.png" alt="1561859448044"></p>
+<p>(4)默认SKU显示</p>
+<p>静态页生成后，需要显示默认的Sku，我们这里默认显示第1个Sku即可，这里可以结合着Vue一起实现。可以先定义一个集合，再定义一个spec和sku，用来存储当前选中的Sku信息和Sku的规格，代码如下：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561858986838.png" alt="1561858986838"></p>
+<p>页面显示默认的Sku信息</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561859241651.png" alt="1561859241651"></p>
+<p>(5)记录选中的Sku</p>
+<p>在当前Spu的所有Sku中spec值是唯一的，我们可以根据spec来判断用户选中的是哪个Sku，我们可以在Vue中添加代码来实现，代码如下：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561860041421.png" alt="1561860041421"></p>
+<p>添加规格点击事件</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561860156033.png" alt="1561860156033"></p>
+<p>(6)样式切换</p>
+<p>点击不同规格后，实现样式选中，我们可以根据每个规格判断该规格是否在当前选中的Sku规格中，如果在，则返回true添加selected样式，否则返回false不添加selected样式。</p>
+<p>Vue添加代码：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561860749790.png" alt="1561860749790"></p>
+<p>页面添加样式绑定，代码如下：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561860653870.png" alt="1561860653870"></p>
+<h4 id="5-2-5-静态资源过滤"><a href="#5-2-5-静态资源过滤" class="headerlink" title="5.2.5 静态资源过滤"></a>5.2.5 静态资源过滤</h4><p>生成的静态页我们可以先放到changgou-web-item工程中，后面项目实战的时候可以挪出来放到Nginx指定发布目录。一会儿我们将生成的静态页放到resources&#x2F;templates&#x2F;items目录下,所以请求该目录下的静态页需要直接到该目录查找即可。</p>
+<p>我们创建一个EnableMvcConfig类，开启静态资源过滤，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EnableMvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">     * 静态资源放行</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> registry</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> &#123;</span><br><span class="line">        registry.addResourceHandler(<span class="string">&quot;/items/**&quot;</span>).addResourceLocations(<span class="string">&quot;classpath:/templates/items/&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="5-4-6-启动测试"><a href="#5-4-6-启动测试" class="headerlink" title="5.4.6 启动测试"></a>5.4.6 启动测试</h4><p>启动eurekea服务端</p>
+<p>启动商品微服务</p>
+<p>启动静态化微服务 changgou-web-item</p>
+<p>将静态资源导入到changgou-web-item中，如下图：</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561861540056.png" alt="1561861540056"></p>
+<p>生成静态页地址 <code>http://localhost:18085/page/createHtml/1087918019151269888</code></p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561862007448.png" alt="1561862007448"></p>
+<p>静态页生成后访问地址 <code>http://localhost:18085/items/1087918019151269888.html</code></p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1561862084834.png" alt="1561862084834"></p>
+<h2 id="6-canal监听生成静态页"><a href="#6-canal监听生成静态页" class="headerlink" title="6 canal监听生成静态页"></a>6 canal监听生成静态页</h2><p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1566736163765.png" alt="1566736163765"></p>
+<p> 监听到数据的变化,直接调用feign 生成静态页即可.</p>
+<h3 id="6-1-需求分析"><a href="#6-1-需求分析" class="headerlink" title="6.1 需求分析"></a>6.1 需求分析</h3><p>当商品微服务审核商品之后，应当发送消息，这里采用了Canal监控数据变化，数据变化后，调用feign实现生成静态页</p>
+<h3 id="6-2-Feign创建"><a href="#6-2-Feign创建" class="headerlink" title="6.2 Feign创建"></a>6.2 Feign创建</h3><p>在changgou-service-api中创建changgou-web-item-api，该工程中主要创建changgou-web-item的对外依赖抽取信息。</p>
+<p>(1)Feign创建</p>
+<p>在changgou-web-item-api中创建com.changgou.item.feign.PageFeign,代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(name=&quot;item&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">PageFeign</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">     * 根据SpuID生成静态页</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/createHtml/&#123;id&#125;&quot;)</span></span><br><span class="line">    Result <span class="title function_">createHtml</span><span class="params">(<span class="meta">@PathVariable(name=&quot;id&quot;)</span> Long id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>(2)pom.xml依赖</p>
+<p>修改changgou-service-canal工程的pom.xml，引入如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--静态页API 服务--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.changgou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>changgou-web-item-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>(3)修改changgou-service-canal工程中的启动类</p>
+<p><img src="D:/git-demo/畅购-讲师源码md课件/day07Thym,Rmq实现静态页/讲义/images/1566737648843.png" alt="1566737648843"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@EnableCanalClient</span> <span class="comment">// 启用canal</span></span><br><span class="line"><span class="meta">@EnableFeignClients(basePackages = &#123;&quot;com.changgou.content.feign&quot;,&quot;com.changgou.item.feign&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CanalApplication</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(CanalApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="6-3-canal监听数据变化"><a href="#6-3-canal监听数据变化" class="headerlink" title="6.3 canal监听数据变化"></a>6.3 canal监听数据变化</h3><p>监听类中,监听商品数据库的tb_spu的数据变化,当数据变化的时候生成静态页或者删除静态页</p>
+<p>在原来的监听类中添加如下代码即可,</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> PageFeign pageFeign;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ListenPoint(destination = &quot;example&quot;,</span></span><br><span class="line"><span class="meta">        schema = &quot;changgou_goods&quot;,</span></span><br><span class="line"><span class="meta">        table = &#123;&quot;tb_spu&quot;&#125;,</span></span><br><span class="line"><span class="meta">        eventType = &#123;CanalEntry.EventType.UPDATE, CanalEntry.EventType.INSERT, CanalEntry.EventType.DELETE&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onEventCustomSpu</span><span class="params">(CanalEntry.EventType eventType, CanalEntry.RowData rowData)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断操作类型</span></span><br><span class="line">    <span class="keyword">if</span> (eventType == CanalEntry.EventType.DELETE) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">spuId</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        List&lt;CanalEntry.Column&gt; beforeColumnsList = rowData.getBeforeColumnsList();</span><br><span class="line">        <span class="keyword">for</span> (CanalEntry.Column column : beforeColumnsList) &#123;</span><br><span class="line">            <span class="keyword">if</span> (column.getName().equals(<span class="string">&quot;id&quot;</span>)) &#123;</span><br><span class="line">                spuId = column.getValue();<span class="comment">//spuid</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//todo 删除静态页</span></span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//新增 或者 更新</span></span><br><span class="line">        List&lt;CanalEntry.Column&gt; afterColumnsList = rowData.getAfterColumnsList();</span><br><span class="line">        <span class="type">String</span> <span class="variable">spuId</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (CanalEntry.Column column : afterColumnsList) &#123;</span><br><span class="line">            <span class="keyword">if</span> (column.getName().equals(<span class="string">&quot;id&quot;</span>)) &#123;</span><br><span class="line">                spuId = column.getValue();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//更新 生成静态页</span></span><br><span class="line">        pageFeign.createHtml(Long.valueOf(spuId));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          ggq
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2022/10/08/projecet/商品详情页/" title="" target="_blank">http://example.com/2022/10/08/projecet/商品详情页/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/Spring/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.368Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%A7%92%E6%9D%80%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%20&%20JWT%20&%20Oauth2.0/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-        <time datetime="2022-10-08T15:41:10.354Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-
-        </div>
-    	 
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2022/10/08/projecet/%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/10/08/projecet/%E5%95%86%E5%93%81%E6%90%9C%E7%B4%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="extend next" rel="next" href="/archives/2022/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -507,8 +577,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
