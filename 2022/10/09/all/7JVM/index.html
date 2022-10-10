@@ -1,335 +1,152 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="ggq">
-  <meta name="keywords" content="JVM，虚拟机。">
-  
-    <meta name="description" content="。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>JVM | ggq</title><meta name="keywords" content="JVM，虚拟机。"><meta name="author" content="ggq"><meta name="copyright" content="ggq"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM">
 <meta property="og:url" content="https://gouguoqiang.github.io/2022/10/09/all/7JVM/index.html">
 <meta property="og:site_name" content="ggq">
 <meta property="og:description" content="。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220826091924004.png">
-<meta property="og:image" content="c:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/AppData/Local/Temp/mindmaster/92f3824674/bin/B9B616AC-9E3E-47B5-AD14-3D663CF5B497.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/image-20220923172113441.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/53BA4F99-EA72-4192-B3B8-44BDE74899EF.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/21B382E1-9BE4-473A-BD01-1DC2BC7FD4AA.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/F0A4DA2A-8338-4D9D-8050-79B8F8D43DC2.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/34DC8A34-8FC1-4410-AAD6-421A3CE7010B.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/3361B78F-4E9C-47DF-AA94-C10367777ECE.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/DECE7018-508C-44E0-85D4-849137D4116F.png">
-<meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220907234524335.png">
-<meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220907234534652.png">
-<meta property="og:image" content="file:///C:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/AppData/Local/Temp/mindmaster/17291212d56/001/E2171052-57C3-41E2-8DB5-B07E605A2705.png">
-<meta property="og:image" content="file:///C:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/AppData/Local/Temp/mindmaster/17291212d56/001/1AE5EA48-E43B-44EB-BC3D-7EF3A6E52916.png">
-<meta property="og:image" content="file:///C:/Users/%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87/AppData/Local/Temp/mindmaster/17291212d56/001/ADAFEE77-7F9A-4775-84D9-340DB2E62ADE.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/FB23035C-D0A6-4944-B09C-50FD043767CF.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/C2299BF8-C3E7-4BF2-B5E4-29233BD0CC3D.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/2975D8CE-8ADA-49C4-A64B-2A2191B34392.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/24CA8F45-6D5B-4B39-BC38-C7B5E98C405C.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/25BC0D0E-478A-4DB3-9306-53353BABDFC8.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/1C6E38D5-D041-4083-88AF-F7366CA80C4F-1664013468432.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/6EF327A5-CF26-4B0A-AAF5-6F9508F825A9.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/B272F64C-F9A0-4CA7-84A1-F5A5FB63A658.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/5320C6DE-E06F-4C26-A3B6-84BA848D1746.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/EFC24AEC-B305-4393-9FC7-2318ABB1DE1C.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/AA086057-97E6-41F5-856C-30B26BA8DE3B.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/76C82783-01E7-4626-93B0-DED33483B0AF.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/B771D5A5-4AFA-4C96-AB39-AAE7F0AF3076.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/C82F7271-714C-4AEA-B1D4-1094A30A3097.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/61DCA948-1E49-4394-9AB5-D9190455E121.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/4CE30391-2CA8-4F5D-944A-ADA1DC17B6D7.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/2A361A45-E69F-4C28-A37E-C0FE6F4FD6F0.png">
-<meta property="og:image" content="https://gouguoqiang.github.io/image/DAD479EF-C161-4B04-B05F-446CD2AFAF41.png">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXEa8Kv8ZOMnm82wnHesxe3Wic5UzRaZjIMfTedicYrcOsoeTicy5AvT8EQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXs5t1aJQ00noiakZsDdNBBdCnweVXiaTHZsVJcBE6bVoSHicGlb6z4E0tQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomX8c58CfxD8EhVVMic9IhF1KZkClgkcyukAdMy31NG5R5m9XJRFfpIRLQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXdCnRdaKdENBLBL4HicNFEUmHWI5ZLExhI6iaZW7b3zVAxYlvysEcwH1w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXK4yeIuok1b4mbnjPuuibIxLXBZXwOar5CULfkHtPxrQeiaNVyS84xVPw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXaSZfSDqciaOmaJiaKwsXwS6C9u9ROR8nK0rFzRpnPcQ1jEcXSice0ajyg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXYZldH2vnofgQ2uR9ateRiaz1VyCepuHHHJsj4XFHlaSE9TZ54s8yslA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXLKJpNtaFCicWvns6iaKNZdTnic3jtbPKUMKpHyQM74WBw55fWx92xtiaEA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXv0K4YhDVzvoWAp5IiaF7U9rSsvK3M6Qe7m6CW4qKsGbUZic1QPLqicnfQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXyCmOw29Y4K3WrWxBoxKm5MI8CAEYZ8XWHQiap0PMf2felI4ZSicnQzoQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomX7rZsMEDAeDxYrHicrWVuJ4pOP19ClXowqPjvjMEF621vTg3pF0EiaG8Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXV4JWu6zkISbOtt31ibdTsBLXmbG0kbhaDW1pOW8eZ8FfQGxqibYj4Svw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXFaXfibnDGQcjTKKM4lEos531aV0azRpCYvBPzFmibLfUH7zcxa9aE8TA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXEQLNIVP4sNv7dALQWWJtKzCAK0JFF8qSoiaZSkRZIpyfEaLsK4pT3kA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXLDpq2wiaJcNFTgMjQ0OzAjXKyAqIcMOuqA0EoAR4TiaqqoU9ScIYGA7g/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomX5PbQKcQk0bTFSSylLbuDUG9Ndggu9yNKlf4PC6CHa7k32Tj1evtsRA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXw2zEEZiczfGl5U8hOlhJ3vTTGzX4l3Djt7IJnTX2dMDjczVxxnEdG1w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2022-10-09T03:36:23.000Z">
 <meta property="article:modified_time" content="2022-10-09T05:24:28.014Z">
 <meta property="article:author" content="ggq">
 <meta property="article:tag" content="JVM">
 <meta property="article:tag" content="虚拟机">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220826091924004.png">
-  
-  
-  
-  <title>JVM - ggq</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"gouguoqiang.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://gouguoqiang.github.io/2022/10/09/all/7JVM/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
     }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JVM',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-09 13:24:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-
-
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="JVM"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-09 11:36" pubdate>
-          2022年10月9日 中午
-        </time>
-      </span>
-    
-  </div>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ggq</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JVM</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-09T03:36:23.000Z" title="发表于 2022-10-09 11:36:23">2022-10-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-09T05:24:28.014Z" title="更新于 2022-10-09 13:24:28">2022-10-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JVM/">JVM</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JVM"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="第一章-字节码篇"><a href="#第一章-字节码篇" class="headerlink" title="第一章 字节码篇"></a>第一章 字节码篇</h1><h2 id="分析一个对象的创建字节码"><a href="#分析一个对象的创建字节码" class="headerlink" title="分析一个对象的创建字节码"></a>分析一个对象的创建字节码</h2><p>D:\IDEA\projects\Pinduo&gt;javap -verbose -p out&#x2F;production&#x2F;Pinduo&#x2F;P1&#x2F;djp1&#x2F;Main.class</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Source code recreated from a .class file by IntelliJ IDEA</span></span><br><span class="line"><span class="comment">// (powered by FernFlower decompiler)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> P1.djp1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Main</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          56k 字
-        
-      </span>
-    
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">D:\IDEA\projects\Pinduo&gt;javap -verbose -p out/production/Pinduo/P1/djp1/Main.class</span><br><span class="line">Classfile /D:/IDEA/projects/Pinduo/out/production/Pinduo/P1/djp1/Main.class</span><br><span class="line">  Last modified 2022年9月23日; size 418 bytes</span><br><span class="line">  MD5 checksum 339314e49862fe3b31f3c66703efb5ca</span><br><span class="line">  Compiled from &quot;Main.java&quot;</span><br><span class="line">public class P1.djp1.Main</span><br><span class="line">  minor version: 0</span><br><span class="line">  major version: 52</span><br><span class="line">  flags: (0x0021) ACC_PUBLIC, ACC_SUPER</span><br><span class="line">  this_class: #3                          // P1/djp1/Main</span><br><span class="line">  super_class: #2                         // java/lang/Object</span><br><span class="line">  interfaces: 0, fields: 0, methods: 2, attributes: 1</span><br><span class="line">Constant pool:</span><br><span class="line">   #1 = Methodref          #2.#19         // java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">   #2 = Class              #20            // java/lang/Object</span><br><span class="line">   #3 = Class              #21            // P1/djp1/Main</span><br><span class="line">   #4 = Utf8               &lt;init&gt;</span><br><span class="line">   #5 = Utf8               ()V</span><br><span class="line">   #6 = Utf8               Code</span><br><span class="line">   #7 = Utf8               LineNumberTable</span><br><span class="line">   #8 = Utf8               LocalVariableTable</span><br><span class="line">   #9 = Utf8               this</span><br><span class="line">  #10 = Utf8               LP1/djp1/Main;</span><br><span class="line">  #11 = Utf8               main</span><br><span class="line">  #12 = Utf8               ([Ljava/lang/String;)V</span><br><span class="line">  #13 = Utf8               args</span><br><span class="line">  #14 = Utf8               [Ljava/lang/String;</span><br><span class="line">  #15 = Utf8               o</span><br><span class="line">  #16 = Utf8               Ljava/lang/Object;</span><br><span class="line">  #17 = Utf8               SourceFile</span><br><span class="line">  #18 = Utf8               Main.java</span><br><span class="line">  #19 = NameAndType        #4:#5          // &quot;&lt;init&gt;&quot;:()V</span><br><span class="line">  #20 = Utf8               java/lang/Object</span><br><span class="line">  #21 = Utf8               P1/djp1/Main</span><br><span class="line">&#123;</span><br><span class="line">  public P1.djp1.Main();</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: (0x0001) ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=1, locals=1, args_size=1</span><br><span class="line">         0: aload_0</span><br><span class="line">         1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">         4: return</span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line 7: 0</span><br><span class="line">      LocalVariableTable:</span><br><span class="line">        Start  Length  Slot  Name   Signature</span><br><span class="line">            0       5     0  this   LP1/djp1/Main;</span><br><span class="line"></span><br><span class="line">  public static void main(java.lang.String[]);</span><br><span class="line">    descriptor: ([Ljava/lang/String;)V</span><br><span class="line">    flags: (0x0009) ACC_PUBLIC, ACC_STATIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=2, locals=2, args_size=1</span><br><span class="line">         0: new           #2                  // class java/lang/Object</span><br><span class="line">         3: dup</span><br><span class="line">         4: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">         7: astore_1</span><br><span class="line">         8: return</span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line 11: 0</span><br><span class="line">        line 13: 8</span><br><span class="line">      LocalVariableTable:</span><br><span class="line">        Start  Length  Slot  Name   Signature</span><br><span class="line">            0       9     0  args   [Ljava/lang/String;</span><br><span class="line">            8       1     1     o   Ljava/lang/Object;</span><br><span class="line">&#125;</span><br><span class="line">SourceFile: &quot;Main.java&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          463 分钟
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">JVM</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="第一章-字节码篇"><a href="#第一章-字节码篇" class="headerlink" title="第一章 字节码篇"></a>第一章 字节码篇</h1><h2 id="分析一个对象的创建字节码"><a href="#分析一个对象的创建字节码" class="headerlink" title="分析一个对象的创建字节码"></a>分析一个对象的创建字节码</h2><p>D:\IDEA\projects\Pinduo&gt;javap -verbose -p out&#x2F;production&#x2F;Pinduo&#x2F;P1&#x2F;djp1&#x2F;Main.class</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//</span><br><span class="hljs-comment">// Source code recreated from a .class file by IntelliJ IDEA</span><br><span class="hljs-comment">// (powered by FernFlower decompiler)</span><br><span class="hljs-comment">//</span><br><br><span class="hljs-keyword">package</span> P1.djp1;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Main</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">D:</span>\IDEA\projects\Pinduo&gt;javap -verbose -p out<span class="hljs-keyword">/production/</span>Pinduo/P1<span class="hljs-keyword">/djp1/</span>Main.class<br>Classfile /D:/IDEA<span class="hljs-keyword">/projects/</span>Pinduo<span class="hljs-keyword">/out/</span>production/Pinduo/P1<span class="hljs-keyword">/djp1/</span>Main.class<br>  Last modified <span class="hljs-number">2022</span>年<span class="hljs-number">9</span>月<span class="hljs-number">23</span>日<span class="hljs-punctuation">;</span> size <span class="hljs-number">418</span> bytes<br>  MD5 checksum <span class="hljs-number">339314e49862</span>fe3b31f3c66703efb5ca<br>  Compiled from <span class="hljs-string">&quot;Main.java&quot;</span><br>public class P1.djp1.Main<br>  minor version: <span class="hljs-number">0</span><br>  major version: <span class="hljs-number">52</span><br><span class="hljs-symbol">  flags:</span> (<span class="hljs-number">0x0021</span>) ACC_PUBLIC, ACC_SUPER<br><span class="hljs-symbol">  this_class:</span> <span class="hljs-meta">#3                          <span class="hljs-comment">// P1/djp1/Main</span></span><br><span class="hljs-symbol">  super_class:</span> <span class="hljs-meta">#2                         <span class="hljs-comment">// java/lang/Object</span></span><br><span class="hljs-symbol">  interfaces:</span> <span class="hljs-number">0</span>, fields: <span class="hljs-number">0</span>, methods: <span class="hljs-number">2</span>, attributes: <span class="hljs-number">1</span><br>Constant pool:<br>   <span class="hljs-meta">#1 = Methodref          #2.#19         <span class="hljs-comment">// java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span></span><br>   <span class="hljs-meta">#2 = Class              #20            <span class="hljs-comment">// java/lang/Object</span></span><br>   <span class="hljs-meta">#3 = Class              #21            <span class="hljs-comment">// P1/djp1/Main</span></span><br>   <span class="hljs-meta">#4 = Utf8               &lt;init&gt;</span><br>   <span class="hljs-meta">#5 = Utf8               ()V</span><br>   <span class="hljs-meta">#6 = Utf8               Code</span><br>   <span class="hljs-meta">#7 = Utf8               LineNumberTable</span><br>   <span class="hljs-meta">#8 = Utf8               LocalVariableTable</span><br>   <span class="hljs-meta">#9 = Utf8               this</span><br>  <span class="hljs-meta">#10 = Utf8               LP1/djp1/Main;</span><br>  <span class="hljs-meta">#11 = Utf8               main</span><br>  <span class="hljs-meta">#12 = Utf8               ([Ljava/lang/String;)V</span><br>  <span class="hljs-meta">#13 = Utf8               args</span><br>  <span class="hljs-meta">#14 = Utf8               [Ljava/lang/String;</span><br>  <span class="hljs-meta">#15 = Utf8               o</span><br>  <span class="hljs-meta">#16 = Utf8               Ljava/lang/Object;</span><br>  <span class="hljs-meta">#17 = Utf8               SourceFile</span><br>  <span class="hljs-meta">#18 = Utf8               Main.java</span><br>  <span class="hljs-meta">#19 = NameAndType        #4:#5          <span class="hljs-comment">// &quot;&lt;init&gt;&quot;:()V</span></span><br>  <span class="hljs-meta">#20 = Utf8               java/lang/Object</span><br>  <span class="hljs-meta">#21 = Utf8               P1/djp1/Main</span><br><span class="hljs-punctuation">&#123;</span><br>  public P1.djp1.Main()<span class="hljs-punctuation">;</span><br><span class="hljs-symbol">    descriptor:</span> ()V<br><span class="hljs-symbol">    flags:</span> (<span class="hljs-number">0x0001</span>) ACC_PUBLIC<br><span class="hljs-symbol">    Code:</span><br>      <span class="hljs-attr">stack</span><span class="hljs-operator">=</span><span class="hljs-number">1</span>, <span class="hljs-attr">locals</span><span class="hljs-operator">=</span><span class="hljs-number">1</span>, args_<span class="hljs-attr">size</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br>         <span class="hljs-number">0</span>: aload_0<br>         <span class="hljs-number">1</span>: invokespecial <span class="hljs-meta">#1                  <span class="hljs-comment">// Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span></span><br>         <span class="hljs-number">4</span>: return<br><span class="hljs-symbol">      LineNumberTable:</span><br>        line <span class="hljs-number">7</span>: <span class="hljs-number">0</span><br><span class="hljs-symbol">      LocalVariableTable:</span><br>        Start  Length  Slot  Name   Signature<br>            <span class="hljs-number">0</span>       <span class="hljs-number">5</span>     <span class="hljs-number">0</span>  this   LP1<span class="hljs-keyword">/djp1/</span>M<span class="hljs-attr">ain</span><span class="hljs-punctuation">;</span><br><br>  public static void main(java.lang.String[])<span class="hljs-punctuation">;</span><br><span class="hljs-symbol">    descriptor:</span> ([Ljava<span class="hljs-keyword">/lang/</span>S<span class="hljs-attr">tring</span><span class="hljs-punctuation">;</span>)V<br><span class="hljs-symbol">    flags:</span> (<span class="hljs-number">0x0009</span>) ACC_PUBLIC, ACC_STATIC<br><span class="hljs-symbol">    Code:</span><br>      <span class="hljs-attr">stack</span><span class="hljs-operator">=</span><span class="hljs-number">2</span>, <span class="hljs-attr">locals</span><span class="hljs-operator">=</span><span class="hljs-number">2</span>, args_<span class="hljs-attr">size</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br>         <span class="hljs-number">0</span>: new           <span class="hljs-meta">#2                  <span class="hljs-comment">// class java/lang/Object</span></span><br>         <span class="hljs-number">3</span>: dup<br>         <span class="hljs-number">4</span>: invokespecial <span class="hljs-meta">#1                  <span class="hljs-comment">// Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span></span><br>         <span class="hljs-number">7</span>: astore_1<br>         <span class="hljs-number">8</span>: return<br><span class="hljs-symbol">      LineNumberTable:</span><br>        line <span class="hljs-number">11</span>: <span class="hljs-number">0</span><br>        line <span class="hljs-number">13</span>: <span class="hljs-number">8</span><br><span class="hljs-symbol">      LocalVariableTable:</span><br>        Start  Length  Slot  Name   Signature<br>            <span class="hljs-number">0</span>       <span class="hljs-number">9</span>     <span class="hljs-number">0</span>  args   [Ljava<span class="hljs-keyword">/lang/</span>S<span class="hljs-attr">tring</span><span class="hljs-punctuation">;</span><br>            <span class="hljs-number">8</span>       <span class="hljs-number">1</span>     <span class="hljs-number">1</span>     o   Ljava<span class="hljs-keyword">/lang/</span>O<span class="hljs-attr">bject</span><span class="hljs-punctuation">;</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-symbol">SourceFile:</span> <span class="hljs-string">&quot;Main.java&quot;</span><br><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs gradle">D:\IDEA\projects\Pinduo&gt;javap -c out<span class="hljs-regexp">/production/</span>Pinduo<span class="hljs-regexp">/P1/</span>djp1/Main.<span class="hljs-keyword">class</span><br>Compiled <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;Main.java&quot;</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> P1.djp1.Main &#123;<br>  <span class="hljs-keyword">public</span> P1.djp1.Main();<br>    Code:<br>       <span class="hljs-number">0</span>: aload_0<br>       <span class="hljs-number">1</span>: invokespecial #<span class="hljs-number">1</span>                  <span class="hljs-comment">// Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br>       <span class="hljs-number">4</span>: <span class="hljs-keyword">return</span><br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(java.lang.String[]);<br>    Code:<br>       <span class="hljs-number">0</span>: <span class="hljs-keyword">new</span>           #<span class="hljs-number">2</span>                  <span class="hljs-comment">// class java/lang/Object</span><br>       <span class="hljs-number">3</span>: dup<br>       <span class="hljs-number">4</span>: invokespecial #<span class="hljs-number">1</span>                  <span class="hljs-comment">// Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br>       <span class="hljs-number">7</span>: astore_1<br>       <span class="hljs-number">8</span>: <span class="hljs-keyword">return</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">D:\IDEA\projects\Pinduo&gt;javap -c out/production/Pinduo/P1/djp1/Main.class</span><br><span class="line">Compiled from &quot;Main.java&quot;</span><br><span class="line">public class P1.djp1.Main &#123;</span><br><span class="line">  public P1.djp1.Main();</span><br><span class="line">    Code:</span><br><span class="line">       0: aload_0</span><br><span class="line">       1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">       4: return</span><br><span class="line"></span><br><span class="line">  public static void main(java.lang.String[]);</span><br><span class="line">    Code:</span><br><span class="line">       0: new           #2                  // class java/lang/Object</span><br><span class="line">       3: dup</span><br><span class="line">       4: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">       7: astore_1</span><br><span class="line">       8: return</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>NEW ：如果找不到Class对象，则进行类加载。加载成功后，则在堆中分配内存，从Object 开始到本类路径上的所有属性值都要分配内存。分配完毕之后，进行零值初始化。在分配过程中，注意引用是占据存储空间的，它是一个变量，占用4个字节。这个指令完毕后，将指向实例对象的引用变量压入虚拟机栈顶。<br>DUP ：在栈顶复制该引用变量，这时的栈顶有两个指向堆内实例对象的引用变量。如果 方法有参数，还需要把参数压人操作栈中。两个引用变量的目的不同，其中压至底下的引用用于赋值，或者保存到局部变量表，另一个栈顶的引用变量作为句柄调用相关方法。<br>INVOKESPECIAL ：调用对象实例方法，通过栈顶的引用变量调用＜init&gt; 方法。</p>
@@ -379,7 +196,7 @@
 <li><p>讲一下JVM加载一个类的过程 （京东）</p>
 </li>
 </ul>
-<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">JAVA<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloLoader</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;谢谢ClassLoader加载我....&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;你的大恩大德，我下辈子再报！&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">JAVA</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloLoader</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;谢谢ClassLoader加载我....&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;你的大恩大德，我下辈子再报！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>它加载(与对象创建区分)是怎么样的呢?</p>
 <ul>
@@ -390,7 +207,7 @@
 <li><p>加载失败则抛出异常</p>
 </li>
 <li><p>&#96;&#96;&#96;java<br>class A {<br>static {<br>    System.out.println(“1”);<br>}<br>A() {<br>    System.out.println(“a”);<br>}<br>}<br>class B extends A {<br>static {<br>    System.out.println(“2”);<br>}<br>B() {<br>    System.out.println(“b”);<br>}<br>}<br>public class Main {</p>
-<pre><code class="hljs">public static void main(String[] args) &#123;
+<pre><code>public static void main(String[] args) &#123;
     B b = new B();
     A a = new A();
     
@@ -403,7 +220,7 @@
 &#125;
 </code></pre>
 <p>}</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><br><br><span class="hljs-section">#### 2.1. 加载阶段</span><br><br><span class="hljs-strong">**加载：**</span><br><br><span class="hljs-bullet">1.</span> 通过一个类的全限定名获取定义此类的二进制字节流<br><span class="hljs-bullet">2.</span> 将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构<br><span class="hljs-bullet">3.</span> <span class="hljs-strong">**在内存中生成一个代表这个类的java.lang.Class对象**</span>，作为方法区这个类的各种数据的访问入口<br><br><span class="hljs-strong">**加载class文件的方式：**</span><br><br><span class="hljs-bullet">1.</span> 从本地系统中直接加载<br><span class="hljs-bullet">2.</span> 通过网络获取，典型场景：Web Applet<br><span class="hljs-bullet">3.</span> 从zip压缩包中读取，成为日后jar、war格式的基础<br><span class="hljs-bullet">4.</span> 运行时计算生成，使用最多的是：动态代理技术<br><span class="hljs-bullet">5.</span> 由其他文件生成，典型场景：JSP应用从专有数据库中提取.class文件，比较少见<br><span class="hljs-bullet">6.</span> 从加密文件中获取，典型的防Class文件被反编译的保护措施<br><br><span class="hljs-strong">**数组类的加载**</span><br><br>创建数组类的情况稍微有些特殊，因为数组类本身并不是由类加载器负责创建，而是由JVM在运行时根据需要而直接创建的，但数组的元素类型仍然需要依靠类加载器去创建。创建数组类（下述简称A）的过程：<br><br><span class="hljs-bullet">1.</span> 如果数组的元素类型是引用类型，那么就遵循定义的加载过程递归加载和创建数组A的元素类型；<br><br><span class="hljs-bullet">2.</span> JVM使用指定的元素类型和数组维度来创建新的数组类。<br><br><span class="hljs-bullet">3.</span> 如果数组的元素类型是引用类型，数组类的可访问性就由元素类型的可访问性决定。否则数组类的可访问性将被缺省定义为public。<br><br>int[] arr<br><br>String[] arr<br><br>Object[] arr<br><br><span class="hljs-section">#### 2.2. 链接阶段</span><br><br>链接分为三个子阶段：验证 -&gt; 准备 -&gt; 解析<br><br><span class="hljs-section">##### 验证(Verify)</span><br><br><span class="hljs-bullet">1.</span> 目的在于确保Class文件的字节流中包含信息符合当前虚拟机要求，保证被加载类的正确性，不会危害虚拟机自身安全<br><span class="hljs-bullet">2.</span> 主要包括四种验证，文件格式验证，元数据验证，字节码验证，符号引用验证。<br><br>链接过程之验证阶段(Verification)<br><br>当类加载到系统后，就开始链接操作，验证是链接操作的第一步。<br><br>它的目的是保证加载的字节码是合法、合理并符合规范的。<br><br>验证的步骤比较复杂，实际要验证的项目也很繁多，大体上Java虚拟机需要做以下检査，如图所示。<br><br><br><br>整体说明：<br><br>验证的内容则涵盖了类数据信息的格式验证、语义检查、字节码验证，以及符号引用验证等。<br><br><span class="hljs-bullet">-</span> 其中格式验证会和装载阶段一起执行。验证通过之后，类加载器才会成功将类的二进制数据信息加载到方法区中。<br><br><span class="hljs-bullet">-</span> 格式验证之外的验证操作将会在方法区中进行。<br><br><span class="hljs-strong">**举例**</span><br><br>使用 BinaryViewer软件查看字节码文件，其开头均为 CAFE BABE ，如果出现不合法的字节码文件，那么将会验证不通过。<br><br><span class="hljs-section">##### 准备(Prepare)</span><br><br><span class="hljs-bullet">1.</span> 为类变量（static变量）分配内存并且设置该类变量的默认初始值，即零值<br><span class="hljs-bullet">2.</span> 这里不包含用final修饰的static，因为final在编译的时候就会分配好了默认值，准备阶段会显式初始化<br><span class="hljs-bullet">3.</span> 注意：这里不会为实例变量分配初始化，类变量会分配在方法区中，而实例变量是会随着对象一起分配到Java堆中<br><br>链接过程之准备阶段(Preparation)<br><br>简言之，为类的静态变量分配内存，并将其初始化为默认值。<br><br>在这个阶段，虚拟机就会为这个类分配相应的内存空间，并设置默认初始值。Java虚拟机为各类型变量默认的初始值如表所示。<br><br><br><br>注意：Java并不支持boolean类型，对于boolean类型，内部实现是int,由于int的默认值是0,故对应的，boolean的默认值就是false。<br><br><span class="hljs-strong">**举例**</span><br><br>代码：变量a在准备阶段会赋初始值，但不是1，而是0，在初始化阶段会被赋值为 1<br><br><span class="hljs-code">```java</span><br><span class="hljs-code">JAVA</span><br><span class="hljs-code">public class HelloApp &#123;</span><br><span class="hljs-code">    private static int a = 1;//prepare：a = 0 ---&gt; initial : a = 1</span><br><span class="hljs-code"></span><br><span class="hljs-code"></span><br><span class="hljs-code">    public static void main(String[] args) &#123;</span><br><span class="hljs-code">        System.out.println(a);</span><br><span class="hljs-code">    &#125;</span><br><span class="hljs-code">&#125;</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 2.1. 加载阶段</span><br><span class="line"></span><br><span class="line">**加载：**</span><br><span class="line"></span><br><span class="line">1. 通过一个类的全限定名获取定义此类的二进制字节流</span><br><span class="line">2. 将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构</span><br><span class="line">3. **在内存中生成一个代表这个类的java.lang.Class对象**，作为方法区这个类的各种数据的访问入口</span><br><span class="line"></span><br><span class="line">**加载class文件的方式：**</span><br><span class="line"></span><br><span class="line">1. 从本地系统中直接加载</span><br><span class="line">2. 通过网络获取，典型场景：Web Applet</span><br><span class="line">3. 从zip压缩包中读取，成为日后jar、war格式的基础</span><br><span class="line">4. 运行时计算生成，使用最多的是：动态代理技术</span><br><span class="line">5. 由其他文件生成，典型场景：JSP应用从专有数据库中提取.class文件，比较少见</span><br><span class="line">6. 从加密文件中获取，典型的防Class文件被反编译的保护措施</span><br><span class="line"></span><br><span class="line">**数组类的加载**</span><br><span class="line"></span><br><span class="line">创建数组类的情况稍微有些特殊，因为数组类本身并不是由类加载器负责创建，而是由JVM在运行时根据需要而直接创建的，但数组的元素类型仍然需要依靠类加载器去创建。创建数组类（下述简称A）的过程：</span><br><span class="line"></span><br><span class="line">1. 如果数组的元素类型是引用类型，那么就遵循定义的加载过程递归加载和创建数组A的元素类型；</span><br><span class="line"></span><br><span class="line">2. JVM使用指定的元素类型和数组维度来创建新的数组类。</span><br><span class="line"></span><br><span class="line">3. 如果数组的元素类型是引用类型，数组类的可访问性就由元素类型的可访问性决定。否则数组类的可访问性将被缺省定义为public。</span><br><span class="line"></span><br><span class="line">int[] arr</span><br><span class="line"></span><br><span class="line">String[] arr</span><br><span class="line"></span><br><span class="line">Object[] arr</span><br><span class="line"></span><br><span class="line">#### 2.2. 链接阶段</span><br><span class="line"></span><br><span class="line">链接分为三个子阶段：验证 -&gt; 准备 -&gt; 解析</span><br><span class="line"></span><br><span class="line">##### 验证(Verify)</span><br><span class="line"></span><br><span class="line">1. 目的在于确保Class文件的字节流中包含信息符合当前虚拟机要求，保证被加载类的正确性，不会危害虚拟机自身安全</span><br><span class="line">2. 主要包括四种验证，文件格式验证，元数据验证，字节码验证，符号引用验证。</span><br><span class="line"></span><br><span class="line">链接过程之验证阶段(Verification)</span><br><span class="line"></span><br><span class="line">当类加载到系统后，就开始链接操作，验证是链接操作的第一步。</span><br><span class="line"></span><br><span class="line">它的目的是保证加载的字节码是合法、合理并符合规范的。</span><br><span class="line"></span><br><span class="line">验证的步骤比较复杂，实际要验证的项目也很繁多，大体上Java虚拟机需要做以下检査，如图所示。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">整体说明：</span><br><span class="line"></span><br><span class="line">验证的内容则涵盖了类数据信息的格式验证、语义检查、字节码验证，以及符号引用验证等。</span><br><span class="line"></span><br><span class="line">- 其中格式验证会和装载阶段一起执行。验证通过之后，类加载器才会成功将类的二进制数据信息加载到方法区中。</span><br><span class="line"></span><br><span class="line">- 格式验证之外的验证操作将会在方法区中进行。</span><br><span class="line"></span><br><span class="line">**举例**</span><br><span class="line"></span><br><span class="line">使用 BinaryViewer软件查看字节码文件，其开头均为 CAFE BABE ，如果出现不合法的字节码文件，那么将会验证不通过。</span><br><span class="line"></span><br><span class="line">##### 准备(Prepare)</span><br><span class="line"></span><br><span class="line">1. 为类变量（static变量）分配内存并且设置该类变量的默认初始值，即零值</span><br><span class="line">2. 这里不包含用final修饰的static，因为final在编译的时候就会分配好了默认值，准备阶段会显式初始化</span><br><span class="line">3. 注意：这里不会为实例变量分配初始化，类变量会分配在方法区中，而实例变量是会随着对象一起分配到Java堆中</span><br><span class="line"></span><br><span class="line">链接过程之准备阶段(Preparation)</span><br><span class="line"></span><br><span class="line">简言之，为类的静态变量分配内存，并将其初始化为默认值。</span><br><span class="line"></span><br><span class="line">在这个阶段，虚拟机就会为这个类分配相应的内存空间，并设置默认初始值。Java虚拟机为各类型变量默认的初始值如表所示。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">注意：Java并不支持boolean类型，对于boolean类型，内部实现是int,由于int的默认值是0,故对应的，boolean的默认值就是false。</span><br><span class="line"></span><br><span class="line">**举例**</span><br><span class="line"></span><br><span class="line">代码：变量a在准备阶段会赋初始值，但不是1，而是0，在初始化阶段会被赋值为 1</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">JAVA</span><br><span class="line">public class HelloApp &#123;</span><br><span class="line">    private static int a = 1;//prepare：a = 0 ---&gt; initial : a = 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h5 id="解析-Resolve"><a href="#解析-Resolve" class="headerlink" title="解析(Resolve)"></a>解析(Resolve)</h5><ol>
 <li><strong>将常量池内的符号引用转换为直接引用的过程</strong></li>
@@ -415,7 +232,7 @@
 <ul>
 <li>反编译 class 文件后可以查看符号引用，下面带# 的就是符号引用</li>
 </ul>
-<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220826091924004.png" srcset="/img/loading.gif" lazyload alt="image-20220826091924004"></p>
+<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220826091924004.png" alt="image-20220826091924004"></p>
 <p>链接过程之解析阶段(Resolution)</p>
 <p>简言之，将类、接口、字段和方法的符号引用转为直接引用。</p>
 <p>1.具体描述:</p>
@@ -457,7 +274,7 @@
 </li>
 </ul>
 <p>查看下面这个代码的字节码，可以发现有一个<code>&lt;clinit&gt;()</code>方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java">JAVA<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClassInitTest</span> &#123;<br>   <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><br>   <span class="hljs-keyword">static</span>&#123;<br>       num = <span class="hljs-number">2</span>;<br>       number = <span class="hljs-number">20</span>;<br>       System.out.println(num);<br>       <span class="hljs-comment">//System.out.println(number);//报错：非法的前向引用。即在定义之前使用</span><br>   &#125;<br><br>   <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 1、linking之prepare: number = 0 --&gt; initial: 20 --&gt; 10</span><br><span class="hljs-comment">    * 2、这里因为静态代码块出现在声明变量语句前面，所以之前被准备阶段为0的number变量会</span><br><span class="hljs-comment">    * 首先被初始化为20，再接着被初始化成10（这也是面试时常考的问题哦）</span><br><span class="hljs-comment">    *</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-variable">number</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(ClassInitTest.num);<span class="hljs-comment">//2</span><br>        System.out.println(ClassInitTest.number);<span class="hljs-comment">//10</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">JAVA</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClassInitTest</span> &#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span>&#123;</span><br><span class="line">       num = <span class="number">2</span>;</span><br><span class="line">       number = <span class="number">20</span>;</span><br><span class="line">       System.out.println(num);</span><br><span class="line">       <span class="comment">//System.out.println(number);//报错：非法的前向引用。即在定义之前使用</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 1、linking之prepare: number = 0 --&gt; initial: 20 --&gt; 10</span></span><br><span class="line"><span class="comment">    * 2、这里因为静态代码块出现在声明变量语句前面，所以之前被准备阶段为0的number变量会</span></span><br><span class="line"><span class="comment">    * 首先被初始化为20，再接着被初始化成10（这也是面试时常考的问题哦）</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">number</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(ClassInitTest.num);<span class="comment">//2</span></span><br><span class="line">        System.out.println(ClassInitTest.number);<span class="comment">//10</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>虚拟机必须保证一个类的<code>&lt;clinit&gt;()</code>方法在多线程下被同步加锁 </p>
 <h5 id="类的初始化情况：主动使用vs被动使用"><a href="#类的初始化情况：主动使用vs被动使用" class="headerlink" title="类的初始化情况：主动使用vs被动使用"></a><strong>类的初始化情况：主动使用vs被动使用</strong></h5><p>Java程序对类的使用分为两种：主动使用 和 被动使用。</p>
@@ -537,7 +354,7 @@
 <li>该类对应的java.lang.Class对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
 </ul>
 <p>Java虚拟机被允许对满足上述三个条件的无用类进行回收，这里说的仅仅是“被允许”，而并不是和对象一样，没有引用了就必然会回收。</p>
-<h4 id="2-6-总结"><a href="#2-6-总结" class="headerlink" title="2.6. 总结"></a>2.6. 总结</h4><pre><code class="hljs">1. 加载:将字节码静态数据装载到JVM中成为运行时数据
+<h4 id="2-6-总结"><a href="#2-6-总结" class="headerlink" title="2.6. 总结"></a>2.6. 总结</h4><pre><code>1. 加载:将字节码静态数据装载到JVM中成为运行时数据
  2. 链接阶段
       1. 验证
            1. 验证一些信息
@@ -648,7 +465,7 @@
 <li><p>从java.ext.dirs系统属性所指定的目录中加载类库，或从JDK的安装目录的jre&#x2F;lib&#x2F;ext子目录下加载类库。如果用户创建的JAR放在此目录下，也会自动由扩展类加载器加载。</p>
 </li>
 </ul>
-<p><img src="C:/Users/再难也会过/AppData/Local/Temp/mindmaster/92f3824674/bin/B9B616AC-9E3E-47B5-AD14-3D663CF5B497.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="C:/Users/再难也会过/AppData/Local/Temp/mindmaster/92f3824674/bin/B9B616AC-9E3E-47B5-AD14-3D663CF5B497.png" alt="img"></p>
 <h4 id="应用程序类加载器（系统类加载器，AppClassLoader）"><a href="#应用程序类加载器（系统类加载器，AppClassLoader）" class="headerlink" title="应用程序类加载器（系统类加载器，AppClassLoader）"></a>应用程序类加载器（系统类加载器，AppClassLoader）</h4><ul>
 <li><p>java语言编写，由sun.misc.Launcher$AppClassLoader实现</p>
 </li>
@@ -675,7 +492,7 @@
 <blockquote>
 <p>待复习tomcat机制</p>
 </blockquote>
-<h2 id="4-cl源码剖析及相关机制"><a href="#4-cl源码剖析及相关机制" class="headerlink" title="4. cl源码剖析及相关机制"></a>4. cl源码剖析及相关机制</h2><h1 id="第三章-运行时数据区"><a href="#第三章-运行时数据区" class="headerlink" title="第三章 运行时数据区"></a>第三章 运行时数据区</h1><p><img src="/../image/image-20220923172113441.png" srcset="/img/loading.gif" lazyload alt="image-20220923172113441"></p>
+<h2 id="4-cl源码剖析及相关机制"><a href="#4-cl源码剖析及相关机制" class="headerlink" title="4. cl源码剖析及相关机制"></a>4. cl源码剖析及相关机制</h2><h1 id="第三章-运行时数据区"><a href="#第三章-运行时数据区" class="headerlink" title="第三章 运行时数据区"></a>第三章 运行时数据区</h1><p><img src="/../image/image-20220923172113441.png" alt="image-20220923172113441"></p>
 <p><strong>面试题</strong></p>
 <ul>
 <li><p>说一说JVM的内存结构是什么样子的,每个区域放什么，各有什么特点？（快手、搜狐）</p>
@@ -750,7 +567,7 @@
 <li>一般默认为512k-1024k，取决于操作系统。</li>
 <li>栈的大小直接决定了函数调用的最大可达深度。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(count++);<br>        main(args);<br>    &#125;<br><br>&#125;<br>SOF<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(count++);</span><br><span class="line">        main(args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">SOF</span><br></pre></td></tr></table></figure>
 
 <p>OOM: 死循环创建线程</p>
 <p><strong>方法和栈桢之间存在怎样的关系？</strong></p>
@@ -768,7 +585,7 @@
 <li>方法返回地址（Return Address）（或方法正常退出或者异常退出的定义）</li>
 <li>一些附加信息</li>
 </ul>
-<p><img src="/../image/53BA4F99-EA72-4192-B3B8-44BDE74899EF.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/53BA4F99-EA72-4192-B3B8-44BDE74899EF.png" alt="img"></p>
 <h4 id="1-局部变量表"><a href="#1-局部变量表" class="headerlink" title="1. 局部变量表"></a>1. 局部变量表</h4><p>局部变量表（local variables)</p>
 <ul>
 <li><p>局部变量表也被称之为局部变量数组或本地变量表</p>
@@ -782,7 +599,7 @@
 <li><p><strong>局部变量表中的变量只在当前方法调用中有效</strong>。在方法执行时，虚拟机通过使用局部变量表完成参数值到参数变量列表的传递过程。当方法调用结束后，随着方法栈帧的销毁，局部变量表也会随之销毁。</p>
 </li>
 </ul>
-<h5 id="slot"><a href="#slot" class="headerlink" title="slot"></a>slot</h5><p><img src="/../image/21B382E1-9BE4-473A-BD01-1DC2BC7FD4AA.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h5 id="slot"><a href="#slot" class="headerlink" title="slot"></a>slot</h5><p><img src="/../image/21B382E1-9BE4-473A-BD01-1DC2BC7FD4AA.png" alt="img"></p>
 <ul>
 <li><p>参数值的存放总是在局部变量数组的index为0开始，到数组长度-1的索引结束。</p>
 </li>
@@ -836,7 +653,7 @@
 </li>
 </ul>
 <p>public void testGetSum(){*<br>*int i &#x3D; getSum();<br>int j &#x3D; 10;<br>}</p>
-<p><img src="/../image/F0A4DA2A-8338-4D9D-8050-79B8F8D43DC2.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/F0A4DA2A-8338-4D9D-8050-79B8F8D43DC2.png" alt="img"></p>
 <h4 id="4-方法返回地址"><a href="#4-方法返回地址" class="headerlink" title="4. 方法返回地址"></a>4. 方法返回地址</h4><ul>
 <li><p>存放调用该方法的pc寄存器的值。</p>
 </li>
@@ -866,7 +683,7 @@
 <p>虚拟机栈和本地方法栈,都是只涉及压栈和出栈,可能存在栈溢出,不存在垃圾回收。</p>
 <p>问题五：方法中定义的局部变量是否线程安全?</p>
 <p>具体问题具体分析,见分析代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**方法中定义的局部变量是否线程安全?   具体问题具体分析</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> shkstart</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span> 15:53</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LocalVariableThreadSafe</span> &#123;<br><span class="hljs-comment">//s1的声明方式是线程安全的,因为线程私有，在线程内创建的s1 ，不会被其它线程调用</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">method1</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//StringBuilder:线程不安全</span><br><span class="hljs-type">StringBuilder</span> <span class="hljs-variable">s1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        s1.append(<span class="hljs-string">&quot;a&quot;</span>);<br>        s1.append(<span class="hljs-string">&quot;b&quot;</span>);<br><span class="hljs-comment">//...</span><br>&#125;<br><br><span class="hljs-comment">//stringBuilder的操作过程：是线程不安全的，</span><br>    <span class="hljs-comment">// 因为stringBuilder是外面传进来的，有可能被多个线程调用</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">method2</span><span class="hljs-params">(StringBuilder stringBuilder)</span> &#123;<br>        stringBuilder.append(<span class="hljs-string">&quot;a&quot;</span>);<br>        stringBuilder.append(<span class="hljs-string">&quot;b&quot;</span>);<br><span class="hljs-comment">//...</span><br>&#125;<br><br><span class="hljs-comment">//stringBuilder的操作：是线程不安全的；因为返回了一个stringBuilder，</span><br>    <span class="hljs-comment">// stringBuilder有可能被其他线程共享</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> StringBuilder <span class="hljs-title function_">method3</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">stringBuilder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        stringBuilder.append(<span class="hljs-string">&quot;a&quot;</span>);<br>        stringBuilder.append(<span class="hljs-string">&quot;b&quot;</span>);<br><span class="hljs-keyword">return</span> stringBuilder;<br>    &#125;<br><br><span class="hljs-comment">//stringBuilder的操作：是线程安全的；因为返回了一个stringBuilder.toString()相当于new了一个String，</span><br>    <span class="hljs-comment">// 所以stringBuilder没有被其他线程共享的可能</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">method4</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">stringBuilder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        stringBuilder.append(<span class="hljs-string">&quot;a&quot;</span>);<br>        stringBuilder.append(<span class="hljs-string">&quot;b&quot;</span>);<br><span class="hljs-keyword">return</span> stringBuilder.toString();<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 结论：如果局部变量在内部产生并在内部消亡的，那就是线程安全的</span><br><span class="hljs-comment">         */</span><br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**方法中定义的局部变量是否线程安全?   具体问题具体分析</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> shkstart</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 15:53</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LocalVariableThreadSafe</span> &#123;</span><br><span class="line"><span class="comment">//s1的声明方式是线程安全的,因为线程私有，在线程内创建的s1 ，不会被其它线程调用</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">method1</span><span class="params">()</span> &#123;</span><br><span class="line"><span class="comment">//StringBuilder:线程不安全</span></span><br><span class="line"><span class="type">StringBuilder</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        s1.append(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        s1.append(<span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//stringBuilder的操作过程：是线程不安全的，</span></span><br><span class="line">    <span class="comment">// 因为stringBuilder是外面传进来的，有可能被多个线程调用</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">method2</span><span class="params">(StringBuilder stringBuilder)</span> &#123;</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//stringBuilder的操作：是线程不安全的；因为返回了一个stringBuilder，</span></span><br><span class="line">    <span class="comment">// stringBuilder有可能被其他线程共享</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> StringBuilder <span class="title function_">method3</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">stringBuilder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> stringBuilder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//stringBuilder的操作：是线程安全的；因为返回了一个stringBuilder.toString()相当于new了一个String，</span></span><br><span class="line">    <span class="comment">// 所以stringBuilder没有被其他线程共享的可能</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">method4</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">stringBuilder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> stringBuilder.toString();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 结论：如果局部变量在内部产生并在内部消亡的，那就是线程安全的</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -890,7 +707,7 @@
 </li>
 </ul>
 <p>所有的线程共享Java堆，在这里还可以划分线程私有的缓冲区（Thread Local Allocation Buffer, TLAB)。</p>
-<h3 id="堆的内部结构"><a href="#堆的内部结构" class="headerlink" title="堆的内部结构"></a>堆的内部结构</h3><p><img src="/../image/34DC8A34-8FC1-4410-AAD6-421A3CE7010B.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="堆的内部结构"><a href="#堆的内部结构" class="headerlink" title="堆的内部结构"></a>堆的内部结构</h3><p><img src="/../image/34DC8A34-8FC1-4410-AAD6-421A3CE7010B.png" alt="img"></p>
 <ul>
 <li>几乎所有的Java对象都是在Eden区被new出来的。</li>
 <li>绝大部分的Java对象的销毁都在新生代进行了。</li>
@@ -898,7 +715,7 @@
 </ul>
 <h3 id="如何设置堆内存大小？"><a href="#如何设置堆内存大小？" class="headerlink" title="如何设置堆内存大小？"></a>如何设置堆内存大小？</h3><h4 id="如何设置新生代与老年代比例？"><a href="#如何设置新生代与老年代比例？" class="headerlink" title="如何设置新生代与老年代比例？"></a>如何设置新生代与老年代比例？</h4><ul>
 <li><p>下面这参数开发中一般不会调：</p>
-<p><img src="/../image/3361B78F-4E9C-47DF-AA94-C10367777ECE.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/3361B78F-4E9C-47DF-AA94-C10367777ECE.png" alt="img"></p>
 <ul>
 <li><p>配置新生代与老年代在堆结构的占比。</p>
 </li>
@@ -923,7 +740,7 @@
 <li>什么是空间分配担保策略？（顺丰）</li>
 <li>什么是空间分配担保策略？（腾讯、百度）</li>
 </ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ruby">/**<br> * 测试堆空间常用的jvm参数：<br> * -<span class="hljs-variable constant_">XX</span><span class="hljs-symbol">:+PrintFlagsInitial</span> : 查看所有的参数的默认初始值<br> * -<span class="hljs-variable constant_">XX</span><span class="hljs-symbol">:+PrintFlagsFinal</span>  ：查看所有的参数的最终值（可能会存在修改，不再是初始值）<br> *      具体查看某个参数的指令： jps：查看当前运行中的进程<br> *                             jinfo -flag SurvivorRatio 进程id<br> *<br> * -Xms：初始堆空间内存 （默认为物理内存的<span class="hljs-number">1</span>/<span class="hljs-number">64</span>）<br> * -Xmx：最大堆空间内存（默认为物理内存的<span class="hljs-number">1</span>/<span class="hljs-number">4</span>）<br> * -Xmn：设置新生代的大小。(初始值及最大值)<br> * -<span class="hljs-variable constant_">XX</span><span class="hljs-symbol">:NewRatio</span>：配置新生代与老年代在堆结构的占比<br> * -<span class="hljs-variable constant_">XX</span><span class="hljs-symbol">:SurvivorRatio</span>：设置新生代中Eden和<span class="hljs-variable constant_">S0</span>/<span class="hljs-variable constant_">S1</span>空间的比例<br> * -<span class="hljs-variable constant_">XX</span><span class="hljs-symbol">:MaxTenuringThreshold</span>：设置新生代垃圾的最大年龄<br> * -<span class="hljs-variable constant_">XX</span><span class="hljs-symbol">:+PrintGCDetails</span>：输出详细的<span class="hljs-variable constant_">GC</span>处理日志<br> * 打印gc简要信息：① -<span class="hljs-variable constant_">XX</span><span class="hljs-symbol">:+PrintGC</span>   ② -<span class="hljs-symbol">verbose:</span>gc<br> * -<span class="hljs-variable constant_">XX</span><span class="hljs-symbol">:HandlePromotionFailure</span>：是否设置空间分配担保<br> *<span class="hljs-regexp">/</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 测试堆空间常用的jvm参数：</span><br><span class="line"> * -XX:+PrintFlagsInitial : 查看所有的参数的默认初始值</span><br><span class="line"> * -XX:+PrintFlagsFinal  ：查看所有的参数的最终值（可能会存在修改，不再是初始值）</span><br><span class="line"> *      具体查看某个参数的指令： jps：查看当前运行中的进程</span><br><span class="line"> *                             jinfo -flag SurvivorRatio 进程id</span><br><span class="line"> *</span><br><span class="line"> * -Xms：初始堆空间内存 （默认为物理内存的1/64）</span><br><span class="line"> * -Xmx：最大堆空间内存（默认为物理内存的1/4）</span><br><span class="line"> * -Xmn：设置新生代的大小。(初始值及最大值)</span><br><span class="line"> * -XX:NewRatio：配置新生代与老年代在堆结构的占比</span><br><span class="line"> * -XX:SurvivorRatio：设置新生代中Eden和S0/S1空间的比例</span><br><span class="line"> * -XX:MaxTenuringThreshold：设置新生代垃圾的最大年龄</span><br><span class="line"> * -XX:+PrintGCDetails：输出详细的GC处理日志</span><br><span class="line"> * 打印gc简要信息：① -XX:+PrintGC   ② -verbose:gc</span><br><span class="line"> * -XX:HandlePromotionFailure：是否设置空间分配担保</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
 
 <h3 id="对象分配"><a href="#对象分配" class="headerlink" title="对象分配"></a>对象分配</h3><p>1.new的对象先放伊甸园区。此区有大小限制。</p>
 <p>2.<strong>当伊甸园的空间填满时，程序又需要创建对象</strong>，JVM的垃圾回收器将对伊甸园区进行垃圾回收(<strong>Minor GC&#x2F;YGC</strong>)，将伊甸园区中的不再被其他对象所引用的对象进行销毁。再加载新的对象放到伊甸园区</p>
@@ -936,7 +753,7 @@
 </ul>
 <p>7.在养老区，相对悠闲。<strong>当养老区内存不足时，再次触发GC：Major GC</strong>，进行养老区的内存清理。</p>
 <p>8.若养老区执行了Major GC之后发现依然<strong>无法进行对象的保存</strong>，就会产生OOM异常</p>
-<p><img src="/../image/DECE7018-508C-44E0-85D4-849137D4116F.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/DECE7018-508C-44E0-85D4-849137D4116F.png" alt="img"></p>
 <h5 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h5><p>1、在发生<strong>Minor GC</strong>之前，虚拟机会检查老年代最大可用的连续空间是否大于<strong>新生代</strong>所有对象的总空间。</p>
 <ul>
 <li><p>如果大于，则此次Minor GC是安全的</p>
@@ -956,16 +773,16 @@
 </ul>
 </li>
 </ul>
-<h2 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5. 方法区"></a>5. 方法区</h2><h3 id="1-栈、堆、方法区的关系"><a href="#1-栈、堆、方法区的关系" class="headerlink" title="1. 栈、堆、方法区的关系"></a>1. 栈、堆、方法区的关系</h3><p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220907234524335.png" srcset="/img/loading.gif" lazyload alt="image-20220907234524335"></p>
-<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220907234534652.png" srcset="/img/loading.gif" lazyload alt="image-20220907234534652"></p>
+<h2 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5. 方法区"></a>5. 方法区</h2><h3 id="1-栈、堆、方法区的关系"><a href="#1-栈、堆、方法区的关系" class="headerlink" title="1. 栈、堆、方法区的关系"></a>1. 栈、堆、方法区的关系</h3><p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220907234524335.png" alt="image-20220907234524335"></p>
+<p><img src="C:\Users\再难也会过\AppData\Roaming\Typora\typora-user-images\image-20220907234534652.png" alt="image-20220907234534652"></p>
 <h3 id="2-什么是TLAB？"><a href="#2-什么是TLAB？" class="headerlink" title="2. 什么是TLAB？"></a>2. 什么是TLAB？</h3><ul>
 <li>从内存模型而不是垃圾收集的角度，对Eden区域继续进行划分，JVM为每个线程分配了一个私有缓存区域，它包含在Eden空间内。</li>
 <li>据我所知所有OpenJDK衍生出来的JVM都提供了TLAB的设计。</li>
 </ul>
-<p><img src="file:///C:/Users/再难也会过/AppData/Local/Temp/mindmaster/17291212d56/001/E2171052-57C3-41E2-8DB5-B07E605A2705.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/再难也会过/AppData/Local/Temp/mindmaster/17291212d56/001/E2171052-57C3-41E2-8DB5-B07E605A2705.png" alt="img"></p>
 <h3 id="3-方法区在哪里"><a href="#3-方法区在哪里" class="headerlink" title="3. 方法区在哪里"></a>3. 方法区在哪里</h3><p>《Java虚拟机规范》中明确说明: “尽管所有的方法区在逻辑上是属于堆的一部分，但一些简单的实现可能不会选择去进行垃圾收集或者进行压缩。” 但对于HotSpotJVM而言，方法区还有一个别名叫做Non-Heap(非堆)，目的就是要和堆分开。</p>
 <p>所以，方法区看作是一块独立于Java 堆的内存空间。</p>
-<p><img src="file:///C:/Users/再难也会过/AppData/Local/Temp/mindmaster/17291212d56/001/1AE5EA48-E43B-44EB-BC3D-7EF3A6E52916.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/再难也会过/AppData/Local/Temp/mindmaster/17291212d56/001/1AE5EA48-E43B-44EB-BC3D-7EF3A6E52916.png" alt="img"></p>
 <h3 id="4-方法区的理解"><a href="#4-方法区的理解" class="headerlink" title="4. 方法区的理解"></a>4. 方法区的理解</h3><p>方法区（Method Area）与Java堆一样，是各个线程共享的内存区域。<br>方法区在JVM启动的时候被创建，并且它的实际的物理内存空间中和Java堆区一样都可以是不连续的。<br>方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。<br>方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存溢出错误：java.lang.OutOfMemoryError: PermGen space 或者 java.lang.OutOfMemoryError: Metaspace<br>加载大量的第三方的jar包；Tomcat部署的工程过多（30-50个）；大量动态的生成反射类<br>关闭JVM就会释放这个区域的内存。</p>
 <h3 id="5-方法区的演进"><a href="#5-方法区的演进" class="headerlink" title="5. 方法区的演进"></a>5. 方法区的演进</h3><p>到了JDK 8，终于完全废弃了永久代的概念，改用与JRockit、J9一样在本地内存中实现的元空间（Metaspace）来代替<br>￼<br>元空间的本质和永久代类似，都是对JVM规范中方法区的实现。不过元空间与永久代最大的区别在于：元空间不在虚拟机设置的内存中，而是使用本地内存。<br>永久代、元空间二者并不只是名字变了，内部结构也调整了。<br>根据《Java虚拟机规范》的规定，如果方法区无法满足新的内存分配需求时，将抛出OOM异常。</p>
 <h3 id="6-设置方法区内存的大小"><a href="#6-设置方法区内存的大小" class="headerlink" title="6. 设置方法区内存的大小"></a>6. 设置方法区内存的大小</h3><ul>
@@ -975,7 +792,7 @@
 <li>-XX:MaxPermSize来设定永久代最大可分配空间。32位机器默认是64M，64位机器模式是82M</li>
 <li>当JVM加载的类信息容量超过了这个值，会报异常OutOfMemoryError:PermGen space 。</li>
 </ul>
-<p><img src="file:///C:/Users/再难也会过/AppData/Local/Temp/mindmaster/17291212d56/001/ADAFEE77-7F9A-4775-84D9-340DB2E62ADE.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="file:///C:/Users/再难也会过/AppData/Local/Temp/mindmaster/17291212d56/001/ADAFEE77-7F9A-4775-84D9-340DB2E62ADE.png" alt="img"></p>
 <ul>
 <li>jdk8及以后：</li>
 <li>元数据区大小可以使用参数-XX:MetaspaceSize和-XX:MaxMetaspaceSize指定,替代上述原有的两个参数。</li>
@@ -1133,7 +950,7 @@
 </ol>
 <h2 id="3-对象的访问定位"><a href="#3-对象的访问定位" class="headerlink" title="3. 对象的访问定位"></a>3. 对象的访问定位</h2><ol>
 <li>句柄访问<ol>
-<li><img src="/../image/FB23035C-D0A6-4944-B09C-50FD043767CF.png" srcset="/img/loading.gif" lazyload alt="img"><ul>
+<li><img src="/../image/FB23035C-D0A6-4944-B09C-50FD043767CF.png" alt="img"><ul>
 <li>实现：堆需要划分出一块内存来做句柄池，reference中存储对象的句柄池地址，句柄中包含对象实例与类型数据各自具体的地址信息。</li>
 <li>好处：reference中存储稳定句柄地址，对象被移动（垃圾收集时移动对象很普遍）时只会改变句柄中实例数据指针，reference本身不需要被修改。</li>
 </ul>
@@ -1141,7 +958,7 @@
 </ol>
 </li>
 <li>直接使用指针访问<ol>
-<li><img src="/../image/C2299BF8-C3E7-4BF2-B5E4-29233BD0CC3D.png" srcset="/img/loading.gif" lazyload alt="img"><ul>
+<li><img src="/../image/C2299BF8-C3E7-4BF2-B5E4-29233BD0CC3D.png" alt="img"><ul>
 <li>实现：reference中存储的就是对象的地址，如果只是访问对象本身的话，就不需要多一次间接访问的开销。</li>
 <li>好处：速度更快，java中对象访问频繁，每次访问都节省了一次指针定位的时间开销。</li>
 </ul>
@@ -1197,7 +1014,7 @@
 <li>基本数据类型对应的Class对象，一些常驻的异常对象（如：NullPointerException、OutOfMemoryError），系统类加载器。</li>
 <li>反映java虚拟机内部情况的JMXBean、JVMTI中注册的回调、本地代码缓存等。</li>
 </ul>
-<p><img src="/../image/2975D8CE-8ADA-49C4-A64B-2A2191B34392.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/2975D8CE-8ADA-49C4-A64B-2A2191B34392.png" alt="img"></p>
 <ul>
 <li><p><strong>除了这些固定的GC Roots集合以外</strong>，根据用户所选用的垃圾收集器以及当前回收的内存区域不同，<strong>还可以有其他对象“临时性”地加入</strong>，共同构成完整GC Roots集合。比如：分代收集和局部回收（Partial GC）。</p>
 <ul>
@@ -1231,7 +1048,7 @@
 <li>清除：Collector对堆内存从头到尾进行线性的遍历，如果发现某个对象在其Header中没有标记为可达对象，则将其回收。</li>
 </ul>
 <p>（很多书、视频讲错了！说是标记的垃圾对象。这里要注意了！）</p>
-<p><img src="/../image/24CA8F45-6D5B-4B39-BC38-C7B5E98C405C.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/24CA8F45-6D5B-4B39-BC38-C7B5E98C405C.png" alt="img"></p>
 <p><strong>缺点</strong>：</p>
 <p>1、效率比较低：递归与全堆对象遍历两次</p>
 <p>2、在进行GC的时候，需要停止整个应用程序，导致用户体验差</p>
@@ -1242,7 +1059,7 @@
 </ul>
 <h4 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h4><p>核心思想：</p>
 <p>将活着的内存空间分为两块，每次只使用其中一块，在垃圾回收时将正在使用的内存中的存活对象复制到未被使用的内存块中，之后清除正在使用的内存块中的所有对象，交换两个内存的角色，最后完成垃圾回收。</p>
-<p><img src="/../image/25BC0D0E-478A-4DB3-9306-53353BABDFC8.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/25BC0D0E-478A-4DB3-9306-53353BABDFC8.png" alt="img"></p>
 <p>优点：</p>
 <ul>
 <li>没有标记和清除过程，实现简单，运行高效</li>
@@ -1260,7 +1077,7 @@
 <p>应用场景：</p>
 <p>在新生代，对常规应用的垃圾回收，一次通常可以回收70%-99%的内存空间。回收性价比很高。所以现在的商业虚拟机都是用这种收集算法回收新生代。</p>
 <p>比如：IBM 公司的专门研究表明，新生代中 80% 的对象都是“朝生夕死”的。</p>
-<p><img src="/../image/1C6E38D5-D041-4083-88AF-F7366CA80C4F-1664013468432.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/1C6E38D5-D041-4083-88AF-F7366CA80C4F-1664013468432.png" alt="img"></p>
 <h4 id="标记压缩"><a href="#标记压缩" class="headerlink" title="标记压缩"></a>标记压缩</h4><p>标记-压缩（或标记-整理、Mark - Compact）算法</p>
 <p>背景：</p>
 <p>复制算法的高效性是建立在存活对象少、垃圾对象多的前提下的。这种情况在新生代经常发生，但是在老年代，更常见的情况是大部分对象都是存活对象。如果依然使用复制算法，由于存活对象较多，复制的成本也将很高。因此，基于老年代垃圾回收的特性，需要使用其他的算法。</p>
@@ -1269,7 +1086,7 @@
 <p>第一阶段和标记-清除算法一样，从根节点开始标记所有被引用对象</p>
 <p>第二阶段将所有的存活对象压缩到内存的一端，按顺序排放。</p>
 <p>之后， 清理边界外所有的空间。</p>
-<p><img src="/../image/6EF327A5-CF26-4B0A-AAF5-6F9508F825A9.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/6EF327A5-CF26-4B0A-AAF5-6F9508F825A9.png" alt="img"></p>
 <p>标记-压缩算法的最终效果等同于标记-清除算法执行完成后，再进行一次内存碎片整理，因此，也可以把它称为标记-清除-压缩(Mark-Sweep-Compact)算法。 </p>
 <p>二者的本质差异在于标记-清除算法是一种非移动式的回收算法，标记-压缩是移动式的。是否移动回收后的存活对象是一项优缺点并存的风险决策。</p>
 <p>可以看到，标记的存活对象将会被整理，按照内存地址依次排列，而未被标记的内存会被清理掉。如此一来，当我们需要给新对象分配内存时，JVM只需要持有一个内存的起始地址即可，这比维护一个空闲列表显然少了许多开销。</p>
@@ -1329,7 +1146,7 @@
 <p>分代算法将按照对象的生命周期长短划分成两个部分，分区算法将整个堆空间划分成连续的不同小区间。</p>
 <p>每一个小区间都独立使用，独立回收。这种算法的好处是可以控制一次回收多少个小区间。</p>
 <p>一般来说，在相同条件下，堆空间越大，一次GC时所需要的时间就越长，有关GC产生的停顿也越长。为了更好地控制GC产生的停顿时间，将一块大的内存区域分割成多个小块，根据目标的停顿时间，每次合理地回收若干个小区间，而不是整个堆空间，从而减少一次GC所产生的停顿。</p>
-<p><img src="/../image/B272F64C-F9A0-4CA7-84A1-F5A5FB63A658.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/B272F64C-F9A0-4CA7-84A1-F5A5FB63A658.png" alt="img"></p>
 <h2 id="2-相关概念"><a href="#2-相关概念" class="headerlink" title="2.相关概念"></a>2.相关概念</h2><h3 id="System-gc"><a href="#System-gc" class="headerlink" title="System.gc()"></a>System.gc()</h3><p>System.gc()和Runtime.getRunTime().gc()会做什么事情？ (字节跳动)</p>
 <ul>
 <li><p>在默认情况下，通过System.gc()或者Runtime.getRuntime().gc()的调用，会<strong>显式触发Full GC</strong>，同时对老年代和新生代进行回收，尝试释放被丢弃对象占用的内存。</p>
@@ -1399,7 +1216,7 @@
 <ol>
 <li>静态集合类，如HashMap、LinkedList等等。如果这些容器为静态的，那么它们的生命周期与JVM程序一致，则容器中的对象在程序结束之前将不能被释放，从而造成内存泄漏。简单而言，长生命周期的对象持有短生命周期对象的引用，尽管短生命周期的对象不再使用，但是因为长生命周期对象持有它的引用而导致不能被回收。</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryLeak</span> &#123;<br><span class="hljs-keyword">static</span> List *list* = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>();<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">oomTests</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();<span class="hljs-comment">//局部变量</span><br>*list*.add(obj);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemoryLeak</span> &#123;</span><br><span class="line"><span class="keyword">static</span> List *list* = <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">oomTests</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();<span class="comment">//局部变量</span></span><br><span class="line">*list*.add(obj);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li><p>单例模式</p>
@@ -1411,7 +1228,7 @@
 <ol>
 <li><p>内部类持有外部类，如果一个外部类的实例对象的方法返回了一个内部类的实例对象。</p>
 <p>这个内部类对象被长期引用了，即使那个外部类实例对象不再被使用，但由于内部类持有外部类的实例对象，这个外部类对象将不会被垃圾回收，这也会造成内存泄漏。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HandlerDemoActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Activity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnClickListener</span> &#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">MESSAGE_INCRESE</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">MESSAGE_DECRESE</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">private</span> TextView tv_demo_number;<br>  <span class="hljs-keyword">private</span> Button btn_demo_increase;<br>  <span class="hljs-keyword">private</span> Button btn_demo_decrease;<br>  <span class="hljs-keyword">private</span> Button btn_demo_pause;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">Handler</span> <span class="hljs-variable">handler</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Handler</span>()&#123;<br>     <span class="hljs-comment">//回调方法</span><br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handleMessage</span><span class="hljs-params">(android.os.Message msg)</span> &#123;<br>       <span class="hljs-type">String</span> <span class="hljs-variable">strNum</span> <span class="hljs-operator">=</span> tv_demo_number.getText().toString();<br>       <span class="hljs-comment">//转换为整型数据,获取当前显示的数值</span><br>       <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> Integer.parseInt(strNum);<br>       <span class="hljs-keyword">switch</span>(msg.what)&#123;<br>       <span class="hljs-keyword">case</span> MESSAGE_INCRESE:<br>          num++;<br>          tv_demo_number.setText(num + <span class="hljs-string">&quot;&quot;</span>);<br>          <span class="hljs-keyword">if</span>(num == <span class="hljs-number">20</span>)&#123;<br>            Toast.makeText(HandlerDemoActivity.<span class="hljs-built_in">this</span>, <span class="hljs-string">&quot;已达到最大值&quot;</span>, <span class="hljs-number">0</span>).show();<br>            btn_demo_pause.setEnabled(<span class="hljs-literal">false</span>);<br>            <span class="hljs-keyword">return</span>;<br>          &#125;<br>          <span class="hljs-comment">//发送延迟的+1的消息</span><br>          sendEmptyMessageDelayed(MESSAGE_INCRESE, <span class="hljs-number">300</span>);<span class="hljs-comment">//指的是延迟处理，而不是延迟发送</span><br>          <span class="hljs-keyword">break</span>;<br>       <span class="hljs-keyword">case</span> MESSAGE_DECRESE:<br>          num--;<br>          tv_demo_number.setText(num + <span class="hljs-string">&quot;&quot;</span>);<br>          <span class="hljs-keyword">if</span>(num == <span class="hljs-number">0</span>)&#123;<br>            Toast.makeText(HandlerDemoActivity.<span class="hljs-built_in">this</span>, <span class="hljs-string">&quot;已达到最小值&quot;</span>, <span class="hljs-number">0</span>).show();<br>            btn_demo_pause.setEnabled(<span class="hljs-literal">false</span>);<br>            <span class="hljs-keyword">return</span>;<br>          &#125;<br>          <span class="hljs-comment">//发送延迟的-1的消息</span><br>          sendEmptyMessageDelayed(MESSAGE_DECRESE, <span class="hljs-number">300</span>);<span class="hljs-comment">//指的是延迟处理，而不是延迟发送</span><br>          <span class="hljs-keyword">break</span>;<br>       &#125;<br>     &#125;<br>  &#125;;<br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> &#123;<br>     <span class="hljs-built_in">super</span>.onCreate(savedInstanceState);<br>     setContentView(R.layout.activity_handler_demo);<br>     init();<br>  &#125;<br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> &#123;<br>     tv_demo_number = (TextView) findViewById(R.id.tv_demo_number);<br>     btn_demo_increase = (Button) findViewById(R.id.btn_demo_increase);<br>     btn_demo_decrease = (Button) findViewById(R.id.btn_demo_decrease);<br>     btn_demo_pause = (Button) findViewById(R.id.btn_demo_pause);<br>     btn_demo_increase.setOnClickListener(<span class="hljs-built_in">this</span>);<br>     btn_demo_decrease.setOnClickListener(<span class="hljs-built_in">this</span>);<br>     btn_demo_pause.setOnClickListener(<span class="hljs-built_in">this</span>);<br>  &#125;<br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onClick</span><span class="hljs-params">(View v)</span> &#123;<br>     ....<br>  &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HandlerDemoActivity</span> <span class="keyword">extends</span> <span class="title class_">Activity</span> <span class="keyword">implements</span> <span class="title class_">OnClickListener</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">MESSAGE_INCRESE</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">MESSAGE_DECRESE</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">private</span> TextView tv_demo_number;</span><br><span class="line">  <span class="keyword">private</span> Button btn_demo_increase;</span><br><span class="line">  <span class="keyword">private</span> Button btn_demo_decrease;</span><br><span class="line">  <span class="keyword">private</span> Button btn_demo_pause;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">Handler</span> <span class="variable">handler</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Handler</span>()&#123;</span><br><span class="line">     <span class="comment">//回调方法</span></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleMessage</span><span class="params">(android.os.Message msg)</span> &#123;</span><br><span class="line">       <span class="type">String</span> <span class="variable">strNum</span> <span class="operator">=</span> tv_demo_number.getText().toString();</span><br><span class="line">       <span class="comment">//转换为整型数据,获取当前显示的数值</span></span><br><span class="line">       <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> Integer.parseInt(strNum);</span><br><span class="line">       <span class="keyword">switch</span>(msg.what)&#123;</span><br><span class="line">       <span class="keyword">case</span> MESSAGE_INCRESE:</span><br><span class="line">          num++;</span><br><span class="line">          tv_demo_number.setText(num + <span class="string">&quot;&quot;</span>);</span><br><span class="line">          <span class="keyword">if</span>(num == <span class="number">20</span>)&#123;</span><br><span class="line">            Toast.makeText(HandlerDemoActivity.<span class="built_in">this</span>, <span class="string">&quot;已达到最大值&quot;</span>, <span class="number">0</span>).show();</span><br><span class="line">            btn_demo_pause.setEnabled(<span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//发送延迟的+1的消息</span></span><br><span class="line">          sendEmptyMessageDelayed(MESSAGE_INCRESE, <span class="number">300</span>);<span class="comment">//指的是延迟处理，而不是延迟发送</span></span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">       <span class="keyword">case</span> MESSAGE_DECRESE:</span><br><span class="line">          num--;</span><br><span class="line">          tv_demo_number.setText(num + <span class="string">&quot;&quot;</span>);</span><br><span class="line">          <span class="keyword">if</span>(num == <span class="number">0</span>)&#123;</span><br><span class="line">            Toast.makeText(HandlerDemoActivity.<span class="built_in">this</span>, <span class="string">&quot;已达到最小值&quot;</span>, <span class="number">0</span>).show();</span><br><span class="line">            btn_demo_pause.setEnabled(<span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//发送延迟的-1的消息</span></span><br><span class="line">          sendEmptyMessageDelayed(MESSAGE_DECRESE, <span class="number">300</span>);<span class="comment">//指的是延迟处理，而不是延迟发送</span></span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">     <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">     setContentView(R.layout.activity_handler_demo);</span><br><span class="line">     init();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">     tv_demo_number = (TextView) findViewById(R.id.tv_demo_number);</span><br><span class="line">     btn_demo_increase = (Button) findViewById(R.id.btn_demo_increase);</span><br><span class="line">     btn_demo_decrease = (Button) findViewById(R.id.btn_demo_decrease);</span><br><span class="line">     btn_demo_pause = (Button) findViewById(R.id.btn_demo_pause);</span><br><span class="line">     btn_demo_increase.setOnClickListener(<span class="built_in">this</span>);</span><br><span class="line">     btn_demo_decrease.setOnClickListener(<span class="built_in">this</span>);</span><br><span class="line">     btn_demo_pause.setOnClickListener(<span class="built_in">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">     ....</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>各种连接，如数据库连接、网络连接和IO连接等</p>
@@ -1454,7 +1271,7 @@
 <li><p>并发不是真正意义上的“同时进行”，只是CPU把一个时间段划分成几个时间片段(时间区间)，然后在这几个时间区间之间来回切换，由于CPU处理的速度非常快，只要时间间隔处理得当，即可让用户感觉是多个应用程序同时在进行。</p>
 </li>
 </ul>
-<p><img src="/../image/5320C6DE-E06F-4C26-A3B6-84BA848D1746.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/5320C6DE-E06F-4C26-A3B6-84BA848D1746.png" alt="img"></p>
 <p>并行(Parallel)</p>
 <ul>
 <li><p>当系统有一个以上CPU时，当一个CPU执行一个进程时，另一个CPU可以执行另一个进程，两个进程互不抢占CPU资源，可以同时进行，我们称之为并行(Parallel)。</p>
@@ -1464,7 +1281,7 @@
 <li><p>适合科学计算，后台处理等弱交互场景</p>
 </li>
 </ul>
-<p><img src="/../image/EFC24AEC-B305-4393-9FC7-2318ABB1DE1C.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/EFC24AEC-B305-4393-9FC7-2318ABB1DE1C.png" alt="img"></p>
 <p>二者对比：</p>
 <p>并发，指的是多个事情，在同一时间段内同时发生了。 </p>
 <p>并行，指的是多个事情，在同一时间点上同时发生了。</p>
@@ -1480,14 +1297,14 @@
 <li>相较于并行的概念，单线程执行。</li>
 <li>如果内存不够，则程序暂停，启动JVM垃圾回收器进行垃圾回收。回收完，再启动程序的线程。</li>
 </ul>
-<p><img src="/../image/AA086057-97E6-41F5-856C-30B26BA8DE3B.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="/../image/76C82783-01E7-4626-93B0-DED33483B0AF.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/AA086057-97E6-41F5-856C-30B26BA8DE3B.png" alt="img"></p>
+<p><img src="/../image/76C82783-01E7-4626-93B0-DED33483B0AF.png" alt="img"></p>
 <ul>
 <li>并发（Concurrent）：指用户线程与垃圾收集线程同时执行（但不一定是并行的，可能会交替执行），垃圾回收线程在执行时不会停顿用户程序的运行。</li>
 <li>用户程序在继续运行，而垃圾收集程序线程运行于另一个CPU上； </li>
 <li>如：CMS、G1</li>
 </ul>
-<p><img src="/../image/B771D5A5-4AFA-4C96-AB39-AAE7F0AF3076.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/B771D5A5-4AFA-4C96-AB39-AAE7F0AF3076.png" alt="img"></p>
 <h3 id="安全点与安全区域"><a href="#安全点与安全区域" class="headerlink" title="安全点与安全区域"></a>安全点与安全区域</h3><p>安全点(Safepoint)</p>
 <p>程序执行时并非在所有地方都能停顿下来开始 GC，只有在特定的位置才能停顿下来开始GC，这些位置称为“安全点（Safepoint）”。</p>
 <p>Safe Point的选择很重要，如果太少可能导致GC等待的时间太长，如果太频繁可能导致运行时的性能问题。大部分指令的执行时间都非常短暂，通常会根据“是否具有让程序长时间执行的特征”为标准。比如：选择一些执行时间较长的指令作为Safe Point，如方法调用、循环跳转和异常跳转等。</p>
@@ -1515,11 +1332,11 @@
 <p>StringBuffer str &#x3D; new StringBuffer (“Hello,尚硅谷”);</p>
 <p>局部变量str指向StringBuffer实例所在堆空间，通过str可以操作该实例， 那么str就是StringBuffer实例的强引用</p>
 <p>对应内存结构：</p>
-<p><img src="/../image/C82F7271-714C-4AEA-B1D4-1094A30A3097.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/C82F7271-714C-4AEA-B1D4-1094A30A3097.png" alt="img"></p>
 <p>此时，如果再运行一个赋值语句：</p>
 <p>StringBuffer str1 &#x3D; str;</p>
 <p>对应内存结构：</p>
-<p><img src="/../image/61DCA948-1E49-4394-9AB5-D9190455E121.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/61DCA948-1E49-4394-9AB5-D9190455E121.png" alt="img"></p>
 <p>本例中的两个引用，都是强引用，强引用具备以下特点：</p>
 <ul>
 <li><p>强引用可以直接访问目标对象。</p>
@@ -1586,7 +1403,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/../image/4CE30391-2CA8-4F5D-944A-ADA1DC17B6D7.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/4CE30391-2CA8-4F5D-944A-ADA1DC17B6D7.png" alt="img"></p>
 <ul>
 <li>按碎片处理方式分，可分为压缩式垃圾回收器和非压缩式垃圾回收器。<ul>
 <li>压缩式垃圾回收器会在回收完成后，对存活对象进行压缩整理，消除回收后的碎片。</li>
@@ -1608,7 +1425,7 @@
 <li><p>吞吐量优先，意味着在单位时间内，STW的时间最短：0.2 + 0.2 &#x3D; 0.4</p>
 </li>
 </ul>
-<p><img src="/../image/2A361A45-E69F-4C28-A37E-C0FE6F4FD6F0.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/2A361A45-E69F-4C28-A37E-C0FE6F4FD6F0.png" alt="img"></p>
 <p>评估GC的性能指标：暂停时间(pause time)</p>
 <ul>
 <li><p>“暂停时间”是指一个时间段内应用程序线程暂停，让GC线程执行的状态</p>
@@ -1618,7 +1435,7 @@
 <li><p>暂停时间优先，意味着尽可能让单次STW的时间最短：0.1 + 0.1 + 0.1 + 0.1 + 0.1 &#x3D; 0.5</p>
 </li>
 </ul>
-<p><img src="/../image/DAD479EF-C161-4B04-B05F-446CD2AFAF41.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/../image/DAD479EF-C161-4B04-B05F-446CD2AFAF41.png" alt="img"></p>
 <p>评估GC的性能指标：吞吐量vs暂停时间</p>
 <ul>
 <li>高吞吐量较好因为这会让应用程序的最终用户感觉只有应用程序线程在做“生产性”工作。直觉上，吞吐量越高程序运行越快。</li>
@@ -1629,7 +1446,7 @@
 </ul>
 <p>在设计（或使用）GC算法时，我们必须确定我们的目标：一个GC算法只可能针对两个目标之一（即只专注于较大吞吐量或最小暂停时间），或尝试找到一个二者的折衷。</p>
 <p>现在JVM调优标准：在最大吞吐量优先的情况下，降低停顿时间。</p>
-<h3 id="垃圾回收器都有哪些？"><a href="#垃圾回收器都有哪些？" class="headerlink" title="垃圾回收器都有哪些？"></a>垃圾回收器都有哪些？</h3><h3 id="各GC使用场景"><a href="#各GC使用场景" class="headerlink" title="各GC使用场景"></a>各GC使用场景</h3><h3 id="如何选择？"><a href="#如何选择？" class="headerlink" title="如何选择？"></a>如何选择？</h3><h3 id="GC新发展"><a href="#GC新发展" class="headerlink" title="GC新发展"></a>GC新发展</h3><h2 id="4-分析日志"><a href="#4-分析日志" class="headerlink" title="4.分析日志"></a>4.分析日志</h2><h1 id="JVM面试"><a href="#JVM面试" class="headerlink" title="JVM面试"></a>JVM面试</h1><h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="说一下-JVM-的主要组成部分及其作用？"><a href="#说一下-JVM-的主要组成部分及其作用？" class="headerlink" title="说一下 JVM 的主要组成部分及其作用？"></a>说一下 JVM 的主要组成部分及其作用？</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXEa8Kv8ZOMnm82wnHesxe3Wic5UzRaZjIMfTedicYrcOsoeTicy5AvT8EQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<h3 id="垃圾回收器都有哪些？"><a href="#垃圾回收器都有哪些？" class="headerlink" title="垃圾回收器都有哪些？"></a>垃圾回收器都有哪些？</h3><h3 id="各GC使用场景"><a href="#各GC使用场景" class="headerlink" title="各GC使用场景"></a>各GC使用场景</h3><h3 id="如何选择？"><a href="#如何选择？" class="headerlink" title="如何选择？"></a>如何选择？</h3><h3 id="GC新发展"><a href="#GC新发展" class="headerlink" title="GC新发展"></a>GC新发展</h3><h2 id="4-分析日志"><a href="#4-分析日志" class="headerlink" title="4.分析日志"></a>4.分析日志</h2><h1 id="JVM面试"><a href="#JVM面试" class="headerlink" title="JVM面试"></a>JVM面试</h1><h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="说一下-JVM-的主要组成部分及其作用？"><a href="#说一下-JVM-的主要组成部分及其作用？" class="headerlink" title="说一下 JVM 的主要组成部分及其作用？"></a>说一下 JVM 的主要组成部分及其作用？</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXEa8Kv8ZOMnm82wnHesxe3Wic5UzRaZjIMfTedicYrcOsoeTicy5AvT8EQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p>JVM包含两个子系统和两个组件，两个子系统为Class loader(类装载)、Execution engine(执行引擎)；两个组件为Runtime data area(运行时数据区)、Native Interface(本地接口)。</p>
 <ul>
 <li>Class loader(类装载)：根据给定的全限定名类名(如：java.lang.Object)来装载class文件到运行时数据区中的方法区。</li>
@@ -1639,7 +1456,7 @@
 </ul>
 <p><strong>作用</strong> ：首先通过编译器把 Java 代码转换成字节码，类加载器（ClassLoader）再把字节码加载到内存中，将其放在运行时数据区（Runtime data area）的方法区内，而字节码文件只是 JVM 的一套指令集规范，并不能直接交给底层操作系统去执行，因此需要特定的解释器执行引擎（Execution Engine），将字节码翻译成底层系统指令，再交由 CPU 去执行，而这个过程中需要调用其他语言的本地库接口（Native Interface）来实现整个程序的功能。</p>
 <h3 id="说一下-JVM-运行时数据区"><a href="#说一下-JVM-运行时数据区" class="headerlink" title="@$说一下 JVM 运行时数据区"></a>@$说一下 JVM 运行时数据区</h3><p><strong>Java 虚拟机在执行 Java 程序的过程中会把它所管理的内存区域划分为若干个不同的数据区域</strong>。这些区域都有各自的用途，以及创建和销毁的时间，有些区域随着虚拟机进程的启动而存在，有些区域则是依赖线程的启动和结束而建立和销毁。Java 虚拟机所管理的内存被划分为如下几个区域：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXs5t1aJQ00noiakZsDdNBBdCnweVXiaTHZsVJcBE6bVoSHicGlb6z4E0tQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXs5t1aJQ00noiakZsDdNBBdCnweVXiaTHZsVJcBE6bVoSHicGlb6z4E0tQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p>不同虚拟机的运行时数据区可能略微有所不同，但都会遵从 Java 虚拟机规范， Java 虚拟机规范规定的区域分为以下 5 个部分：</p>
 <ul>
 <li>Java 堆（Java Heap）：Java 虚拟机中内存最大的一块，是被所有线程共享的，几乎所有的对象实例都在这里分配内存；</li>
@@ -1710,7 +1527,7 @@
 </tr>
 </tbody></table>
 <p>下面是对象创建的主要流程：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomX8c58CfxD8EhVVMic9IhF1KZkClgkcyukAdMy31NG5R5m9XJRFfpIRLQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomX8c58CfxD8EhVVMic9IhF1KZkClgkcyukAdMy31NG5R5m9XJRFfpIRLQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p>虚拟机遇到一条new指令时，先检查常量池是否已经加载相应的类，如果没有，必须先执行相应的类加载。类加载通过后，接下来分配内存。若Java堆中内存是绝对规整的，使用“指针碰撞“方式分配内存；如果不是规整的，就从空闲列表中分配，叫做”空闲列表“方式。划分内存时还需要考虑一个问题-并发，也有两种方式：CAS同步处理，或者本地线程分配缓冲(Thread Local Allocation Buffer, TLAB)。然后将分配到的内存空间都初始化为零值，接着是做一些必要的对象设置(元信息、哈希码…)，最后执行<code>&lt;init&gt;</code>方法。</p>
 <h3 id="为对象分配内存"><a href="#为对象分配内存" class="headerlink" title="为对象分配内存"></a>为对象分配内存</h3><p>类加载完成后，接着会在Java堆中划分一块内存分配给对象。内存分配根据Java堆是否规整，有两种方式：</p>
 <ul>
@@ -1718,23 +1535,23 @@
 <li>空闲列表：如果Java堆的内存不是规整的，则需要由虚拟机维护一个列表来记录哪些内存是可用的，这样在分配的时候可以从列表中查询到足够大的内存分配给对象，并在分配后更新列表记录。</li>
 </ul>
 <p>选择哪种分配方式是由 Java 堆是否规整来决定的，而 Java 堆是否规整又由所采用的垃圾收集器是否带有压缩整理功能决定。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXdCnRdaKdENBLBL4HicNFEUmHWI5ZLExhI6iaZW7b3zVAxYlvysEcwH1w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXdCnRdaKdENBLBL4HicNFEUmHWI5ZLExhI6iaZW7b3zVAxYlvysEcwH1w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <h3 id="处理并发安全问题"><a href="#处理并发安全问题" class="headerlink" title="处理并发安全问题"></a>处理并发安全问题</h3><p>在虚拟机中对象的创建是一个非常频繁的行为，哪怕只是修改一个指针所指向的位置，在并发情况下也是不安全的，可能出现正在给对象 A 分配内存，指针还没来得及修改，对象 B 又同时使用了原来的指针来分配内存的情况。解决这个问题有两种方案：</p>
 <ul>
 <li>对内存分配的动作进行同步处理（采用 CAS + 失败重试来保障更新操作的原子性）；</li>
 <li>把内存分配的动作按照线程划分在不同的空间之中进行，即每个线程在 Java 堆中预先分配一小块内存，称为本地线程分配缓冲（Thread Local Allocation Buffer, TLAB）。哪个线程要分配内存，就在哪个线程的 TLAB 上分配。只有 TLAB 用完并分配新的 TLAB 时，才需要同步锁。通过-XX:+UseTLAB参数来设定虚拟机是否使用TLAB。</li>
 </ul>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXK4yeIuok1b4mbnjPuuibIxLXBZXwOar5CULfkHtPxrQeiaNVyS84xVPw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXK4yeIuok1b4mbnjPuuibIxLXBZXwOar5CULfkHtPxrQeiaNVyS84xVPw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><p><code>Java</code>程序需要通过 <code>JVM</code> 栈上的引用访问堆中的具体对象。对象的访问方式取决于 <code>JVM</code> 虚拟机的实现。目前主流的访问方式有 <strong>句柄</strong> 和 <strong>直接指针</strong> 两种方式。</p>
 <blockquote>
 <p><strong>指针：</strong> 一种内存地址，代表一个对象在内存中的地址。</p>
 <p><strong>句柄：</strong> 可以理解为指向指针的指针，维护着对象的指针。句柄不直接指向对象，而是指向对象的指针（句柄不发生变化，指向固定内存地址），再由对象的指针指向对象的真实内存地址。</p>
 </blockquote>
 <h4 id="句柄访问"><a href="#句柄访问" class="headerlink" title="句柄访问"></a>句柄访问</h4><p><code>Java</code>堆中划分出一块内存来作为<strong>句柄池</strong>，引用中存储对象的<strong>句柄地址</strong>，而句柄中包含了<strong>对象实例数据</strong>与<strong>对象类型数据</strong>各自的<strong>具体地址</strong>信息，具体构造如下图所示：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXaSZfSDqciaOmaJiaKwsXwS6C9u9ROR8nK0rFzRpnPcQ1jEcXSice0ajyg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXaSZfSDqciaOmaJiaKwsXwS6C9u9ROR8nK0rFzRpnPcQ1jEcXSice0ajyg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p><strong>优势</strong>：引用中存储的是<strong>稳定</strong>的句柄地址，在对象被移动（垃圾收集时移动对象是非常普遍的行为）时只会改变<strong>句柄中</strong>的<strong>实例数据指针</strong>，而<strong>引用</strong>本身不需要修改。</p>
 <h4 id="直接指针"><a href="#直接指针" class="headerlink" title="直接指针"></a>直接指针</h4><p>如果使用<strong>直接指针</strong>访问，<strong>引用</strong> 中存储的直接就是<strong>对象地址</strong>。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXYZldH2vnofgQ2uR9ateRiaz1VyCepuHHHJsj4XFHlaSE9TZ54s8yslA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXYZldH2vnofgQ2uR9ateRiaz1VyCepuHHHJsj4XFHlaSE9TZ54s8yslA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p><strong>优势</strong>：速度更<strong>快</strong>，节省了<strong>一次指针定位</strong>的时间开销。由于对象的访问在<code>Java</code>中非常频繁，因此这类开销积少成多后也是非常可观的执行成本。HotSpot 中采用的就是这种方式。</p>
 <h2 id="内存溢出异常"><a href="#内存溢出异常" class="headerlink" title="内存溢出异常"></a>内存溢出异常</h2><h3 id="Java会存在内存泄漏吗？请简单描述"><a href="#Java会存在内存泄漏吗？请简单描述" class="headerlink" title="@$Java会存在内存泄漏吗？请简单描述"></a>@$Java会存在内存泄漏吗？请简单描述</h3><p>内存泄漏是指不再被使用的对象或者变量一直存在于内存中。理论上来说，Java是有GC垃圾回收机制的，也就是说，不再被使用的对象，会被GC自动回收掉，自动从内存中清除。</p>
 <p>但是，即使这样，Java也还是存在着内存泄漏的情况，Java导致内存泄露的原因很明确：长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄露，尽管短生命周期对象已经不再需要，但是因为长生命周期对象持有它的引用而导致不能被回收，这就是Java中内存泄露的发生场景。</p>
@@ -1787,23 +1604,23 @@
 <p><strong>优点</strong>：实现简单，不需要对象进行移动。</p>
 <p><strong>缺点</strong>：由于标记的过程需要遍历所有的 GC ROOT，清除的过程也要遍历堆中所有的对象，标记、清除过程效率低，产生大量不连续的内存碎片，提高了垃圾回收的频率。</p>
 <p>标记-清除算法的执行的过程如下图所示</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXLKJpNtaFCicWvns6iaKNZdTnic3jtbPKUMKpHyQM74WBw55fWx92xtiaEA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXLKJpNtaFCicWvns6iaKNZdTnic3jtbPKUMKpHyQM74WBw55fWx92xtiaEA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <h4 id="复制算法-1"><a href="#复制算法-1" class="headerlink" title="复制算法"></a>复制算法</h4><p>为了解决标记-清除算法的效率不高的问题，产生了复制算法。把内存空间划为两个相等的区域，每次只使用其中一个区域。垃圾收集时，遍历当前使用的区域，把存活对象复制到另外一个区域中，最后将已使用的内存空间一次清理掉。</p>
 <p><strong>优点</strong>：按顺序分配内存即可，实现简单、运行高效，不用考虑内存碎片。</p>
 <p><strong>缺点</strong>：可用的内存大小缩小为原来的一半，对象存活率高时会频繁进行复制。</p>
 <p>复制算法的执行过程如下图所示</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXv0K4YhDVzvoWAp5IiaF7U9rSsvK3M6Qe7m6CW4qKsGbUZic1QPLqicnfQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXv0K4YhDVzvoWAp5IiaF7U9rSsvK3M6Qe7m6CW4qKsGbUZic1QPLqicnfQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <h4 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h4><p>在新生代中可以使用复制算法，但是在老年代就不能选择复制算法了，因为老年代的对象存活率会较高，这样会有较多的复制操作，导致效率变低。标记-清除算法可以应用在老年代中，但是它效率不高，在内存回收后容易产生大量内存碎片。因此就出现了一种标记-整理算法（Mark-Compact）算法，与标记-清除算法不同的是，在标记可回收的对象后将所有存活的对象压缩到内存的一端，使他们紧凑的排列在一起，然后对端边界以外的内存进行回收。回收后，已用和未用的内存都各自一边。</p>
 <p><strong>优点</strong>：解决了标记-清除算法存在的内存碎片问题。</p>
 <p><strong>缺点</strong>：需要进行局部对象移动，一定程度上降低了效率。</p>
 <p>标记-整理算法的执行过程如下图所示</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXyCmOw29Y4K3WrWxBoxKm5MI8CAEYZ8XWHQiap0PMf2felI4ZSicnQzoQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXyCmOw29Y4K3WrWxBoxKm5MI8CAEYZ8XWHQiap0PMf2felI4ZSicnQzoQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <h4 id="分代收集算法-1"><a href="#分代收集算法-1" class="headerlink" title="分代收集算法"></a>分代收集算法</h4><p>当前商业虚拟机都采用<strong>分代收集</strong>的垃圾收集算法。分代收集算法，顾名思义是根据对象的<strong>存活周期</strong>将内存划分为几块。一般包括<strong>新生代</strong>、<strong>老年代</strong>，新生代采用复制算法，老年代采用标记-整理算法，注：Java8中已经移除了永久代，添加了元数据区。如图所示：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomX7rZsMEDAeDxYrHicrWVuJ4pOP19ClXowqPjvjMEF621vTg3pF0EiaG8Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomX7rZsMEDAeDxYrHicrWVuJ4pOP19ClXowqPjvjMEF621vTg3pF0EiaG8Q/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p><strong>垃圾收集算法小结</strong></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXV4JWu6zkISbOtt31ibdTsBLXmbG0kbhaDW1pOW8eZ8FfQGxqibYj4Svw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXV4JWu6zkISbOtt31ibdTsBLXmbG0kbhaDW1pOW8eZ8FfQGxqibYj4Svw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <h3 id="说一下-JVM-有哪些垃圾回收器？"><a href="#说一下-JVM-有哪些垃圾回收器？" class="headerlink" title="@$说一下 JVM 有哪些垃圾回收器？"></a>@$说一下 JVM 有哪些垃圾回收器？</h3><p>如果说垃圾收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现。下图展示了7种作用于不同分代的收集器，其中用于回收新生代的收集器包括Serial、ParNew、Parallel Scavenge，回收老年代的收集器包括Serial Old、Parallel Old、CMS，还有用于回收整个Java堆的G1收集器。不同收集器之间的连线表示它们可以搭配使用。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXFaXfibnDGQcjTKKM4lEos531aV0azRpCYvBPzFmibLfUH7zcxa9aE8TA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXFaXfibnDGQcjTKKM4lEos531aV0azRpCYvBPzFmibLfUH7zcxa9aE8TA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <ul>
 <li>Serial收集器(复制算法)：新生代单线程收集器，标记和清理都是单线程，优点是简单高效；</li>
 <li>ParNew收集器 (复制算法)：新生代并行收集器，实际上是Serial收集器的多线程版本，在多核CPU环境下有着比Serial更好的表现；</li>
@@ -1831,7 +1648,7 @@
 <li><strong>并发清除</strong>：清理删除掉标记阶段判断的已经死亡的对象，不需要 STW。</li>
 </ol>
 <p>从整个过程来看，并发标记和并发清除的耗时最长，但是不需要停止用户线程。而初始标记和重新标记的耗时较短，但是需要停止用户线程。总体而言，整个过程造成的停顿时间较短，大部分时候是可以和用户线程一起工作的。</p>
-<h3 id="G1垃圾回收器的原理了解吗？"><a href="#G1垃圾回收器的原理了解吗？" class="headerlink" title="G1垃圾回收器的原理了解吗？"></a>G1垃圾回收器的原理了解吗？</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXEQLNIVP4sNv7dALQWWJtKzCAK0JFF8qSoiaZSkRZIpyfEaLsK4pT3kA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<h3 id="G1垃圾回收器的原理了解吗？"><a href="#G1垃圾回收器的原理了解吗？" class="headerlink" title="G1垃圾回收器的原理了解吗？"></a>G1垃圾回收器的原理了解吗？</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXEQLNIVP4sNv7dALQWWJtKzCAK0JFF8qSoiaZSkRZIpyfEaLsK4pT3kA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p>G1 作为 JDK9 之后的服务端默认收集器，不再区分年轻代和老年代进行垃圾回收。</p>
 <p>把内存划分为多个 Region，每个 Region 的大小可以通过 <strong>-XX:G1HeapRegionSize</strong> 设置，大小为1~32M。</p>
 <p>对于大对象的存储则衍生出 <strong>Humongous</strong> 的概念。超过 Region 大小一半的对象会被认为是大对象，而超过整个 Region 大小的对象被认为是超级大对象，将会被存储在连续的 N 个 Humongous Region 中。</p>
@@ -1883,7 +1700,7 @@
 <li>应用程序类加载器（Application ClassLoader）：用来加载用户类路径（classpath）上的指定类库，我们可以直接使用这个类加载器。一般情况，如果我们没有自定义类加载器，默认就是用这个加载器。</li>
 <li>用户自定义类加载器：通过继承 java.lang.ClassLoader类的方式实现用户自定义类加载器。</li>
 </ul>
-<h3 id="说一下类装载的执行过程？"><a href="#说一下类装载的执行过程？" class="headerlink" title="说一下类装载的执行过程？"></a>说一下类装载的执行过程？</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXLDpq2wiaJcNFTgMjQ0OzAjXKyAqIcMOuqA0EoAR4TiaqqoU9ScIYGA7g/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<h3 id="说一下类装载的执行过程？"><a href="#说一下类装载的执行过程？" class="headerlink" title="说一下类装载的执行过程？"></a>说一下类装载的执行过程？</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXLDpq2wiaJcNFTgMjQ0OzAjXKyAqIcMOuqA0EoAR4TiaqqoU9ScIYGA7g/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p>类装载分为以下 5 个步骤：</p>
 <ul>
 <li>加载：根据查找路径找到相应的 class 文件然后导入；</li>
@@ -1893,7 +1710,7 @@
 <li>初始化：对静态变量和静态代码块执行初始化工作。</li>
 </ul>
 <h3 id="什么是双亲委派模型？双亲委派模型工作流程是怎样的？双亲委派模型的好处是什么？"><a href="#什么是双亲委派模型？双亲委派模型工作流程是怎样的？双亲委派模型的好处是什么？" class="headerlink" title="@$什么是双亲委派模型？双亲委派模型工作流程是怎样的？双亲委派模型的好处是什么？"></a>@$什么是双亲委派模型？双亲委派模型工作流程是怎样的？双亲委派模型的好处是什么？</h3><p>在介绍双亲委派模型之前先说下类加载器。对于任意一个类，都需要由加载它的类加载器和这个类本身一同确立在 JVM 中的唯一性，每一个类加载器，都有一个独立的类名称空间。类加载器就是根据指定全限定名称将 class 文件加载到 JVM 内存，然后再转化为 class 对象。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomX5PbQKcQk0bTFSSylLbuDUG9Ndggu9yNKlf4PC6CHa7k32Tj1evtsRA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomX5PbQKcQk0bTFSSylLbuDUG9Ndggu9yNKlf4PC6CHa7k32Tj1evtsRA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p>双亲委派模型：如果一个类加载器收到了类加载的请求，它首先不会自己去加载这个类，而是把这个请求委派给父类加载器去加载，每一层的类加载器都是如此，这样所有的加载请求都会被传送到顶层的启动类加载器中，只有当父加载器无法完成加载请求（它的搜索范围中没找到所需的类）时，子加载器才会尝试去加载此类。</p>
 <p><strong>自下而上检查类是否已经被加载，自上而下尝试加载类</strong></p>
 <p>双亲委派模型工作流程：</p>
@@ -1958,7 +1775,7 @@
 <p>3、性能调优不仅仅包括JVM的调优，还有服务器硬件配置、操作系统参数、中间件线程池、数据库连接池、数据库本身参数以及具体的数据库表、索引、分区等的调整和优化。</p>
 <p>4、通过特定工具检查代码中存在的性能问题并加以修正是一种比较经济快捷的调优方法。</p>
 <p>常用的 JVM 调优的参数</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXw2zEEZiczfGl5U8hOlhJ3vTTGzX4l3Djt7IJnTX2dMDjczVxxnEdG1w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/O8AYEZicmmknsuwutmtEnNxLTNJ1qaomXw2zEEZiczfGl5U8hOlhJ3vTTGzX4l3Djt7IJnTX2dMDjczVxxnEdG1w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <ul>
 <li><p>-Xms2g：初始化堆大小为 2g；</p>
 </li>
@@ -1981,372 +1798,4 @@
 <li><p>-XX:+PrintGCDetails：打印 gc 详细信息。</p>
 </li>
 </ul>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/JVM/" class="category-chain-item">JVM</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/JVM/">#JVM</a>
-      
-        <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">#虚拟机</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>JVM</div>
-      <div>https://gouguoqiang.github.io/2022/10/09/all/7JVM/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>作者</div>
-          <div>ggq</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年10月9日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/10/09/all/4spring/" title="Spring">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/10/09/all/8JUC/" title="JUC">
-                        <span class="hidden-mobile">JUC</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
-</body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://gouguoqiang.github.io">ggq</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://gouguoqiang.github.io/2022/10/09/all/7JVM/">https://gouguoqiang.github.io/2022/10/09/all/7JVM/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://gouguoqiang.github.io" target="_blank">ggq</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JVM/">JVM</a><a class="post-meta__tags" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/10/09/all/9MicroService/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">微服务</div></div></a></div><div class="next-post pull-right"><a href="/2022/10/09/all/4spring/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Spring</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ggq</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%AD%97%E8%8A%82%E7%A0%81%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">第一章 字节码篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-number">1.1.</span> <span class="toc-text">分析一个对象的创建字节码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">第二章 类的加载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">1. 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1 类加载器子系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8ClassLoader%E8%A7%92%E8%89%B2"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.2 类加载器ClassLoader角色</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2. 类加载过程(生命周期)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-Resolve"><span class="toc-number">2.2.0.1.1.</span> <span class="toc-text">解析(Resolve)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%B6%E6%AE%B5"><span class="toc-number">2.2.0.2.</span> <span class="toc-text">2.3. 初始化阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%9C%BA"><span class="toc-number">2.2.0.2.1.</span> <span class="toc-text">类的初始化时机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#clinit"><span class="toc-number">2.2.0.2.2.</span> <span class="toc-text">clinit()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E6%83%85%E5%86%B5%EF%BC%9A%E4%B8%BB%E5%8A%A8%E4%BD%BF%E7%94%A8vs%E8%A2%AB%E5%8A%A8%E4%BD%BF%E7%94%A8"><span class="toc-number">2.2.0.2.3.</span> <span class="toc-text">类的初始化情况：主动使用vs被动使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BB%E5%8A%A8%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AF%B4%E6%98%8E%EF%BC%9A"><span class="toc-number">2.2.0.2.4.</span> <span class="toc-text">主动使用的说明：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A2%AB%E5%8A%A8%E4%BD%BF%E7%94%A8%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">2.2.0.2.5.</span> <span class="toc-text">被动使用的情况</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.2.0.3.</span> <span class="toc-text">2.4. 类的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E7%B1%BB%E7%9A%84%E5%8D%B8%E8%BD%BD"><span class="toc-number">2.2.0.4.</span> <span class="toc-text">2.5. 类的卸载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-%E6%80%BB%E7%BB%93"><span class="toc-number">2.2.0.5.</span> <span class="toc-text">2.6. 总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">3. 类的加载器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%88%86%E7%B1%BB%EF%BC%9A%E6%98%BE%E5%BC%8F%E5%8A%A0%E8%BD%BD-vs-%E9%9A%90%E5%BC%8F%E5%8A%A0%E8%BD%BD"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. 类的加载分类：显式加载 vs 隐式加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. 类加载机制的必要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8A%A0%E8%BD%BD%E7%9A%84%E7%B1%BB%E6%98%AF%E5%94%AF%E4%B8%80%E7%9A%84%E5%90%97"><span class="toc-number">2.3.3.</span> <span class="toc-text">3. 加载的类是唯一的吗?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">2.3.4.</span> <span class="toc-text">4. 类加载的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E5%88%86%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="toc-number">2.3.5.</span> <span class="toc-text">5. 类加载器的分类说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E7%88%B6%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.3.5.1.</span> <span class="toc-text">子父类的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%88%E5%BC%95%E5%AF%BC%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%8CBootstrap-ClassLoader%EF%BC%89"><span class="toc-number">2.3.5.2.</span> <span class="toc-text">启动类加载器（引导类加载器，Bootstrap ClassLoader）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%88Extension-ClassLoader%EF%BC%89"><span class="toc-number">2.3.5.3.</span> <span class="toc-text">扩展类加载器（Extension ClassLoader）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%88%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%8CAppClassLoader%EF%BC%89"><span class="toc-number">2.3.5.4.</span> <span class="toc-text">应用程序类加载器（系统类加载器，AppClassLoader）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-number">2.3.5.5.</span> <span class="toc-text">用户自定义类加载器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-cl%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%9C%BA%E5%88%B6"><span class="toc-number">2.4.</span> <span class="toc-text">4. cl源码剖析及相关机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA"><span class="toc-number">3.</span> <span class="toc-text">第三章 运行时数据区</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%88Program-Counter-Register%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">1. 程序计数寄存器（Program Counter Register）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-JVM%E6%A0%88"><span class="toc-number">3.2.</span> <span class="toc-text">2. JVM栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E5%B8%A7%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.2.</span> <span class="toc-text">栈帧内部结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0-%E6%A6%82%E8%BF%B0"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">0. 概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E8%A1%A8"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">1. 局部变量表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#slot"><span class="toc-number">3.2.2.2.1.</span> <span class="toc-text">slot</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9C%E6%95%B0%E6%A0%88"><span class="toc-number">3.2.2.3.</span> <span class="toc-text">2. 操作数栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-number">3.2.2.4.</span> <span class="toc-text">3. 动态链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%96%B9%E6%B3%95%E8%BF%94%E5%9B%9E%E5%9C%B0%E5%9D%80"><span class="toc-number">3.2.2.5.</span> <span class="toc-text">4. 方法返回地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%80%E4%BA%9B%E9%99%84%E5%8A%A0%E4%BF%A1%E6%81%AF"><span class="toc-number">3.2.2.6.</span> <span class="toc-text">5. 一些附加信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E6%89%A9%E5%B1%95%E9%97%AE%E9%A2%98"><span class="toc-number">3.2.3.</span> <span class="toc-text">面试扩展问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="toc-number">3.3.</span> <span class="toc-text">3. 本地方法接口与本地方法栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%A0%86"><span class="toc-number">3.4.</span> <span class="toc-text">4. 堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-2"><span class="toc-number">3.4.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-number">3.4.2.</span> <span class="toc-text">堆的内部结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%A0%86%E5%86%85%E5%AD%98%E5%A4%A7%E5%B0%8F%EF%BC%9F"><span class="toc-number">3.4.3.</span> <span class="toc-text">如何设置堆内存大小？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E6%96%B0%E7%94%9F%E4%BB%A3%E4%B8%8E%E8%80%81%E5%B9%B4%E4%BB%A3%E6%AF%94%E4%BE%8B%EF%BC%9F"><span class="toc-number">3.4.3.1.</span> <span class="toc-text">如何设置新生代与老年代比例？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AEEden%E3%80%81%E5%B9%B8%E5%AD%98%E8%80%85%E5%8C%BA%E6%AF%94%E4%BE%8B%EF%BC%9F"><span class="toc-number">3.4.3.2.</span> <span class="toc-text">如何设置Eden、幸存者区比例？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OOM%E4%B8%BE%E4%BE%8B"><span class="toc-number">3.4.3.3.</span> <span class="toc-text">OOM举例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE%E5%B0%8F%E7%BB%93"><span class="toc-number">3.4.3.4.</span> <span class="toc-text">参数设置小结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D"><span class="toc-number">3.4.4.</span> <span class="toc-text">对象分配</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%88%86%E9%85%8D%E6%8B%85%E4%BF%9D"><span class="toc-number">3.4.4.0.1.</span> <span class="toc-text">空间分配担保</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="toc-number">3.5.</span> <span class="toc-text">5. 方法区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%88%E3%80%81%E5%A0%86%E3%80%81%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.5.1.</span> <span class="toc-text">1. 栈、堆、方法区的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%80%E4%B9%88%E6%98%AFTLAB%EF%BC%9F"><span class="toc-number">3.5.2.</span> <span class="toc-text">2. 什么是TLAB？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%96%B9%E6%B3%95%E5%8C%BA%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="toc-number">3.5.3.</span> <span class="toc-text">3. 方法区在哪里</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">3.5.4.</span> <span class="toc-text">4. 方法区的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="toc-number">3.5.5.</span> <span class="toc-text">5. 方法区的演进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95%E5%8C%BA%E5%86%85%E5%AD%98%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="toc-number">3.5.6.</span> <span class="toc-text">6. 设置方法区内存的大小</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="toc-number">4.</span> <span class="toc-text">第四章 对象的内存布局</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-number">4.1.</span> <span class="toc-text">1. 对象的实例化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%9C%89%E5%87%A0%E7%A7%8D%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">4.1.1.</span> <span class="toc-text">1.1 有几种创建对象的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">4.1.2.</span> <span class="toc-text">1.2 创建对象的过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E4%BB%8E%E5%AD%97%E8%8A%82%E7%A0%81%E8%A7%92%E5%BA%A6%E7%9C%8B%E5%BE%85%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B-%E8%A7%81%E5%AD%97%E8%8A%82%E7%A0%81%E7%AF%87"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">1.2.1 从字节码角度看待对象创建过程 : 见字节码篇</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E4%BB%8E%E6%89%A7%E8%A1%8C%E6%AD%A5%E9%AA%A4%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">4.1.2.2.</span> <span class="toc-text">1.2.2 从执行步骤角度分析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="toc-number">4.2.</span> <span class="toc-text">2. 对象的内存布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D"><span class="toc-number">4.3.</span> <span class="toc-text">3. 对象的访问定位</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%89%A7%E8%A1%8C%E5%BC%95%E6%93%8E%E7%AF%87"><span class="toc-number">5.</span> <span class="toc-text">第五章 执行引擎篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AF%87"><span class="toc-number">6.</span> <span class="toc-text">第六章 垃圾回收篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.</span> <span class="toc-text">1.垃圾回收算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E6%A0%87%E8%AE%B0%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.1.</span> <span class="toc-text">1.1标记算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="toc-number">6.1.1.1.</span> <span class="toc-text">1.1.1引用计数法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.1.2.</span> <span class="toc-text">1.1.2可达性分析算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#GC-root"><span class="toc-number">6.1.1.2.1.</span> <span class="toc-text">GC root</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#STW"><span class="toc-number">6.1.1.2.2.</span> <span class="toc-text">STW</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.2.</span> <span class="toc-text">1.2.清除算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4"><span class="toc-number">6.1.2.1.</span> <span class="toc-text">标记清除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.2.2.</span> <span class="toc-text">复制算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E5%8E%8B%E7%BC%A9"><span class="toc-number">6.1.2.3.</span> <span class="toc-text">标记压缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.2.4.</span> <span class="toc-text">分代收集算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E9%87%8F%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.2.5.</span> <span class="toc-text">增量收集算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.2.6.</span> <span class="toc-text">分区算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">6.2.</span> <span class="toc-text">2.相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#System-gc"><span class="toc-number">6.2.1.</span> <span class="toc-text">System.gc()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#finalize-%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">6.2.2.</span> <span class="toc-text">finalize()方法详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA"><span class="toc-number">6.2.3.</span> <span class="toc-text">内存泄漏与内存溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STW-1"><span class="toc-number">6.2.4.</span> <span class="toc-text">STW</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E5%B9%B6%E8%A1%8C%E4%B8%8E%E5%B9%B6%E5%8F%91"><span class="toc-number">6.2.5.</span> <span class="toc-text">垃圾回收的并行与并发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%82%B9%E4%B8%8E%E5%AE%89%E5%85%A8%E5%8C%BA%E5%9F%9F"><span class="toc-number">6.2.6.</span> <span class="toc-text">安全点与安全区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E7%A7%8D%E5%BC%95%E7%94%A8"><span class="toc-number">6.2.7.</span> <span class="toc-text">5种引用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%BA%E5%BC%95%E7%94%A8%EF%BC%88Strong-Reference%EF%BC%89%E2%80%94%E2%80%94%E4%B8%8D%E5%9B%9E%E6%94%B6"><span class="toc-number">6.2.7.1.</span> <span class="toc-text">强引用（Strong Reference）——不回收</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E5%BC%95%E7%94%A8%EF%BC%88Soft-Reference%EF%BC%89%E2%80%94-%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E5%8D%B3%E5%9B%9E%E6%94%B6"><span class="toc-number">6.2.7.2.</span> <span class="toc-text">软引用（Soft Reference）— 内存不足即回收</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%B1%E5%BC%95%E7%94%A8%EF%BC%88Weak-Reference%EF%BC%89%E2%80%94%E5%8F%91%E7%8E%B0%E5%8D%B3%E5%9B%9E%E6%94%B6"><span class="toc-number">6.2.7.3.</span> <span class="toc-text">弱引用（Weak Reference）—发现即回收</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E5%BC%95%E7%94%A8%EF%BC%88Phantom-Reference%EF%BC%89%E2%80%94%E5%AF%B9%E8%B1%A1%E5%9B%9E%E6%94%B6%E8%B7%9F%E8%B8%AA"><span class="toc-number">6.2.7.4.</span> <span class="toc-text">虚引用（Phantom Reference）—对象回收跟踪</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%88%E7%BB%93%E5%99%A8%E5%BC%95%E7%94%A8-Final-reference"><span class="toc-number">6.2.7.4.1.</span> <span class="toc-text">终结器引用(Final reference)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="toc-number">6.3.</span> <span class="toc-text">3.垃圾回收器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GC%E5%88%86%E7%B1%BB"><span class="toc-number">6.3.1.</span> <span class="toc-text">GC分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GC%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-number">6.3.2.</span> <span class="toc-text">GC评估指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">6.3.3.</span> <span class="toc-text">垃圾回收器都有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84GC%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">6.3.4.</span> <span class="toc-text">各GC使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F"><span class="toc-number">6.3.5.</span> <span class="toc-text">如何选择？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GC%E6%96%B0%E5%8F%91%E5%B1%95"><span class="toc-number">6.3.6.</span> <span class="toc-text">GC新发展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%86%E6%9E%90%E6%97%A5%E5%BF%97"><span class="toc-number">6.4.</span> <span class="toc-text">4.分析日志</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM%E9%9D%A2%E8%AF%95"><span class="toc-number">7.</span> <span class="toc-text">JVM面试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F"><span class="toc-number">7.1.</span> <span class="toc-text">Java内存区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B-JVM-%E7%9A%84%E4%B8%BB%E8%A6%81%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%E5%8F%8A%E5%85%B6%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-number">7.1.1.</span> <span class="toc-text">说一下 JVM 的主要组成部分及其作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B-JVM-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA"><span class="toc-number">7.1.2.</span> <span class="toc-text">@$说一下 JVM 运行时数据区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-number">7.1.3.</span> <span class="toc-text">深拷贝和浅拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%A0%86%E6%A0%88%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">7.1.4.</span> <span class="toc-text">说一下堆栈的区别？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HotSpot%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%B9%E8%B1%A1%E6%8E%A2%E7%A7%98"><span class="toc-number">7.2.</span> <span class="toc-text">HotSpot虚拟机对象探秘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">7.2.1.</span> <span class="toc-text">@$对象的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98"><span class="toc-number">7.2.2.</span> <span class="toc-text">为对象分配内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">7.2.3.</span> <span class="toc-text">处理并发安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D"><span class="toc-number">7.2.4.</span> <span class="toc-text">对象的访问定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE"><span class="toc-number">7.2.4.1.</span> <span class="toc-text">句柄访问</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88"><span class="toc-number">7.2.4.2.</span> <span class="toc-text">直接指针</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8"><span class="toc-number">7.3.</span> <span class="toc-text">内存溢出异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E4%BC%9A%E5%AD%98%E5%9C%A8%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%90%97%EF%BC%9F%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0"><span class="toc-number">7.3.1.</span> <span class="toc-text">@$Java会存在内存泄漏吗？请简单描述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-number">7.4.</span> <span class="toc-text">垃圾收集器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%EF%BC%8CGC%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E5%8F%AF%E4%BB%A5%E9%A9%AC%E4%B8%8A%E5%9B%9E%E6%94%B6%E5%86%85%E5%AD%98%E5%90%97%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9E%E6%B3%95%E4%B8%BB%E5%8A%A8%E9%80%9A%E7%9F%A5%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%9B%E8%A1%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="toc-number">7.4.1.</span> <span class="toc-text">简述Java垃圾回收机制，GC是什么？垃圾回收器的基本原理是什么？垃圾回收器可以马上回收内存吗？有什么办法主动通知虚拟机进行垃圾回收？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-%E4%B8%AD%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%9F%E5%BC%BA%E5%BC%95%E7%94%A8%E3%80%81%E8%BD%AF%E5%BC%95%E7%94%A8%E3%80%81%E5%BC%B1%E5%BC%95%E7%94%A8%E3%80%81%E5%B9%BB%E8%B1%A1%E5%BC%95%E7%94%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">7.4.2.</span> <span class="toc-text">Java 中都有哪些引用类型？强引用、软引用、弱引用、幻象引用有什么区别？具体使用场景是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%9B%9E%E6%94%B6%EF%BC%9F%E5%9C%A8Java%E4%B8%AD%EF%BC%8C%E5%AF%B9%E8%B1%A1%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-number">7.4.3.</span> <span class="toc-text">怎么判断对象是否可以被回收？在Java中，对象什么时候可以被垃圾回收</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM%E4%B8%AD%E7%9A%84%E6%B0%B8%E4%B9%85%E4%BB%A3%E4%B8%AD%E4%BC%9A%E5%8F%91%E7%94%9F%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%90%97"><span class="toc-number">7.4.4.</span> <span class="toc-text">JVM中的永久代中会发生垃圾回收吗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B-JVM-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%EF%BC%9F"><span class="toc-number">7.4.5.</span> <span class="toc-text">@$说一下 JVM 有哪些垃圾回收算法？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95"><span class="toc-number">7.4.5.1.</span> <span class="toc-text">标记-清除算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95-1"><span class="toc-number">7.4.5.2.</span> <span class="toc-text">复制算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95"><span class="toc-number">7.4.5.3.</span> <span class="toc-text">标记-整理算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95-1"><span class="toc-number">7.4.5.4.</span> <span class="toc-text">分代收集算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B-JVM-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%EF%BC%9F"><span class="toc-number">7.4.6.</span> <span class="toc-text">@$说一下 JVM 有哪些垃圾回收器？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E7%94%9F%E4%BB%A3%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E5%92%8C%E8%80%81%E5%B9%B4%E4%BB%A3%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">7.4.7.</span> <span class="toc-text">新生代垃圾回收器和老年代垃圾回收器都有哪些？有什么区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B-CMS-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%EF%BC%9F"><span class="toc-number">7.4.8.</span> <span class="toc-text">详细介绍一下 CMS 垃圾回收器？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G1%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E7%9A%84%E5%8E%9F%E7%90%86%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="toc-number">7.4.9.</span> <span class="toc-text">G1垃圾回收器的原理了解吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E5%88%86%E4%BB%A3%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="toc-number">7.4.10.</span> <span class="toc-text">简述分代垃圾回收器是怎么工作的？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-number">7.5.</span> <span class="toc-text">内存分配策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0java%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8AMinor-GC%E5%92%8CMajor-GC"><span class="toc-number">7.5.1.</span> <span class="toc-text">@$简述java内存分配与回收策略以及Minor GC和Major GC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E4%BC%98%E5%85%88%E5%9C%A8-Eden-%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-number">7.5.1.1.</span> <span class="toc-text">对象优先在 Eden 区分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E5%AF%B9%E8%B1%A1%E7%9B%B4%E6%8E%A5%E8%BF%9B%E5%85%A5%E8%80%81%E5%B9%B4%E4%BB%A3"><span class="toc-number">7.5.1.2.</span> <span class="toc-text">大对象直接进入老年代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%95%BF%E6%9C%9F%E5%AD%98%E6%B4%BB%E5%AF%B9%E8%B1%A1%E5%B0%86%E8%BF%9B%E5%85%A5%E8%80%81%E5%B9%B4%E4%BB%A3"><span class="toc-number">7.5.1.3.</span> <span class="toc-text">长期存活对象将进入老年代</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6"><span class="toc-number">7.6.</span> <span class="toc-text">虚拟机类加载机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%EF%BC%9F%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">7.6.1.</span> <span class="toc-text">简述Java类加载机制？类加载机制的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%8C%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">7.6.2.</span> <span class="toc-text">什么是类加载器，类加载器有哪些?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%B1%BB%E8%A3%85%E8%BD%BD%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="toc-number">7.6.3.</span> <span class="toc-text">说一下类装载的执行过程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B%EF%BC%9F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%A5%BD%E5%A4%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">7.6.4.</span> <span class="toc-text">@$什么是双亲委派模型？双亲委派模型工作流程是怎样的？双亲委派模型的好处是什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E8%B0%83%E4%BC%98"><span class="toc-number">7.7.</span> <span class="toc-text">JVM调优</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B-JVM-%E8%B0%83%E4%BC%98%E7%9A%84%E5%B7%A5%E5%85%B7%EF%BC%9F"><span class="toc-number">7.7.1.</span> <span class="toc-text">说一下 JVM 调优的工具？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E7%9A%84GC%E8%B0%83%E4%BC%98%E6%80%9D%E8%B7%AF"><span class="toc-number">7.7.2.</span> <span class="toc-text">谈谈你的GC调优思路?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84-JVM-%E8%B0%83%E4%BC%98%E7%9A%84%E5%8F%82%E6%95%B0%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">7.7.3.</span> <span class="toc-text">@$常用的 JVM 调优的参数都有哪些？</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/09/all/5redis/" title="redis"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="redis"/></a><div class="content"><a class="title" href="/2022/10/09/all/5redis/" title="redis">redis</a><time datetime="2022-10-09T03:36:23.000Z" title="发表于 2022-10-09 11:36:23">2022-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/09/all/8JUC/" title="JUC"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JUC"/></a><div class="content"><a class="title" href="/2022/10/09/all/8JUC/" title="JUC">JUC</a><time datetime="2022-10-09T03:36:23.000Z" title="发表于 2022-10-09 11:36:23">2022-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/09/all/9MicroService/" title="微服务"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微服务"/></a><div class="content"><a class="title" href="/2022/10/09/all/9MicroService/" title="微服务">微服务</a><time datetime="2022-10-09T03:36:23.000Z" title="发表于 2022-10-09 11:36:23">2022-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/09/all/7JVM/" title="JVM"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JVM"/></a><div class="content"><a class="title" href="/2022/10/09/all/7JVM/" title="JVM">JVM</a><time datetime="2022-10-09T03:36:23.000Z" title="发表于 2022-10-09 11:36:23">2022-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/09/all/4spring/" title="Spring"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring"/></a><div class="content"><a class="title" href="/2022/10/09/all/4spring/" title="Spring">Spring</a><time datetime="2022-10-09T03:36:23.000Z" title="发表于 2022-10-09 11:36:23">2022-10-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By ggq</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
