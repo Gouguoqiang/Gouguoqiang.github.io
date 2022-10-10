@@ -257,6 +257,9 @@
   
   </header>
   
+        <!-- 目录内容 -->
+             
+        <!-- 目录内容结束 -->
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h1><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span></span><br><span class="line">[[<span class="keyword">DEFAULT</span>] <span class="type">CHARACTER</span> <span class="keyword">SET</span> <span class="operator">&lt;</span>字符集名<span class="operator">&gt;</span>] [[<span class="keyword">DEFAULT</span>] <span class="keyword">COLLATE</span> <span class="operator">&lt;</span>校对规则名<span class="operator">&gt;</span>];</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">（<span class="number">1</span>）[]中的内容是可选的。</span><br><span class="line">（<span class="number">2</span>）<span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span>：要创建数据库的名称。</span><br><span class="line">（<span class="number">3</span>）IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>：只有该数据库不存在时才能执行创建操作，可以避免因为数据库已经存在而引起错误。</span><br><span class="line">（<span class="number">4</span>）[<span class="keyword">DEFAULT</span>] <span class="type">CHARACTER</span> <span class="keyword">SET</span>：指定数据库的默认字符集。字符集是用来定义 MySQL 存储字符串的方式。该选项可以省略，如果省略就采用配置文件中指定的字符集。MySQL 不允许在同一个系统中创建两个相同名称的数据库。</span><br><span class="line">（<span class="number">5</span>）[<span class="keyword">DEFAULT</span>] <span class="keyword">COLLATE</span>：指定字符集的默认校对规则。校对规则用来定义比较字符串的方式，以解决排序和字符分组的问题。该选项可以省略，如果省略就采用配置文件中指定的校对规则。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -873,9 +876,7 @@
 
 
 
-<!-- 目录内容 -->
-     
-<!-- 目录内容结束 -->
+
 
           </div>
         </div>
@@ -942,7 +943,7 @@
       document.title = "完善中" + originTitle;
       clearTimeout(titleTime);
     } else {
-      document.title = "意义不明" + originTitle;
+      document.title = "" + originTitle;
       titleTime = setTimeout(function () {
         document.title = originTitle;
       }, 2000);
@@ -1007,19 +1008,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">虚拟机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
