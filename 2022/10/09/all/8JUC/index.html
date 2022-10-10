@@ -289,9 +289,7 @@
   
   </header>
   
-        <!-- 目录内容 -->
-             
-        <!-- 目录内容结束 -->
+
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="多线程一"><a href="#多线程一" class="headerlink" title="多线程一"></a>多线程一</h1><h2 id="创建Thread类（子类）的对象"><a href="#创建Thread类（子类）的对象" class="headerlink" title="创建Thread类（子类）的对象"></a>创建Thread类（子类）的对象</h2><h3 id="1-定义Thread类的子类"><a href="#1-定义Thread类的子类" class="headerlink" title="1 定义Thread类的子类"></a>1 定义Thread类的子类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Public <span class="keyword">class</span> <span class="title class_">MyThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;重写Thread父类中的run（）&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;JVM启动main线程，main线程执行main方法&quot;</span>);</span><br><span class="line">		<span class="type">MyThread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread</span>();</span><br><span class="line">		thread.start();</span><br><span class="line">		<span class="comment">//启动线程的实质是请求将JVM运行相应的线程，这个线程具体在什么时候运行由（Scheduler）线程调度器来决定</span></span><br><span class="line">		<span class="comment">//start（）方法调用结束不意味着子线程开始运行</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//新开启的线程会执行run（）方法</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1190,18 +1188,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2022/10/09/all/4spring/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/10/09/all/9MicroService/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Spring
+          微服务
         
       </div>
     </a>
   
   
-    <a href="/2022/10/09/all/5redis/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">redis</div>
+    <a href="/2022/10/08/mysql/mysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -1249,6 +1247,9 @@
 
 
 
+        <!-- 目录内容 -->
+             
+        <!-- 目录内容结束 -->
 
 
           </div>
@@ -1377,7 +1378,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mysql实践</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1390,14 +1399,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mysql实践</a>
               </li>
             
             <div class="clearfix"></div>

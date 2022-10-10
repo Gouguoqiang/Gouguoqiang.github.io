@@ -257,9 +257,7 @@
   
   </header>
   
-        <!-- 目录内容 -->
-             
-        <!-- 目录内容结束 -->
+
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h1><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span></span><br><span class="line">[[<span class="keyword">DEFAULT</span>] <span class="type">CHARACTER</span> <span class="keyword">SET</span> <span class="operator">&lt;</span>字符集名<span class="operator">&gt;</span>] [[<span class="keyword">DEFAULT</span>] <span class="keyword">COLLATE</span> <span class="operator">&lt;</span>校对规则名<span class="operator">&gt;</span>];</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">（<span class="number">1</span>）[]中的内容是可选的。</span><br><span class="line">（<span class="number">2</span>）<span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span>：要创建数据库的名称。</span><br><span class="line">（<span class="number">3</span>）IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>：只有该数据库不存在时才能执行创建操作，可以避免因为数据库已经存在而引起错误。</span><br><span class="line">（<span class="number">4</span>）[<span class="keyword">DEFAULT</span>] <span class="type">CHARACTER</span> <span class="keyword">SET</span>：指定数据库的默认字符集。字符集是用来定义 MySQL 存储字符串的方式。该选项可以省略，如果省略就采用配置文件中指定的字符集。MySQL 不允许在同一个系统中创建两个相同名称的数据库。</span><br><span class="line">（<span class="number">5</span>）[<span class="keyword">DEFAULT</span>] <span class="keyword">COLLATE</span>：指定字符集的默认校对规则。校对规则用来定义比较字符串的方式，以解决排序和字符分组的问题。该选项可以省略，如果省略就采用配置文件中指定的校对规则。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -817,18 +815,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2022/10/08/all/1java/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/10/09/all/8JUC/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          java
+          JUC
         
       </div>
     </a>
   
   
-    <a href="/2022/10/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2022/10/08/all/1java/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -876,6 +874,9 @@
 
 
 
+        <!-- 目录内容 -->
+             
+        <!-- 目录内容结束 -->
 
 
           </div>
@@ -1004,7 +1005,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mysql实践</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1017,14 +1026,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mysql实践</a>
               </li>
             
             <div class="clearfix"></div>
