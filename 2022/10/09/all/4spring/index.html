@@ -16,12 +16,12 @@
   <meta name="author" content="ggq">
   <meta name="keywords" content="">
   
-    <meta name="description" content="SSM概述3. spring mvc1、概述SpringMVC 是 Spring 为表述层开发提供的一整套完备的解决方案。在表述层框架历经 Strust、WebWork、Strust2 等诸多产品的历代更迭之后，目前业界普遍选择了 SpringMVC 作为 Java EE 项目表述层开发的首选方案。之所以能做到这一点，是因为 SpringMVC 具备如下显著优势：  Spring 家族原生产品，与">
+    <meta name="description" content="SSM概述spring mvc1、概述SpringMVC 是 Spring 为表述层开发提供的一整套完备的解决方案。在表述层框架历经 Strust、WebWork、Strust2 等诸多产品的历代更迭之后，目前业界普遍选择了 SpringMVC 作为 Java EE 项目表述层开发的首选方案。之所以能做到这一点，是因为 SpringMVC 具备如下显著优势：  Spring 家族原生产品，与 IO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring">
 <meta property="og:url" content="https://gouguoqiang.github.io/2022/10/09/all/4spring/index.html">
 <meta property="og:site_name" content="ggq">
-<meta property="og:description" content="SSM概述3. spring mvc1、概述SpringMVC 是 Spring 为表述层开发提供的一整套完备的解决方案。在表述层框架历经 Strust、WebWork、Strust2 等诸多产品的历代更迭之后，目前业界普遍选择了 SpringMVC 作为 Java EE 项目表述层开发的首选方案。之所以能做到这一点，是因为 SpringMVC 具备如下显著优势：  Spring 家族原生产品，与">
+<meta property="og:description" content="SSM概述spring mvc1、概述SpringMVC 是 Spring 为表述层开发提供的一整套完备的解决方案。在表述层框架历经 Strust、WebWork、Strust2 等诸多产品的历代更迭之后，目前业界普遍选择了 SpringMVC 作为 Java EE 项目表述层开发的首选方案。之所以能做到这一点，是因为 SpringMVC 具备如下显著优势：  Spring 家族原生产品，与 IO">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220911222801055.png">
 <meta property="og:image" content="https://gouguoqiang.github.io/image/image-20221003210707888.png">
@@ -77,7 +77,7 @@
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/365147/1602056629659-0bb9b513-834c-4e57-9120-55dc40fd8674.png?ynotemdtimestamp=1663136710667#height=237&id=TDJ6q&margin=%5Bobject%20Object%5D&name=image.png&originHeight=474&originWidth=1497&originalType=binary&ratio=1&size=44996&status=done&style=none&width=748.5">
 <meta property="og:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220914145558848.png">
 <meta property="article:published_time" content="2022-10-09T03:36:23.000Z">
-<meta property="article:modified_time" content="2022-10-10T03:10:13.152Z">
+<meta property="article:modified_time" content="2022-10-10T03:11:30.376Z">
 <meta property="article:author" content="ggq">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="c:\Users\%E5%86%8D%E9%9A%BE%E4%B9%9F%E4%BC%9A%E8%BF%87\AppData\Roaming\Typora\typora-user-images\image-20220911222801055.png">
@@ -326,7 +326,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="SSM概述"><a href="#SSM概述" class="headerlink" title="SSM概述"></a>SSM概述</h1><h2 id="3-spring-mvc"><a href="#3-spring-mvc" class="headerlink" title="3. spring mvc"></a>3. spring mvc</h2><h3 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h3><p>SpringMVC 是 Spring 为表述层开发提供的一整套完备的解决方案。在表述层框架历经 Strust、WebWork、Strust2 等诸多产品的历代更迭之后，目前业界普遍选择了 SpringMVC 作为 Java EE 项目表述层开发的<span style="color:blue;font-weight:bold;">首选方案</span>。之所以能做到这一点，是因为 SpringMVC 具备如下显著优势：</p>
+                <h1 id="SSM概述"><a href="#SSM概述" class="headerlink" title="SSM概述"></a>SSM概述</h1><h2 id="spring-mvc"><a href="#spring-mvc" class="headerlink" title="spring mvc"></a>spring mvc</h2><h3 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h3><p>SpringMVC 是 Spring 为表述层开发提供的一整套完备的解决方案。在表述层框架历经 Strust、WebWork、Strust2 等诸多产品的历代更迭之后，目前业界普遍选择了 SpringMVC 作为 Java EE 项目表述层开发的<span style="color:blue;font-weight:bold;">首选方案</span>。之所以能做到这一点，是因为 SpringMVC 具备如下显著优势：</p>
 <ul>
 <li><span style="color:blue;font-weight:bold;">Spring 家族原生产品</span>，与 IOC 容器等基础设施无缝对接</li>
 <li>表述层各细分领域需要解决的问题<span style="color:blue;font-weight:bold;">全方位覆盖</span>，提供<span style="color:blue;font-weight:bold;">全面解决方案</span></li>
