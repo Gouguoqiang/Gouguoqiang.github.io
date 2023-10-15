@@ -1,0 +1,267 @@
+---
+title: 搜索方法论
+tags:
+  - 方法论
+  - 搜索
+categories:
+  - 算法
+  - 2搜索
+date: 2022-9-02 11:51:56
+---
+
+
+
+# BFS
+
+最短距离: 方格矩阵 一个点到另一个点的最短距离的
+
+最小步数: 对地图的操作, 从一种地图变成另一张地图,地图状态的变化
+
+
+
+# Flood Fill
+
+洪水覆盖BFS算法:  n*m复杂度
+
+八连通的处理: 三维矩阵挖掉中间的
+
+## Algorithm
+
+```java
+1. 确定搜的起点,为防止不连通,枚举每个点进行bfs
+2. 用st(state)[][] 数组标记已经遍历过,防止重复遍历,线性复杂度
+3. 过滤掉不符合条件的进行队列更新与状态更新
+```
+
+
+
+# 最短路模型
+
+权重为1时可用bfs, dfs需要进行每次路径结果的比较
+
+# 多源BFS
+
+## 矩阵距离:  
+
+给一个矩阵a, 返回一个矩阵dist
+
+dist[i] [j] 为 原矩阵 距离最近1的距离, 若a[i] [j] = 1 则 dist[i] [j] = 0
+
+#### 输入样例：
+
+```
+3 4
+0001
+0011
+0110
+```
+
+#### 输出样例：
+
+```
+3 2 1 0
+2 1 0 0
+1 0 0 1
+```
+
+## Algorithm
+
+```python
+dist[][],左上到右下遍历矩阵, 1入队距离初始化为0, bfs第一次更新的就是最短的()
+```
+
+## Example
+
+```python
+from collections import deque
+n, m = map(int, input().split())
+
+g = [input() for _ in range(n)]
+
+dist = [[-1] * m for _ in range(n)]
+
+q = deque([(-1,-1)])
+
+for i in range(n):
+    for j in range(m):
+        if g[i][j] == '1':
+            dist[i][j] = 0
+            q.append((i,j))
+            
+dx, dy = [-1,0,1,0], [0,-1,0,1]
+
+q.popleft()
+
+while q:
+    x, y = q.popleft()
+    for i in range(4):
+        a, b = x + dx[i], y + dy[i]
+        if a < 0 or a >= n or b < 0 or b >= m: continue
+        if dist[a][b] != -1: continue
+        dist[a][b] = dist[x][y] + 1
+        q.append((a,b))
+    
+for i in range(n):
+    for j in range(m):
+        print(dist[i][j], end=" ")
+    print()
+    
+
+        
+```
+
+
+
+# 最小步数模型
+
+整个棋盘的变化: 外部变化
+
+区分于迷宫: 内部变化
+
+## Alogorithm
+
+```python
+难点: 如何存状态: 哈希 用一个特征存状态
+       	这题 Map<String,int> dist
+        存上一步: Map<String,char> pre 
+        bfs即可
+        
+记录方案: 记录每个状态由哪个转移而来,可从重点倒推起点
+    
+    
+```
+
+# 双端队列BFS
+
+![image-20221203215541728](../../../images/image-20221203215541728.png)
+
+```python
+只包含边权01的无向图
+双端队列 点如果权重为0 插到队头,否则队尾
+重点必须下标相加为偶数
+```
+
+![image-20221203221417556](../../../images/image-20221203221417556.png)
+
+![image-20221203221437148](../../../images/image-20221203221437148.png)
+
+# DFS连通性模型
+
+```python
+记录状态, 暴搜每个状态是否满足条件
+```
+
+
+
+
+
+# 全排列搜索
+
+## algorithm
+
+```java
+0.确定搜索顺序,决定搜索树 ->枚举每个位置可以放哪个数 dfs
+0.dfs(1,n,nums) 从位置1枚举到位置n ,
+1.对位置u枚举选择列表nums[i]的每个数,st[i]记录nums[i]是否用过 符合条件才可搜索下个位置
+2.恢复现场: 清除当前位置刚刚选的值,并使st[i] = false;
+```
+
+## Example
+
+```java
+class Solution {
+    List<List<Integer>> ans = new ArrayList<>();
+    LinkedList<Integer> path = new LinkedList<>();
+    boolean[] st;
+    public List<List<Integer>> permute(int[] nums) {
+        int n = nums.length;
+        st = new boolean[n];
+        dfs(1,n,nums);
+        return ans;
+    }
+    public void dfs(int u, int n,int[] nums) {
+        if (u > n) {
+            ans.add(new ArrayList(path));
+            return ;
+        } 
+        for (int i = 0; i <  n; i++) {
+            if (!st[i]) {
+                path.addLast(nums[i]);
+                st[i] = true;
+                dfs(u+1,n,nums);
+                st[i] = false;
+                path.removeLast();
+            }
+        }
+    }
+} 
+```
+
+
+
+# 八皇后搜索
+
+## Alorithm
+
+```java
+n皇后
+check:
+	列合法, 对角线合法, 反对角线合法
+    对角线的访问技巧: 斜率一个正1 一个 -1 每个对角线的d不同
+    正1的 d = y - x 有可能为 - 则 + n 即 d = y - x + n;
+    -1:  d = y + x
+0. 搜索顺序: 每一行的皇后放在哪个位置
+1. 同全排列
+    
+更原始的搜索顺序: 枚举每个格子 是否放
+        
+```
+
+## Example
+
+```java
+class Solution {
+    List<List<String>> res = new ArrayList<>();
+    int[] path;
+    boolean[] col, dg, rdg;
+    public List<List<String>> solveNQueens(int n) {
+        int N = n + 10;
+        path = new int[N];
+        col = new boolean[N];
+        dg = new boolean[2*N];
+        rdg = new boolean[2*N];
+        dfs(0,n);
+        return res;
+    }
+    public void dfs(int u, int n) {
+        if (u >= n) {
+            List<String> ans = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < n; j++) {
+                    if (j != path[i]) sb.append(".");
+                    else sb.append("Q");
+                }
+                ans.add(sb.toString());
+            }
+            res.add(ans);
+            return ;
+        }
+        for (int i = 0; i < n; i++ ) {
+            if (!col[i] && !dg[i+n-u] && !rdg[u+i]) {
+                path[u] = i;
+                col[i] = true;
+                dg[i+n-u] = true;
+                rdg[u+i] = true;
+                dfs(u+1,n);
+                // path[u] = i;
+                col[i] = false;
+                dg[i+n-u] = false;
+                rdg[u+i] = false;
+            }
+        }
+    }
+}
+```
+
+# 
