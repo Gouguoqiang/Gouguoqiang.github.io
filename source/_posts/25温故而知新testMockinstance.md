@@ -32,3 +32,4 @@ github上新建分支 hexo
 
 The above is written from mockInstance
 
+new Instance: 果然被坑了 需要将theme里的.git去掉 这是个 -r 的操作
