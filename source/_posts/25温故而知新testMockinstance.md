@@ -3,13 +3,14 @@ title: 实操hexo多设备维护
 tags:
   - suibi
 categories:
-  - 八股
-keywords: 面试。
-description: 类似我的草稿纸。
-date: 2022-9-01 11:51:56
+  - 实操
+keywords: 博客维护。
+description: 。
+date: 2023年10月15日21:24:46
 ---
 
-## 用到的指令
+
+
 常规搭好hexo只有master分支有生成文件，使用gitPage展示生成静态网站等，缺少源代码
 
 需要创建新分支存取整个项目
@@ -33,3 +34,5 @@ github上新建分支 hexo
 The above is written from mockInstance
 
 new Instance: 果然被坑了 需要将theme里的.git去掉 这是个 -r 的操作
+
+local: success
